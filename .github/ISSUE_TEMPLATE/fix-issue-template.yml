@@ -21,7 +21,7 @@ body:
     validations:
       required: true
   - type: textarea
-    id: before-fix
+    id: after-fix
     attributes:
       label: After State
       description: Fix 후 내용
