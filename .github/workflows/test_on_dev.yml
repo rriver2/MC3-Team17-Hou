@@ -1,5 +1,5 @@
 # workflow 의 이름
-name: Run Test
+name: test_on_dev
 
 on:
   # develop 브랜치에 push 나 pull request 이벤트가 일어났을때 해당 workflow 를 trigger
