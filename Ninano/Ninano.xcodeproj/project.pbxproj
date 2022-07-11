@@ -14,9 +14,11 @@
 		CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */; };
 		CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D3287C1064004EE6DB /* Assets.xcassets */; };
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
+		CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.debug.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.debug.xcconfig"; sourceTree = "<group>"; };
 		CC8B50C4287C1063004EE6DB /* Ninano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ninano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8B50C7287C1063004EE6DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		CC8B50D3287C1064004EE6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC8B50D6287C1064004EE6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.release.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,11 +43,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		92AFEC367EA6A85B89A8DB34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CC8B50BB287C1063004EE6DB = {
 			isa = PBXGroup;
 			children = (
 				CC8B50C6287C1063004EE6DB /* Ninano */,
 				CC8B50C5287C1063004EE6DB /* Products */,
+				DC7E7331974B66BFE02B2B7E /* Pods */,
+				92AFEC367EA6A85B89A8DB34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,8 +79,18 @@
 				CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */,
 				CC8B50D8287C1064004EE6DB /* Info.plist */,
 				CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */,
+				CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */,
 			);
 			path = Ninano;
+			sourceTree = "<group>";
+		};
+		DC7E7331974B66BFE02B2B7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */,
+				E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +100,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC8B50DB287C1064004EE6DB /* Build configuration list for PBXNativeTarget "Ninano" */;
 			buildPhases = (
+				BADBB516C577CDBCA7D28896 /* [CP] Check Pods Manifest.lock */,
 				CC8B50C0287C1063004EE6DB /* Sources */,
 				CC8B50C1287C1063004EE6DB /* Frameworks */,
 				CC8B50C2287C1063004EE6DB /* Resources */,
+				CC8B50E0287C1851004EE6DB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -128,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */,
 				CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */,
 				CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */,
 				CC8B50CF287C1063004EE6DB /* Main.storyboard in Resources */,
@@ -135,6 +161,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BADBB516C577CDBCA7D28896 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Ninano-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC8B50E0287C1851004EE6DB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC8B50C0287C1063004EE6DB /* Sources */ = {
@@ -286,12 +354,14 @@
 		};
 		CC8B50DC287C1064004EE6DB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J7ZP3WYXRW;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Ninano/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -315,6 +385,7 @@
 		};
 		CC8B50DD287C1064004EE6DB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

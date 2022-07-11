@@ -1,0 +1,4 @@
+Target dependency graph (2 targets)
+SwiftLint in Pods, no dependencies
+Pods-Ninano in Pods, depends on:
+SwiftLint in Pods (explicit)
