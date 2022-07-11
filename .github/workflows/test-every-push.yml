@@ -1,37 +1,32 @@
-# workflow의 이름.
+# workflow 의 이름
 name: test-every-push
 
 on:
-# dev 브랜치에 push나 pull request 이벤트가 일어났을때
-# workflow를 동작하게 하는 trigger
+  # dev 브랜치에 push나 pull request 이벤트가 일어났을때 workflow를 동작하게 하는 trigger
   push:
-    branches: [ "dev" ]
+    branches: [ dev ]
   pull_request:
-    branches: [ "dev" ]
-
+    branches: [ dev ]
 
 # job은 사용자가 정한 플랫폼을 통해 step이라는 일련의 과정을 실행함
 # 여러 개의 job을 사용할 수 있으며, 여러 개의 job을 사용할 때는 서로 정보도 교환할 수 있음 ( 각각 독립적으로도 실행 가능 )
 # 이번 플젝에서의 workflow는 간단해서 "build"라는 하나의 job만 가짐
 jobs:
   build:
-   # job이 실행될 환경: 최신 mac os
+    # job이 실행될 환경 - 최신 mac os
     runs-on: macos-latest
-
     strategy:
      matrix:
         destination: ['platform=iOS Simulator,OS=15.2,name=iPhone 13']
-
-		# steps은 job의 일부로 실행될 일련의 task들을 나타냄
+    # Step은 job의 일부로 실행될 일련의 task들을 나타냄
     steps:
-	     # uses: 테스트를 하기 위해서 Repository의 코드 복사본을 만드는 코드
-	     # name: 실행할 작업의 이름
-	     # run: 스위프트 컴파일러로 빌드하는 명령어
-    - uses: actions/checkout@v3
-		
-		# shell 이용해서 하나의 command 수행
-    - name: xcode build 🔨
+    # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
+    - uses: actions/checkout@v2
+    # shell 이용해서 하나의 command 수행
+    # name: 실행할 작업의 이름
+    # run: 스위프트 컴파일러로 빌드하는 명령어
+    - name: Start xcode build 🛠
       run: |
-				xcodebuild build -project Ninano/Ninano.xcodeproj -scheme Ninano -destination "${destination}"
-	    env:
-       destination: ${{ matrix.destination }}
+        xcodebuild build -project Ninano/Ninano.xcodeproj -scheme Ninano -destination "${destination}"
+      env:
+        destination: ${{ matrix.destination }}
