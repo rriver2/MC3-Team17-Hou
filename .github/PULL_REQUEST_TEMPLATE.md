@@ -1,9 +1,3 @@
----
-name: Pull Request Tamplate
-about: PR 템플릿
-title: "[Label] PR Title"
----
-
 # Issue Number
 🔒 Close #issue-number1
 🔒 Close #issue-number2
