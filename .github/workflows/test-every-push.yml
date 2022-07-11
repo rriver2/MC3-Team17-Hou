@@ -17,7 +17,7 @@ jobs:
     runs-on: macos-latest
     strategy:
      matrix:
-        destination: ['platform=iOS Simulator,OS=15.2,name=iPhone 13']
+        destination: ['platform=iOS Simulator,OS=latest,name=iPhone 13']
     # Step은 job의 일부로 실행될 일련의 task들을 나타냄
     steps:
     # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
@@ -27,6 +27,6 @@ jobs:
     # run: 스위프트 컴파일러로 빌드하는 명령어
     - name: Start xcode build 🛠
       run: |
-        xcodebuild build -project Ninano/Ninano.xcodeproj -scheme Ninano -destination "${destination}"
+       xcodebuild build -project Ninano/Ninano.xcodeproj
       env:
         destination: ${{ matrix.destination }}
