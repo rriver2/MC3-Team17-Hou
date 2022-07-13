@@ -1,14 +1,14 @@
-name: Feature Tamplate
+name: feat Tamplate
 description: 기능 추가할 때 쓰는 템플릿
-title: "[feature]: Feature Title"
-labels: ["feature"]
+title: "[feat]: feat Title"
+labels: ["feat"]
 
 body:
   - type: textarea
-    id: feature-contents
+    id: feat-contents
     attributes:
-      label: Feature 설명
-      description: 작업할 Feature에 대한 설명을 적어주세요.
+      label: Feat 설명
+      description: 작업할 feat 대한 설명을 적어주세요.
       placeholder: ex. 타이머 화면 그리기
     validations:
       required: true
