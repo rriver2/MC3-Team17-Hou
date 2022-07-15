@@ -11,7 +11,11 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
+    
+    @IBAction func searchButton(_ sender: Any) {
+        // To be connected to SearchResultViewController
+    }
+
 }
