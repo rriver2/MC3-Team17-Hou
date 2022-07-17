@@ -11,5 +11,4 @@ class NoticeGridCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var gridImages: UIImageView!
     
-    
 }

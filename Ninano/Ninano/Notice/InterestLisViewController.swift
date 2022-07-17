@@ -27,11 +27,11 @@ extension InterestLisViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as! NoticeGridCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as? NoticeGridCollectionViewCell
         
-        cell.gridImages.image = UIImage(systemName: gridImage[indexPath.row]) ?? UIImage()
+        cell?.gridImages.image = UIImage(systemName: gridImage[indexPath.row]) ?? UIImage()
         
-        return cell
+        return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
