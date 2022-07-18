@@ -41,33 +41,32 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4BR-Ah-sIj">
-                                <rect key="frame" x="25" y="124" width="150" height="26"/>
+                                <rect key="frame" x="15" y="124" width="160" height="26"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="eqZ-lL-wSt"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="o9b-fs-0cK"/>
-                                    <constraint firstAttribute="width" constant="150" id="x7i-1G-UHO"/>
+                                    <constraint firstAttribute="width" constant="160" id="x7i-1G-UHO"/>
                                 </constraints>
                                 <segments>
                                     <segment title="키워드 알림"/>
                                     <segment title="관심 목록"/>
                                 </segments>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
                                 <connections>
                                     <action selector="didChangeIndex:" destination="Y6W-OH-hqX" eventType="valueChanged" id="mMR-xF-jwC"/>
                                 </connections>
                             </segmentedControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-2z-Ckq">
-                                <rect key="frame" x="0.0" y="157" width="390" height="565"/>
+                                <rect key="frame" x="0.0" y="164" width="390" height="561"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-dS-WcN">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                                         <connections>
                                             <segue destination="oE3-kv-wjl" kind="embed" id="b9a-lY-KS1"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-7M-zBv" userLabel="Interest List Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                                         <connections>
                                             <segue destination="Qeb-o1-V09" kind="embed" id="qpI-dX-grD"/>
                                         </connections>
@@ -108,18 +107,18 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="apX-Aq-bSb" firstAttribute="top" secondItem="hpl-2z-Ckq" secondAttribute="bottom" constant="18" id="05W-iK-eoq"/>
+                            <constraint firstItem="apX-Aq-bSb" firstAttribute="top" secondItem="hpl-2z-Ckq" secondAttribute="bottom" constant="15" id="05W-iK-eoq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="apX-Aq-bSb" secondAttribute="trailing" constant="25" id="1VC-1g-grb"/>
                             <constraint firstItem="qiX-sV-l1u" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="4bZ-yZ-Uug"/>
                             <constraint firstItem="FM3-iy-uuz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="5cv-1y-NZE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FM3-iy-uuz" secondAttribute="trailing" constant="15" id="R8c-9O-bmF"/>
                             <constraint firstItem="hpl-2z-Ckq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VYw-Ak-xIu"/>
-                            <constraint firstItem="hpl-2z-Ckq" firstAttribute="top" secondItem="4BR-Ah-sIj" secondAttribute="bottom" constant="8" symbolic="YES" id="Wcu-X9-6po"/>
+                            <constraint firstItem="hpl-2z-Ckq" firstAttribute="top" secondItem="4BR-Ah-sIj" secondAttribute="bottom" constant="15" id="Wcu-X9-6po"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="apX-Aq-bSb" secondAttribute="bottom" constant="10" id="Zxk-xy-p04"/>
                             <constraint firstItem="apX-Aq-bSb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="ekW-ck-UmC"/>
                             <constraint firstItem="4BR-Ah-sIj" firstAttribute="top" secondItem="qiX-sV-l1u" secondAttribute="bottom" constant="30" id="iYv-NX-g3d"/>
                             <constraint firstItem="hpl-2z-Ckq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="mBw-lG-ZX6"/>
-                            <constraint firstItem="4BR-Ah-sIj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="tvc-aV-6W8"/>
+                            <constraint firstItem="4BR-Ah-sIj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="tvc-aV-6W8"/>
                             <constraint firstItem="qiX-sV-l1u" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="ywE-Mj-PQH"/>
                         </constraints>
                     </view>
@@ -128,6 +127,7 @@
                         <outlet property="interestContainerView" destination="yfy-7M-zBv" id="9cJ-A8-Yty"/>
                         <outlet property="keywordContainerView" destination="Egp-dS-WcN" id="bzQ-Bi-f9p"/>
                         <outlet property="mainTitle" destination="qiX-sV-l1u" id="Hg8-Il-NkK"/>
+                        <outlet property="segmentedControl" destination="4BR-Ah-sIj" id="Zdb-5h-CFM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -139,11 +139,11 @@
             <objects>
                 <viewController id="oE3-kv-wjl" customClass="KeywordViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mLf-w6-GGq">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-Sw-foW">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noticeKeyword" rowHeight="90" id="aFn-67-8gh" customClass="KeywordTableViewCell" customModule="Ninano" customModuleProvider="target">
@@ -153,28 +153,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7월 24일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCZ-Rd-iv3">
-                                                    <rect key="frame" x="20" y="11" width="140" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                                    <color key="textColor" systemColor="systemGrayColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XjE-TZ-Jv0">
-                                                    <rect key="frame" x="20" y="39" width="40" height="40"/>
+                                                    <rect key="frame" x="22" y="39" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="토요국악" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-gn-hJz">
-                                                    <rect key="frame" x="77" y="39" width="256" height="20"/>
+                                                    <rect key="frame" x="83" y="39" width="256" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="심규보 관심설정의 새로운 공연일정이 추가되었습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMv-5e-tpt">
-                                                    <rect key="frame" x="77" y="64" width="293" height="15"/>
+                                                    <rect key="frame" x="83" y="64" width="293" height="15"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7월 24일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCZ-Rd-iv3">
+                                                    <rect key="frame" x="22" y="11" width="140" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -212,11 +212,11 @@
             <objects>
                 <viewController id="Qeb-o1-V09" userLabel="Interest List View Controller" customClass="InterestLisViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2b8-en-cBj">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-XO-BV3">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="565"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xk9-su-4Co">
                                     <size key="itemSize" width="128" height="128"/>
@@ -282,9 +282,6 @@
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

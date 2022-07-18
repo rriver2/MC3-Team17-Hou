@@ -13,27 +13,33 @@ class NoticeViewController: UIViewController {
     @IBOutlet weak var interestContainerView: UIView!
     @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var buttonState: UIButton!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         keywordContainerView.alpha = 1.0
         interestContainerView.alpha = 0.0
         buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
+        self.segmentedControl.frame = CGRect(x: self.segmentedControl.frame.minX, y: self.segmentedControl.frame.minY, width: segmentedControl.frame.width, height: 25)
+        segmentedControl.highlightSelectedSegment()
     }
 
     @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
+        segmentedControl.underlinePosition()
+        
         switch sender.selectedSegmentIndex {
         case 0:
             keywordContainerView.alpha = 1
             interestContainerView.alpha = 0
             buttonState.setTitle("키워드 설정", for: .normal)
-
+            buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
+            
         case 1:
             keywordContainerView.alpha = 0
             interestContainerView.alpha = 1
             buttonState.setTitle("목록 전체 삭제", for: .normal)
             buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
-
+            buttonState.tintColor = #colorLiteral(red: 0.2941176471, green: 0.3568627451, blue: 0.6392156863, alpha: 1)
         default:
             break
         }
