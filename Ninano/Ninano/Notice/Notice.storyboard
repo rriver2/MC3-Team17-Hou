@@ -57,7 +57,7 @@
                                     <action selector="didChangeIndex:" destination="Y6W-OH-hqX" eventType="valueChanged" id="mMR-xF-jwC"/>
                                 </connections>
                             </segmentedControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-2z-Ckq">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hpl-2z-Ckq">
                                 <rect key="frame" x="0.0" y="157" width="390" height="565"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-dS-WcN">
@@ -76,7 +76,9 @@
                                 <constraints>
                                     <constraint firstItem="Egp-dS-WcN" firstAttribute="top" secondItem="EPF-6R-Y2a" secondAttribute="top" id="AIe-yZ-rae"/>
                                     <constraint firstItem="Egp-dS-WcN" firstAttribute="trailing" secondItem="EPF-6R-Y2a" secondAttribute="trailing" id="CzK-LZ-Xd6"/>
+                                    <constraint firstAttribute="trailing" secondItem="yfy-7M-zBv" secondAttribute="trailing" id="E77-cG-WmR"/>
                                     <constraint firstItem="yfy-7M-zBv" firstAttribute="leading" secondItem="EPF-6R-Y2a" secondAttribute="leading" id="GzK-xx-lAu"/>
+                                    <constraint firstAttribute="bottom" secondItem="yfy-7M-zBv" secondAttribute="bottom" id="IRM-sJ-SAP"/>
                                     <constraint firstItem="yfy-7M-zBv" firstAttribute="bottom" secondItem="EPF-6R-Y2a" secondAttribute="bottom" id="PF1-xR-JaV"/>
                                     <constraint firstItem="Egp-dS-WcN" firstAttribute="bottom" secondItem="EPF-6R-Y2a" secondAttribute="bottom" id="e4C-x7-afQ"/>
                                     <constraint firstItem="Egp-dS-WcN" firstAttribute="leading" secondItem="EPF-6R-Y2a" secondAttribute="leading" id="gUf-tb-oHC"/>
@@ -87,37 +89,42 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="EPF-6R-Y2a"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="apX-Aq-bSb">
-                                <rect key="frame" x="25" y="730" width="340" height="60"/>
+                                <rect key="frame" x="25" y="740" width="340" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="CAc-mL-bQM"/>
                                     <constraint firstAttribute="width" constant="340" id="nrX-36-E8a"/>
                                 </constraints>
+                                <color key="tintColor" red="0.70196078431372544" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="키워드 설정" cornerStyle="capsule">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="bottomTappedChange:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wdT-GY-5Ep"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="apX-Aq-bSb" firstAttribute="top" secondItem="hpl-2z-Ckq" secondAttribute="bottom" constant="18" id="05W-iK-eoq"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="apX-Aq-bSb" secondAttribute="trailing" constant="25" id="1VC-1g-grb"/>
                             <constraint firstItem="qiX-sV-l1u" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="4bZ-yZ-Uug"/>
                             <constraint firstItem="FM3-iy-uuz" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="5cv-1y-NZE"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FM3-iy-uuz" secondAttribute="trailing" constant="15" id="R8c-9O-bmF"/>
                             <constraint firstItem="hpl-2z-Ckq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="VYw-Ak-xIu"/>
                             <constraint firstItem="hpl-2z-Ckq" firstAttribute="top" secondItem="4BR-Ah-sIj" secondAttribute="bottom" constant="8" symbolic="YES" id="Wcu-X9-6po"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="apX-Aq-bSb" secondAttribute="bottom" constant="10" id="Zxk-xy-p04"/>
                             <constraint firstItem="apX-Aq-bSb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="ekW-ck-UmC"/>
                             <constraint firstItem="4BR-Ah-sIj" firstAttribute="top" secondItem="qiX-sV-l1u" secondAttribute="bottom" constant="30" id="iYv-NX-g3d"/>
-                            <constraint firstItem="apX-Aq-bSb" firstAttribute="top" secondItem="hpl-2z-Ckq" secondAttribute="bottom" constant="8" symbolic="YES" id="jub-3o-JU1"/>
                             <constraint firstItem="hpl-2z-Ckq" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="mBw-lG-ZX6"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="apX-Aq-bSb" secondAttribute="bottom" constant="20" id="sV9-Mg-2EZ"/>
                             <constraint firstItem="4BR-Ah-sIj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="tvc-aV-6W8"/>
                             <constraint firstItem="qiX-sV-l1u" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="ywE-Mj-PQH"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonState" destination="apX-Aq-bSb" id="h6k-wQ-Dtp"/>
                         <outlet property="interestContainerView" destination="yfy-7M-zBv" id="9cJ-A8-Yty"/>
                         <outlet property="keywordContainerView" destination="Egp-dS-WcN" id="bzQ-Bi-f9p"/>
                         <outlet property="mainTitle" destination="qiX-sV-l1u" id="Hg8-Il-NkK"/>
