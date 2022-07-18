@@ -11,7 +11,7 @@ class SearchResultViewController: UIViewController {
     
     @IBOutlet var performanceCollectionView: UICollectionView!
     
-    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
+    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +61,17 @@ class SearchResultViewController: UIViewController {
         clickedFilterButton(sender, Filter.category)
     }
     
+    @IBAction func notificationSettingsButton(_ sender: UIButton) {
+        // TODO: 키워드 값 넣는 로직
+        if isRingButtonSelected {
+            sender.configuration?.baseForegroundColor = .systemGray
+            isRingButtonSelected = false
+        } else {
+            sender.configuration?.baseForegroundColor = .red
+            isRingButtonSelected = true
+        }
+    }
+    
     var datePicker: UIDatePicker!
     @IBAction func dateFilterButton(_ sender: UIButton) {
         clickedFilterButton(sender, Filter.date)
@@ -69,14 +80,14 @@ class SearchResultViewController: UIViewController {
         
         let actionSheet = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
-                // TODO: Done 클릭 시 할 action 추가
-            }))
-
+            // TODO: Done 클릭 시 할 action 추가
+        }))
+        
         actionSheet.view.addSubview(datePicker)
         datePicker.preferredDatePickerStyle = .inline
         
-        let height: NSLayoutConstraint = NSLayoutConstraint(item: actionSheet.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 400)
-        actionSheet.view.addConstraint(height)
+//        let height: NSLayoutConstraint = NSLayoutConstraint(item: actionSheet.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 400)
+//        actionSheet.view.addConstraint(height)
         // TODO: 달력 중간 정렬
         self.present(actionSheet, animated: true, completion: nil)
     }
@@ -96,6 +107,25 @@ class SearchResultViewController: UIViewController {
         }
     }
     
+//    let performanceHearts = []
+//
+    var isRingButtonSelected = true
+    
+    @IBAction func clickedHeart(_ sender: UIButton) {
+        // TODO: 하트 배열처리
+        if isRingButtonSelected {
+            let config = UIImage.SymbolConfiguration(paletteColors: [.systemGray5, .systemGray, .darkGray])
+            let image = UIImage(systemName: "heart.circle.fill", withConfiguration: config)
+            sender.setImage(image, for: .normal)
+            isRingButtonSelected = false
+        } else {
+            let config = UIImage.SymbolConfiguration(paletteColors: [.red, .systemGray, .darkGray])
+            let image = UIImage(systemName: "heart.circle.fill", withConfiguration: config)
+            sender.setImage(image, for: .normal)
+            isRingButtonSelected = true
+        }
+    }
+    
     /*
      // MARK: - Navigation
      
@@ -105,7 +135,6 @@ class SearchResultViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
 }
 
 // 데이터 소스 설정 : 데이터와 관련된 것들
@@ -136,46 +165,23 @@ extension SearchResultViewController: UICollectionViewDataSource {
 extension SearchResultViewController: UICollectionViewDelegate {
     
 }
-//
-//extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-//    // 위 아래 간격
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//    }
-//
-//    // 옆 간격
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 1
-//    }
-//
-//    // cell 사이즈( 옆 라인을 고려하여 설정 )
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let width = collectionView.frame.width / 3 - 1 ///  3등분하여 배치, 옆 간격이 1이므로 1을 빼줌
-//
-//        let size = CGSize(width: width, height: width)
-//        return size
-//    }
-//}
 
-//extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
-//        let cellSize: CGFloat = myBoundSize / 9
-//        return CGSize(width: cellSize, height: 40)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: 0, height: 5)
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return sectionInsets
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return sectionInsets.top
-//    }
-//
-//}
-//Footer
-
+extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
+    // 셀 크기
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let space = 1
+        let columns = 3
+        let width = (Int(collectionView.frame.width) / columns) - (space * (columns - 1))
+        return CGSize(width: width, height: 174)
+    }
+    
+    // 위아래 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    // 좌우 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+}
