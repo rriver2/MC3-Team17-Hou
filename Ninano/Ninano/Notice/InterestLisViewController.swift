@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InterestLisViewController: UIViewController {
+final class InterestLisViewController: UIViewController {
 
     @IBOutlet weak var interestCollectionView: UICollectionView!
     
