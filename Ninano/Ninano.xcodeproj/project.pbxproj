@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */; };
 		7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */; };
+		7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */; };
+		7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC8A12886558E00EF5537 /* EventModel.swift */; };
 		CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C7287C1063004EE6DB /* AppDelegate.swift */; };
 		CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */; };
 		CC8B50CC287C1063004EE6DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50CB287C1063004EE6DB /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 		1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.debug.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.debug.xcconfig"; sourceTree = "<group>"; };
 		7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarDetail.storyboard; sourceTree = "<group>"; };
 		7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
+		7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventDetailCell.swift; sourceTree = "<group>"; };
+		7EBFC8A12886558E00EF5537 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		CC8B50C4287C1063004EE6DB /* Ninano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ninano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8B50C7287C1063004EE6DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +56,8 @@
 			children = (
 				7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */,
 				7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */,
+				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
+				7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */,
 			);
 			path = CalendarDetail;
 			sourceTree = "<group>";
@@ -224,9 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */,
 				7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* ViewController.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
+				7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
 				CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */,
 			);

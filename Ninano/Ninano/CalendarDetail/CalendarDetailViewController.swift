@@ -8,7 +8,12 @@
 import UIKit
 
 class CalendarDetailViewController: UIViewController {
+    var eventList = EventData().list
+    var event: Event?
+    
     var monthImage: UIImage?
+    let eventPosters = ["banhyang", "guiTo"]
+    var eventPoster: UIImage?
     
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
@@ -30,23 +35,28 @@ class CalendarDetailViewController: UIViewController {
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
-        
     }
     
 }
 
 extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return eventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eachDayEvent", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "dayEventDetailCell", for: indexPath) as? DayEventDetailCell else {
+            return UITableViewCell()
+        }
         
         cell.backgroundColor = .clear
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
         
+        eventPoster = UIImage(named: "\(eventPosters[indexPath.row])")
+        cell.posterImage.image = eventPoster
+        cell.posterImage.layer.cornerRadius = 10
+
         return cell
     }
 }
