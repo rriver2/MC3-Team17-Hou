@@ -9,7 +9,6 @@ import UIKit
 import Foundation
 
 class CalendarViewController: UIViewController {
-    let sectionInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     //  캘린더 이미지화면 연결
     @IBOutlet weak var image: UIImageView!
     //  알림 아이콘 연결
@@ -121,20 +120,9 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
 
 extension CalendarViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
-        let cellSize: CGFloat = myBoundSize / 9
-        return CGSize(width: cellSize, height: 40)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 0, height: 5)
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return sectionInsets
-    }
-        
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return sectionInsets.top
+            let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
+            let cellSize: CGFloat = myBoundSize / 9
+            return CGSize(width: cellSize, height: cellSize)
     }
     
 }
