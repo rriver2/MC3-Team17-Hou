@@ -37,7 +37,7 @@
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="noticeOutTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wz2-Ok-gV3"/>
+                                    <action selector="cancelNoticeButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="u7w-zx-SD2"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4BR-Ah-sIj">
@@ -100,7 +100,7 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="bottomTappedChange:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="wdT-GY-5Ep"/>
+                                    <action selector="moveNextButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Jah-Kk-aRp"/>
                                 </connections>
                             </button>
                         </subviews>
