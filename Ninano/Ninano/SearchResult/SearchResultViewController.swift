@@ -39,6 +39,7 @@ class SearchResultViewController: UIViewController {
         let locals = ["강남", "강북", "구로구", "관악구", "광진구", "도봉구", "노원구"]
         for local in locals {
             actionSheet.addAction(UIAlertAction(title: local, style: .default, handler: { [self] _ in
+                sender.setTitle(local, for: .normal)
                 self.clickedLocalButton(local: local)
             }))
         }
