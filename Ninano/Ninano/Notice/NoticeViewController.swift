@@ -60,7 +60,7 @@ class NoticeViewController: UIViewController {
             alert.addAction(alertNo)
             
             present(alert, animated: true, completion: nil)
-            // completion: 해당 alert 가 성공적으로 수행되고 나서 이 함수가 끝난 뒤 뭘 할거냐? 라고 지정해주는 부분 이것도 closure 로 빼자.
+            // TODO: completion: 해당 alert 가 성공적으로 수행되고 나서 이 함수가 끝난 뒤 뭘 할거냐? 라고 지정해주는 부분 이것도 closure 로 빼자. 
         default:
             break
         }
