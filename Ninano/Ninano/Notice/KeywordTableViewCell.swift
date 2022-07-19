@@ -9,10 +9,10 @@ import UIKit
 
 final class KeywordTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var keywordDate: UILabel!
-    @IBOutlet private weak var keywordAlarmTitle: UILabel!
-    @IBOutlet private weak var keywordTitle: UILabel!
-    @IBOutlet private weak var keywordImage: UIImageView!
+    @IBOutlet weak var keywordDate: UILabel!
+    @IBOutlet weak var keywordAlarmTitle: UILabel!
+    @IBOutlet weak var keywordTitle: UILabel!
+    @IBOutlet weak var keywordImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
