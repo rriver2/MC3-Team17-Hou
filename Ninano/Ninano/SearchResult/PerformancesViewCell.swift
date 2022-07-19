@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PerformancesViewCell: UICollectionViewCell {
+final class PerformancesViewCell: UICollectionViewCell {
     
     @IBOutlet var performanceImage: UIImageView!
     

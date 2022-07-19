@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CalenderViewController: UIViewController {
+final class CalenderViewController: UIViewController {
     @IBAction func clickedScheduleButton(_ sender: UIButton) {
         // TODO: 날짜 기입 
         self.dismiss(animated: true, completion: nil)
