@@ -11,8 +11,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var linkBtn: UIButton!
     @IBOutlet weak var likeBtn: UIButton!
-    @IBOutlet weak var shareSheetBtn: UIButton!
     
+    @IBAction func shareSheetBtn(_ sender: Any) {
+        presentShareSheet()
+    }
     // 모달 뷰 코드로 구현 시
 //    @IBAction func addCalendarBtn() {
 //        guard let calendarBtn = storyboard?.instantiateViewController(identifier: "modalCalendarVC") as? ModalCalendarViewController else {
@@ -23,13 +25,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        shareSheetBtn.addTarget(self, action: #selector(presentShareSheet), for: .touchUpInside)
         linkBtn.layer.cornerRadius = 20
-        likeBtn.layer.cornerRadius = 20
-        view.addSubview(shareSheetBtn)
-    }
+        likeBtn.layer.cornerRadius = 20    }
     
-    @objc private func presentShareSheet() {
+    private func presentShareSheet() {
         guard let image = UIImage(systemName: "bell"), let url = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex=") else {
             return
         }

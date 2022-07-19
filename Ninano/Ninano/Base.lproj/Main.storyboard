@@ -211,7 +211,7 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system" title=""/>
                                                         <connections>
-                                                            <action selector="shareSheetBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="guk-OA-hOS"/>
+                                                            <action selector="shareSheetBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fYc-6v-MPn"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -273,6 +273,9 @@
                                         <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title="">
                                             <color key="baseForegroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="5w9-X0-1Xf" kind="show" id="7S9-U8-lCf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -408,7 +411,7 @@
             </objects>
             <point key="canvasLocation" x="1728" y="606"/>
         </scene>
-        <!--Set Keyword View Controller-->
+        <!--키워드 설정-->
         <scene sceneID="3Jk-BO-xTx">
             <objects>
                 <viewController id="5w9-X0-1Xf" customClass="SetKeywordViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
@@ -416,23 +419,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdk-6J-5Xe">
-                                <rect key="frame" x="0.0" y="51" width="414" height="44"/>
-                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="키워드 설정" id="iom-kP-kaR">
-                                        <barButtonItem key="leftBarButtonItem" id="VAs-WN-mwr">
-                                            <imageReference key="image" image="chevron.backward" catalog="system" symbolScale="large"/>
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j7w-li-dn9">
-                                <rect key="frame" x="20" y="120" width="69" height="18"/>
+                                <rect key="frame" x="20" y="128" width="69" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드 추가" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-Vx-qJh">
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="18"/>
@@ -443,14 +431,14 @@
                                 </subviews>
                             </stackView>
                             <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnR-Yv-KIX">
-                                <rect key="frame" x="20" y="259" width="374" height="1"/>
+                                <rect key="frame" x="20" y="267" width="374" height="1"/>
                                 <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="7C4-aC-Dff"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U8B-lE-mf8">
-                                <rect key="frame" x="20" y="231" width="69" height="18"/>
+                                <rect key="frame" x="20" y="239" width="69" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드 추가" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Oo-gC-5cj">
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="18"/>
@@ -461,7 +449,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="280" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-92-Dyg">
-                                <rect key="frame" x="25" y="280" width="364" height="31"/>
+                                <rect key="frame" x="25" y="288" width="364" height="31"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wkf-Q3-at5">
                                         <rect key="frame" x="0.0" y="0.0" width="39" height="31"/>
@@ -488,7 +476,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKR-xg-MjA">
-                                <rect key="frame" x="25" y="166" width="364" height="30"/>
+                                <rect key="frame" x="25" y="174" width="364" height="30"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Ad-zq-xAf">
                                         <rect key="frame" x="0.0" y="0.0" width="317" height="30"/>
@@ -520,7 +508,7 @@
                                 </subviews>
                             </stackView>
                             <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yo-3H-q9c">
-                                <rect key="frame" x="25" y="148" width="364" height="1"/>
+                                <rect key="frame" x="25" y="156" width="364" height="1"/>
                                 <color key="backgroundColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="JDt-0z-p3O"/>
@@ -531,15 +519,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="U8B-lE-mf8" firstAttribute="leading" secondItem="hPJ-Q7-jbe" secondAttribute="leading" constant="20" id="1Kc-Nf-4Nm"/>
-                            <constraint firstItem="j7w-li-dn9" firstAttribute="top" secondItem="Tdk-6J-5Xe" secondAttribute="bottom" constant="25" id="2AJ-r6-wvn"/>
                             <constraint firstItem="fnR-Yv-KIX" firstAttribute="leading" secondItem="7Xh-gI-5f6" secondAttribute="leadingMargin" id="3Nm-dY-Ke9"/>
                             <constraint firstItem="NKR-xg-MjA" firstAttribute="leading" secondItem="hPJ-Q7-jbe" secondAttribute="leading" constant="25" id="3fo-LI-YaI"/>
                             <constraint firstItem="6Yo-3H-q9c" firstAttribute="trailing" secondItem="NKR-xg-MjA" secondAttribute="trailing" id="9PU-aw-xAX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fnR-Yv-KIX" secondAttribute="trailing" id="9ma-em-f9g"/>
-                            <constraint firstItem="Tdk-6J-5Xe" firstAttribute="centerX" secondItem="6Yo-3H-q9c" secondAttribute="centerX" id="Amq-lN-ZgA"/>
                             <constraint firstItem="U8B-lE-mf8" firstAttribute="top" secondItem="NKR-xg-MjA" secondAttribute="bottom" constant="35" id="BL9-rN-DVG"/>
                             <constraint firstItem="hPJ-Q7-jbe" firstAttribute="trailing" secondItem="2wT-92-Dyg" secondAttribute="trailing" constant="25" id="FCc-8c-h2a"/>
                             <constraint firstItem="fnR-Yv-KIX" firstAttribute="top" secondItem="U8B-lE-mf8" secondAttribute="bottom" constant="10" id="Fc4-W9-7bV"/>
+                            <constraint firstItem="j7w-li-dn9" firstAttribute="top" secondItem="hPJ-Q7-jbe" secondAttribute="top" constant="40" id="GUZ-uf-qoL"/>
                             <constraint firstItem="2wT-92-Dyg" firstAttribute="top" secondItem="fnR-Yv-KIX" secondAttribute="bottom" constant="20" id="Jl7-u3-y2K"/>
                             <constraint firstItem="j7w-li-dn9" firstAttribute="leading" secondItem="hPJ-Q7-jbe" secondAttribute="leading" constant="20" id="Urw-oP-t3p"/>
                             <constraint firstItem="NKR-xg-MjA" firstAttribute="top" secondItem="6Yo-3H-q9c" secondAttribute="bottom" constant="17" id="VFj-PH-WRR"/>
@@ -547,10 +534,13 @@
                             <constraint firstItem="6Yo-3H-q9c" firstAttribute="top" secondItem="j7w-li-dn9" secondAttribute="bottom" constant="10" id="Xox-vg-mpy"/>
                             <constraint firstItem="2wT-92-Dyg" firstAttribute="leading" secondItem="hPJ-Q7-jbe" secondAttribute="leading" constant="25" id="kXT-qu-z9O"/>
                             <constraint firstItem="6Yo-3H-q9c" firstAttribute="leading" secondItem="NKR-xg-MjA" secondAttribute="leading" id="oh3-2f-bLv"/>
-                            <constraint firstItem="Tdk-6J-5Xe" firstAttribute="leading" secondItem="hPJ-Q7-jbe" secondAttribute="leading" id="suF-A4-2rs"/>
-                            <constraint firstItem="Tdk-6J-5Xe" firstAttribute="top" secondItem="hPJ-Q7-jbe" secondAttribute="top" constant="7" id="ueo-F8-hUF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="키워드 설정" id="KP4-p9-WHT">
+                        <barButtonItem key="leftBarButtonItem" id="3Lh-cS-5b3">
+                            <imageReference key="image" image="chevron.backward" catalog="system" renderingMode="original"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addKeywordBtn" destination="7PV-0M-Wyb" id="unH-ta-FLa"/>
                     </connections>
