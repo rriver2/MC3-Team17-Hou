@@ -10,11 +10,6 @@ import UIKit
 class CategoryCell: UITableViewCell {
     let eventPosters = ["banhyang", "guiTo", "heungboga", "kookakINgayo", "kyeok"]
     var eventPoster: UIImage?
-//    let eventPosterView: UIImageView = {
-//        let posterView = UIImageView()
-//        posterView.layer.cornerRadius = 10
-//        return posterView
-//    }()
            
     @IBOutlet weak var categoryName: UIButton!
     @IBOutlet weak var categoryChevron: UIButton!
@@ -32,7 +27,6 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
         }
         eventPoster = UIImage(named: "\(eventPosters[indexPath.row]).png")
         cell.posterImage.image = eventPoster
-//        cell.posterImage = eventPosterView
         cell.contentView.layer.cornerRadius = 10
         return cell
     }

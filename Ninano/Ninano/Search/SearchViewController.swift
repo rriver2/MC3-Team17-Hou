@@ -35,8 +35,4 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryChevron.titleLabel?.font = categoryFont
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("--> \(indexPath.row)")
-    }
 }
