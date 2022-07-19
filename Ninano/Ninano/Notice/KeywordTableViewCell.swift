@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KeywordTableViewCell: UITableViewCell {
+final class KeywordTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var keywordDate: UILabel!
     @IBOutlet private weak var keywordAlarmTitle: UILabel!
