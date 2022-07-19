@@ -13,6 +13,8 @@ class PerformancesViewCell: UICollectionViewCell {
     
     var imageName: String = "" {
         didSet {
+            performanceImage.layer.cornerRadius = 10
+            performanceImage.contentMode = .scaleAspectFill
             self.performanceImage.image = UIImage(named: imageName)
         }
     }

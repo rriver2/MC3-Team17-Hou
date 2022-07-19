@@ -61,16 +61,6 @@ class SearchResultViewController: UIViewController {
         clickedFilterButton(sender, Filter.category)
     }
     
-    @IBAction func notificationSettingsButton(_ sender: UIButton) {
-        // TODO: 키워드 값 넣는 로직
-        if isRingButtonSelected {
-            sender.configuration?.baseForegroundColor = .systemGray
-            isRingButtonSelected = false
-        } else {
-            sender.configuration?.baseForegroundColor = .red
-            isRingButtonSelected = true
-        }
-    }
     
     var datePicker: UIDatePicker!
     @IBAction func dateFilterButton(_ sender: UIButton) {
@@ -86,8 +76,8 @@ class SearchResultViewController: UIViewController {
         actionSheet.view.addSubview(datePicker)
         datePicker.preferredDatePickerStyle = .inline
         
-//        let height: NSLayoutConstraint = NSLayoutConstraint(item: actionSheet.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 400)
-//        actionSheet.view.addConstraint(height)
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: actionSheet.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.1, constant: 400)
+        actionSheet.view.addConstraint(height)
         // TODO: 달력 중간 정렬
         self.present(actionSheet, animated: true, completion: nil)
     }
@@ -107,22 +97,33 @@ class SearchResultViewController: UIViewController {
         }
     }
     
-//    let performanceHearts = []
-//
-    var isRingButtonSelected = true
+    var isRingButtonSelected = false
+    
+    @IBAction func notificationSettingsButton(_ sender: UIButton) {
+        // TODO: 키워드 값 넣는 로직
+        if isRingButtonSelected {
+            sender.configuration?.baseForegroundColor = .systemGray
+            isRingButtonSelected = false
+        } else {
+            sender.configuration?.baseForegroundColor = .red
+            isRingButtonSelected = true
+        }
+    }
+    
+    var isHeartedSelected = false
     
     @IBAction func clickedHeart(_ sender: UIButton) {
         // TODO: 하트 배열처리
-        if isRingButtonSelected {
+        if isHeartedSelected {
             let config = UIImage.SymbolConfiguration(paletteColors: [.systemGray5, .systemGray, .darkGray])
             let image = UIImage(systemName: "heart.circle.fill", withConfiguration: config)
             sender.setImage(image, for: .normal)
-            isRingButtonSelected = false
+            isHeartedSelected = false
         } else {
             let config = UIImage.SymbolConfiguration(paletteColors: [.red, .systemGray, .darkGray])
             let image = UIImage(systemName: "heart.circle.fill", withConfiguration: config)
             sender.setImage(image, for: .normal)
-            isRingButtonSelected = true
+            isHeartedSelected = true
         }
     }
     
@@ -167,21 +168,16 @@ extension SearchResultViewController: UICollectionViewDelegate {
 }
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-    // 셀 크기
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+           return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
+        }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let space = 1
-        let columns = 3
-        let width = (Int(collectionView.frame.width) / columns) - (space * (columns - 1))
-        return CGSize(width: width, height: 174)
-    }
-    
-    // 위아래 간격
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
-    
-    // 좌우 간격
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
-    }
+           // Type Casting
+           guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
+           let numberOfCells: CGFloat = 3
+           let width = collectionView.frame.size.width - (flowLayout.minimumInteritemSpacing * (numberOfCells-1))
+           return CGSize(width: width/(numberOfCells), height: width/(numberOfCells))
+       }
 }
