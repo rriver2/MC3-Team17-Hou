@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */; };
 		4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F018728862FE100300DB8 /* SetKeywordViewController.swift */; };
+		4D9F018B2886599800300DB8 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 4D9F018A2886599800300DB8 /* Toast */; };
 		4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */; };
 		CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C7287C1063004EE6DB /* AppDelegate.swift */; };
 		CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D9F018B2886599800300DB8 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +122,9 @@
 			dependencies = (
 			);
 			name = Ninano;
+			packageProductDependencies = (
+				4D9F018A2886599800300DB8 /* Toast */,
+			);
 			productName = Ninano;
 			productReference = CC8B50C4287C1063004EE6DB /* Ninano.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +153,9 @@
 				Base,
 			);
 			mainGroup = CC8B50BB287C1063004EE6DB;
+			packageReferences = (
+				4D9F01892886599800300DB8 /* XCRemoteSwiftPackageReference "toast-swift" */,
+			);
 			productRefGroup = CC8B50C5287C1063004EE6DB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -447,6 +455,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4D9F01892886599800300DB8 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4D9F018A2886599800300DB8 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4D9F01892886599800300DB8 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */ = {
