@@ -1,5 +1,5 @@
 //
-//  InterestLisViewController.swift
+//  InterestListViewController.swift
 //  Ninano
 //
 //  Created by KYUBO A. SHIM on 2022/07/14.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class InterestLisViewController: UIViewController {
+final class InterestListViewController: UIViewController {
 
     @IBOutlet weak var interestCollectionView: UICollectionView!
     
@@ -17,21 +17,20 @@ final class InterestLisViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
 }
 
-extension InterestLisViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension InterestListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return gridImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as? NoticeGridCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as? NoticeGridCollectionViewCell else { return UICollectionViewCell.init() }
         
-        cell?.gridImages.image = UIImage(systemName: gridImage[indexPath.row]) ?? UIImage()
+        cell.gridImages.image = UIImage(systemName: gridImage[indexPath.row]) ?? UIImage()
         
-        return cell!
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -42,7 +41,6 @@ extension InterestLisViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        
         return 2.0
     }
  

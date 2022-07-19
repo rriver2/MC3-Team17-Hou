@@ -10,6 +10,7 @@ import UIKit
 class KeywordViewController: UIViewController {
     
     @IBOutlet weak var keywordTableView: UITableView!
+    
     let img = ["flag", "flag.fill", "star", "star.fill"]
     let keywordDate = ["7월 24일 (일요일)", "7월 28일 (목요일)", "7월 31일 (일요일)", "8월 15일 (월요일)"]
     let keywordTitle = ["깃발과 백설", "흑깃", "별이 흐르는 시간", "별은 사실 그 자리에 있지 않다."]
@@ -21,7 +22,6 @@ class KeywordViewController: UIViewController {
         keywordTableView.dataSource = self
         keywordTableView.rowHeight = 90
     }
-    
 }
 
 extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
@@ -35,13 +35,13 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "noticeKeyword", for: indexPath) as? KeywordTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "noticeKeyword", for: indexPath) as? KeywordTableViewCell else { return UITableViewCell.init() }
         
-        cell?.keywordImage.image = UIImage(systemName: img[indexPath.row])
-        cell?.keywordTitle.text = keywordTitle[indexPath.row]
-        cell?.keywordAlarmTitle.text = alarmTitle
-        cell?.keywordDate.text = keywordDate[indexPath.row]
+        cell.keywordImage.image = UIImage(systemName: img[indexPath.row])
+        cell.keywordTitle.text = keywordTitle[indexPath.row]
+        cell.keywordAlarmTitle.text = alarmTitle
+        cell.keywordDate.text = keywordDate[indexPath.row]
         
-        return cell!
+        return cell
     }
 }

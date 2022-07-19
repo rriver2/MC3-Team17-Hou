@@ -45,7 +45,7 @@ class NoticeViewController: UIViewController {
         }
     }
     
-    @IBAction func bottomTappedChange(_ sender: UIButton) {
+    @IBAction func moveNextButton(_ sender: UIButton) {
         
         switch keywordContainerView.alpha {
         case 1.0:
@@ -66,7 +66,6 @@ class NoticeViewController: UIViewController {
         }
     }
     
-    @IBAction func noticeOutTapped(_ sender: UIButton) {
-    
+    @IBAction func cancelNoticeButton(_ sender: UIButton) {
     }
 }

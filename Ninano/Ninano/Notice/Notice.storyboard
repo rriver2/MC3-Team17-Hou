@@ -210,7 +210,7 @@
         <!--Interest List View Controller-->
         <scene sceneID="cWF-va-ysI">
             <objects>
-                <viewController id="Qeb-o1-V09" userLabel="Interest List View Controller" customClass="InterestLisViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qeb-o1-V09" userLabel="Interest List View Controller" customClass="InterestListViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2b8-en-cBj">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="561"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
