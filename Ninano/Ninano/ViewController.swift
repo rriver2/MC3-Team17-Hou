@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import NotificationToast
+//import NotificationToast
 
 class ViewController: UIViewController {
     
@@ -19,18 +19,18 @@ class ViewController: UIViewController {
         presentShareSheet()
     }
     // MARK: 토스트 팝업 커튼
-    @IBAction func toastPopUp(_ sender: Any) {
-        let toast = ToastView(
-            title: "토요국악",
-            titleFont: .systemFont(ofSize: 13, weight: .regular),
-            subtitle: "일정추가 완료 되었습니다.",
-            subtitleFont: .systemFont(ofSize: 11, weight: .light),
-            icon: UIImage(systemName: "calendar.badge.plus"),
-            iconSpacing: 16,
-            position: .top
-        )
-        toast.show()
-    }
+//    @IBAction func toastPopUp(_ sender: Any) {
+//        let toast = ToastView(
+//            title: "토요국악",
+//            titleFont: .systemFont(ofSize: 13, weight: .regular),
+//            subtitle: "일정추가 완료 되었습니다.",
+//            subtitleFont: .systemFont(ofSize: 11, weight: .light),
+//            icon: UIImage(systemName: "calendar.badge.plus"),
+//            iconSpacing: 16,
+//            position: .top
+//        )
+//        toast.show()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
