@@ -45,7 +45,7 @@ final class SearchResultViewController: UIViewController {
     }
     
     @objc func presentModalController() {
-        let controller = CalenderViewController()
+        let controller = CalenderSearchResultViewController()
         present(controller, animated: true, completion: nil)
     }
     

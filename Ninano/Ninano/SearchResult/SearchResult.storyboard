@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
@@ -15,11 +14,11 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wef-1B-tH1">
-                                <rect key="frame" x="291" y="95" width="108.5" height="44"/>
+                                <rect key="frame" x="477" y="51" width="108.5" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlv-XU-Bos">
                                         <rect key="frame" x="0.0" y="0.0" width="46.5" height="44"/>
@@ -47,7 +46,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ni1-ll-Hun">
-                                <rect key="frame" x="30" y="145" width="235" height="30"/>
+                                <rect key="frame" x="30" y="101" width="235" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2N-Pl-Ng1">
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
@@ -108,7 +107,7 @@
                                 </subviews>
                             </stackView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="검색어를 입력하세요" translatesAutoresizingMaskIntoConstraints="NO" id="wi1-y4-kLk">
-                                <rect key="frame" x="15" y="44" width="385" height="51"/>
+                                <rect key="frame" x="15" y="0.0" width="571" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="Dg8-Me-9P5"/>
                                 </constraints>
@@ -200,16 +199,16 @@
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="95.758928571428569"/>
         </scene>
-        <!--Calender View Controller-->
+        <!--Calender Search Result View Controller-->
         <scene sceneID="kWQ-kW-4hC">
             <objects>
-                <viewController id="z1P-50-fTS" customClass="CalenderViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z1P-50-fTS" customClass="CalenderSearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DB4-GS-nn0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9m-bz-Vfa">
-                                <rect key="frame" x="0.0" y="60" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="16" width="600" height="56"/>
                                 <items>
                                     <navigationItem title="내 일정에 저장" id="4uh-aU-PbO">
                                         <barButtonItem key="leftBarButtonItem" title="취소" id="wN0-xh-PfV">
@@ -221,13 +220,13 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xny-Oa-Faz">
-                                <rect key="frame" x="0.0" y="142" width="414" height="479"/>
+                                <rect key="frame" x="0.0" y="98" width="600" height="479"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEg-N1-xmF">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="408"/>
+                                        <rect key="frame" x="10" y="0.0" width="580" height="408"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="inline" translatesAutoresizingMaskIntoConstraints="NO" id="pHc-AR-GGm">
-                                                <rect key="frame" x="5" y="5" width="384" height="398"/>
+                                                <rect key="frame" x="5" y="5" width="570" height="398"/>
                                             </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -239,7 +238,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2B-lk-xju">
-                                        <rect key="frame" x="10" y="423" width="394" height="56"/>
+                                        <rect key="frame" x="10" y="423" width="580" height="56"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="rk1-xU-sbA"/>

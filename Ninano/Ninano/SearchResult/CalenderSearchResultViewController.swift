@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CalenderViewController: UIViewController {
+final class CalenderSearchResultViewController: UIViewController {
     
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var calendarFrame: UIView!
