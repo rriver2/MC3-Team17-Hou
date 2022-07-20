@@ -12,7 +12,6 @@ class CalendarDetailViewController: UIViewController {
     private var event: Event?
     
     private var monthImage: UIImage?
-    private let eventPosters = ["banhyang", "guiTo"]
     private var eventPoster: UIImage?
 
     private var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
@@ -58,11 +57,12 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
         
-        eventPoster = UIImage(named: "\(eventPosters[indexPath.row])")
+        let eventData = eventList[indexPath.row]
+        
+        eventPoster = UIImage(named: "\(eventData.eventPosterName)")
         cell.posterImage.image = eventPoster
         cell.posterImage.layer.cornerRadius = 10
-        
-        let eventData = eventList[indexPath.row]
+
         cell.eventNameLabel.text = eventData.eventName
         cell.eventPlaceLabel.text = eventData.eventPlace
         cell.eventPeriodLabel.text = eventData.eventPeriod
