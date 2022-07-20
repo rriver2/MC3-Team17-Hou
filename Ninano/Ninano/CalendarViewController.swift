@@ -9,15 +9,7 @@ import UIKit
 import Foundation
 
 class CalendarViewController: UIViewController {
-    //  캘린더 이미지화면 연결
-    @IBOutlet weak var image: UIImageView!
-    //  알림 아이콘 연결
-    @IBAction func alarm(_ sender: Any) {
-    }
-    // 달력을 표시할 콜렉션 뷰 연결
-    @IBOutlet weak var calendarView: UICollectionView!
-    // 달력에서 글씨를 포시할 라벨 연결
-    @IBOutlet weak var yearMonthLabel: UILabel!
+    
     let now = Date()
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
@@ -29,10 +21,51 @@ class CalendarViewController: UIViewController {
     // 시작일
     var weekdayAdding = 0
     
+    private func calculation() {
+        let firstDayOfMonth = cal.date(from: components)
+        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth ?? Date() )
+        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
+        weekdayAdding = 2 - firstWeekday
+        self.yearMonthLabel.text = dateFormatter.string(from: firstDayOfMonth!)
+        self.days.removeAll()
+        for day in weekdayAdding...daysCountInMonth {
+            if day < 1 {
+                self.days.append("")
+            } else {
+                self.days.append(String(day))
+            }
+        }
+    }
+    
+    //  캘린더 이미지화면 연결
+    @IBOutlet weak var image: UIImageView!
+    
+    // 달력을 표시할 콜렉션 뷰 연결
+    @IBOutlet weak var calendarView: UICollectionView!
+    // 달력에서 글씨를 포시할 라벨 연결
+    @IBOutlet weak var yearMonthLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
     }
+    
+    //  알림 아이콘 연결
+    @IBAction func alarm(_ sender: Any) {
+    }
+    
+    @IBAction func didTappedBackButton(_ sender: Any) {
+        components.month = (components.month ?? 0) - 1
+        self.calculation()
+        self.calendarView?.reloadData()
+    }
+    
+    @IBAction func didTappedFrontButton(_ sender: Any) {
+        components.month = (components.month ?? 0) + 1
+        self.calculation()
+        self.calendarView?.reloadData()
+    }
+    
     // 뷰 초기 설정
     private func initView() {
         self.initCollection()
@@ -50,33 +83,8 @@ class CalendarViewController: UIViewController {
         self.calendarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapPressGesture)))
     }
     
-    private func calculation() {
-        let firstDayOfMonth = cal.date(from: components)
-        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth!)
-        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth!)!.count
-        weekdayAdding = 2 - firstWeekday
-        self.yearMonthLabel.text = dateFormatter.string(from: firstDayOfMonth!)
-        self.days.removeAll()
-        for day in weekdayAdding...daysCountInMonth {
-            if day < 1 {
-                self.days.append("")
-            } else {
-                self.days.append(String(day))
-            }
-        }
-    }
-    @IBAction func didTappedBackButton(_ sender: Any) {
-        components.month = components.month!-1
-        self.calculation()
-        self.calendarView?.reloadData()
-    }
     
-    @IBAction func didTappedFrontButton(_ sender: Any) {
-        components.month = components.month!+1
-        self.calculation()
-        self.calendarView?.reloadData()
-    }
-    
+   
     @objc
     func handleTapPressGesture() {
         print("달력")
@@ -124,5 +132,7 @@ extension CalendarViewController: UICollectionViewDelegateFlowLayout {
             let cellSize: CGFloat = myBoundSize / 9
             return CGSize(width: cellSize, height: cellSize)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 10, bottom: 0, right: 10)
+    }
 }

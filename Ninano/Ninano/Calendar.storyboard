@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="456" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I0t-QL-QUb">
-                                        <rect key="frame" x="355" y="5" width="37" height="41"/>
+                                        <rect key="frame" x="362" y="4" width="37" height="41"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system" title=""/>
                                         <connections>
@@ -50,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lF2-Hk-nai">
-                                        <rect key="frame" x="298" y="5" width="37" height="41"/>
+                                        <rect key="frame" x="315" y="4" width="37" height="41"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system" title=""/>
                                         <connections>
@@ -58,7 +58,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GRp-Jk-Flk">
-                                        <rect key="frame" x="18" y="8" width="102" height="35"/>
+                                        <rect key="frame" x="18" y="9" width="102" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -67,12 +67,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="I0t-QL-QUb" secondAttribute="trailing" constant="22" id="3qD-Ju-pte"/>
-                                    <constraint firstItem="lF2-Hk-nai" firstAttribute="top" secondItem="3VZ-Km-dHa" secondAttribute="top" constant="5" id="7Tf-Dp-bDH"/>
-                                    <constraint firstAttribute="bottom" secondItem="I0t-QL-QUb" secondAttribute="bottom" constant="4" id="GyO-MN-LDa"/>
-                                    <constraint firstItem="I0t-QL-QUb" firstAttribute="leading" secondItem="lF2-Hk-nai" secondAttribute="trailing" constant="20" id="UJY-DG-362"/>
-                                    <constraint firstItem="I0t-QL-QUb" firstAttribute="top" secondItem="3VZ-Km-dHa" secondAttribute="top" constant="5" id="XtI-Qt-6Uc"/>
-                                    <constraint firstAttribute="bottom" secondItem="lF2-Hk-nai" secondAttribute="bottom" constant="4" id="bD0-hH-r2k"/>
+                                    <constraint firstAttribute="trailing" secondItem="I0t-QL-QUb" secondAttribute="trailing" constant="15" id="3qD-Ju-pte"/>
+                                    <constraint firstItem="lF2-Hk-nai" firstAttribute="top" secondItem="3VZ-Km-dHa" secondAttribute="top" constant="4" id="7Tf-Dp-bDH"/>
+                                    <constraint firstAttribute="bottom" secondItem="I0t-QL-QUb" secondAttribute="bottom" constant="5" id="GyO-MN-LDa"/>
+                                    <constraint firstItem="I0t-QL-QUb" firstAttribute="leading" secondItem="lF2-Hk-nai" secondAttribute="trailing" constant="10" id="UJY-DG-362"/>
+                                    <constraint firstItem="I0t-QL-QUb" firstAttribute="top" secondItem="3VZ-Km-dHa" secondAttribute="top" constant="4" id="XtI-Qt-6Uc"/>
+                                    <constraint firstAttribute="bottom" secondItem="lF2-Hk-nai" secondAttribute="bottom" constant="5" id="bD0-hH-r2k"/>
                                     <constraint firstAttribute="height" constant="50" id="dkR-qw-iW1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>

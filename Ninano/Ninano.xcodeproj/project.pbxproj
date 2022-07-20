@@ -16,9 +16,9 @@
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
 		CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */; };
 		F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA72884285700D57A4F /* CalendarViewController.swift */; };
-		F63AEBAB2884288700D57A4F /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA92884288700D57A4F /* CalendarCollectionViewCell.swift */; };
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
 		F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAD288428B800D57A4F /* Calendar.storyboard */; };
+		F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +35,10 @@
 		CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.release.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.release.xcconfig"; sourceTree = "<group>"; };
 		F63AEBA72884285700D57A4F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		F63AEBA92884288700D57A4F /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		F63AEBAD288428B800D57A4F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		F63AEBDE288686CE00D57A4F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				CC8B50C6287C1063004EE6DB /* Ninano */,
-				CC8B50C5287C1063004EE6DB /* Products */,
 				DC7E7331974B66BFE02B2B7E /* Pods */,
 				92AFEC367EA6A85B89A8DB34 /* Frameworks */,
 			);
@@ -74,11 +74,13 @@
 				CC8B50C4287C1063004EE6DB /* Ninano.app */,
 			);
 			name = Products;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CC8B50C6287C1063004EE6DB /* Ninano */ = {
 			isa = PBXGroup;
 			children = (
+				F63AEBDE288686CE00D57A4F /* Config.xcconfig */,
 				CC8B50C7287C1063004EE6DB /* AppDelegate.swift */,
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
 				CC8B50CB287C1063004EE6DB /* ViewController.swift */,
@@ -90,8 +92,9 @@
 				CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */,
 				F63AEBA72884285700D57A4F /* CalendarViewController.swift */,
 				F63AEBAD288428B800D57A4F /* Calendar.storyboard */,
-				F63AEBA92884288700D57A4F /* CalendarCollectionViewCell.swift */,
+				F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */,
 				F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */,
+				CC8B50C5287C1063004EE6DB /* Products */,
 			);
 			path = Ninano;
 			sourceTree = "<group>";
@@ -223,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F63AEBAB2884288700D57A4F /* CalendarCollectionViewCell.swift in Sources */,
+				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* ViewController.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
