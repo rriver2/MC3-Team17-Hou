@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */; };
+		CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943B28844F9500E93AC7 /* UIColor.swift */; };
+		CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4F8F712880DC3300A18346 /* SearchResult.storyboard */; };
+		CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F8F732880E59800A18346 /* SearchResultViewController.swift */; };
 		581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581AE5642885099D00853BEB /* LineSegmentedControl.swift */; };
 		587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D49C32880778100727BD6 /* KeywordTableViewCell.swift */; };
 		58A1AA36287FDECC001BCFA9 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A1AA35287FDECC001BCFA9 /* Notice.storyboard */; };
@@ -22,6 +26,7 @@
 		CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D3287C1064004EE6DB /* Assets.xcassets */; };
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
 		CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */; };
+		CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */; };
 		F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA72884285700D57A4F /* CalendarViewController.swift */; };
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
 		F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAD288428B800D57A4F /* Calendar.storyboard */; };
@@ -30,6 +35,10 @@
 
 /* Begin PBXFileReference section */
 		1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.debug.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.debug.xcconfig"; sourceTree = "<group>"; };
+		CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformancesViewCell.swift; sourceTree = "<group>"; };
+		CC21943B28844F9500E93AC7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		CC4F8F712880DC3300A18346 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
+		CC4F8F732880E59800A18346 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		581AE5642885099D00853BEB /* LineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSegmentedControl.swift; sourceTree = "<group>"; };
 		587D49C32880778100727BD6 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
 		58A1AA35287FDECC001BCFA9 /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,7 @@
 		CC8B50D6287C1064004EE6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSearchResultViewController.swift; sourceTree = "<group>"; };
 		E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.release.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.release.xcconfig"; sourceTree = "<group>"; };
 		F63AEBA72884285700D57A4F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -87,6 +97,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CC21943A28844F8500E93AC7 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				CC21943B28844F9500E93AC7 /* UIColor.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		CC21943D28844FA200E93AC7 /* SearchResult */ = {
+			isa = PBXGroup;
+			children = (
+				CC4F8F712880DC3300A18346 /* SearchResult.storyboard */,
+				CC4F8F732880E59800A18346 /* SearchResultViewController.swift */,
+				CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */,
+				CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */,
+			);
+			path = SearchResult;
+			sourceTree = "<group>";
+		};
 		CC8B50BB287C1063004EE6DB = {
 			isa = PBXGroup;
 			children = (
@@ -108,11 +137,13 @@
 		CC8B50C6287C1063004EE6DB /* Ninano */ = {
 			isa = PBXGroup;
 			children = (
+				CC21943A28844F8500E93AC7 /* extension */,
 				F63AEBDE288686CE00D57A4F /* Config.xcconfig */,
 				58A1AA34287FDEBB001BCFA9 /* Notice */,
 				CC8B50C7287C1063004EE6DB /* AppDelegate.swift */,
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
 				CC8B50CB287C1063004EE6DB /* ViewController.swift */,
+				CC21943D28844FA200E93AC7 /* SearchResult */,
 				CC8B50CD287C1063004EE6DB /* Main.storyboard */,
 				CC8B50D3287C1064004EE6DB /* Assets.xcassets */,
 				CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */,
@@ -197,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */,
 				F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */,
 				CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */,
 				CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */,
@@ -261,7 +293,11 @@
 				581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* ViewController.swift in Sources */,
+				CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */,
+				CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
+				CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */,
+				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
 				9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */,
