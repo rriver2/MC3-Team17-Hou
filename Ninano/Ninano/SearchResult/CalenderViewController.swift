@@ -22,8 +22,8 @@ final class CalenderViewController: UIViewController {
         // TODO: 날짜 기입 
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func cancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
