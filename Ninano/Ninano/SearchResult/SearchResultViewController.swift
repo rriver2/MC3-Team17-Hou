@@ -10,43 +10,21 @@ import UIKit
 final class SearchResultViewController: UIViewController {
     
     @IBOutlet var performanceCollectionView: UICollectionView!
-    
-    // TODO: 진짜 사진
-    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // collectionView에 대한 설정
-        performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        performanceCollectionView.dataSource = self
-        performanceCollectionView.delegate = self
-    }
-    
-    // RingButton
-    var isRingButtonSelected = false
-    
-    @IBAction func notificationSettingsButton(_ sender: UIButton) {
-        // TODO: 키워드 값 넣는 로직
-        if isRingButtonSelected {
-            sender.configuration?.baseForegroundColor = .systemGray
-            isRingButtonSelected = false
-        } else {
-            sender.configuration?.baseForegroundColor = .red
-            isRingButtonSelected = true
+    private var isRingButtonSelected = false
+    private var filters: [Filter] = []
+    private var selectedLocal: LocationType? {
+        didSet {
+            // TODO: 밑에 공연 filtering
+            print("local inited: \(selectedLocal?.rawValue ?? "")")
         }
     }
+    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
     
-    // filter
     private enum Filter {
         case local
         case category
         case date
     }
-    
-    private var filters: [Filter] = []
-    
-    // filter 1) local
     private enum LocationType: String {
         case gangnam = "강남"
         case gangbook = "강북"
@@ -57,40 +35,22 @@ final class SearchResultViewController: UIViewController {
         case nowongu = "노원구"
     }
     
-    @IBAction func localFilterButton(_ sender: UIButton) {
-        clickedFilterButton(sender, Filter.local)
-        let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
-        let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
-        for local in locals {
-            let location = local.rawValue
-            actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
-                sender.setTitle(location, for: .normal)
-                sender.titleLabel?.font = .systemFont(ofSize: 13)
-            }))
-        }
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    private var selectedLocal: LocationType? {
-        didSet {
-            // TODO: 밑에 공연 filtering
-            print("local inited: \(selectedLocal?.rawValue ?? "")")
-        }
-    }
-    
-    private func clickedLocalButton(local: LocationType) {
-        selectedLocal = local
-    }
-    
-    // filter 2) category
-    @IBAction func categoryFilterButton(_ sender: UIButton) {
-        clickedFilterButton(sender, Filter.category)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // collectionView에 대한 설정
+        performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        performanceCollectionView.dataSource = self
+        performanceCollectionView.delegate = self
     }
     
     @objc func presentModalController() {
         let controller = CalenderViewController()
         present(controller, animated: true, completion: nil)
+    }
+    
+    private func clickedLocalButton(local: LocationType) {
+        selectedLocal = local
     }
     
     private func clickedFilterButton(_ sender: UIButton, _ filter: Filter) {
@@ -108,10 +68,38 @@ final class SearchResultViewController: UIViewController {
         }
     }
     
+    @IBAction func categoryFilterButton(_ sender: UIButton) {
+        clickedFilterButton(sender, Filter.category)
+    }
+    
+    @IBAction func localFilterButton(_ sender: UIButton) {
+        clickedFilterButton(sender, Filter.local)
+        let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
+        let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
+        for local in locals {
+            let location = local.rawValue
+            actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
+                sender.setTitle(location, for: .normal)
+                sender.titleLabel?.font = .systemFont(ofSize: 13)
+            }))
+        }
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func notificationSettingsButton(_ sender: UIButton) {
+        // TODO: 키워드 값 넣는 로직
+        if isRingButtonSelected {
+            sender.configuration?.baseForegroundColor = .systemGray
+            isRingButtonSelected = false
+        } else {
+            sender.configuration?.baseForegroundColor = .red
+            isRingButtonSelected = true
+        }
+    }
 }
 
-extension SearchResultViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
     }
@@ -122,7 +110,9 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout, UIColl
         let width = collectionView.frame.size.width - (flowLayout.minimumInteritemSpacing * (numberOfCells-1))
         return CGSize(width: width/(numberOfCells), height: width/(numberOfCells))
     }
-    
+}
+
+extension SearchResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.systemImagesTemp.count
     }
