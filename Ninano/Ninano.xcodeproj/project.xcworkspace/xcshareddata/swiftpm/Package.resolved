@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "toast-swift",
+      "identity" : "notificationtoast",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/BastiaanJansen/toast-swift",
+      "location" : "https://github.com/PhilippeWeidmann/NotificationToast.git",
       "state" : {
-        "revision" : "7fc825d0bbb55a8d98d46af48f51844e0298e7b5",
-        "version" : "1.0.6"
+        "revision" : "433aac163050e755fc42b62eb17828bfe9ac49b4",
+        "version" : "1.2.1"
       }
     }
   ],
