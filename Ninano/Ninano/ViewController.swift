@@ -9,7 +9,7 @@ import UIKit
 import NotificationToast
 
 class ViewController: UIViewController {
-
+    
     // MARK: 포스터 홈페이지 링크 버튼
     @IBOutlet weak var linkBtn: UIButton!
     // MARK: 포스터 일정 추가 버튼
