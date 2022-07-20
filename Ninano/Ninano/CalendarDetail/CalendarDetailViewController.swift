@@ -14,6 +14,12 @@ class CalendarDetailViewController: UIViewController {
     var monthImage: UIImage?
     let eventPosters = ["banhyang", "guiTo"]
     var eventPoster: UIImage?
+
+    var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
+    let heartSymbol = UIImage(systemName: "heart.fill")
+    
+    var calConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
+    let calSymbol = UIImage(systemName: "calendar.badge.clock")
     
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
@@ -56,6 +62,13 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         eventPoster = UIImage(named: "\(eventPosters[indexPath.row])")
         cell.posterImage.image = eventPoster
         cell.posterImage.layer.cornerRadius = 10
+        
+        cell.planned.image = calSymbol
+        cell.planned.preferredSymbolConfiguration = calConfig
+        
+        heartConfig = heartConfig.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20)))
+        cell.liked.image = heartSymbol
+        cell.liked.preferredSymbolConfiguration = heartConfig
 
         return cell
     }

@@ -8,6 +8,9 @@
 import UIKit
 
 class DayEventDetailCell: UITableViewCell {
-
     @IBOutlet weak var posterImage: UIImageView!
+    
+    @IBOutlet weak var planned: UIImageView!
+    @IBOutlet weak var liked: UIImageView!
+    
 }
