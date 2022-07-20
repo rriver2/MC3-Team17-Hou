@@ -8,7 +8,7 @@
 import UIKit
 //import NotificationToast
 
-class ViewController: UIViewController {
+class EventDetailViewController: UIViewController {
     
     // MARK: 포스터 홈페이지 링크 버튼
     @IBOutlet weak var linkBtn: UIButton!

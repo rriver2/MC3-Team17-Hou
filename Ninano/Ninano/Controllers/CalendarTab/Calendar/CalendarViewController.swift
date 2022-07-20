@@ -21,22 +21,6 @@ class CalendarViewController: UIViewController {
     // 시작일
     var weekdayAdding = 0
     
-    private func calculation() {
-        let firstDayOfMonth = cal.date(from: components)
-        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth ?? Date() )
-        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
-        weekdayAdding = 2 - firstWeekday
-        self.yearMonthLabel.text = dateFormatter.string(from: firstDayOfMonth!)
-        self.days.removeAll()
-        for day in weekdayAdding...daysCountInMonth {
-            if day < 1 {
-                self.days.append("")
-            } else {
-                self.days.append(String(day))
-            }
-        }
-    }
-    
     //  캘린더 이미지화면 연결
     @IBOutlet weak var image: UIImageView!
     
@@ -48,6 +32,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
+
     }
     
     //  알림 아이콘 연결
@@ -83,6 +68,21 @@ class CalendarViewController: UIViewController {
         self.calendarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapPressGesture)))
     }
     
+    private func calculation() {
+        let firstDayOfMonth = cal.date(from: components)
+        let firstWeekday = cal.component(.weekday, from: firstDayOfMonth ?? Date() )
+        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
+        weekdayAdding = 2 - firstWeekday
+        self.yearMonthLabel.text = dateFormatter.string(from: firstDayOfMonth!)
+        self.days.removeAll()
+        for day in weekdayAdding...daysCountInMonth {
+            if day < 1 {
+                self.days.append("")
+            } else {
+                self.days.append(String(day))
+            }
+        }
+    }
     
    
     @objc
