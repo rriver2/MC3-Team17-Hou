@@ -13,20 +13,41 @@ class CalendarDetailViewController: UIViewController {
     
     private var monthImage: UIImage?
     private var eventPoster: UIImage?
-
+    
+    private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    private var dates: [String] = ["17", "18", "19", "20", "21", "22", "23"]
+    
+    private var month: String = "7월"
+    private var backButton = UIImage.SymbolConfiguration(paletteColors: [.black])
+    private let backSymbol = UIImage(systemName: "chevron.left")
+    
     private var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
     private let heartSymbol = UIImage(systemName: "heart.fill")
     
     private var calConfig = UIImage.SymbolConfiguration(paletteColors: [.white])
     private let calSymbol = UIImage(systemName: "calendar.badge.clock")
     
+    @IBOutlet weak var monthBackButton: UIButton!
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
+    @IBOutlet weak var weeklyCalendarView: UICollectionView!
     @IBOutlet weak var dayEventDetailView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var backButtonConfig = UIButton.Configuration.plain()
+        backButtonConfig.title = month
+        backButtonConfig.image = backSymbol
+        backButtonConfig.imagePlacement = .leading
+        backButtonConfig.imagePadding = 15
+        backButtonConfig.baseForegroundColor = UIColor.black
+        backButtonConfig.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        backButton = backButton.applying(UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
+        monthBackButton.configuration = backButtonConfig
+        monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
+        monthBackButton.imageView?.preferredSymbolConfiguration = backButton
+        
         monthImage = UIImage(named: "JulyBG")
         monthImageView.image = monthImage
         topBackground.layer.cornerRadius = 25
@@ -40,6 +61,23 @@ class CalendarDetailViewController: UIViewController {
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
+    }
+}
+
+extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "weeklyCalendarCell", for: indexPath) as? WeeklyCalendarCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.dayNameLabel.text = weekdays[indexPath.row]
+        cell.dateNumberLabel.text = dates[indexPath.row]
+        
+        return cell
     }
 }
 
