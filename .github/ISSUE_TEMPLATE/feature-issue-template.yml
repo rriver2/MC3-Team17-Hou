@@ -54,7 +54,7 @@ body:
   - type: input
     id: real-period
     attributes:
-      label: 실제 작업 기간(PR 작성 직전에 수정
+      label: 실제 작업 기간(PR 작성 직전에 수정)
       placeholder: ~ MM/DD(E) ex. ~ 07/12(화)
     validations:
       required: false
