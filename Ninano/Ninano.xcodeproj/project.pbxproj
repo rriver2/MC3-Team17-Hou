@@ -25,6 +25,7 @@
 		CC21943C28844F9500E93AC7 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943B28844F9500E93AC7 /* UIColor+Extension.swift */; };
 		CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4F8F712880DC3300A18346 /* SearchResult.storyboard */; };
 		CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F8F732880E59800A18346 /* SearchResultViewController.swift */; };
+		CC7EAA44288982240057E9C2 /* Label+padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7EAA43288982240057E9C2 /* Label+padding.swift */; };
 		CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C7287C1063004EE6DB /* AppDelegate.swift */; };
 		CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */; };
 		CC8B50CC287C1063004EE6DB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50CB287C1063004EE6DB /* EventDetailViewController.swift */; };
@@ -68,6 +69,7 @@
 		CC21943B28844F9500E93AC7 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CC4F8F712880DC3300A18346 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		CC4F8F732880E59800A18346 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		CC7EAA43288982240057E9C2 /* Label+padding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+padding.swift"; sourceTree = "<group>"; };
 		CC8B50C4287C1063004EE6DB /* Ninano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ninano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8B50C7287C1063004EE6DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			children = (
 				CC21943B28844F9500E93AC7 /* UIColor+Extension.swift */,
 				F6AC89BC28886835006B3275 /* NavigationItem+Extension.swift */,
+				CC7EAA43288982240057E9C2 /* Label+padding.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7EAA44288982240057E9C2 /* Label+padding.swift in Sources */,
 				F6AC89BD28886835006B3275 /* NavigationItem+Extension.swift in Sources */,
 				F6AC89B328883550006B3275 /* WeeklyCalendarCell.swift in Sources */,
 				4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */,

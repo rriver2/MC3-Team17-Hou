@@ -10,7 +10,10 @@ import UIKit
 final class SearchResultViewController: UIViewController {
     
     @IBOutlet var performanceCollectionView: UICollectionView!
-    private var isRingButtonSelected = false
+    @IBOutlet weak var keywordNotification: UIButton!
+    @IBOutlet weak var keywordAddedNotification: UIStackView!
+    @IBOutlet weak var eventCollectionView: UICollectionView!
+    private var isNotificationButtonSelected = false
     private var filters: [Filter] = []
     private var selectedLocal: LocationType? {
         didSet {
@@ -25,6 +28,7 @@ final class SearchResultViewController: UIViewController {
         case category
         case date
     }
+    
     private enum LocationType: String {
         case gangnam = "강남"
         case gangbook = "강북"
@@ -36,12 +40,28 @@ final class SearchResultViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+//        setBlurEffect()
+        keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
+        
+        let uiImage = UIImage(systemName: "chevron.left")
+        let undo = UIBarButtonItem(image: uiImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationItem.leftBarButtonItem = undo
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
+        searchBar.placeholder = "Search User"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
+        
+        keywordNotification.layer.cornerRadius = 15
+    }
+    
+    @objc func didTapBackButton() {
+        // HELP : back 버튼이 안 먹음...
+        guard let selfViewController = self.presentingViewController else { return }
+        selfViewController.dismiss(animated: true, completion: nil)
+        // self.dismiss(animated: true, completion: nil)
     }
     
     @objc func presentModalController() {
@@ -67,6 +87,17 @@ final class SearchResultViewController: UIViewController {
             button.configuration?.cornerStyle = .capsule
         }
     }
+
+// Zstack으로 올려서 버튼을 구현하는 방법을 모르겠음..
+//    private func setBlurEffect() {
+//        let blurEffect = UIBlurEffect(style: .extraLight)
+//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+//        eventCollectionView.addSubview(visualEffectView)
+//        visualEffectView.frame = keywordNotification.frame
+//    }
+    
+    @IBAction func keywordNotificationButton(_ sender: UIButton) {
+    }
     
     @IBAction func categoryFilterButton(_ sender: UIButton) {
         clickedFilterButton(sender, Filter.category)
@@ -89,12 +120,17 @@ final class SearchResultViewController: UIViewController {
     
     @IBAction func notificationSettingsButton(_ sender: UIButton) {
         // TODO: 키워드 값 넣는 로직
-        if isRingButtonSelected {
-            sender.configuration?.baseForegroundColor = .systemGray
-            isRingButtonSelected = false
-        } else {
-            sender.configuration?.baseForegroundColor = .red
-            isRingButtonSelected = true
+        if isNotificationButtonSelected == false {
+            keywordAddedNotification.isHidden = false
+            keywordAddedNotification.layer.cornerRadius = 15
+            sender.isHidden = true
+            
+            isNotificationButtonSelected = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 1) {
+                    self.keywordAddedNotification.isHidden = true
+                }
+            }
         }
     }
 }
