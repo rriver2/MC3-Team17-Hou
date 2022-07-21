@@ -40,7 +40,6 @@ final class SearchResultViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-//        setBlurEffect()
         keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -58,10 +57,8 @@ final class SearchResultViewController: UIViewController {
     }
     
     @objc func didTapBackButton() {
-        // HELP : back 버튼이 안 먹음...
-        guard let selfViewController = self.presentingViewController else { return }
-        selfViewController.dismiss(animated: true, completion: nil)
-        // self.dismiss(animated: true, completion: nil)
+        // TODO : back 버튼이 안 먹음...
+         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func presentModalController() {
@@ -87,14 +84,6 @@ final class SearchResultViewController: UIViewController {
             button.configuration?.cornerStyle = .capsule
         }
     }
-
-// Zstack으로 올려서 버튼을 구현하는 방법을 모르겠음..
-//    private func setBlurEffect() {
-//        let blurEffect = UIBlurEffect(style: .extraLight)
-//        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-//        eventCollectionView.addSubview(visualEffectView)
-//        visualEffectView.frame = keywordNotification.frame
-//    }
     
     @IBAction func keywordNotificationButton(_ sender: UIButton) {
     }
