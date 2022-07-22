@@ -18,7 +18,7 @@ class CalendarDetailViewController: UIViewController {
     private var dates: [String] = ["17", "18", "19", "20", "21", "22", "23"]
     
     private var month: String = "7월"
-    private var backButton = UIImage.SymbolConfiguration(paletteColors: [.black])
+    private var backButton = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium)
     private let backSymbol = UIImage(systemName: "chevron.left")
     
     private var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
@@ -35,16 +35,8 @@ class CalendarDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var backButtonConfig = UIButton.Configuration.plain()
-        backButtonConfig.title = month
-        backButtonConfig.image = backSymbol
-        backButtonConfig.imagePlacement = .leading
-        backButtonConfig.imagePadding = 15
-        backButtonConfig.baseForegroundColor = UIColor.black
-        backButtonConfig.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
-        backButton = backButton.applying(UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-        monthBackButton.configuration = backButtonConfig
+
+        backButtonConfig()
         monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
         monthBackButton.imageView?.preferredSymbolConfiguration = backButton
         
@@ -52,8 +44,19 @@ class CalendarDetailViewController: UIViewController {
         monthImageView.image = monthImage
         topBackground.layer.cornerRadius = 25
         self.dayEventDetailView.backgroundColor = .clear
-        
         setBlurEffect()
+    }
+    
+    func backButtonConfig() {
+        monthBackButton.configuration = .plain()
+        monthBackButton.configuration?.title = month
+        
+        monthBackButton.configuration?.image = backSymbol
+        monthBackButton.configuration?.imagePlacement = .leading
+        monthBackButton.configuration?.imagePadding = 15
+        
+        monthBackButton.configuration?.baseForegroundColor = .black
+        monthBackButton.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
     
     func setBlurEffect() {
