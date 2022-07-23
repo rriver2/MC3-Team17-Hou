@@ -27,6 +27,8 @@ class CalendarDetailViewController: UIViewController {
     private var calConfig = UIImage.SymbolConfiguration(paletteColors: [.white])
     private let calSymbol = UIImage(systemName: "calendar.badge.clock")
     
+    private let calInset: CGFloat = 15.0
+    
     @IBOutlet weak var monthBackButton: UIButton!
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
@@ -39,6 +41,10 @@ class CalendarDetailViewController: UIViewController {
         backButtonConfig()
         monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
         monthBackButton.imageView?.preferredSymbolConfiguration = backButton
+        
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
+        weeklyCalendarView.collectionViewLayout = flowLayout
         
         monthImage = UIImage(named: "JulyBG")
         monthImageView.image = monthImage
@@ -77,10 +83,23 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell()
         }
         
+        cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
         cell.dateNumberLabel.text = dates[indexPath.row]
         
         return cell
+    }
+}
+
+extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        flow.minimumInteritemSpacing = 5
+        let width = (UIScreen.main.bounds.width - (calInset * 2)) / 7 - flow.minimumInteritemSpacing
+        
+        return CGSize(width: width, height: 52)
     }
 }
 
