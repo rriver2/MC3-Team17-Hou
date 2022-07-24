@@ -1,6 +1,0 @@
-framework module Pods_Ninano {
-  umbrella header "Pods-Ninano-umbrella.h"
-
-  export *
-  module * { export * }
-}

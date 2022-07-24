@@ -33,7 +33,7 @@
 		CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */; };
 		CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D3287C1064004EE6DB /* Assets.xcassets */; };
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
-		CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */; };
+		CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8CFABF288D318E003BA65C /* .swiftLint.yml */; };
 		CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */; };
 		F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA72884285700D57A4F /* CalendarViewController.swift */; };
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
@@ -50,7 +50,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.debug.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.debug.xcconfig"; sourceTree = "<group>"; };
 		3262DC242882DA8C007C6103 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3278706828819A7F00519A2A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		32CF35D928830E9A00665186 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -79,9 +78,8 @@
 		CC8B50D3287C1064004EE6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC8B50D6287C1064004EE6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		CC8CFABF288D318E003BA65C /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftLint.yml; sourceTree = "<group>"; };
 		CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSearchResultViewController.swift; sourceTree = "<group>"; };
-		E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ninano.release.xcconfig"; path = "Target Support Files/Pods-Ninano/Pods-Ninano.release.xcconfig"; sourceTree = "<group>"; };
 		F63AEBA72884285700D57A4F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		F63AEBAD288428B800D57A4F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				CC8B50C6287C1063004EE6DB /* Ninano */,
-				DC7E7331974B66BFE02B2B7E /* Pods */,
 				92AFEC367EA6A85B89A8DB34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -156,21 +153,12 @@
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
 				CC8B50D3287C1064004EE6DB /* Assets.xcassets */,
 				CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */,
+				CC8CFABF288D318E003BA65C /* .swiftLint.yml */,
 				CC8B50D8287C1064004EE6DB /* Info.plist */,
 				CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */,
-				CC8B50E1287C1CAB004EE6DB /* .swiftlint.yml */,
 				CC8B50C5287C1063004EE6DB /* Products */,
 			);
 			path = Ninano;
-			sourceTree = "<group>";
-		};
-		DC7E7331974B66BFE02B2B7E /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */,
-				E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		F6AC89A72887F638006B3275 /* Storyboard */ = {
@@ -287,11 +275,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC8B50DB287C1064004EE6DB /* Build configuration list for PBXNativeTarget "Ninano" */;
 			buildPhases = (
-				BADBB516C577CDBCA7D28896 /* [CP] Check Pods Manifest.lock */,
+				CC8CFABE288D315E003BA65C /* SwiftLint Script */,
 				CC8B50C0287C1063004EE6DB /* Sources */,
 				CC8B50C1287C1063004EE6DB /* Frameworks */,
 				CC8B50C2287C1063004EE6DB /* Resources */,
-				CC8B50E0287C1851004EE6DB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -348,11 +335,11 @@
 				F6B158FB2887A790000B4F51 /* Main.storyboard in Resources */,
 				F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */,
 				F6AC89B428883550006B3275 /* CalendarDetail.storyboard in Resources */,
-				CC8B50E2287C1CAB004EE6DB /* .swiftlint.yml in Resources */,
 				CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */,
 				58A1AA36287FDECC001BCFA9 /* Notice.storyboard in Resources */,
 				CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */,
 				F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */,
+				CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */,
 				CC8B50CF287C1063004EE6DB /* EventDetail.storyboard in Resources */,
 				F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */,
 				3278706928819A7F00519A2A /* Search.storyboard in Resources */,
@@ -362,29 +349,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BADBB516C577CDBCA7D28896 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Ninano-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CC8B50E0287C1851004EE6DB /* ShellScript */ = {
+		CC8CFABE288D315E003BA65C /* SwiftLint Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -393,13 +358,14 @@
 			);
 			inputPaths = (
 			);
+			name = "SwiftLint Script";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -578,7 +544,6 @@
 		};
 		CC8B50DC287C1064004EE6DB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E1CED27BA784663899821CF /* Pods-Ninano.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -610,7 +575,6 @@
 		};
 		CC8B50DD287C1064004EE6DB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E71AD29AE53BF1C70A46E697 /* Pods-Ninano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
