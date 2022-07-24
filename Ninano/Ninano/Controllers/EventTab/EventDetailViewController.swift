@@ -14,11 +14,13 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var linkBtn: UIButton!
     // MARK: 포스터 일정 추가 버튼
     @IBOutlet weak var likeBtn: UIButton!
+    // MARK: 일정 확정 버튼
+    @IBOutlet weak var addDate: UIStackView!
     // MARK: 포스터 공유 시트 버튼
     @IBAction func shareSheetBtn(_ sender: Any) {
         presentShareSheet()
     }
-    // MARK: 토스트 팝업 커튼
+    // MARK: 토스트 팝업 버튼
 //    @IBAction func toastPopUp(_ sender: Any) {
 //        let toast = ToastView(
 //            title: "토요국악",
@@ -34,8 +36,7 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        linkBtn.layer.cornerRadius = 20
-        likeBtn.layer.cornerRadius = 20
+        addDate.layer.cornerRadius = 15
     }
     
     private func presentShareSheet() {

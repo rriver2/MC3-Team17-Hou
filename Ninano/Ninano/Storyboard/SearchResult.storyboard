@@ -309,6 +309,11 @@
             <point key="canvasLocation" x="971.01449275362324" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="mJz-w0-JyG">
+            <size key="intrinsicContentSize" width="157.5" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
