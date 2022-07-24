@@ -12,6 +12,9 @@ class SearchViewController: UIViewController {
     var categoryConfig = UIButton.Configuration.plain()
     var categoryFont = UIFont.boldSystemFont(ofSize: 15)
 
+    @IBAction func detailButton(_ sender: Any) {
+    }
+    
     @IBOutlet var categoryTableView: UITableView!
 
     override func viewDidLoad() {
