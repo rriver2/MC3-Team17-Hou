@@ -16,9 +16,10 @@ class CalendarDetailViewController: UIViewController {
     
     private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     private var dates: [String] = ["17", "18", "19", "20", "21", "22", "23"]
+    private var selectedCell: Int?
     
     private var month: String = "7월"
-    private var backButton = UIImage.SymbolConfiguration(paletteColors: [.black])
+    private var backButton = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium)
     private let backSymbol = UIImage(systemName: "chevron.left")
     
     private var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
@@ -26,6 +27,8 @@ class CalendarDetailViewController: UIViewController {
     
     private var calConfig = UIImage.SymbolConfiguration(paletteColors: [.white])
     private let calSymbol = UIImage(systemName: "calendar.badge.clock")
+    
+    private let calInset: CGFloat = 15.0
     
     @IBOutlet weak var monthBackButton: UIButton!
     @IBOutlet weak var monthImageView: UIImageView!
@@ -35,25 +38,32 @@ class CalendarDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        backButtonConfig()
+        monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
+        monthBackButton.imageView?.preferredSymbolConfiguration = backButton
         
-        var backButtonConfig = UIButton.Configuration.plain()
-        backButtonConfig.title = month
-        backButtonConfig.image = backSymbol
-        backButtonConfig.imagePlacement = .leading
-        backButtonConfig.imagePadding = 15
-        backButtonConfig.baseForegroundColor = UIColor.black
-        backButtonConfig.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
-        backButton = backButton.applying(UIImage.SymbolConfiguration(pointSize: 25, weight: .medium))
-//        monthBackButton.configuration = backButtonConfig
-//        monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
-//        monthBackButton.imageView?.preferredSymbolConfiguration = backButton
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
+        weeklyCalendarView.collectionViewLayout = flowLayout
         
         monthImage = UIImage(named: "JulyBG")
         monthImageView.image = monthImage
         topBackground.layer.cornerRadius = 25
         self.dayEventDetailView.backgroundColor = .clear
-        
         setBlurEffect()
+    }
+    
+    func backButtonConfig() {
+        monthBackButton.configuration = .plain()
+        monthBackButton.configuration?.title = month
+        
+        monthBackButton.configuration?.image = backSymbol
+        monthBackButton.configuration?.imagePlacement = .leading
+        monthBackButton.configuration?.imagePadding = 15
+        
+        monthBackButton.configuration?.baseForegroundColor = .black
+        monthBackButton.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
     }
     
     func setBlurEffect() {
@@ -66,7 +76,7 @@ class CalendarDetailViewController: UIViewController {
 
 extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return weekdays.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,10 +84,39 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell()
         }
         
+        cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
         cell.dateNumberLabel.text = dates[indexPath.row]
         
+        if indexPath.row == selectedCell {
+            cell.dayHighlight.alpha = 1.0
+            cell.dayNameLabel.textColor = .white
+            cell.dateNumberLabel.textColor = .white
+        } else {
+            cell.dayHighlight.alpha = 0.0
+            cell.dayNameLabel.textColor = .black
+            cell.dateNumberLabel.textColor = .black
+        }
+        
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCell = indexPath.row
+        weeklyCalendarView.reloadData()
+        dayEventDetailView.reloadData()
+    }
+}
+
+extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        flow.minimumInteritemSpacing = 5
+        let width = (UIScreen.main.bounds.width - (calInset * 2)) / CGFloat(weekdays.count) - flow.minimumInteritemSpacing
+        
+        return CGSize(width: width, height: 52)
     }
 }
 
