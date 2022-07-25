@@ -8,11 +8,14 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-    let categoryList = ["내가 좋아할 만한 공연", "이번 달 예정 공연", "근처 공연", "국악", "무용"]
-    var categoryConfig = UIButton.Configuration.plain()
-    var categoryFont = UIFont.boldSystemFont(ofSize: 15)
+    private let categoryList = ["내가 좋아할 만한 공연", "이번 달 예정 공연", "근처 공연", "국악", "무용"]
+    private var categoryConfig = UIButton.Configuration.plain()
+    private var categoryFont = UIFont.boldSystemFont(ofSize: 15)
 
-    @IBOutlet var categoryTableView: UITableView!
+    @IBAction func detailButton(_ sender: Any) {
+    }
+    
+    @IBOutlet private var categoryTableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
