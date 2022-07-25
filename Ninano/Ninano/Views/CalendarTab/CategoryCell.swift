@@ -8,8 +8,8 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
-    let eventPosters = ["banhyang", "guiTo", "heungboga", "kookakINgayo", "kyeok"]
-    var eventPoster: UIImage?
+    private let eventPosters = ["banhyang", "guiTo", "heungboga", "kookakINgayo", "kyeok"]
+    private var eventPoster: UIImage?
            
     @IBOutlet weak var categoryName: UIButton!
     @IBOutlet weak var categoryChevron: UIButton!
