@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TestTableViewCell: UITableViewCell {
+class CoreTestTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var urlLabel: UILabel!

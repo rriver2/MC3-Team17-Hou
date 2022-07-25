@@ -98,7 +98,7 @@ class TestTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TestCellID", for: indexPath) as? TestTableViewCell else {return UITableViewCell.init()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TestCellID", for: indexPath) as? CoreTestTableViewCell else {return UITableViewCell.init()}
         cell.urlLabel.text = likeViewModel.getLike()[indexPath.row].url
         cell.nameLabel.text = likeViewModel.getLike()[indexPath.row].nameLike
         cell.isLikedLabel.text = likeViewModel.getLike()[indexPath.row].isLiked ? "♥" : "♡"
