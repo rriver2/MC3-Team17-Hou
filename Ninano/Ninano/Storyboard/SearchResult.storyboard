@@ -18,21 +18,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ni1-ll-Hun">
-                                <rect key="frame" x="30" y="64" width="235" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ni1-ll-Hun">
+                                <rect key="frame" x="30" y="64" width="152" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R2N-Pl-Ng1">
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="30"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="지역설정">
-                                                    <attributes>
-                                                        <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                        <buttonConfiguration key="configuration" style="gray" title="지역설정" cornerStyle="capsule">
+                                            <fontDescription key="titleFontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -40,27 +34,8 @@
                                             <action selector="localFilterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AfS-bI-Y48"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s2-un-C8d">
-                                        <rect key="frame" x="83" y="0.0" width="69" height="30"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="카테고리">
-                                                    <attributes>
-                                                        <font key="NSFont" size="13" name="AppleSDGothicNeo-Regular"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="categoryFilterButton:" destination="1Rx-NM-lgc" eventType="touchUpInside" id="fZZ-O9-iLB"/>
-                                            <action selector="categoryFilterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="q6L-0C-Pmy"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJM-yL-8aV">
-                                        <rect key="frame" x="166" y="0.0" width="69" height="30"/>
+                                        <rect key="frame" x="83" y="0.0" width="69" height="30"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" cornerStyle="capsule">
@@ -74,7 +49,7 @@
                                             <color key="baseBackgroundColor" systemColor="systemGray5Color"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="z1P-50-fTS" kind="presentation" id="B5X-37-dCE"/>
+                                            <action selector="dateFilterButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rfB-Gp-gtV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -215,6 +190,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dateFilterButton" destination="oJM-yL-8aV" id="GtA-Gz-2gC"/>
                         <outlet property="eventCollectionView" destination="udG-aU-qED" id="nDN-dQ-ZHd"/>
                         <outlet property="keywordAddedNotification" destination="Wdi-el-Pla" id="jBW-Sa-OSz"/>
                         <outlet property="keywordNotification" destination="ClT-jf-Z8m" id="0P2-rv-v0a"/>
@@ -229,13 +205,13 @@
         <!--Calender Search Result View Controller-->
         <scene sceneID="kWQ-kW-4hC">
             <objects>
-                <viewController id="z1P-50-fTS" customClass="CalenderSearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalenderSearchResultViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z1P-50-fTS" customClass="CalenderSearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DB4-GS-nn0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9m-bz-Vfa">
-                                <rect key="frame" x="0.0" y="60" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="내 일정에 저장" id="4uh-aU-PbO">
                                         <barButtonItem key="leftBarButtonItem" title="취소" id="wN0-xh-PfV">
@@ -247,7 +223,7 @@
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xny-Oa-Faz">
-                                <rect key="frame" x="0.0" y="142" width="414" height="479"/>
+                                <rect key="frame" x="0.0" y="130" width="414" height="479"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEg-N1-xmF">
                                         <rect key="frame" x="10" y="0.0" width="394" height="408"/>
@@ -301,6 +277,7 @@
                     </view>
                     <connections>
                         <outlet property="calendarFrame" destination="GEg-N1-xmF" id="e30-0m-V67"/>
+                        <outlet property="dataPicker" destination="pHc-AR-GGm" id="3bd-vP-FSc"/>
                         <outlet property="scheduleButton" destination="l2B-lk-xju" id="89w-5z-RLN"/>
                     </connections>
                 </viewController>
@@ -309,6 +286,11 @@
             <point key="canvasLocation" x="971.01449275362324" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="mJz-w0-JyG">
+            <size key="intrinsicContentSize" width="157.5" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
