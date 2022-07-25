@@ -7,17 +7,17 @@
 
 import UIKit
 
-protocol DateDelivable: AnyObject{
+protocol DateDelivable: AnyObject {
     func addDate(date: String)
 }
 
 final class SearchResultViewController: UIViewController, DateDelivable {
     
-    @IBOutlet var performanceCollectionView: UICollectionView!
-    @IBOutlet weak var keywordNotification: UIButton!
-    @IBOutlet weak var dateFilterButton: UIButton!
-    @IBOutlet weak var keywordAddedNotification: UIStackView!
-    @IBOutlet weak var eventCollectionView: UICollectionView!
+    @IBOutlet private var performanceCollectionView: UICollectionView!
+    @IBOutlet private weak var keywordNotification: UIButton!
+    @IBOutlet private weak var dateFilterButton: UIButton!
+    @IBOutlet private weak var keywordAddedNotification: UIStackView!
+    @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
     private var filters: [Filter] = []
     private var selectedLocal: LocationType? {
@@ -61,12 +61,12 @@ final class SearchResultViewController: UIViewController, DateDelivable {
         keywordNotification.layer.cornerRadius = 15
     }
     
-    @objc func didTapBackButton() {
+    @objc private func didTapBackButton() {
         // TODO : back 버튼이 안 먹음...
          self.dismiss(animated: true, completion: nil)
     }
     
-    @objc func presentModalController() {
+    @objc private func presentModalController() {
         let controller = CalenderSearchResultViewController()
         present(controller, animated: true, completion: nil)
     }
@@ -82,10 +82,10 @@ final class SearchResultViewController: UIViewController, DateDelivable {
         clickedFilterButtonColorChange(dateFilterButton)
     }
     
-    @IBAction func keywordNotificationButton(_ sender: UIButton) {
+    @IBAction private func keywordNotificationButton(_ sender: UIButton) {
     }
     
-    @IBAction func localFilterButton(_ sender: UIButton) {
+    @IBAction private func localFilterButton(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
         let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
         for local in locals {
@@ -99,12 +99,12 @@ final class SearchResultViewController: UIViewController, DateDelivable {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    @IBAction func dateFilterButton(_ sender: UIButton) {
+    @IBAction private func dateFilterButton(_ sender: UIButton) {
         guard let calenderSearchResult = self.storyboard?.instantiateViewController(withIdentifier: "CalenderSearchResultViewController") as? CalenderSearchResultViewController else { return }
                 self.present(calenderSearchResult, animated: true, completion: nil)
         calenderSearchResult.delegate = self
     }
-    @IBAction func notificationSettingsButton(_ sender: UIButton) {
+    @IBAction private func notificationSettingsButton(_ sender: UIButton) {
         // TODO: 키워드 값 넣는 로직
         if isNotificationButtonSelected == false {
             keywordAddedNotification.isHidden = false
