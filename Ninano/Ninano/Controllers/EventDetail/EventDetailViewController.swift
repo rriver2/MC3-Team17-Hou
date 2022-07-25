@@ -1,5 +1,6 @@
-//  백그라운드 블러 레퍼런스
+//  백그라운드 블러 레퍼런스 / 토스트팝업 패키지
 //  https://www.youtube.com/watch?v=AoyU-jsFqmI
+//  https://github.com/PhilippeWeidmann/NotificationToast
 //
 //  ViewController.swift
 //  Ninano
