@@ -136,6 +136,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58BA9306288EA3FC001F0B0A /* CoreDataTest */ = {
+			isa = PBXGroup;
+			children = (
+				58D6ECD4288E6CFA00AB402F /* CoredataMain.storyboard */,
+				58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */,
+				58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */,
+				58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */,
+			);
+			path = CoreDataTest;
+			sourceTree = "<group>";
+		};
 		58D6ECC7288E513700AB402F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,10 +161,8 @@
 		58D6ECD3288E6CDB00AB402F /* TEST */ = {
 			isa = PBXGroup;
 			children = (
-				58D6ECD4288E6CFA00AB402F /* CoredataMain.storyboard */,
-				58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */,
-				58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */,
-				58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */,
+				CC4FA481288E981200B52EDA /* APITest */,
+				58BA9306288EA3FC001F0B0A /* CoreDataTest */,
 			);
 			path = TEST;
 			sourceTree = "<group>";
@@ -312,7 +321,6 @@
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
 				CC8B50D3287C1064004EE6DB /* Assets.xcassets */,
 				CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */,
-				CC4FA481288E981200B52EDA /* APITest */,
 				CC8CFABF288D318E003BA65C /* .swiftLint.yml */,
 				CC8B50D8287C1064004EE6DB /* Info.plist */,
 				CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */,
@@ -344,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */,
-				F6AC89AB28883550006B3275 /* EventModel.swift */,
 				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
 			);
 			path = Model;
@@ -549,7 +556,6 @@
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */,
 				58D6ECCE288E547400AB402F /* LikeManager.swift in Sources */,
-				F6AC89B228883550006B3275 /* CalendarDetailViewController.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
 				58D6ECD7288E6D4800AB402F /* CoredataViewController.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
