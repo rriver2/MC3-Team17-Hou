@@ -62,8 +62,7 @@ final class SearchResultViewController: UIViewController, DateDelivable {
     }
     
     @objc private func didTapBackButton() {
-        // TODO : back 버튼이 안 먹음...
-         self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func presentModalController() {
@@ -102,7 +101,7 @@ final class SearchResultViewController: UIViewController, DateDelivable {
     @IBAction private func dateFilterButton(_ sender: UIButton) {
         guard let calenderSearchResult = self.storyboard?.instantiateViewController(withIdentifier: "CalenderSearchResultViewController") as? CalenderSearchResultViewController else { return }
                 self.present(calenderSearchResult, animated: true, completion: nil)
-        calenderSearchResult.delegate = self
+        calenderSearchResult.datedeliveryDelegate = self
     }
     @IBAction private func notificationSettingsButton(_ sender: UIButton) {
         // TODO: 키워드 값 넣는 로직

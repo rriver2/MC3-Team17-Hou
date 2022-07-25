@@ -13,7 +13,7 @@ final class CalenderSearchResultViewController: UIViewController {
     @IBOutlet weak private var calendarFrame: UIView!
     @IBOutlet weak private var dataPicker: UIDatePicker!
     
-    weak var delegate: DateDelivable?
+    weak var datedeliveryDelegate: DateDelivable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +24,7 @@ final class CalenderSearchResultViewController: UIViewController {
     @IBAction private func clickedScheduleButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
         let koreanDate = dataPicker.date.convertDateToKoreanDate(.koreanDate)
-        delegate?.addDate(date: koreanDate)
+        datedeliveryDelegate?.addDate(date: koreanDate)
     }
     
     @IBAction private func cancelButton(_ sender: UIBarButtonItem) {
