@@ -40,6 +40,8 @@
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
 		CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8CFABF288D318E003BA65C /* .swiftLint.yml */; };
 		CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */; };
+		CCCA9E4B288EB6CE0070F231 /* EventFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */; };
+		CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */; };
 		CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */; };
 		F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA72884285700D57A4F /* CalendarViewController.swift */; };
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
@@ -91,6 +93,8 @@
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8CFABF288D318E003BA65C /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftLint.yml; sourceTree = "<group>"; };
 		CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterButton.swift; sourceTree = "<group>"; };
+		CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFilterButton.xib; sourceTree = "<group>"; };
 		CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSearchResultViewController.swift; sourceTree = "<group>"; };
 		F63AEBA72884285700D57A4F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 			children = (
 				CC4F8F712880DC3300A18346 /* SearchResult.storyboard */,
 				CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */,
+				CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */,
+				CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */,
 			);
 			path = SerchResult;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */,
 				CC8B50CF287C1063004EE6DB /* EventDetail.storyboard in Resources */,
 				F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */,
+				CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */,
 				3278706928819A7F00519A2A /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +512,7 @@
 				CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */,
 				32CF35DA28830E9A00665186 /* CategoryCell.swift in Sources */,
 				32CF35DC28830EAB00665186 /* EventCell.swift in Sources */,
+				CCCA9E4B288EB6CE0070F231 /* EventFilterButton.swift in Sources */,
 				58A1AA38287FDEDB001BCFA9 /* NoticeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,7 +574,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -588,6 +595,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -626,7 +634,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
