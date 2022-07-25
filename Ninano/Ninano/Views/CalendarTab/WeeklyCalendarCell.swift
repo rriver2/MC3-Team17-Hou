@@ -7,7 +7,8 @@
 
 import UIKit
 
-class WeeklyCalendarCell: UICollectionViewCell {
+final class WeeklyCalendarCell: UICollectionViewCell {
     @IBOutlet weak var dayNameLabel: UILabel!
     @IBOutlet weak var dateNumberLabel: UILabel!
+    @IBOutlet weak var dayHighlight: UIView!
 }
