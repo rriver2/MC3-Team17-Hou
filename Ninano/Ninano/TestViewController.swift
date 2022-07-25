@@ -19,7 +19,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     private let searchVC = UISearchController(searchResultsController: nil)
 
-    private var articles = [Row]()
+    private var articles: APIResponse?
     private var viewModels = [NewsTableViewCellViewModel]()
 
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
             switch result {
             case .success(let articles):
                 self?.articles = articles
-                self?.viewModels = articles.compactMap({
+                    self?.viewModels = articles.culturalEventInfo.row.compactMap({
                     NewsTableViewCellViewModel(
                         title: $0.title,
                         imageURL: URL(string: $0.mainImg ?? "")
@@ -83,9 +83,9 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let article = articles[indexPath.row]
+        let article = articles?.culturalEventInfo.row[indexPath.row]
 
-        guard let url = URL(string: article.orgLink ?? "") else {
+        guard let url = URL(string: article?.orgLink ?? "") else {
             return
         }
 
@@ -98,3 +98,4 @@ class TestViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
 }
+
