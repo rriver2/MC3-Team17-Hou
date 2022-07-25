@@ -9,7 +9,6 @@ import UIKit
 
 class CoreTestTableViewCell: UITableViewCell {
 
-
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var isLikedLabel: UILabel!
