@@ -47,6 +47,11 @@
 		F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */; };
 		F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6AC89BA288859AE006B3275 /* Keyword.storyboard */; };
 		F6AC89BD28886835006B3275 /* NavigationItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89BC28886835006B3275 /* NavigationItem+Extension.swift */; };
+		F6AC89BF28897DFC006B3275 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89BE28897DFC006B3275 /* Model.swift */; };
+		F6AC89C3288BAE82006B3275 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89C2288BAE82006B3275 /* APICaller.swift */; };
+		F6AC89E7288D1143006B3275 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6AC89E6288D1143006B3275 /* Test.storyboard */; };
+		F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89E8288D115F006B3275 /* TestViewController.swift */; };
+		F6AC89EB288D143B006B3275 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89EA288D143B006B3275 /* TestTableViewCell.swift */; };
 		F6B158FB2887A790000B4F51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B158FA2887A790000B4F51 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +99,11 @@
 		F63AEBDE288686CE00D57A4F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		F6AC89BA288859AE006B3275 /* Keyword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keyword.storyboard; sourceTree = "<group>"; };
 		F6AC89BC28886835006B3275 /* NavigationItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationItem+Extension.swift"; sourceTree = "<group>"; };
+		F6AC89BE28897DFC006B3275 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F6AC89C2288BAE82006B3275 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		F6AC89E6288D1143006B3275 /* Test.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
+		F6AC89E8288D115F006B3275 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		F6AC89EA288D143B006B3275 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		F6B158FA2887A790000B4F51 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +170,11 @@
 				CC8B50D8287C1064004EE6DB /* Info.plist */,
 				CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */,
 				CC8B50C5287C1063004EE6DB /* Products */,
+				F6AC89BE28897DFC006B3275 /* Model.swift */,
+				F6AC89C2288BAE82006B3275 /* APICaller.swift */,
+				F6AC89E6288D1143006B3275 /* Test.storyboard */,
+				F6AC89E8288D115F006B3275 /* TestViewController.swift */,
+				F6AC89EA288D143B006B3275 /* TestTableViewCell.swift */,
 			);
 			path = Ninano;
 			sourceTree = "<group>";
@@ -341,6 +356,7 @@
 				CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */,
 				58A1AA36287FDECC001BCFA9 /* Notice.storyboard in Resources */,
 				CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */,
+				F6AC89E7288D1143006B3275 /* Test.storyboard in Resources */,
 				F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */,
 				CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */,
 				CC8B50CF287C1063004EE6DB /* EventDetail.storyboard in Resources */,
@@ -384,11 +400,14 @@
 				3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */,
 				4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */,
 				4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */,
+				F6AC89C3288BAE82006B3275 /* APICaller.swift in Sources */,
 				3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */,
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */,
 				F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */,
 				581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */,
+				F6AC89B128883550006B3275 /* DayEventDetailCell.swift in Sources */,
+				F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* EventDetailViewController.swift in Sources */,
 				CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */,
@@ -399,9 +418,12 @@
 				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
+				F6AC89EB288D143B006B3275 /* TestTableViewCell.swift in Sources */,
+				F6AC89B028883550006B3275 /* EventModel.swift in Sources */,
 				4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */,
 				9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */,
 				587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */,
+				F6AC89BF28897DFC006B3275 /* Model.swift in Sources */,
 				CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */,
 				32CF35DA28830E9A00665186 /* CategoryCell.swift in Sources */,
 				32CF35DC28830EAB00665186 /* EventCell.swift in Sources */,

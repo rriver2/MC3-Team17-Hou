@@ -32,17 +32,19 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
-
     }
     
     //  알림 아이콘 연결
     @IBAction func alarm(_ sender: Any) {
+        
     }
     
     @IBAction func didTappedBackButton(_ sender: Any) {
         components.month = (components.month ?? 0) - 1
         self.calculation()
         self.calendarView?.reloadData()
+        
+        
     }
     
     @IBAction func didTappedFrontButton(_ sender: Any) {
