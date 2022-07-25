@@ -9,8 +9,11 @@ import UIKit
 
 final class CalenderSearchResultViewController: UIViewController {
     
-    @IBOutlet weak var scheduleButton: UIButton!
-    @IBOutlet weak var calendarFrame: UIView!
+    @IBOutlet weak private var scheduleButton: UIButton!
+    @IBOutlet weak private var calendarFrame: UIView!
+    @IBOutlet weak private var dataPicker: UIDatePicker!
+    
+    weak var datedeliveryDelegate: DateDelivable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +21,13 @@ final class CalenderSearchResultViewController: UIViewController {
         calendarFrame.layer.cornerRadius = 10
     }
     
-    @IBAction func clickedScheduleButton(_ sender: UIButton) {
-        // TODO: 날짜 기입 
+    @IBAction private func clickedScheduleButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+        let koreanDate = dataPicker.date.convertDateToKoreanDate(.koreanDate)
+        datedeliveryDelegate?.addDate(date: koreanDate)
     }
     
-    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
+    @IBAction private func cancelButton(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
 }
