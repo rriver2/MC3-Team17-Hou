@@ -1,5 +1,5 @@
 //
-//  Label+padding.swift
+//  LabelPadding.swift
 //  Ninano
 //
 //  Created by 이가은 on 2022/07/21.

@@ -1,5 +1,5 @@
 //
-//  NavigationItem+Extension.swift
+//  NavigationItem.swift
 //  Ninano
 //
 //  Created by Yoonjae on 2022/07/21.
