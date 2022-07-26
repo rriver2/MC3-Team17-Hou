@@ -9,7 +9,7 @@ import UIKit
 
 class EventFilterButton: UIView {
     
-    @IBOutlet weak var localFilterButton: UIButton!
+    @IBOutlet private weak var localFilterButton: UIButton!
     @IBOutlet weak var dateFilterButton: UIButton!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,13 +21,13 @@ class EventFilterButton: UIView {
         commonInit()
     }
     
-    func commonInit() {
+    private func commonInit() {
         guard let view = loadViewFromNib() else { return }
         view.frame = self.bounds
         self.addSubview(view)
     }
     
-    func loadViewFromNib() -> UIView? {
+    private func loadViewFromNib() -> UIView? {
         let nib = UINib(nibName: "EventFilterButton", bundle: nil)
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
@@ -50,7 +50,7 @@ class EventFilterButton: UIView {
         case nowongu = "노원구"
     }
 
-    @IBAction func localFilterButton(_ sender: UIButton) {
+    @IBAction private func localFilterButton(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
         let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
         for local in locals {
@@ -65,7 +65,7 @@ class EventFilterButton: UIView {
         datedeliveryDelegate?.openLocalActionSheet(actionSheet: actionSheet)
     }
     
-    @IBAction func dateFilterButton(_ sender: UIButton) {
+    @IBAction private func dateFilterButton(_ sender: UIButton) {
         datedeliveryDelegate?.openCaledarSearchResultView()
     }
 }
