@@ -12,7 +12,6 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
     @IBOutlet private weak var keywordNotification: UIButton!
-    @IBOutlet private weak var dateFilterButton: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
@@ -20,6 +19,7 @@ final class SearchResultViewController: UIViewController {
     fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -97,7 +97,7 @@ protocol DateDelivable: AnyObject {
 }
 
 protocol FilterButtonClickable: AnyObject {
-    func closeActionSheet(actionSheet: UIAlertController)
+    func openLocalActionSheet(actionSheet: UIAlertController)
     func openCaledarSearchResultView()
 }
 
@@ -105,18 +105,18 @@ extension SearchResultViewController: DateDelivable, FilterButtonClickable {
     
     func addDate(date: Date) {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
-        eventFilterButton.dateFilterButton.setTitle(koreanDate, for: .normal)
-        eventFilterButton.dateFilterButton.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-        eventFilterButton.dateFilterButton.configuration?.cornerStyle = .capsule
+        let button: UIButton = eventFilterButton.dateFilterButton
+        button.setTitle(koreanDate, for: .normal)
+        button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
+        button.configuration?.cornerStyle = .capsule
     }
     
-    func closeActionSheet(actionSheet: UIAlertController) {
+    func openLocalActionSheet(actionSheet: UIAlertController) {
         self.present(actionSheet, animated: true, completion: nil)
     }
     
     func openCaledarSearchResultView() {
         guard let calenderModal = UIStoryboard(name: "CalenderModal", bundle: .main).instantiateViewController(withIdentifier: "CalenderModalViewController") as? CalenderModalViewController else { return }
-        
         calenderModal.datedeliveryDelegate = self
         self.present(calenderModal, animated: true, completion: nil)
     }

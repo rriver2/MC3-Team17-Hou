@@ -51,7 +51,6 @@ class EventFilterButton: UIView {
     }
 
     @IBAction func localFilterButton(_ sender: UIButton) {
-        print("localFilterButton")
         let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
         let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
         for local in locals {
@@ -63,11 +62,10 @@ class EventFilterButton: UIView {
             }))
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        datedeliveryDelegate?.closeActionSheet(actionSheet: actionSheet)
+        datedeliveryDelegate?.openLocalActionSheet(actionSheet: actionSheet)
     }
     
     @IBAction func dateFilterButton(_ sender: UIButton) {
-        print("dateFilterButton")
         datedeliveryDelegate?.openCaledarSearchResultView()
     }
 }
