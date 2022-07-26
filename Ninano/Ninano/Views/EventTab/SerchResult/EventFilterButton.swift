@@ -9,6 +9,8 @@ import UIKit
 
 class EventFilterButton: UIView {
     
+    @IBOutlet weak var localFilterButton: UIButton!
+    @IBOutlet weak var dateFilterButton: UIButton!
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -30,17 +32,8 @@ class EventFilterButton: UIView {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
-    
-    
-    
     weak var datedeliveryDelegate: FilterButtonClickable?
-    
-    private var selectedLocal: LocationType? {
-        didSet {
-            // TODO: 밑에 공연 filtering
-            print("local inited: \(selectedLocal?.rawValue ?? "")")
-        }
-    }
+
     private enum Filter {
         case local
         case category
@@ -63,8 +56,9 @@ class EventFilterButton: UIView {
         let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
         for local in locals {
             let location = local.rawValue
-            actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { [self] _ in
-                datedeliveryDelegate?.clickedFilterButtonColorChange(sender)
+            actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
+                sender.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
+                sender.configuration?.cornerStyle = .capsule
                 sender.titleLabel?.text = location
             }))
         }

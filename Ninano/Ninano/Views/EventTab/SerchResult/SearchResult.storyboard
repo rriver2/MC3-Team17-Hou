@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -56,6 +57,13 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain">
+                                                        <imageReference key="image" image="heart.circle.fill" catalog="system" renderingMode="hierarchical">
+                                                            <hierarchicalColors>
+                                                                <color systemColor="systemGray5Color"/>
+                                                                <color systemColor="secondaryLabelColor"/>
+                                                                <color white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </hierarchicalColors>
+                                                        </imageReference>
                                                         <attributedString key="attributedTitle"/>
                                                         <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
@@ -132,9 +140,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2K9-18-f65"/>
                                 </constraints>
-                                <connections>
-                                    <outlet property="datedeliveryDelegate" destination="Y6W-OH-hqX" id="oec-0d-0tj"/>
-                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -157,30 +162,21 @@
                     </view>
                     <connections>
                         <outlet property="eventCollectionView" destination="udG-aU-qED" id="nDN-dQ-ZHd"/>
+                        <outlet property="eventFilterButton" destination="9aE-Rg-zDe" id="w1z-BS-og1"/>
                         <outlet property="keywordAddedNotification" destination="Wdi-el-Pla" id="jBW-Sa-OSz"/>
                         <outlet property="keywordNotification" destination="ClT-jf-Z8m" id="0P2-rv-v0a"/>
                         <outlet property="performanceCollectionView" destination="udG-aU-qED" id="aT0-Vv-n4Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z48-2p-XcC" customClass="EventFilterButton" customModule="Ninano" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="189" height="30"/>
-                    <viewLayoutGuide key="safeArea" id="JZS-tN-4T3"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="C6T-sH-z1H"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="datedeliveryDelegate" destination="Y6W-OH-hqX" id="HlY-A0-n30"/>
-                    </connections>
-                </view>
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="95.758928571428569"/>
         </scene>
-        <!--Calender Search Result View Controller-->
+        <!--Calender Modal View Controller-->
         <scene sceneID="kWQ-kW-4hC">
             <objects>
-                <viewController storyboardIdentifier="CalenderSearchResultViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z1P-50-fTS" customClass="CalenderSearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJq-mw-qwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="f" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z1P-50-fTS" customClass="CalenderModalViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DB4-GS-nn0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,18 +252,24 @@
                         <outlet property="scheduleButton" destination="l2B-lk-xju" id="89w-5z-RLN"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tJq-mw-qwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="95.758928571428569"/>
         </scene>
     </scenes>
     <resources>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
