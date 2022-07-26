@@ -55,19 +55,17 @@ class LikeManager {
     // MARK: - Update
     func updateLike(_ like: LikeModel) {
         let fetchResults = fetchLikeList()
-        for result in fetchResults {
-            if result.url == like.url {
+        for result in fetchResults where result.url == like.url {
                 result.isLiked.toggle()
                 // TODO: 이게 == 이 아니라 .toggle() 이어도 되는가?
-            }
         }
         saveToContext()
     }
     
     // MARK: - Delete an Item
-    func deleteLike(_ like: LikeModel) {
+    func deleteLike(with url: String) {
         let fetchResults = fetchLikeList()
-        let likeData = fetchResults.filter({ $0.url == like.url })[0]
+        let likeData = fetchResults.filter({ $0.url == url })[0]
         context.delete(likeData)
         saveToContext()
     }

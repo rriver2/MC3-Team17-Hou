@@ -51,9 +51,9 @@ class KeywordManager {
     }
     
     // MARK: - Delete an Item
-    func deleteKeyword(_ reserve: KeywordModel) {
+    func deleteKeyword(with keyword: String) {
         let fetchResults = fetchKeywordList()
-        let keywordData = fetchResults.filter({ $0.keywordSubs == reserve.keywordSubs })[0]
+        let keywordData = fetchResults.filter({ $0.keywordSubs == keyword })[0]
         context.delete(keywordData)
         saveToContext()
     }

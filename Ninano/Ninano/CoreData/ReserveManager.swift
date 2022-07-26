@@ -65,9 +65,9 @@ class ReserveManager {
 //    }
     
     // MARK: - Delete an Item
-    func deleteReserve(_ reserve: ReserveModel) {
+    func deleteReserve(with url: String) {
         let fetchResults = fetchReserveList()
-        let reserveData = fetchResults.filter({ $0.url == reserve.url })[0]
+        let reserveData = fetchResults.filter({ $0.url == url })[0]
         context.delete(reserveData)
         saveToContext()
     }

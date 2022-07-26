@@ -9,7 +9,7 @@ import UIKit
 
 class TestTableViewController: UITableViewController {
 
-    private var likeViewModel = LikeManager()
+    private var likeViewModel = LikeDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,12 @@ class TestTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
+    @IBAction func asdfasdfadsf(_ sender: Any) {
+        print("NOPE!")
+        likeViewModel.removeAllLikeItems()
+        tableView.reloadData()
+    }
+
     @IBAction func alertPLUS(_ sender: UIButton) {
         print("TlqkfRJ")
         let alertController = UIAlertController(title: "Add List Item", message: "Add an item that you need to do.", preferredStyle: .alert)
@@ -32,8 +38,9 @@ class TestTableViewController: UITableViewController {
                 // execute code if textField doesn't exist
                 return
             }
-
-            self?.likeViewModel.insertLike(LikeModel(nameLike: textSecond, isLiked: false, url: text))
+            
+            // url -> text / name -> textSecond
+            self?.likeViewModel.addLikeItems(url: text, isLiked: false, name: textSecond)
             self?.tableView.reloadData()
         }
 
@@ -55,14 +62,23 @@ class TestTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return likeViewModel.getLike().count
+        return likeViewModel.likeItems.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TestCellID", for: indexPath) as? CoreTestTableViewCell else {return UITableViewCell.init()}
-        cell.urlLabel.text = likeViewModel.getLike()[indexPath.row].url
-        cell.nameLabel.text = likeViewModel.getLike()[indexPath.row].nameLike
-        cell.isLikedLabel.text = likeViewModel.getLike()[indexPath.row].isLiked ? "♥" : "♡"
+        cell.urlLabel.text = likeViewModel.likeItems[indexPath.row].url
+        cell.nameLabel.text = likeViewModel.likeItems[indexPath.row].nameLike
+        cell.isLikedLabel.text = likeViewModel.likeItems[indexPath.row].isLiked ? "♥" : "♡"
         return cell
+    }
+    
+    // MARK: - 삭제
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            likeViewModel.removeLikeItems(url: likeViewModel.likeItems[indexPath.row].url)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 }
