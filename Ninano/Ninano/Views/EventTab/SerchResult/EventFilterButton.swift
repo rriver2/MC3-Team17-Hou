@@ -58,7 +58,7 @@ class EventFilterButton: UIView {
             actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
                 sender.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
                 sender.configuration?.cornerStyle = .capsule
-                sender.titleLabel?.text = location
+                sender.setTitle(location, for: .normal)
             }))
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
