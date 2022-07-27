@@ -20,12 +20,14 @@ class NoticeViewController: UIViewController {
         keywordContainerView.alpha = 1.0
         interestContainerView.alpha = 0.0
         buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
+        mainTitle.font = UIFont.boldSystemFont(ofSize: 30)
         self.segmentedControl.frame = CGRect(x: self.segmentedControl.frame.minX, y: self.segmentedControl.frame.minY, width: segmentedControl.frame.width, height: 25)
         segmentedControl.highlightSelectedSegment()
     }
 
     @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
         segmentedControl.underlinePosition()
+        buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -38,7 +40,6 @@ class NoticeViewController: UIViewController {
             keywordContainerView.alpha = 0
             interestContainerView.alpha = 1
             buttonState.setTitle("목록 전체 삭제", for: .normal)
-            buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
             buttonState.tintColor = #colorLiteral(red: 0.2941176471, green: 0.3568627451, blue: 0.6392156863, alpha: 1)
         default:
             break
@@ -60,7 +61,10 @@ class NoticeViewController: UIViewController {
             alert.addAction(alertNo)
             
             present(alert, animated: true, completion: nil)
-            // TODO: completion: 해당 alert 가 성공적으로 수행되고 나서 이 함수가 끝난 뒤 뭘 할거냐? 라고 지정해주는 부분 이것도 closure 로 빼자. 
+//            present(alert, animated: true) {
+//                <#code#>
+//            }
+
         default:
             break
         }
