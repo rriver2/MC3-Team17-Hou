@@ -16,11 +16,21 @@
 		4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F018728862FE100300DB8 /* SetKeywordViewController.swift */; };
 		4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */; };
 		581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581AE5642885099D00853BEB /* LineSegmentedControl.swift */; };
+		58621445288FE07400DE04BE /* HowToUseCoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58621444288FE07400DE04BE /* HowToUseCoreData.txt */; };
 		587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D49C32880778100727BD6 /* KeywordTableViewCell.swift */; };
 		58A1AA36287FDECC001BCFA9 /* Notice.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A1AA35287FDECC001BCFA9 /* Notice.storyboard */; };
 		58A1AA38287FDEDB001BCFA9 /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1AA37287FDEDB001BCFA9 /* NoticeViewController.swift */; };
 		58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1AA39287FF390001BCFA9 /* KeywordViewController.swift */; };
 		58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1AA3B287FF445001BCFA9 /* InterestListViewController.swift */; };
+		58D6ECC9288E518B00AB402F /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */; };
+		58D6ECCC288E531000AB402F /* NinanoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECCA288E531000AB402F /* NinanoModel.xcdatamodeld */; };
+		58D6ECCE288E547400AB402F /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECCD288E547400AB402F /* LikeManager.swift */; };
+		58D6ECD0288E548D00AB402F /* ReserveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECCF288E548D00AB402F /* ReserveManager.swift */; };
+		58D6ECD2288E549700AB402F /* KeywordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECD1288E549700AB402F /* KeywordManager.swift */; };
+		58D6ECD5288E6CFA00AB402F /* CoredataMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58D6ECD4288E6CFA00AB402F /* CoredataMain.storyboard */; };
+		58D6ECD7288E6D4800AB402F /* CoredataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */; };
+		58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */; };
+		58D6ECDD288E75BC00AB402F /* CoreTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */; };
 		7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */; };
 		7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */; };
 		7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */; };
@@ -40,7 +50,10 @@
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
 		CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8CFABF288D318E003BA65C /* .swiftLint.yml */; };
 		CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */; };
-		CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */; };
+		CCCA9E4B288EB6CE0070F231 /* EventFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */; };
+		CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */; };
+		CCCA9E58288FCF1C0070F231 /* CalenderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */; };
+		CCCA9E59288FCF250070F231 /* CalenderModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCA9E54288FC8A10070F231 /* CalenderModal.storyboard */; };
 		F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBA72884285700D57A4F /* CalendarViewController.swift */; };
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
 		F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAD288428B800D57A4F /* Calendar.storyboard */; };
@@ -65,11 +78,21 @@
 		4D9F018728862FE100300DB8 /* SetKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetKeywordViewController.swift; sourceTree = "<group>"; };
 		4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLinkViewController.swift; sourceTree = "<group>"; };
 		581AE5642885099D00853BEB /* LineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSegmentedControl.swift; sourceTree = "<group>"; };
+		58621444288FE07400DE04BE /* HowToUseCoreData.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HowToUseCoreData.txt; sourceTree = "<group>"; };
 		587D49C32880778100727BD6 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
 		58A1AA35287FDECC001BCFA9 /* Notice.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notice.storyboard; sourceTree = "<group>"; };
 		58A1AA37287FDEDB001BCFA9 /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
 		58A1AA39287FF390001BCFA9 /* KeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordViewController.swift; sourceTree = "<group>"; };
 		58A1AA3B287FF445001BCFA9 /* InterestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestListViewController.swift; sourceTree = "<group>"; };
+		58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
+		58D6ECCB288E531000AB402F /* NinanoModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NinanoModel.xcdatamodel; sourceTree = "<group>"; };
+		58D6ECCD288E547400AB402F /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
+		58D6ECCF288E548D00AB402F /* ReserveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReserveManager.swift; sourceTree = "<group>"; };
+		58D6ECD1288E549700AB402F /* KeywordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordManager.swift; sourceTree = "<group>"; };
+		58D6ECD4288E6CFA00AB402F /* CoredataMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CoredataMain.storyboard; sourceTree = "<group>"; };
+		58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataViewController.swift; sourceTree = "<group>"; };
+		58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
+		58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestTableViewCell.swift; sourceTree = "<group>"; };
 		7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarDetail.storyboard; sourceTree = "<group>"; };
 		7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventDetailCell.swift; sourceTree = "<group>"; };
@@ -91,7 +114,10 @@
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8CFABF288D318E003BA65C /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftLint.yml; sourceTree = "<group>"; };
 		CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderSearchResultViewController.swift; sourceTree = "<group>"; };
+		CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterButton.swift; sourceTree = "<group>"; };
+		CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFilterButton.xib; sourceTree = "<group>"; };
+		CCCA9E54288FC8A10070F231 /* CalenderModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalenderModal.storyboard; sourceTree = "<group>"; };
+		CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderModalViewController.swift; sourceTree = "<group>"; };
 		F63AEBA72884285700D57A4F /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCollectionViewCell.xib; sourceTree = "<group>"; };
 		F63AEBAD288428B800D57A4F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
@@ -118,6 +144,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58BA9306288EA3FC001F0B0A /* CoreDataTest */ = {
+			isa = PBXGroup;
+			children = (
+				58D6ECD4288E6CFA00AB402F /* CoredataMain.storyboard */,
+				58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */,
+				58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */,
+				58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */,
+			);
+			path = CoreDataTest;
+			sourceTree = "<group>";
+		};
+		58D6ECC7288E513700AB402F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				58D6ECCA288E531000AB402F /* NinanoModel.xcdatamodeld */,
+				58D6ECCD288E547400AB402F /* LikeManager.swift */,
+				58D6ECCF288E548D00AB402F /* ReserveManager.swift */,
+				58D6ECD1288E549700AB402F /* KeywordManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		58D6ECD3288E6CDB00AB402F /* TEST */ = {
+			isa = PBXGroup;
+			children = (
+				CC4FA481288E981200B52EDA /* APITest */,
+				58BA9306288EA3FC001F0B0A /* CoreDataTest */,
+			);
+			path = TEST;
+			sourceTree = "<group>";
+		};
 		92AFEC367EA6A85B89A8DB34 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +239,8 @@
 			children = (
 				CC4F8F712880DC3300A18346 /* SearchResult.storyboard */,
 				CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */,
+				CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */,
+				CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */,
 			);
 			path = SerchResult;
 			sourceTree = "<group>";
@@ -198,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				CC4F8F732880E59800A18346 /* SearchResultViewController.swift */,
-				CCF0D97028866C0E00F61495 /* CalenderSearchResultViewController.swift */,
 			);
 			path = SearchResult;
 			sourceTree = "<group>";
@@ -261,6 +319,8 @@
 		CC8B50C6287C1063004EE6DB /* Ninano */ = {
 			isa = PBXGroup;
 			children = (
+				58D6ECD3288E6CDB00AB402F /* TEST */,
+				58D6ECC7288E513700AB402F /* CoreData */,
 				F6AC89B52888356E006B3275 /* Model */,
 				F6B158FD2887AECE000B4F51 /* Controllers */,
 				F6B158FC2887A7D6000B4F51 /* Views */,
@@ -270,7 +330,6 @@
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
 				CC8B50D3287C1064004EE6DB /* Assets.xcassets */,
 				CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */,
-				CC4FA481288E981200B52EDA /* APITest */,
 				CC8CFABF288D318E003BA65C /* .swiftLint.yml */,
 				CC8B50D8287C1064004EE6DB /* Info.plist */,
 				CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */,
@@ -301,6 +360,8 @@
 		F6AC89B52888356E006B3275 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				58621444288FE07400DE04BE /* HowToUseCoreData.txt */,
+				58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */,
 				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
 			);
 			path = Model;
@@ -350,6 +411,7 @@
 			children = (
 				F6B158FA2887A790000B4F51 /* Main.storyboard */,
 				CC8B50CD287C1063004EE6DB /* EventDetail.storyboard */,
+				CCCA9E54288FC8A10070F231 /* CalenderModal.storyboard */,
 				F6AC89B628883B6B006B3275 /* CalendarTab */,
 				F6AC89B728883B74006B3275 /* EventTab */,
 			);
@@ -359,6 +421,7 @@
 		F6B158FD2887AECE000B4F51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */,
 				CC4FA47F288E978900B52EDA /* EventDetail */,
 				F6AC89A82887F74B006B3275 /* CalendarTab */,
 				F6AC89A92887F758006B3275 /* EventTab */,
@@ -429,18 +492,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D6ECD5288E6CFA00AB402F /* CoredataMain.storyboard in Resources */,
+				CCCA9E59288FCF250070F231 /* CalenderModal.storyboard in Resources */,
 				7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */,
 				CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */,
 				F6B158FB2887A790000B4F51 /* Main.storyboard in Resources */,
 				F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */,
 				CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */,
 				58A1AA36287FDECC001BCFA9 /* Notice.storyboard in Resources */,
+				58621445288FE07400DE04BE /* HowToUseCoreData.txt in Resources */,
 				CC8B50D4287C1064004EE6DB /* Assets.xcassets in Resources */,
 				F6AC89E7288D1143006B3275 /* Test.storyboard in Resources */,
 				F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */,
 				CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */,
 				CC8B50CF287C1063004EE6DB /* EventDetail.storyboard in Resources */,
 				F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */,
+				CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */,
 				3278706928819A7F00519A2A /* Search.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +540,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D6ECCC288E531000AB402F /* NinanoModel.xcdatamodeld in Sources */,
+				CCCA9E58288FCF1C0070F231 /* CalenderModalViewController.swift in Sources */,
 				7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */,
 				7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */,
 				CC7EAA44288982240057E9C2 /* LabelPadding.swift in Sources */,
@@ -480,6 +549,10 @@
 				3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */,
 				4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */,
 				4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */,
+				58D6ECD0288E548D00AB402F /* ReserveManager.swift in Sources */,
+				3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */,
+				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
+				58D6ECD2288E549700AB402F /* KeywordManager.swift in Sources */,
 				F6AC89C3288BAE82006B3275 /* APICaller.swift in Sources */,
 				3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */,
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
@@ -489,22 +562,28 @@
 				F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* EventDetailViewController.swift in Sources */,
+				58D6ECC9288E518B00AB402F /* SubscriptionModel.swift in Sources */,
 				CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */,
 				CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
 				7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */,
-				CCF0D97128866C0E00F61495 /* CalenderSearchResultViewController.swift in Sources */,
 				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
+				58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */,
+				58D6ECCE288E547400AB402F /* LikeManager.swift in Sources */,
+				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
+				58D6ECD7288E6D4800AB402F /* CoredataViewController.swift in Sources */,
 				CC8B50D2287C1063004EE6DB /* Ninano.xcdatamodeld in Sources */,
 				F6AC89EB288D143B006B3275 /* TestTableViewCell.swift in Sources */,
 				4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */,
+				58D6ECDD288E75BC00AB402F /* CoreTestTableViewCell.swift in Sources */,
 				9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */,
 				587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */,
 				F6AC89BF28897DFC006B3275 /* Model.swift in Sources */,
 				CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */,
 				32CF35DA28830E9A00665186 /* CategoryCell.swift in Sources */,
 				32CF35DC28830EAB00665186 /* EventCell.swift in Sources */,
+				CCCA9E4B288EB6CE0070F231 /* EventFilterButton.swift in Sources */,
 				58A1AA38287FDEDB001BCFA9 /* NoticeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,7 +645,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -588,6 +666,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Debug;
 		};
@@ -626,7 +705,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -653,7 +732,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -685,7 +764,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = "";
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -734,6 +813,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		58D6ECCA288E531000AB402F /* NinanoModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				58D6ECCB288E531000AB402F /* NinanoModel.xcdatamodel */,
+			);
+			currentVersion = 58D6ECCB288E531000AB402F /* NinanoModel.xcdatamodel */;
+			path = NinanoModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		CC8B50D0287C1063004EE6DB /* Ninano.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

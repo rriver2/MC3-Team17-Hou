@@ -1,0 +1,45 @@
+/* 
+  HowToUseCoreData.strings
+  Ninano
+
+  Created by KYUBO A. SHIM on 2022/07/26.
+  
+*/
+
+How to Use Core Data.
+
+Before Using Core Data, You have to know the Models and the Methods of each Entity.
+
+A) Entities
+1. LikeList
+2. KeywordList
+3. ReserveList
+
+B) Models
+1. LikeList     ->  name, isLiked, url (which functions as Id.)
+2. KeywordList  ->  keyword
+3. ReserveList  ->  isReservde, reserveDate, url (which functions as Id.)
+
+C) Methods
+1. LikeList     ->  "LikeDataModel" - read, add, remove, removeAll
+2. KeywordList  ->  "ReserveDataModel" - read, add, remove, removeAll
+3. ReserveList  ->  "KeywordDataModel" - read, add, remove, removeAll
+
+
+
+[Usage]
+
+1. 매 view controller class 내부에 필요한 모델을 부른다.
+    - ex) private var likeViewModel = LikeDataModel()
+2. Action(Button 등)에서 필요한 변수를 input 으로 준비하고,
+   따로 변수로 선언한 코어데이터 모델 메서드를 사용한다.
+    - ex) (TextField 에서 받아온 변수 urlTextTF 를 사용해 모델을 추가한다면,)
+          likeViewModel.addLikeItems(... url: urlTextTF ...)
+3. 제거를 하고 싶다면, 해당 공연의 url 값을 받아와 remove 메서드의 Parameter 로 집어 넣는다.
+
+이상 끝.
+추가 사항이 있거나 질문 사항이 있다면 말씀해주세요!
+-> 질문을 모두 답변해드리진 못하지만 12시간 내에 답을 찾아드리려고 "노력"은 해보겠습니다!
+
+다들 화이팅!
+
