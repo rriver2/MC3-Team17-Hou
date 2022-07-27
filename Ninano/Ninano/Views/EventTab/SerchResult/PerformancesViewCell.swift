@@ -15,7 +15,18 @@ final class PerformancesViewCell: UICollectionViewCell {
         didSet {
             performanceImage.layer.cornerRadius = 10
             performanceImage.contentMode = .scaleAspectFill
-            self.performanceImage.image = UIImage(named: imageName)
+            
+            let screen = UIScreen.main.bounds.width
+            let inset = (25 / 390) * screen
+            let spacing = (14 / 390) * screen
+            
+            let width = (screen - (inset * 2) - spacing) / 2
+            let height = ( 4 / 3 ) * width
+    
+            let cropRect = CGRect(x: 0, y: 0, width: width, height: height)
+            
+            self.performanceImage.image = StaticFunc.cropImage(image: UIImage(named: imageName) ?? UIImage(), rect: cropRect)
+            
         }
     }
 //    private var isHeartedSelected = false
