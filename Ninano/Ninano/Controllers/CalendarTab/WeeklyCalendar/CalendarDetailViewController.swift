@@ -30,7 +30,6 @@ class CalendarDetailViewController: UIViewController {
     
     private let calInset: CGFloat = 15.0
     
-    @IBOutlet weak var monthBackButton: UIButton!
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
     @IBOutlet weak var weeklyCalendarView: UICollectionView!
@@ -39,9 +38,7 @@ class CalendarDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backButtonConfig()
-        monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
-        monthBackButton.imageView?.preferredSymbolConfiguration = backButton
+        configureItems()
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
@@ -54,16 +51,19 @@ class CalendarDetailViewController: UIViewController {
         setBlurEffect()
     }
     
-    func backButtonConfig() {
-        monthBackButton.configuration = .plain()
-        monthBackButton.configuration?.title = month
+    private func configureItems() {
+        let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        calendarTitle.textAlignment = .center
+        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
+        calendarTitle.text = "7월"
+        self.navigationItem.titleView = calendarTitle
         
-        monthBackButton.configuration?.image = backSymbol
-        monthBackButton.configuration?.imagePlacement = .leading
-        monthBackButton.configuration?.imagePadding = 15
-        
-        monthBackButton.configuration?.baseForegroundColor = .black
-        monthBackButton.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        var backImage = UIImage(systemName: "chevron.backward.square.fill")
+        backImage = resizeImage(image: backImage!, newWidth: 40)
+        navigationController?.navigationBar.backIndicatorImage = backImage
+        navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = .red
+        self.navigationController?.navigationBar.topItem?.title = ""
     }
     
     func setBlurEffect() {
@@ -71,6 +71,19 @@ class CalendarDetailViewController: UIViewController {
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }
 
