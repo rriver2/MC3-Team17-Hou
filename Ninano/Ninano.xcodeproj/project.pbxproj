@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324251B02891602700804AAF /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324251AF2891602700804AAF /* UIFont.swift */; };
 		3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262DC242882DA8C007C6103 /* SearchViewController.swift */; };
 		3278706928819A7F00519A2A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3278706828819A7F00519A2A /* Search.storyboard */; };
 		3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324251AF2891602700804AAF /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		3262DC242882DA8C007C6103 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3278706828819A7F00519A2A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarCell.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				CC21943B28844F9500E93AC7 /* UIColor.swift */,
+				324251AF2891602700804AAF /* UIFont.swift */,
 				F6AC89BC28886835006B3275 /* NavigationItem.swift */,
 				CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */,
 				CC4FA480288E97F200B52EDA /* customDesign */,
@@ -542,6 +545,7 @@
 			files = (
 				58D6ECCC288E531000AB402F /* NinanoModel.xcdatamodeld in Sources */,
 				CCCA9E58288FCF1C0070F231 /* CalenderModalViewController.swift in Sources */,
+				324251B02891602700804AAF /* UIFont.swift in Sources */,
 				7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */,
 				7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */,
 				CC7EAA44288982240057E9C2 /* LabelPadding.swift in Sources */,
