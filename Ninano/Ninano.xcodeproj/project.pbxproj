@@ -152,8 +152,6 @@
 				7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */,
 				3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */,
 				7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */,
-				32CF35D928830E9A00665186 /* CategoryCell.swift */,
-				32CF35DB28830EAB00665186 /* EventCell.swift */,
 			);
 			path = WeeklyCalendar;
 			sourceTree = "<group>";
@@ -173,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				3278706828819A7F00519A2A /* Search.storyboard */,
+				32CF35D928830E9A00665186 /* CategoryCell.swift */,
+				32CF35DB28830EAB00665186 /* EventCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";

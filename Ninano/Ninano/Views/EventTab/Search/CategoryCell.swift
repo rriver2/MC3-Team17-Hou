@@ -14,9 +14,30 @@ class CategoryCell: UITableViewCell {
             eventCollectionView.reloadData()
         }
     }
+    
     @IBOutlet weak var categoryName: UIButton!
     @IBOutlet weak var categoryChevron: UIButton!
     @IBOutlet weak var eventCollectionView: UICollectionView!
+}
+
+extension CategoryCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize()
+        }
+        
+        let screen = UIScreen.main.bounds.width
+        let inset = (25 / 390) * screen
+        let spacing = (14 / 390) * screen
+        
+        let width = (screen - (inset * 2) - (spacing * 2)) / 3
+        let height = (4 / 3) * width
+        
+        flow.minimumInteritemSpacing = spacing
+        flow.sectionInset.left = inset
+        
+        return CGSize(width: width, height: height)
+    }
 }
 
 extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -28,8 +49,9 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCell else {
             return UICollectionViewCell()
         }
-        cell.contentView.layer.cornerRadius = 10
+        
         cell.configure(with: viewModels[indexPath.row])
+        cell.layer.cornerRadius = 10
         
         return cell
     }

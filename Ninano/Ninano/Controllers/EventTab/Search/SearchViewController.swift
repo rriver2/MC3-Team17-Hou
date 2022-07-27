@@ -52,22 +52,27 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func categoryButtonConfig() {
+        categoryConfig.baseForegroundColor = .black
+        categoryConfig.titleAlignment = .leading
+    }
+    
     func fetchTopStories() {
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
-                case .success(let articles):
-                    self?.articles = articles
-                    // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
-                    self?.viewModels = articles.culturalEventInfo.row.compactMap({
-                        SearchEventCellViewModel(
-                            imageURL: URL(string: $0.mainImg ?? "")
-                        )
-                    })
-                    DispatchQueue.main.async {
-                        self?.categoryTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let articles):
+                self?.articles = articles
+                // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
+                self?.viewModels = articles.culturalEventInfo.row.compactMap({
+                    SearchEventCellViewModel(
+                        imageURL: URL(string: $0.mainImg ?? "")
+                    )
+                })
+                DispatchQueue.main.async {
+                    self?.categoryTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
