@@ -321,7 +321,6 @@
 			children = (
 				58D6ECD3288E6CDB00AB402F /* TEST */,
 				58D6ECC7288E513700AB402F /* CoreData */,
-				CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */,
 				F6AC89B52888356E006B3275 /* Model */,
 				F6B158FD2887AECE000B4F51 /* Controllers */,
 				F6B158FC2887A7D6000B4F51 /* Views */,
@@ -422,6 +421,7 @@
 		F6B158FD2887AECE000B4F51 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */,
 				CC4FA47F288E978900B52EDA /* EventDetail */,
 				F6AC89A82887F74B006B3275 /* CalendarTab */,
 				F6AC89A92887F758006B3275 /* EventTab */,
