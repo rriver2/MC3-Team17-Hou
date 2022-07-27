@@ -90,6 +90,10 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
         
         return PerformancesViewCell()
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
+    }
 }
 
 protocol DateDelivable: AnyObject {

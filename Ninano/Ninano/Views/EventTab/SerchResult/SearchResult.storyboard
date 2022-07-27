@@ -172,7 +172,6 @@
         <!--Calender Modal View Controller-->
         <scene sceneID="kWQ-kW-4hC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tJq-mw-qwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="f" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z1P-50-fTS" customClass="CalenderModalViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DB4-GS-nn0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -249,10 +248,16 @@
                         <outlet property="scheduleButton" destination="l2B-lk-xju" id="89w-5z-RLN"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJq-mw-qwg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="95.758928571428569"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="mJz-w0-JyG">
+            <size key="intrinsicContentSize" width="157.5" height="16"/>
+        </designable>
+    </designables>
     <resources>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
         <image name="heart.circle.fill" catalog="system" width="128" height="121"/>
