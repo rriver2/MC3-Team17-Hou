@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324251B22891805000804AAF /* SearchEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324251B12891805000804AAF /* SearchEventModel.swift */; };
 		3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262DC242882DA8C007C6103 /* SearchViewController.swift */; };
 		3278706928819A7F00519A2A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3278706828819A7F00519A2A /* Search.storyboard */; };
 		3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324251B12891805000804AAF /* SearchEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEventModel.swift; sourceTree = "<group>"; };
 		3262DC242882DA8C007C6103 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3278706828819A7F00519A2A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarCell.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				58621444288FE07400DE04BE /* HowToUseCoreData.txt */,
 				58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */,
 				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
+				324251B12891805000804AAF /* SearchEventModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +561,7 @@
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */,
 				F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */,
+				324251B22891805000804AAF /* SearchEventModel.swift in Sources */,
 				581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */,
 				F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,

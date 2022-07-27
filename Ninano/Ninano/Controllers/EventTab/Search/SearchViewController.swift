@@ -21,7 +21,7 @@ class SearchViewController: UIViewController {
     }
     
     private var articles: APIResponse?
-    private var viewModels = [SearchEventCellViewModel]()
+    private var searchEvent = [SearchEvent]()
     
     @IBAction func detailButton(_ sender: Any) {
     }
@@ -48,26 +48,34 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryName.configuration = categoryConfig
         cell.categoryName.titleLabel?.font = categoryFont
         cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.viewModels = viewModels
+        cell.searchEvent = searchEvent
         return cell
     }
     
     func fetchTopStories() {
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
-                case .success(let articles):
-                    self?.articles = articles
-                    // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
-                    self?.viewModels = articles.culturalEventInfo.row.compactMap({
-                        SearchEventCellViewModel(
-                            imageURL: URL(string: $0.mainImg ?? "")
-                        )
-                    })
-                    DispatchQueue.main.async {
-                        self?.categoryTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let articles):
+                self?.articles = articles
+                // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
+                self?.searchEvent = articles.culturalEventInfo.row.compactMap({
+                    SearchEvent(
+                        title: String($0.title),
+                        posterURL: URL(string: $0.mainImg ?? ""),
+                        place: String($0.place),
+                        area: String($0.guname),
+                        period: String($0.date),
+                        uRL: String($0.orgLink ?? ""),
+                        actor: String($0.player),
+                        info: String($0.program),
+                        price: String($0.useFee)
+                    )
+                })
+                DispatchQueue.main.async {
+                    self?.categoryTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }
