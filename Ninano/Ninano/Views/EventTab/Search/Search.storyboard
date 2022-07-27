@@ -138,7 +138,7 @@
                             <constraint firstItem="A1p-jd-meV" firstAttribute="trailing" secondItem="1je-HD-0WA" secondAttribute="trailing" id="wpr-xY-faW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="공연 추천" largeTitleDisplayMode="always" id="SfL-8Z-UhK">
+                    <navigationItem key="navigationItem" title="공연 추천" id="SfL-8Z-UhK">
                         <barButtonItem key="rightBarButtonItem" id="XZ2-ky-TWF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8Qy-ea-gxW">
                                 <rect key="frame" x="324.5" y="0.0" width="69.5" height="44"/>
@@ -189,11 +189,11 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H7d-Or-5tN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="eye.fill" catalog="system" selectedImage="eye.fill" id="B8Q-gO-20f"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iF5-3w-uni">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="iF5-3w-uni">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

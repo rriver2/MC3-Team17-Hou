@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
     private var categoryConfig = UIButton.Configuration.plain()
     private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
 
@@ -30,8 +31,9 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
         fetchTopStories()
-        // Do any additional setup after loading the view.
     }
 }
 

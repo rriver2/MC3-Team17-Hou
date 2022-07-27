@@ -39,6 +39,8 @@ extension UIFont.TextStyle {
             return 34
         case .title1:
             return 28
+        case .title2:
+            return 22
         case .title3:
             return 20
         case .headline:
