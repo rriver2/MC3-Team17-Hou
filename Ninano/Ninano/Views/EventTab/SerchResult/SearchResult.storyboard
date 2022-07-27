@@ -14,7 +14,7 @@
         <!--Search Result View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -110,7 +110,10 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="126" height="216"/>
                                         <connections>
-                                            <outlet property="performanceImage" destination="Ef2-X8-K6z" id="d1g-IA-gGn"/>
+                                            <outlet property="eventDate" destination="Eu8-BF-CrV" id="63i-ui-u7U"/>
+                                            <outlet property="eventImage" destination="Ef2-X8-K6z" id="d1g-IA-gGn"/>
+                                            <outlet property="eventPlace" destination="c71-Fo-zm7" id="9vM-5A-8Sb"/>
+                                            <outlet property="eventTitle" destination="YWu-Sy-j1s" id="O98-K9-xcR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
