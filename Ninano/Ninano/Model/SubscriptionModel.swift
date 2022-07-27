@@ -7,7 +7,7 @@
 
 import UIKit
 
-// TODO: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
+// MARK: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
 /// Like
 struct LikeDataModel {
     var likeItems: [LikeList] {
@@ -30,7 +30,7 @@ struct LikeDataModel {
     }
 }
 
-// TODO: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
+// MARK: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
 /// Reserve
 struct ReserveDataModel {
     var reserveItems: [ReserveList] {
@@ -52,7 +52,7 @@ struct ReserveDataModel {
     }
 }
 
-// TODO: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
+// MARK: table 이나 이런게 있으면 ⭐️해당 뷰에... reloadData() 해야 한다. 안 그러면 오류가 난다.
 /// Keyword
 struct KeywordDataModel {
     var keywordItems: [KeywordList] {
