@@ -2,9 +2,6 @@
 🔒 Close #issue-number1
 🔒 Close #issue-number2
 
-## Changed Files
- ex) Appname/Entity/Dictionary/Content/DictionaryContent.swift
- 
 ## Pull Request 내용 (변경 및 추가된 사항들)
 - write here
 
