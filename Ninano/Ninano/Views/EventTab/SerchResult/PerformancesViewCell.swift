@@ -16,16 +16,27 @@ final class PerformancesViewCell: UICollectionViewCell {
             performanceImage.layer.cornerRadius = 10
             performanceImage.contentMode = .scaleAspectFill
             
+            let image = UIImage(named: imageName)
+            
             let screen = UIScreen.main.bounds.width
             let inset = (25 / 390) * screen
             let spacing = (14 / 390) * screen
             
-            let width = (screen - (inset * 2) - spacing) / 2
-            let height = ( 4 / 3 ) * width
-    
-            let cropRect = CGRect(x: 0, y: 0, width: width, height: height)
+            let cropWidth = (screen - (inset * 2) - spacing) / 2
+            let cropHeight = ( 4 / 3 ) * cropWidth
             
-            self.performanceImage.image = StaticFunc.cropImage(image: UIImage(named: imageName) ?? UIImage(), rect: cropRect)
+            let imageWidth = image?.size.width ?? 0
+            let imageHeight = image?.size.height ?? 0
+            
+            if imageWidth == 0 { print("imageWidth")}
+            if imageHeight == 0 { print("imageHeight")}
+            
+            let imageX = (imageWidth - cropWidth) / 2
+            let imageY = (imageHeight - cropHeight) / 2
+    
+            let cropRect = CGRect(x: imageX, y: imageY, width: cropWidth, height: cropHeight)
+            
+            self.performanceImage.image = StaticFunc.cropImage(image: image ?? UIImage(), rect: cropRect)
             
         }
     }

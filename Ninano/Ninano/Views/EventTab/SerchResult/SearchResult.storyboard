@@ -43,7 +43,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="126" height="216"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2ty-Gg-Qjl">
+                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2ty-Gg-Qjl">
                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="212"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-X8-K6z">
@@ -82,10 +82,13 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="5lN-WM-NmO" secondAttribute="trailing" id="Vtg-bY-dfp"/>
-                                                                <constraint firstItem="c71-Fo-zm7" firstAttribute="leading" secondItem="rJU-aH-WKs" secondAttribute="leading" id="fFZ-nS-TBO"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="rJU-aH-WKs" secondAttribute="trailing" id="HVd-7s-inE"/>
+                                                        <constraint firstItem="rJU-aH-WKs" firstAttribute="leading" secondItem="2ty-Gg-Qjl" secondAttribute="leading" id="VJe-RF-XeF"/>
+                                                    </constraints>
                                                 </stackView>
                                                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bdy-yP-qVp">
                                                     <rect key="frame" x="86" y="134" width="45" height="31"/>
