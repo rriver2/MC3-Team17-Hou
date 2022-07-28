@@ -27,10 +27,12 @@ final class SearchResultViewController: UIViewController {
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
         
-        let uiImage = UIImage(systemName: "chevron.left")
-        let undo = UIBarButtonItem(image: uiImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        var backImage = UIImage(systemName: "chevron.backward.square.fill")
+        backImage = backImage ?? UIImage().resizeImage(newWidth: 40)
+        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
         self.navigationItem.leftBarButtonItem = undo
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
         searchBar.placeholder = "Search User"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
         
