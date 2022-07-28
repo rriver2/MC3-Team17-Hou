@@ -8,8 +8,9 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
     private var categoryConfig = UIButton.Configuration.plain()
-    private var categoryFont = UIFont.boldSystemFont(ofSize: 15)
+    private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
 
     private enum Category: String, CaseIterable {
         case recommended = "니나노의 추천 공연"
@@ -30,8 +31,9 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
         fetchTopStories()
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -47,6 +49,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         categoryConfig.title = Category.allValues[indexPath.row].rawValue
         cell.categoryName.configuration = categoryConfig
         cell.categoryName.titleLabel?.font = categoryFont
+        cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         cell.categoryChevron.titleLabel?.font = categoryFont
         cell.viewModels = viewModels
         return cell
