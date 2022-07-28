@@ -10,7 +10,7 @@ import UIKit
 class EventCell: UICollectionViewCell {
     @IBOutlet weak var posterImage: UIImageView!
     
-    func configure(with viewModel: SearchEvent) {
+    func configure(with viewModel: Event) {
         if let data = viewModel.posterData {
             posterImage.image = UIImage(data: data)
         } else if let url = viewModel.posterURL {

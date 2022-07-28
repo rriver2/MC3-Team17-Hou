@@ -8,7 +8,7 @@
 import UIKit
 
 class CalendarDetailViewController: UIViewController {
-    private var eventList = EventData().list
+    private var eventList = TempEventData().list
     private var event: Event?
     
     private var monthImage: UIImage?

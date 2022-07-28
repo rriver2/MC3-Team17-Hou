@@ -32,10 +32,10 @@
 		58D6ECD7288E6D4800AB402F /* CoredataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */; };
 		58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */; };
 		58D6ECDD288E75BC00AB402F /* CoreTestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */; };
+		7E9037052892365100A06EC7 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9037042892365100A06EC7 /* EventModel.swift */; };
 		7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */; };
 		7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */; };
 		7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */; };
-		7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC8A12886558E00EF5537 /* EventModel.swift */; };
 		9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047C99A288149D800CD8113 /* NoticeGridCollectionViewCell.swift */; };
 		CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */; };
 		CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943B28844F9500E93AC7 /* UIColor.swift */; };
@@ -95,10 +95,10 @@
 		58D6ECD6288E6D4800AB402F /* CoredataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataViewController.swift; sourceTree = "<group>"; };
 		58D6ECDA288E6DCC00AB402F /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		58D6ECDC288E75BC00AB402F /* CoreTestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTestTableViewCell.swift; sourceTree = "<group>"; };
+		7E9037042892365100A06EC7 /* EventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventModel.swift; path = ../../../../../EventModel.swift; sourceTree = "<group>"; };
 		7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarDetail.storyboard; sourceTree = "<group>"; };
 		7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventDetailCell.swift; sourceTree = "<group>"; };
-		7EBFC8A12886558E00EF5537 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		9047C99A288149D800CD8113 /* NoticeGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformancesViewCell.swift; sourceTree = "<group>"; };
 		CC21943B28844F9500E93AC7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -364,7 +364,7 @@
 			children = (
 				58621444288FE07400DE04BE /* HowToUseCoreData.txt */,
 				58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */,
-				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
+				7E9037042892365100A06EC7 /* EventModel.swift */,
 				324251B12891805000804AAF /* SearchEventModel.swift */,
 			);
 			path = Model;
@@ -566,11 +566,11 @@
 				F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,
 				CC8B50CC287C1063004EE6DB /* EventDetailViewController.swift in Sources */,
+				7E9037052892365100A06EC7 /* EventModel.swift in Sources */,
 				58D6ECC9288E518B00AB402F /* SubscriptionModel.swift in Sources */,
 				CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */,
 				CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
-				7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */,
 				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */,
