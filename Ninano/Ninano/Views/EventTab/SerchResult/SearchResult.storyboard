@@ -14,7 +14,7 @@
         <!--Search Result View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,13 +55,13 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5lN-WM-NmO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="127" height="13.5"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="토요국악" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWu-Sy-j1s">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="토요국악" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWu-Sy-j1s">
                                                                             <rect key="frame" x="0.0" y="0.0" width="57.5" height="13.5"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2022.03~11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-BF-CrV">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2022.03~11" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eu8-BF-CrV">
                                                                             <rect key="frame" x="65.5" y="0.0" width="61.5" height="13.5"/>
                                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleCaption2"/>
                                                                             <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,7 +110,10 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="126" height="216"/>
                                         <connections>
-                                            <outlet property="performanceImage" destination="Ef2-X8-K6z" id="d1g-IA-gGn"/>
+                                            <outlet property="eventDateLabel" destination="Eu8-BF-CrV" id="63i-ui-u7U"/>
+                                            <outlet property="eventImageView" destination="Ef2-X8-K6z" id="d1g-IA-gGn"/>
+                                            <outlet property="eventPlaceLabel" destination="c71-Fo-zm7" id="9vM-5A-8Sb"/>
+                                            <outlet property="eventTitleLabel" destination="YWu-Sy-j1s" id="O98-K9-xcR"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

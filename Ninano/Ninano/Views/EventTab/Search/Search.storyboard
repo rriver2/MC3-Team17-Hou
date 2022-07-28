@@ -138,12 +138,12 @@
                                     <constraint firstAttribute="height" constant="52" id="jn2-Qp-euu"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass.circle.fill" catalog="system">
+                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass.circle.fill" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                     <color key="baseForegroundColor" red="0.81901115179999995" green="0.3260309696" blue="0.32545870539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="KH4-hj-GIU" kind="show" id="LaQ-je-Nch"/>
+                                    <action selector="didTouchSearchButton:" destination="OYX-C0-wKc" eventType="touchUpInside" id="XSZ-Ht-wDu"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -166,16 +166,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gN-tp-7dt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3586.9565217391305" y="-281.25"/>
-        </scene>
-        <!--SearchResult-->
-        <scene sceneID="zmg-8s-zuV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="SearchResult" id="KH4-hj-GIU" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Tfp-M1-f01"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yW6-g0-6Bg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3594.9275362318845" y="-609.375"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yos-Z4-gWv">

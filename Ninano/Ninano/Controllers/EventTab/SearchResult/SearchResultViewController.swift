@@ -16,7 +16,7 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
     
-    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
+    var eventList: [Event] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,13 +87,15 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     // UICollectionViewDataSource와 관련된 함수 2개
     /// 콜렉션 뷰에 총 몇 개의 셀(cell)을 표시할 것인지를 구현
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.systemImagesTemp.count
+        return self.eventList.count
     }
-    /// 해당 cell에 무슨 셀을 표시할 지를 결정
+    /// 해당 cell에 무슨 view들을 표시할 지를 결정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: PerformancesViewCell.self)
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PerformancesViewCell {
-            cell.imageName = self.systemImagesTemp[indexPath.item]
+            let eventData = self.eventList[indexPath.item]
+            cell.updateEventCell(imageName: eventData.eventPosterName, title: eventData.eventName, date: eventData.eventDate, place: eventData.eventPlace)
+            
             cell.contentView.layer.cornerRadius = 8
             return cell
         }
@@ -102,9 +104,9 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     }
     
     // 셀이 선택되었을 때
-        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            print("셀 클릭됨")
-        }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("셀 클릭됨")
+    }
 }
 
 protocol DateDelivable: AnyObject {
