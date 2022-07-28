@@ -14,21 +14,27 @@ final class PerformancesViewCell: UICollectionViewCell {
     @IBOutlet private weak var eventDateLabel: UILabel!
     @IBOutlet private weak var eventPlaceLabel: UILabel!
     
-    func updateEventCell(imageName: String, title: String, date: String, place: String) {
-        addImage(imageName: imageName)
-        self.eventTitleLabel.text = title
-        self.eventDateLabel.text = date
-        self.eventPlaceLabel.text = place
+    func updateEventCell(event: Event) {
+        self.eventDateLabel.text = event.title
+        self.eventDateLabel.text = event.period
+        self.eventPlaceLabel.text = event.place
+        if let data = event.posterData {
+            print("posterData 있음")
+            //            22008595_p
+            addImage(UIImage: UIImage(data: data) ?? UIImage())
+        } else {
+            print("posterData 없음")
+        }
+        
     }
     
-    private func addImage(imageName: String) {
+    private func addImage(UIImage: UIImage) {
         eventImageView.layer.cornerRadius = 10
         eventImageView.contentMode = .scaleAspectFill
         
-        let image = UIImage(named: imageName) ?? UIImage()
-        let cropRect = cropImageSetting(UIImage: image)
+        let cropRect = cropImageSetting(UIImage: UIImage)
         
-        self.eventImageView.image = image.cropImage(rect: cropRect)
+        self.eventImageView.image = UIImage.cropImage(rect: cropRect)
     }
     
     private func cropImageSetting(UIImage: UIImage) -> CGRect {
