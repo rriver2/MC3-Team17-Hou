@@ -15,9 +15,6 @@ class ModalCalendarViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-//    @IBAction func cancelButton(_ sender: UIBarButtonItem) {
-//        self.dismiss(animated: true, completion: nil)
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
