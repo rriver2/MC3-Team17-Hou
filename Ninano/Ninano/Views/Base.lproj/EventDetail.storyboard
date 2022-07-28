@@ -184,7 +184,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="link" catalog="system" title=""/>
                                                                         <connections>
-                                                                            <segue destination="ach-NZ-0zf" kind="show" id="UGd-bH-7YA"/>
+                                                                            <action selector="linkButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tli-3T-ewq"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="링크" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlx-yM-I2B">
@@ -324,10 +324,11 @@
                     <connections>
                         <outlet property="addDate" destination="XRx-mi-bmq" id="BPi-ZJ-B4k"/>
                         <outlet property="eventDetailSegmentedControl" destination="iqC-s6-R67" id="79Z-lF-PRZ"/>
+                        <outlet property="eventPosterImageView" destination="7qD-2C-9LI" id="h94-1D-gdj"/>
                         <outlet property="likeBtn" destination="LPt-ML-t3I" id="beZ-W8-2RO"/>
-                        <outlet property="linkBtn" destination="jNY-hl-dh2" id="kPR-83-KSE"/>
                         <outlet property="naviItem" destination="oJu-yb-bKY" id="ZRt-Ga-GJp"/>
                         <outlet property="scrollView" destination="E8e-13-wgK" id="z0t-sx-now"/>
+                        <segue destination="ach-NZ-0zf" kind="show" identifier="DetailLinkView" id="98j-hQ-IYT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

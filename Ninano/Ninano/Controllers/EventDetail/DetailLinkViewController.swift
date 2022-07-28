@@ -12,10 +12,17 @@ class DetailLinkViewController: UIViewController {
 
     @IBOutlet weak var detailWebView: WKWebView!
     
+    var urlString: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // MARK: 가데이터
+//        let urlString = "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="
+//        if let url = URL(string: urlString) {
+//            let urlReq = URLRequest(url: url)
+//            detailWebView.load(urlReq)
+//        }
 
-        let urlString = "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="
         if let url = URL(string: urlString) {
             let urlReq = URLRequest(url: url)
             detailWebView.load(urlReq)

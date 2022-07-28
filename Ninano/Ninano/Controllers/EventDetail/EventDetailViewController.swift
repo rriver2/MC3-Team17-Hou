@@ -10,32 +10,27 @@
 
 import UIKit
 // MARK: 토스트 팝업 디팬던시
-// import NotificationToast
-
-class EventDetailViewModel {
-    let title: String
-    let imageURL: URL?
-    var imageData: Data?
-
-    init(
-        title: String,
-        imageURL: URL?
-    ) {
-        self.title = title
-        self.imageURL = imageURL
-    }
-}
+// import NotificationToastz
 
 class EventDetailViewController: UIViewController {
     
-    // MARK: 검색에서 넘겨받은 정보들
-    private var selectedCultureInfo: CulturalEventInfo?
+    @IBAction func linkButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "DetailLinkView", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        var urlString = event?.URL
+        let destinationVC = segue.destination as? DetailLinkViewController
+        // destinationVC?.urlString = urlString!
+        destinationVC?.urlString = "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="
+    }
+    
+    // MARK: 포스터 이미지
+    @IBOutlet weak var eventPosterImageView: UIImageView!
     // MARK: 네비게이션 아이템
     @IBOutlet weak var naviItem: UINavigationItem!
     // MARK: 스크롤뷰
     @IBOutlet weak var scrollView: UIScrollView!
-    // MARK: 포스터 홈페이지 링크 버튼
-    @IBOutlet weak var linkBtn: UIButton!
     // MARK: 포스터 일정 추가 버튼
     @IBOutlet weak var likeBtn: UIButton!
     // MARK: 일정 확정 버튼
@@ -61,23 +56,20 @@ class EventDetailViewController: UIViewController {
 //        toast.show()
 //    }
     
+    var event: Event?
+    
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
         didTapCustomBackButton()
-        // MARK: 이벤트 타이틀 넘겨 받을 때
-        
-//        selectedCultureInfo?.row[title]
-//        naviItem.title = selectedCultureInfo?.row[title]
-        
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        selectedEventInfo()
 
         // MARK: 네비게이션바 백그라운드 투명
         scrollView.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
         addDate.layer.cornerRadius = 15
         setBlurEffect()
         self.eventDetailSegmentedControl.frame = CGRect(x: self.eventDetailSegmentedControl.frame.minX, y: self.eventDetailSegmentedControl.frame.minY, width: eventDetailSegmentedControl.frame.width, height: 25)
@@ -140,8 +132,27 @@ class EventDetailViewController: UIViewController {
 
         return newImage
     }
-    func fetchTopStories() {
-        
+    
+    private func selectedEventInfo() {
+        if let event = event {
+            naviItem.title = event.title
+
+            do {
+                let data = try Data(contentsOf: event.posterURL!)
+                eventPosterImageView.image = UIImage(data: data)
+            } catch {
+                print("Error URL to Data : \(error)")
+            }
+            
+//            event.posterData
+//            event.place
+//            event.area
+//            event.period
+//            event.URL
+//            event.actor
+//            event.info
+//            event.price
+        }
     }
 }
 
