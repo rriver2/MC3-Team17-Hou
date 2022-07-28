@@ -143,7 +143,7 @@
                                     <color key="baseForegroundColor" red="0.81901115179999995" green="0.3260309696" blue="0.32545870539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="clickedSearchButton:" destination="OYX-C0-wKc" eventType="touchUpInside" id="gl0-Eu-Bae"/>
+                                    <action selector="didTouchSearchButton:" destination="OYX-C0-wKc" eventType="touchUpInside" id="XSZ-Ht-wDu"/>
                                 </connections>
                             </button>
                         </barButtonItem>
