@@ -36,7 +36,7 @@ final class PerformancesViewCell: UICollectionViewCell {
     
             let cropRect = CGRect(x: imageX, y: imageY, width: cropWidth, height: cropHeight)
             
-            self.performanceImage.image = StaticFunc.cropImage(image: image ?? UIImage(), rect: cropRect)
+            self.performanceImage.image = image?.cropImage(rect: cropRect)
             
         }
     }

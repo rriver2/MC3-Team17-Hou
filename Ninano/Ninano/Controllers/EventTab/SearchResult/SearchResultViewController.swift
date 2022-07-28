@@ -71,7 +71,7 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let spacing = (14 / 390) * screen
         
         let width = (screen - (inset * 2) - spacing) / 2
-        let height = ( 4 / 3 ) * width + 65
+        let height = (4 / 3) * width + 65
         
         flow.minimumLineSpacing = spacing
         flow.sectionInset.left = inset
