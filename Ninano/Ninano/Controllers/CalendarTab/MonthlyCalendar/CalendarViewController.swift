@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
         self.calendarView.delegate = self
         self.calendarView.dataSource = self
         self.calendarView.register(UINib(nibName: "CalendarCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "calendarCell")
-        self.calendarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapPressGesture)))
+//        self.calendarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapPressGesture)))
     }
     
     private func calculation() {
@@ -123,6 +123,13 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         
         return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "CalendarDetail", bundle: nil)
+        guard let nextVC = storyboard.instantiateViewController(withIdentifier: "CalendarDetailViewController") as? CalendarDetailViewController else { return }
+        nextVC.dates = ["1","2","3","1","2","3","4"]
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
