@@ -38,8 +38,8 @@ class CalendarDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationTitle()
-        customBackButton()
+        configNavigationTitle()
+        didTapCustomBackButton()
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
         weeklyCalendarView.collectionViewLayout = flowLayout
@@ -51,18 +51,18 @@ class CalendarDetailViewController: UIViewController {
         setBlurEffect()
     }
     
-    private func navigationTitle() {
+    private func configNavigationTitle() {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
-        calendarTitle.font = UIFont.boldSystemFont(ofSize: 19)
+        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
         calendarTitle.text = "7월"
         self.navigationItem.titleView = calendarTitle
             
     }
         
-    public func customBackButton() {
+    private func didTapCustomBackButton() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = resizeImage(image: backImage ?? UIImage.init(), newWidth: 40)
+        backImage = resizeImage(image: backImage!, newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = .red
