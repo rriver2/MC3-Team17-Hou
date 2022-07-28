@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event {
+struct TempEvent {
     var eventName: String
     var eventPosterName: String
     var eventPlace: String
@@ -18,11 +18,11 @@ struct Event {
     var isReserved: Bool
 }
 
-struct EventData {
+struct TempEventData {
     var list = [
-        Event(eventName: "반향 2022: 묵", eventPosterName: "banhyang", eventPlace: "경기아트센터 대극장",
+        TempEvent(eventName: "반향 2022: 묵", eventPosterName: "banhyang", eventPlace: "경기아트센터 대극장",
               eventPeriod: "2022.7.15~2022.7.20", eventDate: "", eventTime: "20:00", isLiked: true, isReserved: true),
-        Event(eventName: "국립창극단 <귀토>", eventPosterName: "guiTo", eventPlace: "국립극장 해오름극장",
+        TempEvent(eventName: "국립창극단 <귀토>", eventPosterName: "guiTo", eventPlace: "국립극장 해오름극장",
               eventPeriod: "2022.7.18~2022.7.25", eventDate: "", eventTime: "수목금 19:30, 토일 15:00", isLiked: false, isReserved: true)
     ]
 }
