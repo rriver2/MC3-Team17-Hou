@@ -28,7 +28,7 @@ final class PerformancesViewCell: UICollectionViewCell {
         let image = UIImage(named: imageName) ?? UIImage()
         let cropRect = cropImageSetting(UIImage: image)
         
-        self.eventImageView.image = StaticFunc.cropImage(image: image, rect: cropRect)
+        self.eventImageView.image = image.cropImage(rect: cropRect)
     }
     
     private func cropImageSetting(UIImage: UIImage) -> CGRect {

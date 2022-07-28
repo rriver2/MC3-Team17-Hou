@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-class StaticFunc {
-    static func cropImage(image: UIImage, rect: CGRect) -> UIImage {
-        guard let cgImage = image.cgImage else { return UIImage() }
+extension UIImage {
+    func cropImage(rect: CGRect) -> UIImage {
+        guard let cgImage = self.cgImage else { return UIImage() }
         let croppedCGImage = cgImage.cropping(to: rect)
         return UIImage(cgImage: croppedCGImage!)
     }
