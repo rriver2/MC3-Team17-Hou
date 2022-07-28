@@ -62,7 +62,7 @@ class CalendarDetailViewController: UIViewController {
         
     public func customBackButton() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = resizeImage(image: backImage!, newWidth: 40)
+        backImage = resizeImage(image: backImage ?? UIImage.init(), newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = .red
