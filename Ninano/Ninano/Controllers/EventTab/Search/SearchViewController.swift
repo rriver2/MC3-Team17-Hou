@@ -35,7 +35,7 @@ class SearchViewController: UIViewController {
         Event(eventName: "반향4", eventPosterName: "22005605_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.02.02", eventTime: "20:00", isLiked: true, isReserved: true)
     ]
         // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
-        searchResultView.viewCatagory = .searchCatagory(navigationTitle: "내가 좋아할만한 공연")
+        searchResultView.viewCatagory = .searchResult
         self.navigationController?.pushViewController(searchResultView, animated: true)
     }
     
