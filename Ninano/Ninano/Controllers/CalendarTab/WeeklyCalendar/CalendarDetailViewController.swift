@@ -62,7 +62,7 @@ class CalendarDetailViewController: UIViewController {
         
     private func didTapCustomBackButton() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = resizeImage(image: backImage!, newWidth: 40)
+        backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
@@ -77,19 +77,6 @@ class CalendarDetailViewController: UIViewController {
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
-    }
-    
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-
-        let scale = newWidth / image.size.width
-        let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return newImage
     }
 }
 

@@ -34,9 +34,11 @@ final class SearchResultViewController: UIViewController {
         eventFilterButton.datedeliveryDelegate = self
         
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = backImage ?? UIImage().resizeImage(newWidth: 40)
+        backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        
         switch viewCatagory {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
@@ -45,7 +47,7 @@ final class SearchResultViewController: UIViewController {
                     searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
+                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
                 searchBar.placeholder = "Search User"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
