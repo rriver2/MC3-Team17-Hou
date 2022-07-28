@@ -15,7 +15,7 @@ class CalendarDetailViewController: UIViewController {
     private var eventPoster: UIImage?
     
     private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-    private var dates: [String] = ["17", "18", "19", "20", "21", "22", "23"]
+    var dates: [String] = []
     private var selectedCell: Int?
     
     private var month: String = "7월"
