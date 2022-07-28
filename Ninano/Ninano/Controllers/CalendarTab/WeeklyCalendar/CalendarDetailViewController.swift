@@ -65,7 +65,7 @@ class CalendarDetailViewController: UIViewController {
         backImage = resizeImage(image: backImage!, newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = .red
+        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
     }
 
     @objc private func didTapBackButton() {
