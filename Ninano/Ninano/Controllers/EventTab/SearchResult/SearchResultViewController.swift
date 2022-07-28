@@ -7,49 +7,25 @@
 
 import UIKit
 
-protocol DateDelivable: AnyObject {
-    func addDate(date: String)
-}
-
-final class SearchResultViewController: UIViewController, DateDelivable {
+final class SearchResultViewController: UIViewController {
     
+    @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
     @IBOutlet private weak var keywordNotification: UIButton!
-    @IBOutlet private weak var dateFilterButton: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
-    private var filters: [Filter] = []
-    private var selectedLocal: LocationType? {
-        didSet {
-            // TODO: 밑에 공연 filtering
-            print("local inited: \(selectedLocal?.rawValue ?? "")")
-        }
-    }
-    fileprivate let systemImagesTemp = ["performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2", "performanceImage1", "performanceImage2"]
     
-    private enum Filter {
-        case local
-        case category
-        case date
-    }
-    
-    private enum LocationType: String {
-        case gangnam = "강남"
-        case gangbook = "강북"
-        case gurogu = "구로구"
-        case gwanakgu = "관악구"
-        case gwangjingu = "광진구"
-        case dobonggu = "도봉구"
-        case nowongu = "노원구"
-    }
+    var eventList: [Event] = []
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
+        eventFilterButton.datedeliveryDelegate = self
         
         let uiImage = UIImage(systemName: "chevron.left")
         let undo = UIBarButtonItem(image: uiImage, style: .plain, target: self, action: #selector(didTapBackButton))
@@ -65,44 +41,9 @@ final class SearchResultViewController: UIViewController, DateDelivable {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @objc private func presentModalController() {
-        let controller = CalenderSearchResultViewController()
-        present(controller, animated: true, completion: nil)
-    }
-    
-    private func clickedFilterButtonColorChange(_ sender: UIButton) {
-        let button = sender
-            button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-            button.configuration?.cornerStyle = .capsule
-    }
-    
-    func addDate(date: String) {
-        dateFilterButton.setTitle(date, for: .normal)
-        clickedFilterButtonColorChange(dateFilterButton)
-    }
-    
     @IBAction private func keywordNotificationButton(_ sender: UIButton) {
     }
     
-    @IBAction private func localFilterButton(_ sender: UIButton) {
-        let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
-        let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
-        for local in locals {
-            let location = local.rawValue
-            actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { [self] _ in
-                clickedFilterButtonColorChange(sender)
-                sender.titleLabel?.text = location
-            }))
-        }
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
-    @IBAction private func dateFilterButton(_ sender: UIButton) {
-        guard let calenderSearchResult = self.storyboard?.instantiateViewController(withIdentifier: "CalenderSearchResultViewController") as? CalenderSearchResultViewController else { return }
-                self.present(calenderSearchResult, animated: true, completion: nil)
-        calenderSearchResult.datedeliveryDelegate = self
-    }
     @IBAction private func notificationSettingsButton(_ sender: UIButton) {
         // TODO: 키워드 값 넣는 로직
         if isNotificationButtonSelected == false {
@@ -121,32 +62,78 @@ final class SearchResultViewController: UIViewController, DateDelivable {
 }
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
-        let numberOfCells: CGFloat = 3
-        let width = collectionView.frame.size.width - (flowLayout.minimumInteritemSpacing * (numberOfCells-1))
-        return CGSize(width: width/(numberOfCells), height: width/(numberOfCells))
-    }
-}
-
-extension SearchResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.systemImagesTemp.count
+        
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
+        let screen = UIScreen.main.bounds.width
+        let inset = (25 / 390) * screen
+        let spacing = (14 / 390) * screen
+        
+        let width = (screen - (inset * 2) - spacing) / 2
+        let height = (4 / 3) * width + 65
+        
+        flow.minimumLineSpacing = spacing
+        flow.sectionInset.left = inset
+        
+        return CGSize(width: width, height: height)
     }
     
+}
+
+// 컬렉션 뷰의 셀은 총 몇 개? (UICollectionViewDataSource)
+// 컬렉션 뷰를 어떻게 보여줄 것인가 ? (UICollectionViewDelegate)
+extension SearchResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    // UICollectionViewDataSource와 관련된 함수 2개
+    /// 콜렉션 뷰에 총 몇 개의 셀(cell)을 표시할 것인지를 구현
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.eventList.count
+    }
+    /// 해당 cell에 무슨 view들을 표시할 지를 결정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: PerformancesViewCell.self)
-        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PerformancesViewCell {
-            cell.imageName = self.systemImagesTemp[indexPath.item]
+            let eventData = self.eventList[indexPath.item]
+            cell.updateEventCell(imageName: eventData.eventPosterName, title: eventData.eventName, date: eventData.eventDate, place: eventData.eventPlace)
+            
             cell.contentView.layer.cornerRadius = 8
             return cell
         }
         
         return PerformancesViewCell()
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
+    }
+}
+
+protocol DateDelivable: AnyObject {
+    func addDate(date: Date)
+}
+
+protocol FilterButtonClickable: AnyObject {
+    func openLocalActionSheet(actionSheet: UIAlertController)
+    func openCaledarSearchResultView()
+}
+
+extension SearchResultViewController: DateDelivable, FilterButtonClickable {
+    
+    func addDate(date: Date) {
+        let koreanDate = date.convertDateToKoreanDate(.koreanDate)
+        let button: UIButton = eventFilterButton.dateFilterButton
+        button.setTitle(koreanDate, for: .normal)
+        button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
+        button.configuration?.cornerStyle = .capsule
+    }
+    
+    func openLocalActionSheet(actionSheet: UIAlertController) {
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func openCaledarSearchResultView() {
+        guard let calenderModal = UIStoryboard(name: "CalenderModal", bundle: .main).instantiateViewController(withIdentifier: "CalenderModalViewController") as? CalenderModalViewController else { return }
+        calenderModal.datedeliveryDelegate = self
+        self.present(calenderModal, animated: true, completion: nil)
     }
 }
