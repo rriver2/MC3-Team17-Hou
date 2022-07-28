@@ -44,7 +44,7 @@ class CalendarDetailViewController: UIViewController {
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
         weeklyCalendarView.collectionViewLayout = flowLayout
         
-        monthImage = UIImage(named: "JulyBG")
+        monthImage = UIImage(named: "calendarBackground")
         monthImageView.image = monthImage
         topBackground.layer.cornerRadius = 25
         self.dayEventDetailView.backgroundColor = .clear
