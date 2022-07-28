@@ -21,18 +21,18 @@ class SearchViewController: UIViewController {
     }
     
     private var articles: APIResponse?
-    private var viewModels = [SearchEventCellViewModel]()
+    private var eventList = [Event]()
     
     @IBOutlet private var categoryTableView: UITableView!
     
     @IBAction func didTouchSearchButton(_ sender: UIButton) {
         guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
         // TODO: [Event] 타입의 eventData 전달해주세요 ! 우선 가데이터로 넣어놨습니다 !
-        searchResultView.eventList = [
-        Event(eventName: "반향1", eventPosterName: "22008615_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.14", eventTime: "20:00", isLiked: true, isReserved: true),
-        Event(eventName: "반향2", eventPosterName: "22008595_p", eventPlace: "경기아트센터 대극장2", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.21", eventTime: "20:00", isLiked: true, isReserved: true),
-        Event(eventName: "반향3", eventPosterName: "22006547_p", eventPlace: "경기아트센터 대극장3", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.12", eventTime: "20:00", isLiked: true, isReserved: true),
-        Event(eventName: "반향4", eventPosterName: "22005605_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.02.02", eventTime: "20:00", isLiked: true, isReserved: true)
+        searchResultView.tempEventList = [
+        TempEvent(eventName: "반향1", eventPosterName: "22008615_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.14", eventTime: "20:00", isLiked: true, isReserved: true),
+        TempEvent(eventName: "반향2", eventPosterName: "22008595_p", eventPlace: "경기아트센터 대극장2", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.21", eventTime: "20:00", isLiked: true, isReserved: true),
+        TempEvent(eventName: "반향3", eventPosterName: "22006547_p", eventPlace: "경기아트센터 대극장3", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.12", eventTime: "20:00", isLiked: true, isReserved: true),
+        TempEvent(eventName: "반향4", eventPosterName: "22005605_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.02.02", eventTime: "20:00", isLiked: true, isReserved: true)
     ]
         // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
         searchResultView.viewCatagory = .searchResult
@@ -59,26 +59,34 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryName.configuration = categoryConfig
         cell.categoryName.titleLabel?.font = categoryFont
         cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.viewModels = viewModels
+        cell.eventList = eventList
         return cell
     }
     
     func fetchTopStories() {
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
-                case .success(let articles):
-                    self?.articles = articles
-                    // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
-                    self?.viewModels = articles.culturalEventInfo.row.compactMap({
-                        SearchEventCellViewModel(
-                            imageURL: URL(string: $0.mainImg ?? "")
-                        )
-                    })
-                    DispatchQueue.main.async {
-                        self?.categoryTableView.reloadData()
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let articles):
+                self?.articles = articles
+                // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
+                self?.eventList = articles.culturalEventInfo.row.compactMap({
+                    Event(
+                        title: String($0.title),
+                        posterURL: URL(string: $0.mainImg ?? ""),
+                        place: String($0.place),
+                        area: String($0.guname),
+                        period: String($0.date),
+                        URL: String($0.orgLink ?? ""),
+                        actor: String($0.player),
+                        info: String($0.program),
+                        price: String($0.useFee)
+                    )
+                })
+                DispatchQueue.main.async {
+                    self?.categoryTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }

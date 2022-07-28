@@ -8,8 +8,8 @@
 import UIKit
 
 class CalendarDetailViewController: UIViewController {
-    private var eventList = EventData().list
-    private var event: Event?
+    private var tempEventList = TempEventData().list
+    private var tempEvent: TempEvent?
     
     private var monthImage: UIImage?
     private var eventPoster: UIImage?
@@ -141,7 +141,7 @@ extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventList.count
+        return tempEventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,16 +153,16 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
         
-        let eventData = eventList[indexPath.row]
+        let tempEventData = tempEventList[indexPath.row]
         
-        eventPoster = UIImage(named: "\(eventData.eventPosterName)")
+        eventPoster = UIImage(named: "\(tempEventData.eventPosterName)")
         cell.posterImage.image = eventPoster
         cell.posterImage.layer.cornerRadius = 10
 
-        cell.eventNameLabel.text = eventData.eventName
-        cell.eventPlaceLabel.text = eventData.eventPlace
-        cell.eventPeriodLabel.text = eventData.eventPeriod
-        cell.eventTimeLabel.text = eventData.eventTime
+        cell.eventNameLabel.text = tempEventData.eventName
+        cell.eventPlaceLabel.text = tempEventData.eventPlace
+        cell.eventPeriodLabel.text = tempEventData.eventPeriod
+        cell.eventTimeLabel.text = tempEventData.eventTime
         
         cell.planned.image = calSymbol
         cell.planned.preferredSymbolConfiguration = calConfig
@@ -170,7 +170,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         heartConfig = heartConfig.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20)))
         cell.liked.image = heartSymbol
         cell.liked.preferredSymbolConfiguration = heartConfig
-        cell.liked.alpha = eventData.isLiked == true ? 1.0 : 0.0
+        cell.liked.alpha = tempEventData.isLiked == true ? 1.0 : 0.0
         
         return cell
     }
