@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="3559.420289855073" y="247.76785714285714"/>
         </scene>
-        <!--Large Navigation-->
+        <!--Navigation Controller-->
         <scene sceneID="m2U-j1-cZH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0AE-eA-sjr" customClass="LargeNavigation" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0AE-eA-sjr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="REt-2u-hSr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
