@@ -9,6 +9,8 @@ import UIKit
 
 class NoticeViewController: UIViewController {
     
+    private var likeViewModel = LikeDataModel()
+    
     @IBOutlet weak var keywordContainerView: UIView!
     @IBOutlet weak var interestContainerView: UIView!
     @IBOutlet weak var mainTitle: UILabel!
@@ -17,15 +19,12 @@ class NoticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        keywordContainerView.alpha = 1.0
-        interestContainerView.alpha = 0.0
-        buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
-        self.segmentedControl.frame = CGRect(x: self.segmentedControl.frame.minX, y: self.segmentedControl.frame.minY, width: segmentedControl.frame.width, height: 25)
-        segmentedControl.highlightSelectedSegment()
+        layout()
     }
-
+    
     @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
         segmentedControl.underlinePosition()
+        buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -38,7 +37,6 @@ class NoticeViewController: UIViewController {
             keywordContainerView.alpha = 0
             interestContainerView.alpha = 1
             buttonState.setTitle("목록 전체 삭제", for: .normal)
-            buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 50)
             buttonState.tintColor = #colorLiteral(red: 0.2941176471, green: 0.3568627451, blue: 0.6392156863, alpha: 1)
         default:
             break
@@ -49,18 +47,22 @@ class NoticeViewController: UIViewController {
         
         switch keywordContainerView.alpha {
         case 1.0:
-            print("Only should the team know the content")
+            print("Move to Keyword settings")
         case 0.0:
             let alert = UIAlertController(title: "관심 목록을 삭제합니다.", message: "지금 삭제하시면 현재까지 등록된 내용이 모두 삭제됩니다.", preferredStyle: .alert)
             let alertNo = UIAlertAction(title: "취소", style: .default, handler: nil)
-            let alertYes = UIAlertAction(title: "삭제", style: .destructive, handler: nil)
-            // handler: 버튼을 눌렀을 때 실행하는 행동을 추가 -> closure 로 빼자
-            
+            let alertYes = UIAlertAction(title: "삭제", style: .destructive) { _ in
+                self.likeViewModel.removeAllLikeItems()
+            }
+
             alert.addAction(alertYes)
             alert.addAction(alertNo)
             
+/// TODO: completion 에 DATA.reloadData() 안 들어가도 될까?? -> Test 해봐야 할듯
             present(alert, animated: true, completion: nil)
-            // TODO: completion: 해당 alert 가 성공적으로 수행되고 나서 이 함수가 끝난 뒤 뭘 할거냐? 라고 지정해주는 부분 이것도 closure 로 빼자. 
+//            present(alert, animated: true) {
+//                <#code#>
+//            }
         default:
             break
         }
@@ -68,5 +70,23 @@ class NoticeViewController: UIViewController {
     
     @IBAction func cancelNoticeButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension NoticeViewController {
+    
+    func layout() {
+        keywordContainerView.alpha = 1.0
+        interestContainerView.alpha = 0.0
+        buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
+        mainTitle.font = UIFont.boldSystemFont(ofSize: 30)
+        self.segmentedControl.frame = CGRect(x: self.segmentedControl.frame.minX, y: self.segmentedControl.frame.minY, width: segmentedControl.frame.width, height: 25)
+        segmentedControl.highlightSelectedSegment()
+        // Button font Weight change
+        buttonState.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { textBold in
+            var result = textBold
+            result.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            return result
+        }
     }
 }
