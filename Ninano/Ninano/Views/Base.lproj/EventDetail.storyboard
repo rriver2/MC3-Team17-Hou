@@ -319,7 +319,12 @@
                             <constraint firstItem="uHE-a2-BGK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="jwF-VW-6Dd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="oJu-yb-bKY"/>
+                    <navigationItem key="navigationItem" title="Title" leftItemsSupplementBackButton="YES" id="oJu-yb-bKY">
+                        <barButtonItem key="leftBarButtonItem" id="Yif-aG-vBd">
+                            <imageReference key="image" image="BackBtn" symbolScale="medium"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addDate" destination="XRx-mi-bmq" id="BPi-ZJ-B4k"/>
@@ -463,6 +468,7 @@
     </scenes>
     <resources>
         <image name="22000743_p" width="300" height="400"/>
+        <image name="BackBtn" width="35" height="35"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="link" catalog="system" width="128" height="122"/>
