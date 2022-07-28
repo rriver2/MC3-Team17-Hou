@@ -16,7 +16,7 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
     
-    var eventList: [Event] = []
+    var tempEventList: [TempEvent] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +87,14 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     // UICollectionViewDataSource와 관련된 함수 2개
     /// 콜렉션 뷰에 총 몇 개의 셀(cell)을 표시할 것인지를 구현
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.eventList.count
+        return self.tempEventList.count
     }
     /// 해당 cell에 무슨 view들을 표시할 지를 결정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: PerformancesViewCell.self)
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PerformancesViewCell {
-            let eventData = self.eventList[indexPath.item]
-            cell.updateEventCell(imageName: eventData.eventPosterName, title: eventData.eventName, date: eventData.eventDate, place: eventData.eventPlace)
+            let tempEventData = self.tempEventList[indexPath.item]
+            cell.updateEventCell(imageName: tempEventData.eventPosterName, title: tempEventData.eventName, date: tempEventData.eventDate, place: tempEventData.eventPlace)
             
             cell.contentView.layer.cornerRadius = 8
             return cell
