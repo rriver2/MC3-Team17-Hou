@@ -17,6 +17,12 @@ final class SearchResultViewController: UIViewController {
     private var isNotificationButtonSelected = false
     
     var eventList: [Event] = []
+    var viewCatagory: SearchDetailCatagory?
+    
+    enum SearchDetailCatagory {
+        case searchCatagory(navigationTitle: String)
+        case searchResult
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +33,24 @@ final class SearchResultViewController: UIViewController {
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
         
-        let uiImage = UIImage(systemName: "chevron.left")
-        let undo = UIBarButtonItem(image: uiImage, style: .plain, target: self, action: #selector(didTapBackButton))
-        self.navigationItem.leftBarButtonItem = undo
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
-        searchBar.placeholder = "Search User"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
+        var backImage = UIImage(systemName: "chevron.backward.square.fill")
+        backImage = backImage ?? UIImage().resizeImage(newWidth: 40)
+        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        switch viewCatagory {
+            case .searchCatagory(let navigationTitle):
+                let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+                searchCatagoryTitle.textAlignment = .center
+                searchCatagoryTitle.font = UIFont.systemFont(ofSize: 20)
+                    searchCatagoryTitle.text = navigationTitle
+                self.navigationItem.titleView = searchCatagoryTitle
+            case .searchResult:
+                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
+                searchBar.placeholder = "Search User"
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
+            case .none:
+                print("viewCatagory error")
+        }
         
         keywordNotification.layer.cornerRadius = 15
     }

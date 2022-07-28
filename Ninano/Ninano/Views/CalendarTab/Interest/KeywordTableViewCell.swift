@@ -13,6 +13,11 @@ final class KeywordTableViewCell: UITableViewCell {
     @IBOutlet weak var keywordAlarmTitle: UILabel!
     @IBOutlet weak var keywordTitle: UILabel!
     @IBOutlet weak var keywordImage: UIImageView!
+    @IBOutlet weak var keywordBackgroundCell: UIView!
+    
+    @IBAction func keywordToDetail(_ sender: UIButton) {
+        print("hello?")
+    }
     
 //    override func awakeFromNib() {
 //        super.awakeFromNib()

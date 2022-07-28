@@ -51,7 +51,7 @@
 		CC8B50D7287C1064004EE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC8B50D5287C1064004EE6DB /* LaunchScreen.storyboard */; };
 		CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CC8CFABF288D318E003BA65C /* .swiftLint.yml */; };
 		CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */; };
-		CC997B472890EBCB0079E3EF /* Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC997B462890EBCB0079E3EF /* Static.swift */; };
+		CC997B472890EBCB0079E3EF /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC997B462890EBCB0079E3EF /* UIImage.swift */; };
 		CCCA9E4B288EB6CE0070F231 /* EventFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */; };
 		CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */; };
 		CCCA9E58288FCF1C0070F231 /* CalenderModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF0D97028866C0E00F61495 /* CalenderModalViewController.swift */; };
@@ -116,7 +116,7 @@
 		CC8B50D8287C1064004EE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC8CFABF288D318E003BA65C /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftLint.yml; sourceTree = "<group>"; };
 		CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
-		CC997B462890EBCB0079E3EF /* Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Static.swift; sourceTree = "<group>"; };
+		CC997B462890EBCB0079E3EF /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		CCCA9E4A288EB6CE0070F231 /* EventFilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterButton.swift; sourceTree = "<group>"; };
 		CCCA9E4C288EB6DB0070F231 /* EventFilterButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventFilterButton.xib; sourceTree = "<group>"; };
 		CCCA9E54288FC8A10070F231 /* CalenderModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalenderModal.storyboard; sourceTree = "<group>"; };
@@ -189,7 +189,7 @@
 			children = (
 				CC21943B28844F9500E93AC7 /* UIColor.swift */,
 				CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */,
-				CC997B462890EBCB0079E3EF /* Static.swift */,
+				CC997B462890EBCB0079E3EF /* UIImage.swift */,
 				CC4FA480288E97F200B52EDA /* customDesign */,
 			);
 			path = extension;
@@ -579,7 +579,7 @@
 				F6AC89EB288D143B006B3275 /* TestTableViewCell.swift in Sources */,
 				4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */,
 				58D6ECDD288E75BC00AB402F /* CoreTestTableViewCell.swift in Sources */,
-				CC997B472890EBCB0079E3EF /* Static.swift in Sources */,
+				CC997B472890EBCB0079E3EF /* UIImage.swift in Sources */,
 				9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */,
 				CC7B66302892813D00689382 /* TempEventModel.swift in Sources */,
 				587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */,
