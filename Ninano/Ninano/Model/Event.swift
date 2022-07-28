@@ -29,5 +29,19 @@ class Event {
         self.actor = actor
         self.info = info
         self.price = price
+        fetchImage(url: posterURL)
+    }
+    
+    func fetchImage(url: URL?) {
+        if let url = url {
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                self?.posterData = data
+            }.resume()
+        } else {
+            print("posterURL 없음")
+        }
     }
 }
