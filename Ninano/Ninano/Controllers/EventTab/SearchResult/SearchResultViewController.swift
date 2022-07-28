@@ -102,10 +102,9 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
         
         return PerformancesViewCell()
     }
-    
-    // 셀이 선택되었을 때
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("셀 클릭됨")
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
 }
 
