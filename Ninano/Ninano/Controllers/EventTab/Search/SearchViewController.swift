@@ -26,8 +26,8 @@ class SearchViewController: UIViewController {
     @IBOutlet private var categoryTableView: UITableView!
     
     @IBAction func didTouchSearchButton(_ sender: UIButton) {
-        guard let calenderModal = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
-         calenderModal.eventList = eventList
+        guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
+        searchResultView.eventList = eventList
         // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
         searchResultView.viewCatagory = .searchResult
         self.navigationController?.pushViewController(searchResultView, animated: true)
