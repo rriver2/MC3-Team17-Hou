@@ -4,6 +4,7 @@
 //
 //  Created by 임영후 on 2022/07/18.
 //
+//  웹뷰로 연결 시 사용
 
 import UIKit
 import WebKit

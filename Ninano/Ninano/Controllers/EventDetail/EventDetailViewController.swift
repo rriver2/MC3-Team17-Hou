@@ -15,17 +15,20 @@ import UIKit
 class EventDetailViewController: UIViewController {
     
     @IBAction func linkButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "DetailLinkView", sender: self)
+        guard let urlString = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="),
+              UIApplication.shared.canOpenURL(urlString) else { return }
+              UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var urlString = event?.URL
-        let destinationVC = segue.destination as? DetailLinkViewController
-        // destinationVC?.urlString = urlString!
-        destinationVC?.urlString = "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var urlString = event?.URL
+//        let destinationVC = segue.destination as? DetailLinkViewController
+//        // destinationVC?.urlString = urlString!
+//    }
+    // MARK: 포스터 공유 시트 버튼
+    @IBAction func shareSheetBtn(_ sender: Any) {
+        presentShareSheet()
     }
-    
-    // MARK: 포스터 이미지
+        // MARK: 포스터 이미지
     @IBOutlet weak var eventPosterImageView: UIImageView!
     // MARK: 네비게이션 아이템
     @IBOutlet weak var naviItem: UINavigationItem!
@@ -37,10 +40,11 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var addDate: UIButton!
     // MARK: segmentedControl
     @IBOutlet weak var eventDetailSegmentedControl: UISegmentedControl!
-    // MARK: 포스터 공유 시트 버튼
-    @IBAction func shareSheetBtn(_ sender: Any) {
-        presentShareSheet()
-    }
+    
+    @IBOutlet weak var eventTitleLabel: UILabel!
+    @IBOutlet weak var eventPlaceLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    
     
     // MARK: 토스트 팝업 버튼 (추후 사용예정)
 //    @IBAction func toastPopUp(_ sender: Any) {
@@ -136,22 +140,23 @@ class EventDetailViewController: UIViewController {
     private func selectedEventInfo() {
         if let event = event {
             naviItem.title = event.title
-
+            eventTitleLabel.text = event.title
+            eventPlaceLabel.text = event.place
+            eventDateLabel.text = event.period
             do {
                 let data = try Data(contentsOf: event.posterURL!)
                 eventPosterImageView.image = UIImage(data: data)
             } catch {
                 print("Error URL to Data : \(error)")
             }
-            
+
 //            event.posterData
-//            event.place
 //            event.area
-//            event.period
+            
 //            event.URL
+            
 //            event.actor
 //            event.info
-//            event.price
         }
     }
 }
