@@ -11,7 +11,21 @@
 import UIKit
 // MARK: 토스트 팝업 디팬던시
 // import NotificationToast
-                                        
+
+class EventDetailViewModel {
+    let title: String
+    let imageURL: URL?
+    var imageData: Data?
+
+    init(
+        title: String,
+        imageURL: URL?
+    ) {
+        self.title = title
+        self.imageURL = imageURL
+    }
+}
+
 class EventDetailViewController: UIViewController {
     
     // MARK: 검색에서 넘겨받은 정보들
@@ -47,12 +61,14 @@ class EventDetailViewController: UIViewController {
 //        toast.show()
 //    }
     
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        didTapCustomBackButton()
         // MARK: 이벤트 타이틀 넘겨 받을 때
+        
 //        selectedCultureInfo?.row[title]
-//
 //        naviItem.title = selectedCultureInfo?.row[title]
         
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
@@ -74,9 +90,14 @@ class EventDetailViewController: UIViewController {
         
         self.navigationController?.navigationBar.backgroundColor = .clear
         UIApplication.shared.statusBarUIView?.backgroundColor = .clear
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-
     }
+    
+    // MARK: 네비게이션 컨트롤러 백버튼 히든
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.hidesBackButton = true
+    }
+    
     // MARK: 일정추가 버튼 백그라운드 블러 효과
     func setBlurEffect() {
         let blurEffect = UIBlurEffect(style: .regular)
@@ -93,23 +114,50 @@ class EventDetailViewController: UIViewController {
         let shareSheetVC = UIActivityViewController(activityItems: [image, url], applicationActivities: nil)
         present(shareSheetVC, animated: true)
     }
+    
+    // MARK: 백버튼
+    private func didTapCustomBackButton() {
+        var backImage = UIImage(systemName: "chevron.backward.square.fill")
+        backImage = resizeImage(image: backImage!, newWidth: 40)
+        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationItem.leftBarButtonItem = undo
+        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+    }
+
+    @objc private func didTapBackButton() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
+    }
+    func fetchTopStories() {
+        
+    }
 }
 
 // MARK: - Scroll View Delegate
 extension EventDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.y / 100
-        print(offset)
         let color = UIColor(red: 1, green: 1, blue: 1, alpha: offset)
-        let textColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
+        let textColor = UIColor(red: 0, green: 0, blue: 0, alpha: offset)
+        
         if offset > 1 {
             offset = 1
-            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
             self.navigationController?.navigationBar.backgroundColor = color
             UIApplication.shared.statusBarUIView?.backgroundColor = color
             self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: textColor]
         } else {
-            self.navigationController?.navigationBar.tintColor = UIColor(hue: 1, saturation: offset, brightness: 1, alpha: 1)
             self.navigationController?.navigationBar.backgroundColor = color
             UIApplication.shared.statusBarUIView?.backgroundColor = color
             self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: textColor]
