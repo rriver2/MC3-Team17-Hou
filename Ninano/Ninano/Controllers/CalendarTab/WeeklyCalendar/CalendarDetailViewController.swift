@@ -54,7 +54,7 @@ class CalendarDetailViewController: UIViewController {
     private func navigationTitle() {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
-        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
+        calendarTitle.font = UIFont.boldSystemFont(ofSize: 19)
         calendarTitle.text = "7월"
         self.navigationItem.titleView = calendarTitle
             
