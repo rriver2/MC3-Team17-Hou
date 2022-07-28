@@ -8,14 +8,14 @@
 import UIKit
 
 class CalendarDetailViewController: UIViewController {
-    private var eventList = EventData().list
-    private var event: Event?
+    private var tempEventList = TempEventData().list
+    private var tempEvent: TempEvent?
     
     private var monthImage: UIImage?
     private var eventPoster: UIImage?
     
     private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-    private var dates: [String] = ["17", "18", "19", "20", "21", "22", "23"]
+    var dates: [String] = []
     private var selectedCell: Int?
     
     private var month: String = "7월"
@@ -30,7 +30,6 @@ class CalendarDetailViewController: UIViewController {
     
     private let calInset: CGFloat = 15.0
     
-    @IBOutlet weak var monthBackButton: UIButton!
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
     @IBOutlet weak var weeklyCalendarView: UICollectionView!
@@ -39,10 +38,8 @@ class CalendarDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backButtonConfig()
-        monthBackButton.titleLabel?.font = .boldSystemFont(ofSize: 25)
-        monthBackButton.imageView?.preferredSymbolConfiguration = backButton
-        
+        configNavigationTitle()
+        didTapCustomBackButton()
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: calInset, bottom: 0, right: calInset)
         weeklyCalendarView.collectionViewLayout = flowLayout
@@ -54,16 +51,25 @@ class CalendarDetailViewController: UIViewController {
         setBlurEffect()
     }
     
-    func backButtonConfig() {
-        monthBackButton.configuration = .plain()
-        monthBackButton.configuration?.title = month
+    private func configNavigationTitle() {
+        let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        calendarTitle.textAlignment = .center
+        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
+        calendarTitle.text = "7월"
+        self.navigationItem.titleView = calendarTitle
+            
+    }
         
-        monthBackButton.configuration?.image = backSymbol
-        monthBackButton.configuration?.imagePlacement = .leading
-        monthBackButton.configuration?.imagePadding = 15
-        
-        monthBackButton.configuration?.baseForegroundColor = .black
-        monthBackButton.configuration?.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+    private func didTapCustomBackButton() {
+        var backImage = UIImage(systemName: "chevron.backward.square.fill")
+        backImage = resizeImage(image: backImage!, newWidth: 40)
+        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationItem.leftBarButtonItem = undo
+        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+    }
+
+    @objc private func didTapBackButton() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setBlurEffect() {
@@ -71,6 +77,19 @@ class CalendarDetailViewController: UIViewController {
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
+
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }
 
@@ -122,7 +141,7 @@ extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
 
 extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventList.count
+        return tempEventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -134,16 +153,16 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
         
-        let eventData = eventList[indexPath.row]
+        let tempEventData = tempEventList[indexPath.row]
         
-        eventPoster = UIImage(named: "\(eventData.eventPosterName)")
+        eventPoster = UIImage(named: "\(tempEventData.eventPosterName)")
         cell.posterImage.image = eventPoster
         cell.posterImage.layer.cornerRadius = 10
 
-        cell.eventNameLabel.text = eventData.eventName
-        cell.eventPlaceLabel.text = eventData.eventPlace
-        cell.eventPeriodLabel.text = eventData.eventPeriod
-        cell.eventTimeLabel.text = eventData.eventTime
+        cell.eventNameLabel.text = tempEventData.eventName
+        cell.eventPlaceLabel.text = tempEventData.eventPlace
+        cell.eventPeriodLabel.text = tempEventData.eventPeriod
+        cell.eventTimeLabel.text = tempEventData.eventTime
         
         cell.planned.image = calSymbol
         cell.planned.preferredSymbolConfiguration = calConfig
@@ -151,7 +170,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         heartConfig = heartConfig.applying(UIImage.SymbolConfiguration(font: .systemFont(ofSize: 20)))
         cell.liked.image = heartSymbol
         cell.liked.preferredSymbolConfiguration = heartConfig
-        cell.liked.alpha = eventData.isLiked == true ? 1.0 : 0.0
+        cell.liked.alpha = tempEventData.isLiked == true ? 1.0 : 0.0
         
         return cell
     }

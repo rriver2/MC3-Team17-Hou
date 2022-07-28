@@ -22,13 +22,18 @@ class SearchViewController: UIViewController {
     }
     
     private var articles: APIResponse?
-    private var viewModels = [SearchEventCellViewModel]()
-    
-    @IBAction func detailButton(_ sender: Any) {
-    }
+    private var eventList = [Event]()
     
     @IBOutlet private var categoryTableView: UITableView!
-
+    
+    @IBAction func didTouchSearchButton(_ sender: UIButton) {
+        guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
+        searchResultView.eventList = eventList
+        // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
+        searchResultView.viewCatagory = .searchResult
+        self.navigationController?.pushViewController(searchResultView, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,7 +56,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryName.titleLabel?.font = categoryFont
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.viewModels = viewModels
+        cell.eventList = eventList
         return cell
     }
     
@@ -66,9 +71,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             case .success(let articles):
                 self?.articles = articles
                 // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
-                self?.viewModels = articles.culturalEventInfo.row.compactMap({
-                    SearchEventCellViewModel(
-                        imageURL: URL(string: $0.mainImg ?? "")
+                self?.eventList = articles.culturalEventInfo.row.compactMap({
+                    Event(
+                        title: String($0.title),
+                        posterURL: URL(string: $0.mainImg ?? ""),
+                        place: String($0.place),
+                        area: String($0.guname),
+                        period: String($0.date),
+                        URL: String($0.orgLink ?? ""),
+                        actor: String($0.player),
+                        info: String($0.program),
+                        price: String($0.useFee)
                     )
                 })
                 DispatchQueue.main.async {

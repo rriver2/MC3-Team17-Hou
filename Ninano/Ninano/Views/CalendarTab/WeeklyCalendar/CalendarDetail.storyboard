@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -13,7 +12,7 @@
         <!--Calendar Detail View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Y6W-OH-hqX" customClass="CalendarDetailViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarDetailViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="CalendarDetailViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,23 +85,12 @@
                                             <outlet property="delegate" destination="Y6W-OH-hqX" id="JPr-T5-wrv"/>
                                         </connections>
                                     </collectionView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEL-12-kYU">
-                                        <rect key="frame" x="25" y="62" width="123" height="44"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="Button" imagePadding="7">
-                                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="25"/>
-                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </buttonConfiguration>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="mKa-Xb-6YP" firstAttribute="centerX" secondItem="sAq-tb-6co" secondAttribute="centerX" id="KFQ-N8-1Ms"/>
                                     <constraint firstItem="mKa-Xb-6YP" firstAttribute="leading" secondItem="sAq-tb-6co" secondAttribute="leading" id="LFY-yc-uM8"/>
                                     <constraint firstAttribute="bottom" secondItem="mKa-Xb-6YP" secondAttribute="bottom" constant="20" id="QGl-07-1TW"/>
-                                    <constraint firstItem="XEL-12-kYU" firstAttribute="leading" secondItem="sAq-tb-6co" secondAttribute="leading" constant="25" id="TXs-zm-2gc"/>
-                                    <constraint firstItem="XEL-12-kYU" firstAttribute="top" secondItem="sAq-tb-6co" secondAttribute="top" constant="62" id="UzZ-S5-Up8"/>
                                     <constraint firstAttribute="height" constant="186" id="hBM-r9-j6a"/>
                                     <constraint firstAttribute="trailing" secondItem="mKa-Xb-6YP" secondAttribute="trailing" id="yTg-xS-o3b"/>
                                 </constraints>
@@ -216,7 +204,6 @@
                     </view>
                     <connections>
                         <outlet property="dayEventDetailView" destination="XuH-jZ-yQt" id="c04-pV-o9B"/>
-                        <outlet property="monthBackButton" destination="XEL-12-kYU" id="zgV-Dc-4A1"/>
                         <outlet property="monthImageView" destination="psv-04-UiX" id="mWU-6k-Rfr"/>
                         <outlet property="topBackground" destination="sAq-tb-6co" id="x3m-Dy-CvV"/>
                         <outlet property="weeklyCalendarView" destination="mKa-Xb-6YP" id="dyd-ZV-138"/>
@@ -228,7 +215,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

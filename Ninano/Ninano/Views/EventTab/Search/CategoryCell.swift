@@ -8,7 +8,7 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
-    var viewModels: [SearchEventCellViewModel] = [] {
+    var eventList: [Event] = [] {
         // MARK: fetchTopStories()에서 viewModels를 가져오는데 시간이 걸리므로 가져온 후 eventCollectionView를 reload 함.
         didSet {
             eventCollectionView.reloadData()
@@ -42,16 +42,21 @@ extension CategoryCell: UICollectionViewDelegateFlowLayout {
 
 extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModels.count
+        return eventList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as? EventCell else {
             return UICollectionViewCell()
         }
+
         
-        cell.configure(with: viewModels[indexPath.row])
-        cell.layer.cornerRadius = 10
+//        cell.configure(with: viewModels[indexPath.row])
+//        cell.layer.cornerRadius = 10
+
+        cell.contentView.layer.cornerRadius = 10
+        cell.configure(with: eventList[indexPath.row])
+
         
         return cell
     }

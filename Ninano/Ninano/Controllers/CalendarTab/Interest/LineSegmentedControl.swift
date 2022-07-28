@@ -8,7 +8,6 @@
 import UIKit
 
 class LineSegmentedControl: UISegmentedControl {
-
 }
 
 extension UIImage {
@@ -41,12 +40,12 @@ extension UISegmentedControl {
     func highlightSelectedSegment() {
         removeBorder()
         let lineWidth: CGFloat = self.bounds.size.width / CGFloat(self.numberOfSegments) - 14
-        let lineHeight: CGFloat = 3.0
+        let lineHeight: CGFloat = 7
         let lineXPosition = CGFloat(selectedSegmentIndex * Int(lineWidth)) + 7.0
-        let lineYPosition = self.bounds.size.height - 1.0
+        let lineYPosition = self.bounds.size.height - 3.0
         let underlineFrame = CGRect(x: lineXPosition, y: lineYPosition, width: lineWidth, height: lineHeight)
         let underLine = UIView(frame: underlineFrame)
-        underLine.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8) // bottom line color
+        underLine.backgroundColor = UIColor(red: 200/255, green: 10/255, blue: 30/255, alpha: 0.7) // bottom line color
         underLine.tag = 1
         self.addSubview(underLine)
     }
