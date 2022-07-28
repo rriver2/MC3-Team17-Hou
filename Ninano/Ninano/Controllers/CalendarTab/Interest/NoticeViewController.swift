@@ -9,7 +9,7 @@ import UIKit
 
 class NoticeViewController: UIViewController {
     
-    private var likeViewModel = LikeDataModel()
+    var likeViewModel = LikeDataModel()
     
     @IBOutlet weak var keywordContainerView: UIView!
     @IBOutlet weak var interestContainerView: UIView!
@@ -19,6 +19,7 @@ class NoticeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         layout()
     }
     
