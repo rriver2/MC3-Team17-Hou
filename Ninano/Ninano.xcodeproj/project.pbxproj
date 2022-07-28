@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324251B22891805000804AAF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324251B12891805000804AAF /* Event.swift */; };
 		3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262DC242882DA8C007C6103 /* SearchViewController.swift */; };
 		3278706928819A7F00519A2A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3278706828819A7F00519A2A /* Search.storyboard */; };
 		3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */; };
@@ -34,12 +35,12 @@
 		7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */; };
 		7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */; };
 		7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */; };
-		7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBFC8A12886558E00EF5537 /* EventModel.swift */; };
 		9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9047C99A288149D800CD8113 /* NoticeGridCollectionViewCell.swift */; };
 		CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */; };
 		CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21943B28844F9500E93AC7 /* UIColor.swift */; };
 		CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC4F8F712880DC3300A18346 /* SearchResult.storyboard */; };
 		CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4F8F732880E59800A18346 /* SearchResultViewController.swift */; };
+		CC7B66302892813D00689382 /* TempEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7B662F2892813D00689382 /* TempEventModel.swift */; };
 		CC7EAA44288982240057E9C2 /* LabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7EAA43288982240057E9C2 /* LabelPadding.swift */; };
 		CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C7287C1063004EE6DB /* AppDelegate.swift */; };
 		CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		324251B12891805000804AAF /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		3262DC242882DA8C007C6103 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3278706828819A7F00519A2A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarCell.swift; sourceTree = "<group>"; };
@@ -96,12 +98,12 @@
 		7EBFC89828855AF900EF5537 /* CalendarDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CalendarDetail.storyboard; sourceTree = "<group>"; };
 		7EBFC89B28855CF600EF5537 /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		7EBFC89F2886536900EF5537 /* DayEventDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayEventDetailCell.swift; sourceTree = "<group>"; };
-		7EBFC8A12886558E00EF5537 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		9047C99A288149D800CD8113 /* NoticeGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC21943428824FB300E93AC7 /* PerformancesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformancesViewCell.swift; sourceTree = "<group>"; };
 		CC21943B28844F9500E93AC7 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CC4F8F712880DC3300A18346 /* SearchResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResult.storyboard; sourceTree = "<group>"; };
 		CC4F8F732880E59800A18346 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		CC7B662F2892813D00689382 /* TempEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempEventModel.swift; sourceTree = "<group>"; };
 		CC7EAA43288982240057E9C2 /* LabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPadding.swift; sourceTree = "<group>"; };
 		CC8B50C4287C1063004EE6DB /* Ninano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ninano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC8B50C7287C1063004EE6DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -362,7 +364,8 @@
 			children = (
 				58621444288FE07400DE04BE /* HowToUseCoreData.txt */,
 				58D6ECC8288E518B00AB402F /* SubscriptionModel.swift */,
-				7EBFC8A12886558E00EF5537 /* EventModel.swift */,
+				CC7B662F2892813D00689382 /* TempEventModel.swift */,
+				324251B12891805000804AAF /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */,
 				F63AEBA82884285700D57A4F /* CalendarViewController.swift in Sources */,
+				324251B22891805000804AAF /* Event.swift in Sources */,
 				581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */,
 				F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */,
 				58A1AA3A287FF390001BCFA9 /* KeywordViewController.swift in Sources */,
@@ -565,7 +569,6 @@
 				CC21943528824FB300E93AC7 /* PerformancesViewCell.swift in Sources */,
 				CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
-				7EBFC8A22886558E00EF5537 /* EventModel.swift in Sources */,
 				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */,
@@ -578,6 +581,7 @@
 				58D6ECDD288E75BC00AB402F /* CoreTestTableViewCell.swift in Sources */,
 				CC997B472890EBCB0079E3EF /* UIImage.swift in Sources */,
 				9047C99B288149D800CD8113 /* NoticeGridCollectionViewCell.swift in Sources */,
+				CC7B66302892813D00689382 /* TempEventModel.swift in Sources */,
 				587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */,
 				F6AC89BF28897DFC006B3275 /* Model.swift in Sources */,
 				CC8B50CA287C1063004EE6DB /* SceneDelegate.swift in Sources */,
