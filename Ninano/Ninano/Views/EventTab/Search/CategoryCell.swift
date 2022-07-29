@@ -50,13 +50,8 @@ extension CategoryCell: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        
-//        cell.configure(with: viewModels[indexPath.row])
-//        cell.layer.cornerRadius = 10
-
         cell.contentView.layer.cornerRadius = 10
         cell.configure(with: eventList[indexPath.row])
-
         
         return cell
     }
