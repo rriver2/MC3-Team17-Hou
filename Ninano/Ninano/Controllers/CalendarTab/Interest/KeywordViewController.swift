@@ -14,10 +14,7 @@ class KeywordViewController: UIViewController {
 //    var imageList: [Data?]
     
     @IBOutlet weak var keywordTableView: UITableView!
-    
-    let img = ["22008595_p", "22007929_p", "22005098_p"]
-    let keywordDate = ["3시간 전", "5일 전", "7월 31일 (일요일)"]
-    let keywordTitle = ["깃발과 백설", "흑깃", "별이 흐르는 시간"]
+
     let alarmTitle = "레버 관심설정의 새로운 공연일정이 추가되었습니다."
     
     override func viewDidLoad() {
@@ -81,9 +78,17 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                         price: String($0.useFee)
                     )
                 })
-                DispatchQueue.main.async {
-                    self?.keywordTableView.reloadData()
-                }
+                
+                self?.eventList.forEach({ event in
+                    event.fetchImage(url: event.posterURL) { success in
+                        if success {
+                            DispatchQueue.main.async {
+                                self?.keywordTableView.reloadData()
+                            }
+                        }
+                    }
+                })
+                
             case .failure(let error):
                 print(error)
             }

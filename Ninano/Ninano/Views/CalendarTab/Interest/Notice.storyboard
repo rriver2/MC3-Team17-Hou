@@ -23,17 +23,20 @@
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Egp-dS-WcN">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="oE3-kv-wjl" kind="embed" id="b9a-lY-KS1"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-7M-zBv" userLabel="Interest List Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="600"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <segue destination="Qeb-o1-V09" kind="embed" id="qpI-dX-grD"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstItem="Egp-dS-WcN" firstAttribute="bottom" secondItem="EPF-6R-Y2a" secondAttribute="bottom" id="A5u-BK-tTc"/>
                                     <constraint firstItem="yfy-7M-zBv" firstAttribute="top" secondItem="EPF-6R-Y2a" secondAttribute="top" id="Bso-oV-2HJ"/>
@@ -70,7 +73,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzL-br-94R">
                                 <rect key="frame" x="24.999999999999996" y="20" width="53.666666666666657" height="37"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4BR-Ah-sIj">
@@ -123,6 +126,7 @@
                                     <action selector="cancelNoticeButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="u7w-zx-SD2"/>
                                 </connections>
                             </button>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -158,6 +162,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-Sw-foW">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="noticeKeyword" rowHeight="80" id="aFn-67-8gh" customClass="KeywordTableViewCell" customModule="Ninano" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="80"/>
@@ -184,7 +190,7 @@
                                                                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="140" id="IHp-16-ROa"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                                    <nil key="textColor"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7월 24일 일요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCZ-Rd-iv3">
@@ -217,7 +223,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="XjE-TZ-Jv0" secondAttribute="bottom" constant="16" id="1uo-Wb-hGF"/>
                                                         <constraint firstItem="XjE-TZ-Jv0" firstAttribute="top" secondItem="a7K-Hm-XY9" secondAttribute="top" constant="16" id="2Ev-VS-5ed"/>
@@ -243,7 +249,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="a7K-Hm-XY9" secondAttribute="bottom" constant="4" id="PZV-oz-6Q3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="keywordAlarmTitle" destination="aMv-5e-tpt" id="lrF-SU-dKi"/>
                                             <outlet property="keywordBackgroundCell" destination="a7K-Hm-XY9" id="wpI-YX-uYY"/>
@@ -256,7 +262,7 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PIq-FF-q4K"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TdK-Sw-foW" firstAttribute="leading" secondItem="mLf-w6-GGq" secondAttribute="leading" id="2ue-04-P3j"/>
                             <constraint firstAttribute="trailing" secondItem="TdK-Sw-foW" secondAttribute="trailing" id="Tzv-zS-8TR"/>
@@ -282,32 +288,29 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-XO-BV3">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="600"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xk9-su-4Co">
-                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="itemSize" width="180" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoticeGridCollectionViewCell" id="0Tw-2Y-OkS" userLabel="Notice Grid Collection View Cell" customClass="NoticeGridCollectionViewCell" customModule="Ninano" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="NoticeGridCollectionViewCell" id="0Tw-2Y-OkS" userLabel="Notice Grid Collection View Cell" customClass="NoticeGridCollectionViewCell" customModule="Ninano" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NUK-oL-tsV">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9q-3d-XoU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O9q-3d-XoU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="O9q-3d-XoU" firstAttribute="leading" secondItem="NUK-oL-tsV" secondAttribute="leading" id="Yd8-mz-vgL"/>
-                                                <constraint firstAttribute="trailing" secondItem="O9q-3d-XoU" secondAttribute="trailing" id="lTm-lS-LCv"/>
-                                                <constraint firstAttribute="bottom" secondItem="O9q-3d-XoU" secondAttribute="bottom" id="qFm-Hf-kqb"/>
-                                                <constraint firstItem="O9q-3d-XoU" firstAttribute="top" secondItem="NUK-oL-tsV" secondAttribute="top" id="xam-YR-bnF"/>
-                                            </constraints>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="gridImages" destination="O9q-3d-XoU" id="yP0-P9-Zas"/>
                                         </connections>
@@ -320,7 +323,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bFQ-j0-4gd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XFK-XO-BV3" firstAttribute="leading" secondItem="2b8-en-cBj" secondAttribute="leading" id="P9J-y8-a5I"/>
                             <constraint firstAttribute="bottom" secondItem="XFK-XO-BV3" secondAttribute="bottom" id="aAv-wv-0Oa"/>
@@ -329,12 +332,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="interestCollectionView" destination="XFK-XO-BV3" id="lM4-rm-2qB"/>
+                        <outlet property="interestCollectionView" destination="XFK-XO-BV3" id="i7Z-5a-Uax"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLX-28-AcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1763.0769230769231" y="298.93364928909949"/>
+            <point key="canvasLocation" x="1763.0769230769231" y="298.57819905213267"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XMg-Bf-7y8">
@@ -363,12 +366,6 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
