@@ -15,6 +15,8 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
+    @IBOutlet weak var keywordAlarmLabel: UILabel!
+    @IBOutlet weak var keywordSettingButton: UIButton!
     
     var eventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
@@ -26,6 +28,10 @@ final class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        keywordNotification.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        keywordAlarmLabel.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        keywordSettingButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        
         keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -37,17 +43,18 @@ final class SearchResultViewController: UIViewController {
         backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        self.navigationController?.navigationBar.tintColor = CustomColor.mainMidRed
         
         switch viewCatagory {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
                 searchCatagoryTitle.textAlignment = .center
                 searchCatagoryTitle.font = UIFont.systemFont(ofSize: 20)
-                    searchCatagoryTitle.text = navigationTitle
+                searchCatagoryTitle.text = navigationTitle
+                searchCatagoryTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
+                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.width - 90, height: 0))
                 searchBar.placeholder = "Search User"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
@@ -142,7 +149,7 @@ extension SearchResultViewController: DateDelivable, FilterButtonClickable {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
         let button: UIButton = eventFilterButton.dateFilterButton
         button.setTitle(koreanDate, for: .normal)
-        button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
+        button.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
         button.configuration?.cornerStyle = .capsule
     }
     

@@ -37,7 +37,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
+//        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
         fetchTopStories()
     }
 }
