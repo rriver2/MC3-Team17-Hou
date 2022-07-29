@@ -14,8 +14,8 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet private weak var keywordNotification: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
-    var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
-    var keywordViewModel = KeywordDataModel()
+    private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
+    private var keywordViewModel = KeywordDataModel()
     
     var eventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
