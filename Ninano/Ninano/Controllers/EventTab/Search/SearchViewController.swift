@@ -60,11 +60,6 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func categoryButtonConfig() {
-        categoryConfig.baseForegroundColor = .black
-        categoryConfig.titleAlignment = .leading
-    }
-    
     func fetchTopStories() {
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
