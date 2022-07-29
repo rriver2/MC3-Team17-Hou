@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchResultViewController: UIViewController {
+final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     
     @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
@@ -15,6 +15,8 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
+    var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
+    var keywordViewModel = KeywordDataModel()
     
     var eventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
@@ -26,6 +28,7 @@ final class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         keywordAddedNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -44,10 +47,9 @@ final class SearchResultViewController: UIViewController {
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
                 searchCatagoryTitle.textAlignment = .center
                 searchCatagoryTitle.font = UIFont.systemFont(ofSize: 20)
-                    searchCatagoryTitle.text = navigationTitle
+                searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
                 searchBar.placeholder = "Search User"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
@@ -57,11 +59,25 @@ final class SearchResultViewController: UIViewController {
         keywordNotification.layer.cornerRadius = 15
     }
     
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard(searchBar)
+    }
+    
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // TODO: filter collectionView
+//        print("searchText",searchText)
+    }
+    
+    private func dismissKeyboard(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     @objc private func didTapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction private func keywordNotificationButton(_ sender: UIButton) {
+        keywordViewModel.addKeywordItems(keyword: (String(describing: searchBar.text)))
     }
     
     @IBAction private func notificationSettingsButton(_ sender: UIButton) {
@@ -80,6 +96,10 @@ final class SearchResultViewController: UIViewController {
         }
     }
 }
+
+//keywordViewModel.keywordItems.forEach { keywordList in
+//    print(keywordList.keywordSubs)
+//}
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
