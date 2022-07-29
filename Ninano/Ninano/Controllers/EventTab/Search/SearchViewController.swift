@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CloudKit
 
 class SearchViewController: UIViewController {
-    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
+//    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
     private var categoryConfig = UIButton.Configuration.plain()
     private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
 
@@ -24,6 +25,8 @@ class SearchViewController: UIViewController {
     private var articles: APIResponse?
     private var eventList = [Event]()
     
+    private let numberOfCells: Int = 8
+    
     @IBOutlet private var categoryTableView: UITableView!
     
     @IBAction func didTouchSearchButton(_ sender: UIButton) {
@@ -37,8 +40,19 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
+//        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
+        configNavigationTitle()
         fetchTopStories()
+    }
+    
+    private func configNavigationTitle() {
+        let viewWidth = self.view.bounds.width - 100
+        print(viewWidth)
+        let searchViewTitle = UILabel(frame: CGRect(x: 25, y: 0, width: viewWidth, height: 20))
+        searchViewTitle.textAlignment = .left
+        searchViewTitle.font = UIFont.preferredFont(forTextStyle: .title2, weight: .bold)
+        searchViewTitle.text = "공연 추천"
+        self.navigationItem.titleView = searchViewTitle
     }
 }
 
@@ -51,12 +65,45 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryCell else {
             return UITableViewCell()
         }
+        
         categoryConfig.title = Category.allValues[indexPath.row].rawValue
         cell.categoryName.configuration = categoryConfig
         cell.categoryName.titleLabel?.font = categoryFont
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.eventList = eventList
+        
+        switch indexPath.row {
+        case 0:
+            var recommendedEvent: [Event] = []
+            var recommendedEventSet: Set<Event> = []
+//            let shuffledEvent: [Event] = eventList.shuffled()
+            
+            while recommendedEventSet.count < numberOfCells {
+                if let randomEvent = eventList.randomElement() {
+                    recommendedEventSet.insert(randomEvent)
+                    if recommendedEventSet.count > 0 {
+                        recommendedEvent.append(randomEvent)
+                    }
+                }
+            }
+            
+//            for _ in 0..<numberOfCells {
+//                recommendedEvent.append(shuffledEvent[index])
+//                if let randomEvent = eventList.randomElement() {
+//                    recommendedEvent.append(randomEvent)
+//                }
+//            }
+            cell.eventList = recommendedEvent
+            
+        case 1:
+            cell.eventList = eventList
+        case 2:
+            cell.eventList = eventList
+        case 3:
+            cell.eventList = eventList
+        default:
+            return UITableViewCell()
+        }
         return cell
     }
     
