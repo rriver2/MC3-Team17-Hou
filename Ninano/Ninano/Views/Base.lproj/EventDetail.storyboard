@@ -352,7 +352,7 @@
                             <constraint firstItem="uHE-a2-BGK" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="jwF-VW-6Dd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="토요국악" leftItemsSupplementBackButton="YES" id="oJu-yb-bKY"/>
+                    <navigationItem key="navigationItem" title="토요국악" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="oJu-yb-bKY"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addDate" destination="XRx-mi-bmq" id="BPi-ZJ-B4k"/>
@@ -463,41 +463,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vhk-jg-hYN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4457.971014492754" y="604.6875"/>
-        </scene>
-        <!--Detail Link View Controller-->
-        <scene sceneID="Us9-Fb-wrq">
-            <objects>
-                <viewController id="ach-NZ-0zf" customClass="DetailLinkViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xLL-cL-3y1">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fKa-HR-QQc">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="1dn-De-vld"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="fKa-HR-QQc" firstAttribute="trailing" secondItem="1dn-De-vld" secondAttribute="trailing" id="Ave-Ug-RO4"/>
-                            <constraint firstAttribute="bottom" secondItem="fKa-HR-QQc" secondAttribute="bottom" id="YBH-j2-9Dl"/>
-                            <constraint firstItem="fKa-HR-QQc" firstAttribute="top" secondItem="xLL-cL-3y1" secondAttribute="top" id="b2x-yZ-dnN"/>
-                            <constraint firstItem="fKa-HR-QQc" firstAttribute="leading" secondItem="1dn-De-vld" secondAttribute="leading" id="l4r-9Y-bDi"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="AGh-br-xF4"/>
-                    <connections>
-                        <outlet property="DetailWebView" destination="fKa-HR-QQc" id="Zxd-DR-tla"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qr7-VQ-z2W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4457.971014492754" y="-362.27678571428572"/>
         </scene>
     </scenes>
     <resources>

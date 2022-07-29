@@ -75,12 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-//extension UIApplication {
-//    var statusBarView: UIView? {
-//        return value(forKey: "statusBar") as? UIView
-//    }
-//}
-
 extension UIApplication {
     var statusBarUIView: UIView? {
         if #available(iOS 13.0, *) {

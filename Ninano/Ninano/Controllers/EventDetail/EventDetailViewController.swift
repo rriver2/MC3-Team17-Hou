@@ -9,10 +9,12 @@
 //
 
 import UIKit
-// MARK: 토스트 팝업 디팬던시
+// MARK: 토스트 팝업 디팬던시 추후 사용예정
 // import NotificationToastz
 
 class EventDetailViewController: UIViewController {
+    
+    var event: Event?
     
     // MARK: 포스터 이미지
     @IBOutlet weak var eventPosterImageView: UIImageView!
@@ -27,23 +29,19 @@ class EventDetailViewController: UIViewController {
     // MARK: segmentedControl
     @IBOutlet weak var eventDetailSegmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var eventTitleLabel: UILabel!
-    @IBOutlet weak var eventPlaceLabel: UILabel!
-    @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventPriceLabel: UILabel!
-    @IBOutlet weak var eventInfoLabel: UILabel!
-    @IBOutlet weak var eventActorLabel: UILabel!
+    @IBOutlet private weak var eventTitleLabel: UILabel!
+    @IBOutlet private weak var eventPlaceLabel: UILabel!
+    @IBOutlet private weak var eventDateLabel: UILabel!
+    @IBOutlet private weak var eventPriceLabel: UILabel!
+    @IBOutlet private weak var eventInfoLabel: UILabel!
+    @IBOutlet private weak var eventActorLabel: UILabel!
     
     @IBAction func linkButtonPressed(_ sender: UIButton) {
         guard let urlString = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="),
               UIApplication.shared.canOpenURL(urlString) else { return }
               UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var urlString = event?.URL
-//        let destinationVC = segue.destination as? DetailLinkViewController
-//        // destinationVC?.urlString = urlString!
-//    }
+    
     // MARK: 포스터 공유 시트 버튼
     @IBAction func shareSheetBtn(_ sender: Any) {
         presentShareSheet()
@@ -87,8 +85,6 @@ class EventDetailViewController: UIViewController {
 //        )
 //        toast.show()
 //    }
-    
-    var event: Event?
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -166,21 +162,22 @@ class EventDetailViewController: UIViewController {
     
     // MARK: event model
     private func selectedEventInfo() {
-        if let event = event {
-            naviItem.title = event.title
-            eventTitleLabel.text = event.title
-            eventPlaceLabel.text = event.place
-            eventDateLabel.text = event.period
-            eventPriceLabel.text = event.price
-            eventInfoLabel.text = event.info
-            eventActorLabel.text = event.actor
-            //            event.URL 추가예정
-            do {
-                let data = try Data(contentsOf: event.posterURL!)
-                eventPosterImageView.image = UIImage(data: data)
-            } catch {
-                print("Error URL to Data : \(error)")
-            }
+        guard let event = event else {
+            return
+        }
+        naviItem.title = event.title
+        eventTitleLabel.text = event.title
+        eventPlaceLabel.text = event.place
+        eventDateLabel.text = event.period
+        eventPriceLabel.text = event.price
+        eventInfoLabel.text = event.info
+        eventActorLabel.text = event.actor
+        //            event.URL 추가예정
+        do {
+            let data = try Data(contentsOf: event.posterURL!)
+            eventPosterImageView.image = UIImage(data: data)
+        } catch {
+            print("Error URL to Data : \(error)")
         }
     }
 }
