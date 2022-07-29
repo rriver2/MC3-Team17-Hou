@@ -14,7 +14,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet private weak var keywordNotification: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
-    private var isNotificationButtonSelected = false
     var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
     var keywordViewModel = KeywordDataModel()
     
@@ -30,6 +29,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
         super.viewDidLoad()
         searchBar.delegate = self
         keywordAddedNotification.isHidden = true
+        keywordNotification.isHidden = true
         // collectionView에 대한 설정
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
@@ -55,17 +55,25 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
             case .none:
                 print("viewCatagory error")
         }
-        
+        keywordAddedNotification.layer.cornerRadius = 15
         keywordNotification.layer.cornerRadius = 15
     }
     
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         dismissKeyboard(searchBar)
+        
+        let isKeywordInCoreData = keywordViewModel.keywordItems.contains { keywordList in
+            return keywordList.keywordSubs == searchBar.text
+        }
+        if isKeywordInCoreData {
+            keywordNotification.isHidden = true
+        } else {
+            keywordNotification.isHidden = false
+        }
     }
     
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: filter collectionView
-//        print("searchText",searchText)
+        // TODO: filter CollectionView
     }
     
     private func dismissKeyboard(_ searchBar: UISearchBar) {
@@ -77,29 +85,18 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     }
     
     @IBAction private func keywordNotificationButton(_ sender: UIButton) {
-        keywordViewModel.addKeywordItems(keyword: (String(describing: searchBar.text)))
-    }
-    
-    @IBAction private func notificationSettingsButton(_ sender: UIButton) {
-        // TODO: 키워드 값 넣는 로직
-        if isNotificationButtonSelected == false {
-            keywordAddedNotification.isHidden = false
-            keywordAddedNotification.layer.cornerRadius = 15
-            sender.isHidden = true
-            
-            isNotificationButtonSelected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                UIView.animate(withDuration: 1) {
-                    self.keywordAddedNotification.isHidden = true
-                }
+        if let keyWord = searchBar.text {
+            keywordViewModel.addKeywordItems(keyword: keyWord)
+        }
+        keywordAddedNotification.isHidden = false
+        keywordNotification.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            UIView.animate(withDuration: 1) {
+                self.keywordAddedNotification.isHidden = true
             }
         }
     }
 }
-
-//keywordViewModel.keywordItems.forEach { keywordList in
-//    print(keywordList.keywordSubs)
-//}
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
