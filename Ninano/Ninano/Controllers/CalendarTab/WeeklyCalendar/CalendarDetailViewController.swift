@@ -92,7 +92,6 @@ class CalendarDetailViewController: UIViewController {
     
     @IBAction func addDate(_ sender: Any) {
     }
-    
 }
 
 extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
