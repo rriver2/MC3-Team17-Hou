@@ -229,8 +229,8 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q11-Oq-eTJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="340" height="128"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="R석 : 10,000원" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFc-Ds-v8n">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="15.666666666666666"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R석 : 10,000원" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFc-Ds-v8n">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="82" height="15.666666666666666"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -246,8 +246,8 @@
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="주연 : 심규보" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-bS-AJE">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="15.666666666666666"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주연 : 심규보" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-bS-AJE">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="67" height="15.666666666666666"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -256,6 +256,8 @@
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstItem="y87-1f-228" firstAttribute="leading" secondItem="q11-Oq-eTJ" secondAttribute="leading" id="Fsc-oQ-3Bq"/>
+                                                                    <constraint firstItem="uFc-Ds-v8n" firstAttribute="leading" secondItem="q11-Oq-eTJ" secondAttribute="leading" id="IpR-Nd-bT7"/>
+                                                                    <constraint firstItem="mSS-bS-AJE" firstAttribute="leading" secondItem="q11-Oq-eTJ" secondAttribute="leading" id="U6a-1D-fQ8"/>
                                                                     <constraint firstItem="y87-1f-228" firstAttribute="top" secondItem="q11-Oq-eTJ" secondAttribute="top" id="VjM-td-hSx"/>
                                                                     <constraint firstAttribute="trailing" secondItem="y87-1f-228" secondAttribute="trailing" id="Vxa-Td-YxV"/>
                                                                     <constraint firstItem="mSS-bS-AJE" firstAttribute="top" secondItem="q11-Oq-eTJ" secondAttribute="top" id="b4a-Oh-RJz"/>
