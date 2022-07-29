@@ -26,11 +26,11 @@ extension CategoryCell: UICollectionViewDelegateFlowLayout {
             return CGSize()
         }
         
-        let screen = UIScreen.main.bounds.width
-        let inset = (25 / 390) * screen
-        let spacing = (14 / 390) * screen
+        let viewWidth = contentView.bounds.width
+        let inset = (25 / 390) * viewWidth
+        let spacing = (14 / 390) * viewWidth
         
-        let width = (screen - (inset * 2) - (spacing * 2)) / 3
+        let width = (viewWidth - (inset * 2) - (spacing * 2)) / 3
         let height = (4 / 3) * width
         
         flow.minimumInteritemSpacing = spacing
