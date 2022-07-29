@@ -127,7 +127,7 @@
                             <constraint firstItem="A1p-jd-meV" firstAttribute="trailing" secondItem="1je-HD-0WA" secondAttribute="trailing" id="wpr-xY-faW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="공연 추천" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="SfL-8Z-UhK">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="SfL-8Z-UhK">
                         <barButtonItem key="rightBarButtonItem" id="XZ2-ky-TWF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8Qy-ea-gxW">
                                 <rect key="frame" x="324.5" y="0.0" width="69.5" height="44"/>

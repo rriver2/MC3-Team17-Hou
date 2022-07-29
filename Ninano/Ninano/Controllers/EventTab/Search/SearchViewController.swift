@@ -36,8 +36,18 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTopStories()
+        configNavigationTitle()
         // Do any additional setup after loading the view.
     }
+    private func configNavigationTitle() {
+        let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 270, height: 20))
+        calendarTitle.textAlignment = .left
+        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
+        calendarTitle.text = "공연 추천"
+        self.navigationItem.titleView = calendarTitle
+            
+    }
+
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
