@@ -8,8 +8,9 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
     private var categoryConfig = UIButton.Configuration.plain()
-    private var categoryFont = UIFont.boldSystemFont(ofSize: 15)
+    private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
 
     private enum Category: String, CaseIterable {
         case recommended = "니나노의 추천 공연"
@@ -27,13 +28,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func didTouchSearchButton(_ sender: UIButton) {
         guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
-        // TODO: [Event] 타입의 eventData 전달해주세요 ! 우선 가데이터로 넣어놨습니다 !
-        searchResultView.tempEventList = [
-        TempEvent(eventName: "반향1", eventPosterName: "22008615_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.14", eventTime: "20:00", isLiked: true, isReserved: true),
-        TempEvent(eventName: "반향2", eventPosterName: "22008595_p", eventPlace: "경기아트센터 대극장2", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.21", eventTime: "20:00", isLiked: true, isReserved: true),
-        TempEvent(eventName: "반향3", eventPosterName: "22006547_p", eventPlace: "경기아트센터 대극장3", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.03.12", eventTime: "20:00", isLiked: true, isReserved: true),
-        TempEvent(eventName: "반향4", eventPosterName: "22005605_p", eventPlace: "경기아트센터 대극장", eventPeriod: "2022.7.15~2022.7.20", eventDate: "2022.02.02", eventTime: "20:00", isLiked: true, isReserved: true)
-    ]
+        searchResultView.eventList = eventList
         // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
         searchResultView.viewCatagory = .searchResult
         self.navigationController?.pushViewController(searchResultView, animated: true)
@@ -41,8 +36,9 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
         fetchTopStories()
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -58,6 +54,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         categoryConfig.title = Category.allValues[indexPath.row].rawValue
         cell.categoryName.configuration = categoryConfig
         cell.categoryName.titleLabel?.font = categoryFont
+        cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         cell.categoryChevron.titleLabel?.font = categoryFont
         cell.eventList = eventList
         return cell

@@ -16,13 +16,13 @@ final class SearchResultViewController: UIViewController {
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     private var isNotificationButtonSelected = false
     
+    var eventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
     
     enum SearchDetailCatagory {
         case searchCatagory(navigationTitle: String)
         case searchResult
     }
-    var tempEventList: [TempEvent] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +34,11 @@ final class SearchResultViewController: UIViewController {
         eventFilterButton.datedeliveryDelegate = self
         
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = backImage ?? UIImage().resizeImage(newWidth: 40)
+        backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
+        self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        
         switch viewCatagory {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
@@ -45,7 +47,7 @@ final class SearchResultViewController: UIViewController {
                     searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 320, height: 0))
+                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
                 searchBar.placeholder = "Search User"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
@@ -105,15 +107,14 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     // UICollectionViewDataSource와 관련된 함수 2개
     /// 콜렉션 뷰에 총 몇 개의 셀(cell)을 표시할 것인지를 구현
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.tempEventList.count
+        return self.eventList.count
     }
     /// 해당 cell에 무슨 view들을 표시할 지를 결정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: PerformancesViewCell.self)
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PerformancesViewCell {
-            let tempEventData = self.tempEventList[indexPath.item]
-            cell.updateEventCell(imageName: tempEventData.eventPosterName, title: tempEventData.eventName, date: tempEventData.eventDate, place: tempEventData.eventPlace)
-            
+            let eventData = self.eventList[indexPath.item]
+            cell.updateEventCell(event: eventData)
             cell.contentView.layer.cornerRadius = 8
             return cell
         }
