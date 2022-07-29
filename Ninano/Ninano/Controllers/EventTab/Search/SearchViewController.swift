@@ -37,17 +37,23 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
     
         configNavigationTitle()
+        configNavigationArea()
         fetchTopStories()
     }
     
     private func configNavigationTitle() {
-        let viewWidth = self.view.bounds.width - 100
+        let viewWidth = self.view.bounds.width - 115
         print(viewWidth)
         let searchViewTitle = UILabel(frame: CGRect(x: 25, y: 0, width: viewWidth, height: 20))
         searchViewTitle.textAlignment = .left
         searchViewTitle.font = UIFont.preferredFont(forTextStyle: .title2, weight: .bold)
         searchViewTitle.text = "공연 추천"
         self.navigationItem.titleView = searchViewTitle
+    }
+    
+    private func configNavigationArea() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
 }
 
