@@ -14,21 +14,7 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
-    @IBAction func linkButtonPressed(_ sender: UIButton) {
-        guard let urlString = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="),
-              UIApplication.shared.canOpenURL(urlString) else { return }
-              UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
-    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        var urlString = event?.URL
-//        let destinationVC = segue.destination as? DetailLinkViewController
-//        // destinationVC?.urlString = urlString!
-//    }
-    // MARK: 포스터 공유 시트 버튼
-    @IBAction func shareSheetBtn(_ sender: Any) {
-        presentShareSheet()
-    }
-        // MARK: 포스터 이미지
+    // MARK: 포스터 이미지
     @IBOutlet weak var eventPosterImageView: UIImageView!
     // MARK: 네비게이션 아이템
     @IBOutlet weak var naviItem: UINavigationItem!
@@ -44,7 +30,49 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventTitleLabel: UILabel!
     @IBOutlet weak var eventPlaceLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventPriceLabel: UILabel!
+    @IBOutlet weak var eventInfoLabel: UILabel!
+    @IBOutlet weak var eventActorLabel: UILabel!
     
+    @IBAction func linkButtonPressed(_ sender: UIButton) {
+        guard let urlString = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="),
+              UIApplication.shared.canOpenURL(urlString) else { return }
+              UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
+    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        var urlString = event?.URL
+//        let destinationVC = segue.destination as? DetailLinkViewController
+//        // destinationVC?.urlString = urlString!
+//    }
+    // MARK: 포스터 공유 시트 버튼
+    @IBAction func shareSheetBtn(_ sender: Any) {
+        presentShareSheet()
+    }
+    
+    // MARK: segmentedControl
+    @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
+        eventDetailSegmentedControl.underlinePosition()
+
+        switch sender.selectedSegmentIndex {
+        case 0:
+            eventPriceLabel.alpha = 1
+            eventInfoLabel.alpha = 0
+            eventActorLabel.alpha = 0
+
+        case 1:
+            eventPriceLabel.alpha = 0
+            eventInfoLabel.alpha = 1
+            eventActorLabel.alpha = 0
+            
+        case 2:
+            eventPriceLabel.alpha = 0
+            eventInfoLabel.alpha = 0
+            eventActorLabel.alpha = 1
+
+        default:
+            break
+        }
+    }
     
     // MARK: 토스트 팝업 버튼 (추후 사용예정)
 //    @IBAction func toastPopUp(_ sender: Any) {
@@ -68,7 +96,8 @@ class EventDetailViewController: UIViewController {
         
         didTapCustomBackButton()
         selectedEventInfo()
-
+        layout()
+        
         // MARK: 네비게이션바 백그라운드 투명
         scrollView.delegate = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -76,8 +105,6 @@ class EventDetailViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
         addDate.layer.cornerRadius = 15
         setBlurEffect()
-        self.eventDetailSegmentedControl.frame = CGRect(x: self.eventDetailSegmentedControl.frame.minX, y: self.eventDetailSegmentedControl.frame.minY, width: eventDetailSegmentedControl.frame.width, height: 25)
-        eventDetailSegmentedControl.highlightSelectedSegment()
     }
     
     // MARK: 네비게이션바 원래대로
@@ -137,26 +164,23 @@ class EventDetailViewController: UIViewController {
         return newImage
     }
     
+    // MARK: event model
     private func selectedEventInfo() {
         if let event = event {
             naviItem.title = event.title
             eventTitleLabel.text = event.title
             eventPlaceLabel.text = event.place
             eventDateLabel.text = event.period
+            eventPriceLabel.text = event.price
+            eventInfoLabel.text = event.info
+            eventActorLabel.text = event.actor
+            //            event.URL 추가예정
             do {
                 let data = try Data(contentsOf: event.posterURL!)
                 eventPosterImageView.image = UIImage(data: data)
             } catch {
                 print("Error URL to Data : \(error)")
             }
-
-//            event.posterData
-//            event.area
-            
-//            event.URL
-            
-//            event.actor
-//            event.info
         }
     }
 }
@@ -179,4 +203,16 @@ extension EventDetailViewController: UIScrollViewDelegate {
             self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: textColor]
         }
     }
+}
+
+// MARK: - layout
+extension EventDetailViewController {
+    
+    func layout() {
+        eventPriceLabel.alpha = 1
+        eventInfoLabel.alpha = 0
+        eventActorLabel.alpha = 0
+        self.eventDetailSegmentedControl.frame = CGRect(x: self.eventDetailSegmentedControl.frame.minX, y: self.eventDetailSegmentedControl.frame.minY, width: eventDetailSegmentedControl.frame.width, height: 25)
+        eventDetailSegmentedControl.highlightSelectedSegment()
+        }
 }
