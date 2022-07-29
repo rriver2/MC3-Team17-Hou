@@ -9,10 +9,6 @@ import UIKit
 import CloudKit
 
 class SearchViewController: UIViewController {
-//    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
-    private var categoryConfig = UIButton.Configuration.plain()
-    private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
-
     private enum Category: String, CaseIterable {
         case recommended = "니나노의 추천 공연"
         case thisMonth = "이번 달 예정 공연"
@@ -39,8 +35,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
+    
         configNavigationTitle()
         fetchTopStories()
     }
@@ -65,12 +60,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryCell else {
             return UITableViewCell()
         }
-        
-        categoryConfig.title = Category.allValues[indexPath.row].rawValue
-        cell.categoryName.configuration = categoryConfig
-        cell.categoryName.titleLabel?.font = categoryFont
+        let categoryTitle = Category.allValues[indexPath.row].rawValue
+        let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)]
+        let attributedTitle = NSAttributedString(string: categoryTitle, attributes: attribute)
+        cell.categoryName.setAttributedTitle(attributedTitle, for: .normal)
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
-        cell.categoryChevron.titleLabel?.font = categoryFont
         
         switch indexPath.row {
         case 0:
