@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="192" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="A1p-jd-meV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="113" width="414" height="783"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="categoryCell" id="sAV-Tq-CcU" customClass="CategoryCell" customModule="Ninano" customModuleProvider="target">
@@ -127,17 +127,28 @@
                                     <outlet property="delegate" destination="OYX-C0-wKc" id="hqp-9P-988"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6Q-Ts-Aic">
+                                <rect key="frame" x="0.0" y="113" width="414" height="1"/>
+                                <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="M0q-ev-mpZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1je-HD-0WA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="A1p-jd-meV" secondAttribute="bottom" id="C60-hr-lQn"/>
                             <constraint firstItem="A1p-jd-meV" firstAttribute="leading" secondItem="1je-HD-0WA" secondAttribute="leading" id="DHc-9U-mIh"/>
-                            <constraint firstItem="A1p-jd-meV" firstAttribute="top" secondItem="1je-HD-0WA" secondAttribute="top" id="ePj-e4-uA8"/>
+                            <constraint firstItem="A1p-jd-meV" firstAttribute="top" secondItem="1je-HD-0WA" secondAttribute="top" constant="25" id="Eya-aG-R9Q"/>
+                            <constraint firstAttribute="trailing" secondItem="b6Q-Ts-Aic" secondAttribute="trailing" id="bFC-5p-dZV"/>
+                            <constraint firstItem="b6Q-Ts-Aic" firstAttribute="top" secondItem="1je-HD-0WA" secondAttribute="top" constant="25" id="e0d-Wv-dhH"/>
+                            <constraint firstItem="b6Q-Ts-Aic" firstAttribute="leading" secondItem="cSg-cQ-EWD" secondAttribute="leading" id="jfl-Kk-FDg"/>
                             <constraint firstItem="A1p-jd-meV" firstAttribute="trailing" secondItem="1je-HD-0WA" secondAttribute="trailing" id="wpr-xY-faW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="공연 추천" id="SfL-8Z-UhK">
+                    <navigationItem key="navigationItem" id="SfL-8Z-UhK">
                         <barButtonItem key="rightBarButtonItem" id="XZ2-ky-TWF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8Qy-ea-gxW">
                                 <rect key="frame" x="324.5" y="0.0" width="69.5" height="44"/>
@@ -178,8 +189,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H7d-Or-5tN" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="eye.fill" catalog="system" selectedImage="eye.fill" id="B8Q-gO-20f"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="iF5-3w-uni">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iF5-3w-uni">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
