@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchResultViewController: UIViewController, UISearchBarDelegate{
+final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
@@ -16,6 +16,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     @IBOutlet weak var keywordAlarmLabel: UILabel!
     @IBOutlet weak var keywordSettingButton: UIButton!
+    @IBOutlet weak var alertEmptyEventLabel: UILabel!
     private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
     private var keywordViewModel = KeywordDataModel()
     
@@ -46,6 +47,11 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
+        alertEmptyEventLabel.isHidden = true
+        // TODO: filter func로 옮기기 eventList -> copyEventList
+//        if eventList.isEmpty {
+//            alertEmptyEventLabel.isHidden = false
+//        }
     }
     
     private func navigationConfig() {
