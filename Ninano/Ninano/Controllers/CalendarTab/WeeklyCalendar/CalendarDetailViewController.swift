@@ -91,7 +91,7 @@ class CalendarDetailViewController: UIViewController {
     }
     
     @IBAction func addDate(_ sender: Any) {
-    }
+    }  
 }
 
 extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -141,6 +141,7 @@ extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return eventList.count
     }

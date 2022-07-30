@@ -151,19 +151,38 @@
                                                         <fontDescription key="titleFontDescription" type="boldSystem" pointSize="13"/>
                                                         <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </buttonConfiguration>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="addDate:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="585-sx-60u"/>
+                                                        <action selector="addDate:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sPx-mn-ovu"/>
+                                                        <segue destination="4Cm-ZO-TbC" kind="presentation" id="9WN-T6-aZK"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwp-xr-Gg2">
+                                                    <rect key="frame" x="28" y="12" width="158" height="237"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title=""/>
+                                                    <connections>
+                                                        <segue destination="5bo-B3-Q2U" kind="show" id="A2V-bY-goK"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="dnZ-ub-hsf" firstAttribute="top" secondItem="KKF-fU-W4U" secondAttribute="bottom" constant="130" id="0pI-6u-GY8"/>
+                                                <constraint firstItem="kif-GM-MQv" firstAttribute="leading" secondItem="zwp-xr-Gg2" secondAttribute="trailing" id="3Ki-iX-wsc"/>
                                                 <constraint firstItem="Ph7-X4-4p3" firstAttribute="leading" secondItem="srp-dx-QCy" secondAttribute="leadingMargin" constant="8" id="7aX-dk-NhU"/>
                                                 <constraint firstItem="6MX-rp-VkK" firstAttribute="top" secondItem="kif-GM-MQv" secondAttribute="bottom" constant="9" id="8QN-0S-mSQ"/>
+                                                <constraint firstItem="zwp-xr-Gg2" firstAttribute="top" secondItem="srp-dx-QCy" secondAttribute="top" id="EVQ-5k-7CL"/>
                                                 <constraint firstItem="kif-GM-MQv" firstAttribute="leading" secondItem="Ph7-X4-4p3" secondAttribute="trailing" constant="23" id="GB0-j7-AKv"/>
                                                 <constraint firstItem="dnZ-ub-hsf" firstAttribute="leading" secondItem="Ph7-X4-4p3" secondAttribute="trailing" constant="52" id="LHA-rB-I7I"/>
+                                                <constraint firstAttribute="bottom" secondItem="zwp-xr-Gg2" secondAttribute="bottom" id="ORg-vh-kOY"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="dnZ-ub-hsf" secondAttribute="bottom" constant="1" id="Syt-BR-pBQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dnZ-ub-hsf" secondAttribute="trailing" constant="16" id="alC-wk-3D3"/>
+                                                <constraint firstItem="zwp-xr-Gg2" firstAttribute="leading" secondItem="srp-dx-QCy" secondAttribute="leading" id="dSE-EL-sTj"/>
                                                 <constraint firstItem="6MX-rp-VkK" firstAttribute="leading" secondItem="kif-GM-MQv" secondAttribute="leading" id="gzr-cX-qrb"/>
                                                 <constraint firstItem="KKF-fU-W4U" firstAttribute="leading" secondItem="kif-GM-MQv" secondAttribute="leading" id="shZ-im-ORB"/>
                                                 <constraint firstItem="kif-GM-MQv" firstAttribute="top" secondItem="Ph7-X4-4p3" secondAttribute="top" id="tyG-Lf-Ini"/>
@@ -210,6 +229,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-149.27536231884059" y="63.616071428571423"/>
+        </scene>
+        <!--CalenderModal-->
+        <scene sceneID="vVx-Df-gWj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CalenderModal" id="4Cm-ZO-TbC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ed8-Jh-CPE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qMx-xH-cr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="78"/>
+        </scene>
+        <!--EventDetail-->
+        <scene sceneID="56f-um-Qd0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EventDetail" id="5bo-B3-Q2U" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MOL-GJ-7Qo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Shb-f6-uew" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="500" y="46"/>
         </scene>
     </scenes>
     <resources>
