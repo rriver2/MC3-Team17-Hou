@@ -39,8 +39,9 @@ class SearchViewController: UIViewController {
         configNavigationTitle()
         configNavigationArea()
         fetchTopStories()
+        // Do any additional setup after loading the view.
     }
-    
+
     private func configNavigationTitle() {
         let viewWidth = self.view.bounds.width - 115
         print(viewWidth)

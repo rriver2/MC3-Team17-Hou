@@ -59,6 +59,7 @@
 		F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAA2884288700D57A4F /* CalendarCollectionViewCell.xib */; };
 		F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F63AEBAD288428B800D57A4F /* Calendar.storyboard */; };
 		F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */; };
+		F640CB7D2893C21000DC1446 /* StringFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640CB7C2893C21000DC1446 /* StringFormatter.swift */; };
 		F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6AC89BA288859AE006B3275 /* Keyword.storyboard */; };
 		F6AC89BF28897DFC006B3275 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89BE28897DFC006B3275 /* Model.swift */; };
 		F6AC89C3288BAE82006B3275 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89C2288BAE82006B3275 /* APICaller.swift */; };
@@ -124,6 +125,7 @@
 		F63AEBAD288428B800D57A4F /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		F63AEBDA2886788800D57A4F /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		F63AEBDE288686CE00D57A4F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		F640CB7C2893C21000DC1446 /* StringFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringFormatter.swift; sourceTree = "<group>"; };
 		F6AC89BA288859AE006B3275 /* Keyword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Keyword.storyboard; sourceTree = "<group>"; };
 		F6AC89BE28897DFC006B3275 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F6AC89C2288BAE82006B3275 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
@@ -189,6 +191,8 @@
 				324251AF2891602700804AAF /* UIFont.swift */,
 				CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */,
 				CC997B462890EBCB0079E3EF /* UIImage.swift */,
+				F640CB7C2893C21000DC1446 /* StringFormatter.swift */,
+				CC4FA480288E97F200B52EDA /* customDesign */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -544,6 +548,7 @@
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				58D6ECD2288E549700AB402F /* KeywordManager.swift in Sources */,
 				F6AC89C3288BAE82006B3275 /* APICaller.swift in Sources */,
+				F640CB7D2893C21000DC1446 /* StringFormatter.swift in Sources */,
 				3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */,
 				F63AEBDB2886788800D57A4F /* CalendarCollectionViewCell.swift in Sources */,
 				CC8CFAE7288E52AB003BA65C /* DateFormatter.swift in Sources */,

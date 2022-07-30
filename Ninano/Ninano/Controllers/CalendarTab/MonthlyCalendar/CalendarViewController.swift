@@ -127,6 +127,14 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             dates.append(String((Int(days[indexPath.row]) ?? 0)+index))
         }
         nextVC.dates = dates
+        
+        guard let text = yearMonthLabel.text else {
+            return
+        }
+        let year = text[text.startIndex ..< text.index(text.startIndex, offsetBy: 4)]
+        let month = text[text.index(text.startIndex, offsetBy: 5)]
+        nextVC.yearString = String(year)
+        nextVC.monthString = String(month)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
