@@ -11,7 +11,6 @@
         <!--Calender Modal View Controller-->
         <scene sceneID="6TU-AC-vx9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HZ5-B6-ywO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CalenderModalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iVM-9m-UJx" customClass="CalenderModalViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C1m-kX-CcO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -20,7 +19,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wE2-uG-72g">
                                 <rect key="frame" x="0.0" y="60" width="414" height="44"/>
                                 <items>
-                                    <navigationItem title="내 일정에 저장" id="csx-r6-Jgf">
+                                    <navigationItem title="일정 설정" id="csx-r6-Jgf">
                                         <barButtonItem key="leftBarButtonItem" title="취소" id="8EC-kC-x7s">
                                             <connections>
                                                 <action selector="cancelButton:" destination="iVM-9m-UJx" id="R9E-hB-ey0"/>
@@ -55,7 +54,7 @@
                                         </constraints>
                                         <color key="tintColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="일정 추가">
+                                        <buttonConfiguration key="configuration" style="plain" title="설정 완료">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -88,6 +87,7 @@
                         <outlet property="scheduleButton" destination="VXT-Xe-qLR" id="2RQ-6l-zSc"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HZ5-B6-ywO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="95.758928571428569"/>
         </scene>
