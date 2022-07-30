@@ -28,6 +28,11 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
             reloadCollection()
         }
     }
+    private var searchKeyword: String? {
+        didSet {
+            reloadCollection()
+        }
+    }
     
     var eventList: [Event] = []
     var copyEventList: [Event] = []
@@ -89,6 +94,29 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
                 filterEvent = filterEvent.filter { $0.area == compareLocal }
             }
         }
+        // searchWord 정제
+        if let searchKeyword = self.searchKeyword, searchKeyword != "" {
+            filterEvent = filterEvent.filter {
+                print(searchKeyword)
+                if $0.title.contains(searchKeyword) {
+                    return true
+                } else if let place = $0.place, place.contains(searchKeyword) {
+                    return true
+                } else if let area = $0.area, area.contains(searchKeyword) {
+                    return true
+                } else if let period = $0.period, period.contains(searchKeyword) {
+                    return true
+                } else if let actor = $0.actor, actor.contains(searchKeyword) {
+                    return true
+                } else if let info = $0.info, info.contains(searchKeyword) {
+                    return true
+                } else if let price = $0.price, price.contains(searchKeyword) {
+                    return true
+                }
+                return false
+            }
+        }
+        // collectionView update
         copyEventList = filterEvent
         performanceCollectionView.reloadData()
     }
@@ -110,7 +138,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
                 searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.width - 90, height: 0))
+                self.searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.width - 90, height: 0))
                 searchBar.placeholder = "공연을 검색하세요"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
@@ -133,6 +161,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // TODO: filter CollectionView
+        searchKeyword = searchBar.text
     }
     
     private func dismissKeyboard(_ searchBar: UISearchBar) {
