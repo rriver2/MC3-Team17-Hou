@@ -24,7 +24,7 @@ struct LikeDataModel {
         LikeManager.shared.deleteLike(with: url)
     }
     
-    /// MARK: keyword 에서만 사용할 예정이지만 Test 에서 사용해보려 추가함
+    // MARK: keyword 에서만 사용할 예정이지만 Test 에서 사용해보려 추가함
     func removeAllLikeItems() {
         LikeManager.shared.deleteAll()
     }

@@ -16,10 +16,10 @@ final class PerformancesViewCell: UICollectionViewCell {
     
     func updateEventCell(event: Event) {
         self.eventTitleLabel.text = event.title
-        self.eventDateLabel.text = event.period
+        self.eventDateLabel.text = event.period?.dateFormatForUI()
         self.eventPlaceLabel.text = event.place
         if let data = event.posterData {
-            addImage(UIImage: UIImage(data: data) ?? UIImage())
+            addImage(UIImage: (UIImage(data: data) ?? UIImage(named: "calendarBackground"))!)
         }
         configuration()
     }
