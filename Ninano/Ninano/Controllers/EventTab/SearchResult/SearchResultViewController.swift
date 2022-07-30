@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchResultViewController: UIViewController, UISearchBarDelegate{
+final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
@@ -20,6 +20,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     private var keywordViewModel = KeywordDataModel()
     
     var eventList: [Event] = []
+    var copyEventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
     
     enum SearchDetailCatagory {
@@ -46,6 +47,11 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
+        // data
+        copyEventList = eventList
+            // eventList에서 지역구만 빼내기
+        let eventListArea: Set = Set(eventList.compactMap { $0.area })
+        eventFilterButton.local = Array(eventListArea)
     }
     
     private func navigationConfig() {
@@ -138,13 +144,13 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     // UICollectionViewDataSource와 관련된 함수 2개
     /// 콜렉션 뷰에 총 몇 개의 셀(cell)을 표시할 것인지를 구현
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.eventList.count
+        return self.copyEventList.count
     }
     /// 해당 cell에 무슨 view들을 표시할 지를 결정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellId = String(describing: PerformancesViewCell.self)
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? PerformancesViewCell {
-            let eventData = self.eventList[indexPath.item]
+            let eventData = self.copyEventList[indexPath.item]
             cell.updateEventCell(event: eventData)
             cell.contentView.layer.cornerRadius = 8
             return cell
@@ -162,12 +168,32 @@ protocol DateDelivable: AnyObject {
     func addDate(date: Date)
 }
 
-protocol FilterButtonClickable: AnyObject {
+protocol EventButtonFilterable: AnyObject {
     func openLocalActionSheet(actionSheet: UIAlertController)
     func openCaledarSearchResultView()
+    func filterCollctionCell(criteria: FilterCriteria)
 }
 
-extension SearchResultViewController: DateDelivable, FilterButtonClickable {
+enum FilterCriteria {
+    case date(_ date: String)
+    case local(_ local: String)
+}
+
+extension SearchResultViewController: DateDelivable, EventButtonFilterable {
+    
+    func filterCollctionCell(criteria: FilterCriteria) {
+        switch criteria {
+            case .date(let date):
+                print("date: \(date)")
+            case .local(let local):
+                if local == "전체" {
+                    copyEventList = eventList
+                } else {
+                    copyEventList = eventList.filter { $0.area == local }
+                }
+                performanceCollectionView.reloadData()
+        }
+    }
     
     func addDate(date: Date) {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
