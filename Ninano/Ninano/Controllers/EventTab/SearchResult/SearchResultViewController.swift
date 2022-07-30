@@ -158,7 +158,9 @@ extension SearchResultViewController: DateDelivable, FilterButtonClickable {
     func addDate(date: Date) {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
         let button: UIButton = eventFilterButton.dateFilterButton
-        button.setTitle(koreanDate, for: .normal)
+        let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+        let attributedTitle = NSAttributedString(string: koreanDate, attributes: attribute)
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
         button.configuration?.cornerStyle = .capsule
     }

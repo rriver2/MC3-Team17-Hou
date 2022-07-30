@@ -33,13 +33,13 @@ class EventFilterButton: UIView {
     }
     
     weak var datedeliveryDelegate: FilterButtonClickable?
-
+    
     private enum Filter {
         case local
         case category
         case date
     }
-
+    
     private enum LocationType: String {
         case gangnam = "강남"
         case gangbook = "강북"
@@ -49,7 +49,7 @@ class EventFilterButton: UIView {
         case dobonggu = "도봉구"
         case nowongu = "노원구"
     }
-
+    
     @IBAction private func localFilterButton(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
         let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
@@ -57,8 +57,9 @@ class EventFilterButton: UIView {
             let location = local.rawValue
             actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
                 sender.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-                sender.configuration?.cornerStyle = .capsule
-                sender.setTitle(location, for: .normal)
+                let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+                let attributedTitle = NSAttributedString(string: location, attributes: attribute)
+                sender.setAttributedTitle(attributedTitle, for: .normal)
             }))
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
