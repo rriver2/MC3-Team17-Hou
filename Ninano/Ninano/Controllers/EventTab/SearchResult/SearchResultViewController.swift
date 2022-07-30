@@ -14,6 +14,8 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     @IBOutlet private weak var keywordNotification: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
+    @IBOutlet weak var keywordAlarmLabel: UILabel!
+    @IBOutlet weak var keywordSettingButton: UIButton!
     private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
     private var keywordViewModel = KeywordDataModel()
     
@@ -27,36 +29,48 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+        // config
+        navigationConfig()
+        determineViewCatagory()
+        keywordNotification.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        keywordAlarmLabel.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        keywordSettingButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
+        keywordAddedNotification.isHidden = true
         keywordAddedNotification.isHidden = true
         keywordNotification.isHidden = true
-        // collectionView에 대한 설정
+        keywordAddedNotification.layer.cornerRadius = 15
+        keywordNotification.layer.cornerRadius = 15
+        // delegate
+        searchBar.delegate = self
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
-        
+    }
+    
+    private func navigationConfig() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
         backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
-        
+        self.navigationController?.navigationBar.tintColor = CustomColor.mainMidRed
+    }
+    
+    private func determineViewCatagory() {
         switch viewCatagory {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
                 searchCatagoryTitle.textAlignment = .center
-                searchCatagoryTitle.font = UIFont.systemFont(ofSize: 20)
+                searchCatagoryTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
                 searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
-                searchBar.placeholder = "Search User"
+                let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.width - 90, height: 0))
+                searchBar.placeholder = "공연을 검색하세요"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
                 print("viewCatagory error")
         }
-        keywordAddedNotification.layer.cornerRadius = 15
-        keywordNotification.layer.cornerRadius = 15
     }
     
     internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -158,11 +172,10 @@ extension SearchResultViewController: DateDelivable, FilterButtonClickable {
     func addDate(date: Date) {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
         let button: UIButton = eventFilterButton.dateFilterButton
-        let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+        let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
         let attributedTitle = NSAttributedString(string: koreanDate, attributes: attribute)
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-        button.configuration?.cornerStyle = .capsule
+        button.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
     }
     
     func openLocalActionSheet(actionSheet: UIAlertController) {
