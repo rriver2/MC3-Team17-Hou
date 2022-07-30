@@ -16,7 +16,6 @@
 		32CF35DC28830EAB00665186 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF35DB28830EAB00665186 /* EventCell.swift */; };
 		4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */; };
 		4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D9F018728862FE100300DB8 /* SetKeywordViewController.swift */; };
-		4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */; };
 		581AE5652885099D00853BEB /* LineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581AE5642885099D00853BEB /* LineSegmentedControl.swift */; };
 		58621445288FE07400DE04BE /* HowToUseCoreData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 58621444288FE07400DE04BE /* HowToUseCoreData.txt */; };
 		587D49C42880778100727BD6 /* KeywordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587D49C32880778100727BD6 /* KeywordTableViewCell.swift */; };
@@ -79,7 +78,6 @@
 		32CF35DB28830EAB00665186 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCalendarViewController.swift; sourceTree = "<group>"; };
 		4D9F018728862FE100300DB8 /* SetKeywordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetKeywordViewController.swift; sourceTree = "<group>"; };
-		4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailLinkViewController.swift; sourceTree = "<group>"; };
 		581AE5642885099D00853BEB /* LineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineSegmentedControl.swift; sourceTree = "<group>"; };
 		58621444288FE07400DE04BE /* HowToUseCoreData.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = HowToUseCoreData.txt; sourceTree = "<group>"; };
 		587D49C32880778100727BD6 /* KeywordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordTableViewCell.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				CC8B50CB287C1063004EE6DB /* EventDetailViewController.swift */,
-				4DFDB17C2885842E00C56411 /* DetailLinkViewController.swift */,
 				4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */,
 			);
 			path = EventDetail;
@@ -541,7 +538,6 @@
 				7EBFC8A02886536900EF5537 /* DayEventDetailCell.swift in Sources */,
 				7EBFC89C28855CF600EF5537 /* CalendarDetailViewController.swift in Sources */,
 				3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */,
-				4DFDB17D2885842E00C56411 /* DetailLinkViewController.swift in Sources */,
 				4D9F018828862FE100300DB8 /* SetKeywordViewController.swift in Sources */,
 				58D6ECD0288E548D00AB402F /* ReserveManager.swift in Sources */,
 				3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */,
