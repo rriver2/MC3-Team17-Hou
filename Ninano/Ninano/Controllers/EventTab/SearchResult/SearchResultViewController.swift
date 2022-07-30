@@ -16,6 +16,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet private weak var eventCollectionView: UICollectionView!
     @IBOutlet weak var keywordAlarmLabel: UILabel!
     @IBOutlet weak var keywordSettingButton: UIButton!
+    @IBOutlet weak var alertEmptyEventLabel: UILabel!
     private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
     private var keywordViewModel = KeywordDataModel()
     private var local: String? {
@@ -62,6 +63,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
+        alertEmptyEventLabel.isHidden = true
         // data
         copyEventList = eventList
             // eventList에서 지역구만 빼내기
@@ -119,6 +121,12 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // collectionView update
         copyEventList = filterEvent
         performanceCollectionView.reloadData()
+        
+        if copyEventList.isEmpty {
+            alertEmptyEventLabel.isHidden = false
+        } else {
+            alertEmptyEventLabel.isHidden = true
+        }
     }
     
     private func navigationConfig() {
@@ -160,7 +168,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     }
     
     internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // TODO: filter CollectionView
         searchKeyword = searchBar.text
     }
     
@@ -228,8 +235,7 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
-        // river가 확인해야 하는 거 TODO: eventList-> copyEventList
-        eventDetailView.event = self.eventList[indexPath.item]
+        eventDetailView.event = self.copyEventList[indexPath.item]
         self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
 }

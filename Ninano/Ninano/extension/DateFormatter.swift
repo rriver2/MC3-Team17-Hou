@@ -20,10 +20,10 @@ extension Date {
         let koreanDate = formatter.string(from: self)
         return koreanDate
     }
-        public func isDateToday(fromDate: Date) -> Bool {
-            self.convertDateToOtherType(.onlyDate) == fromDate.convertDateToOtherType(.onlyDate)
-        }
+    public func isDateToday(fromDate: Date) -> Bool {
+        self.convertDateToOtherType(.onlyDate) == fromDate.convertDateToOtherType(.onlyDate)
     }
+}
 
 extension String {
     /// self : "2022-08-10~2022-08-10: yyyy-MM-dd~yyyy-MM-dd"
@@ -39,5 +39,15 @@ extension String {
             }
         }
         return returnDateList
+    }
+    /// 2022-08-10~2022-09-03 -> 2022.09.03~08.10
+    func dateFormatForUI() -> String {
+        let dateStringList = Array(Set(self.components(separatedBy: "~")))
+        var returnString = dateStringList[0].components(separatedBy: "-").joined(separator: ".")
+        if dateStringList.count == 2 {
+            let exceptYear = dateStringList[1].components(separatedBy: "-")
+            returnString += "~" + exceptYear[1] + "." + exceptYear[2]
+        }
+        return returnString
     }
 }

@@ -11,6 +11,7 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var posterImage: UIImageView!
     
     func configure(with viewModel: Event) {
+        posterImage.image = UIImage(named: "tempPoster")
         if let data = viewModel.posterData {
             posterImage.image = UIImage(data: data)
         } else if let url = viewModel.posterURL {
