@@ -8,6 +8,7 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
+    var categoryTitle: String?
     var eventList: [Event] = [] {
         // MARK: fetchTopStories()에서 viewModels를 가져오는데 시간이 걸리므로 가져온 후 eventCollectionView를 reload 함.
         didSet {
@@ -18,6 +19,12 @@ class CategoryCell: UITableViewCell {
     @IBOutlet weak var categoryName: UIButton!
     @IBOutlet weak var categoryChevron: UIButton!
     @IBOutlet weak var eventCollectionView: UICollectionView!
+    
+    var searchCategoryViewDelegate: SearchCategoryViewShowable?
+    
+    @IBAction func didTapCategoryName(_ sender: UIButton) {
+        searchCategoryViewDelegate?.didTouchCategoryButton(categoryTitle: categoryTitle ?? "", eventList: eventList)
+    }
 }
 
 extension CategoryCell: UICollectionViewDelegateFlowLayout {

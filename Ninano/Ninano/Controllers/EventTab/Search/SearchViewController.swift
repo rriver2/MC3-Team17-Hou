@@ -58,7 +58,18 @@ class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+protocol SearchCategoryViewShowable {
+    func didTouchCategoryButton(categoryTitle: String, eventList: [Event])
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource, SearchCategoryViewShowable {
+    func didTouchCategoryButton(categoryTitle: String, eventList: [Event]) {
+        guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
+        searchResultView.eventList = eventList
+        searchResultView.viewCatagory = .searchCatagory(navigationTitle: categoryTitle)
+        self.navigationController?.pushViewController(searchResultView, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Category.allCases.count
     }
@@ -70,6 +81,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let categoryTitle = Category.allValues[indexPath.row].rawValue
         let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)]
         let attributedTitle = NSAttributedString(string: categoryTitle, attributes: attribute)
+        
+        cell.categoryTitle = categoryTitle
         cell.categoryName.setAttributedTitle(attributedTitle, for: .normal)
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         
@@ -99,6 +112,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return UITableViewCell()
         }
+        cell.searchCategoryViewDelegate = self
         return cell
     }
     
