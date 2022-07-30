@@ -14,6 +14,8 @@ class EventFilterButton: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        localFilterButton.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
+        dateFilterButton.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
     }
     
     override init(frame: CGRect) {
@@ -56,8 +58,8 @@ class EventFilterButton: UIView {
         for local in locals {
             let location = local.rawValue
             actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
-                sender.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-                let attribute = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)]
+                sender.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
+                let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
                 let attributedTitle = NSAttributedString(string: location, attributes: attribute)
                 sender.setAttributedTitle(attributedTitle, for: .normal)
             }))
