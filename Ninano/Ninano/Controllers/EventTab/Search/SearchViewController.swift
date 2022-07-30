@@ -76,23 +76,17 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             var recommendedEvent: [Event] = []
             var recommendedEventSet: Set<Event> = []
-//            let shuffledEvent: [Event] = eventList.shuffled()
+            var setCount: Int
             
             while recommendedEventSet.count < numberOfCells {
                 if let randomEvent = eventList.randomElement() {
+                    setCount = recommendedEventSet.count
                     recommendedEventSet.insert(randomEvent)
-                    if recommendedEventSet.count > 0 {
+                    if recommendedEventSet.count > setCount {
                         recommendedEvent.append(randomEvent)
                     }
                 }
             }
-            
-//            for _ in 0..<numberOfCells {
-//                recommendedEvent.append(shuffledEvent[index])
-//                if let randomEvent = eventList.randomElement() {
-//                    recommendedEvent.append(randomEvent)
-//                }
-//            }
             cell.eventList = recommendedEvent
             
         case 1:
