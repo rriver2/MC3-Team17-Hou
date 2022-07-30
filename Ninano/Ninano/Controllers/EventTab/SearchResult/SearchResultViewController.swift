@@ -7,16 +7,17 @@
 
 import UIKit
 
-final class SearchResultViewController: UIViewController {
+final class SearchResultViewController: UIViewController, UISearchBarDelegate{
     
     @IBOutlet weak var eventFilterButton: EventFilterButton!
     @IBOutlet private var performanceCollectionView: UICollectionView!
     @IBOutlet private weak var keywordNotification: UIButton!
     @IBOutlet private weak var keywordAddedNotification: UIStackView!
     @IBOutlet private weak var eventCollectionView: UICollectionView!
-    private var isNotificationButtonSelected = false
     @IBOutlet weak var keywordAlarmLabel: UILabel!
     @IBOutlet weak var keywordSettingButton: UIButton!
+    private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
+    private var keywordViewModel = KeywordDataModel()
     
     var eventList: [Event] = []
     var viewCatagory: SearchDetailCatagory?
@@ -34,10 +35,13 @@ final class SearchResultViewController: UIViewController {
         keywordNotification.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
         keywordAlarmLabel.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
         keywordSettingButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
-        keywordNotification.layer.cornerRadius = 15
         keywordAddedNotification.isHidden = true
-        
+        keywordAddedNotification.isHidden = true
+        keywordNotification.isHidden = true
+        keywordAddedNotification.layer.cornerRadius = 15
+        keywordNotification.layer.cornerRadius = 15
         // delegate
+        searchBar.delegate = self
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
@@ -57,17 +61,37 @@ final class SearchResultViewController: UIViewController {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
                 searchCatagoryTitle.textAlignment = .center
-                searchCatagoryTitle.font = UIFont.systemFont(ofSize: 20)
-                searchCatagoryTitle.text = navigationTitle
                 searchCatagoryTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
+                searchCatagoryTitle.text = navigationTitle
                 self.navigationItem.titleView = searchCatagoryTitle
             case .searchResult:
                 let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.frame.width - 90, height: 0))
-                searchBar.placeholder = "Search User"
+                searchBar.placeholder = "공연을 검색하세요"
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
             case .none:
                 print("viewCatagory error")
         }
+    }
+    
+    internal func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard(searchBar)
+        
+        let isKeywordInCoreData = keywordViewModel.keywordItems.contains { keywordList in
+            return keywordList.keywordSubs == searchBar.text
+        }
+        if isKeywordInCoreData {
+            keywordNotification.isHidden = true
+        } else {
+            keywordNotification.isHidden = false
+        }
+    }
+    
+    internal func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // TODO: filter CollectionView
+    }
+    
+    private func dismissKeyboard(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     @objc private func didTapBackButton() {
@@ -75,20 +99,14 @@ final class SearchResultViewController: UIViewController {
     }
     
     @IBAction private func keywordNotificationButton(_ sender: UIButton) {
-    }
-    
-    @IBAction private func notificationSettingsButton(_ sender: UIButton) {
-        // TODO: 키워드 값 넣는 로직
-        if isNotificationButtonSelected == false {
-            keywordAddedNotification.isHidden = false
-            keywordAddedNotification.layer.cornerRadius = 15
-            sender.isHidden = true
-            
-            isNotificationButtonSelected = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                UIView.animate(withDuration: 1) {
-                    self.keywordAddedNotification.isHidden = true
-                }
+        if let keyWord = searchBar.text {
+            keywordViewModel.addKeywordItems(keyword: keyWord)
+        }
+        keywordAddedNotification.isHidden = false
+        keywordNotification.isHidden = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            UIView.animate(withDuration: 1) {
+                self.keywordAddedNotification.isHidden = true
             }
         }
     }
@@ -154,9 +172,10 @@ extension SearchResultViewController: DateDelivable, FilterButtonClickable {
     func addDate(date: Date) {
         let koreanDate = date.convertDateToKoreanDate(.koreanDate)
         let button: UIButton = eventFilterButton.dateFilterButton
-        button.setTitle(koreanDate, for: .normal)
+        let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
+        let attributedTitle = NSAttributedString(string: koreanDate, attributes: attribute)
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
-        button.configuration?.cornerStyle = .capsule
     }
     
     func openLocalActionSheet(actionSheet: UIAlertController) {

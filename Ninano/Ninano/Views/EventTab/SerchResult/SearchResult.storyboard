@@ -132,7 +132,6 @@
                                 </state>
                                 <connections>
                                     <action selector="keywordNotificationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VSv-mh-EWE"/>
-                                    <action selector="notificationSettingsButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Hys-K6-mVx"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-el-Pla">
