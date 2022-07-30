@@ -18,6 +18,16 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var keywordSettingButton: UIButton!
     private var searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 0))
     private var keywordViewModel = KeywordDataModel()
+    private var local: String? {
+        didSet {
+            reloadCollection()
+        }
+    }
+    private var date: Date? {
+        didSet {
+            reloadCollection()
+        }
+    }
     
     var eventList: [Event] = []
     var copyEventList: [Event] = []
@@ -50,8 +60,37 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // data
         copyEventList = eventList
             // eventList에서 지역구만 빼내기
-        let eventListArea: Set = Set(eventList.compactMap { $0.area })
-        eventFilterButton.local = Array(eventListArea)
+        var eventListArea: Array = Array(Set(eventList.compactMap { $0.area }))
+        eventListArea.append("전체")
+        eventFilterButton.local = eventListArea
+    }
+    
+    private func reloadCollection() {
+        var filterEvent: [Event] = eventList
+        // date 정제
+        if let compareDate = self.date {
+            filterEvent = filterEvent.filter {
+                 if let period = $0.period {
+                     let dateList = period.periodToDateList()
+                     for date in dateList {
+                         if date.isDateToday(fromDate: compareDate) {
+                             return true
+                         } else {
+                             return false
+                         }
+                     }
+                 }
+                 return false
+             }
+        }
+        // local 정제
+        if let compareLocal = self.local {
+            if compareLocal != "전체" {
+                filterEvent = filterEvent.filter { $0.area == compareLocal }
+            }
+        }
+        copyEventList = filterEvent
+        performanceCollectionView.reloadData()
     }
     
     private func navigationConfig() {
@@ -175,7 +214,7 @@ protocol EventButtonFilterable: AnyObject {
 }
 
 enum FilterCriteria {
-    case date(_ date: String)
+    case date(_ date: Date)
     case local(_ local: String)
 }
 
@@ -183,25 +222,22 @@ extension SearchResultViewController: DateDelivable, EventButtonFilterable {
     
     func filterCollctionCell(criteria: FilterCriteria) {
         switch criteria {
-            case .date(let date):
-                print("date: \(date)")
+            case .date(let compareDate):
+                self.date = compareDate
             case .local(let local):
-                if local == "전체" {
-                    copyEventList = eventList
-                } else {
-                    copyEventList = eventList.filter { $0.area == local }
-                }
-                performanceCollectionView.reloadData()
+                self.local = local
         }
     }
     
     func addDate(date: Date) {
-        let koreanDate = date.convertDateToKoreanDate(.koreanDate)
+        let koreanDate = date.convertDateToOtherType(.koreanDate)
         let button: UIButton = eventFilterButton.dateFilterButton
         let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
         let attributedTitle = NSAttributedString(string: koreanDate, attributes: attribute)
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
+        
+        filterCollctionCell(criteria: .date(date))
     }
     
     func openLocalActionSheet(actionSheet: UIAlertController) {

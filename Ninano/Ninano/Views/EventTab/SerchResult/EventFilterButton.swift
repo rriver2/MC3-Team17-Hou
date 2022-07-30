@@ -49,11 +49,17 @@ class EventFilterButton: UIView {
         let locals: [String] = local
         for location in locals {
             actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
-                sender.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
                 let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
-                let attributedTitle = NSAttributedString(string: location, attributes: attribute)
-                sender.setAttributedTitle(attributedTitle, for: .normal)
                 self.datedeliveryDelegate?.filterCollctionCell(criteria: .local(location))
+                if location == "전체" {
+                    sender.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
+                    let attributedTitle = NSAttributedString(string: "지역 선택", attributes: attribute)
+                    sender.setAttributedTitle(attributedTitle, for: .normal)
+                } else {
+                    sender.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
+                    let attributedTitle = NSAttributedString(string: location, attributes: attribute)
+                    sender.setAttributedTitle(attributedTitle, for: .normal)
+                }
             }))
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
