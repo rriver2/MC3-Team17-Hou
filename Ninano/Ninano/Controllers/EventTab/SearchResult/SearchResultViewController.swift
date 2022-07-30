@@ -28,23 +28,31 @@ final class SearchResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // config
+        navigationConfig()
+        determineViewCatagory()
         keywordNotification.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
         keywordAlarmLabel.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
         keywordSettingButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)
-        
+        keywordNotification.layer.cornerRadius = 15
         keywordAddedNotification.isHidden = true
-        // collectionView에 대한 설정
+        
+        // delegate
         performanceCollectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         performanceCollectionView.dataSource = self
         performanceCollectionView.delegate = self
         eventFilterButton.datedeliveryDelegate = self
-        
+    }
+    
+    private func navigationConfig() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
         backImage = backImage?.resizeImage(newWidth: 40)
         let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = CustomColor.mainMidRed
-        
+    }
+    
+    private func determineViewCatagory() {
         switch viewCatagory {
             case .searchCatagory(let navigationTitle):
                 let searchCatagoryTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
@@ -60,8 +68,6 @@ final class SearchResultViewController: UIViewController {
             case .none:
                 print("viewCatagory error")
         }
-        
-        keywordNotification.layer.cornerRadius = 15
     }
     
     @objc private func didTapBackButton() {
