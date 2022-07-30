@@ -228,6 +228,8 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        // river가 확인해야 하는 거 TODO: eventList-> copyEventList
+        eventDetailView.event = self.eventList[indexPath.item]
         self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
 }

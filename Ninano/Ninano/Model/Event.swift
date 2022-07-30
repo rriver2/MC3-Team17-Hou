@@ -30,14 +30,17 @@ class Event {
         self.actor = actor
         self.info = info
         self.price = price
-//        fetchImage(url: posterURL)
+        fetchImage(url: posterURL) { result in
+            if result == false {
+                print("posterURL 없음")
+            }
+        }
     }
     
     func fetchImage(url: URL?, completion: @escaping (Bool) -> Void) {
         if let url = url {
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
-//                    return
                     completion(false)
                     return
                 }
@@ -45,7 +48,6 @@ class Event {
                 completion(true)
             }.resume()
         } else {
-            print("posterURL 없음")
             completion(false)
         }
     }
