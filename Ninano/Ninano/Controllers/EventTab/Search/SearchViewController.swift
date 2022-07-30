@@ -111,6 +111,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
         default:
             return UITableViewCell()
         }
+        cell.searchCategoryViewDelegate = self
         return cell
     }
     
