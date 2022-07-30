@@ -6,12 +6,9 @@
 //
 
 import UIKit
+import CloudKit
 
 class SearchViewController: UIViewController {
-    private var titleFont = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title2, weight: .bold)]
-    private var categoryConfig = UIButton.Configuration.plain()
-    private var categoryFont = UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)
-
     private enum Category: String, CaseIterable {
         case recommended = "니나노의 추천 공연"
         case thisMonth = "이번 달 예정 공연"
@@ -23,6 +20,8 @@ class SearchViewController: UIViewController {
     
     private var articles: APIResponse?
     private var eventList = [Event]()
+    
+    private let numberOfCells: Int = 8
     
     @IBOutlet private var categoryTableView: UITableView!
     
@@ -36,21 +35,27 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.navigationBar.largeTitleTextAttributes = titleFont
-        fetchTopStories()
+    
         configNavigationTitle()
+        configNavigationArea()
+        fetchTopStories()
         // Do any additional setup after loading the view.
     }
-    private func configNavigationTitle() {
-        let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 270, height: 20))
-        calendarTitle.textAlignment = .left
-        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
-        calendarTitle.text = "공연 추천"
-        self.navigationItem.titleView = calendarTitle
-            
-    }
 
+    private func configNavigationTitle() {
+        let viewWidth = self.view.bounds.width - 115
+        print(viewWidth)
+        let searchViewTitle = UILabel(frame: CGRect(x: 25, y: 0, width: viewWidth, height: 20))
+        searchViewTitle.textAlignment = .left
+        searchViewTitle.font = UIFont.preferredFont(forTextStyle: .title2, weight: .bold)
+        searchViewTitle.text = "공연 추천"
+        self.navigationItem.titleView = searchViewTitle
+    }
+    
+    private func configNavigationArea() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -62,12 +67,38 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryCell else {
             return UITableViewCell()
         }
-        categoryConfig.title = Category.allValues[indexPath.row].rawValue
-        cell.categoryName.configuration = categoryConfig
-        cell.categoryName.titleLabel?.font = categoryFont
+        let categoryTitle = Category.allValues[indexPath.row].rawValue
+        let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)]
+        let attributedTitle = NSAttributedString(string: categoryTitle, attributes: attribute)
+        cell.categoryName.setAttributedTitle(attributedTitle, for: .normal)
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
-        cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.eventList = eventList
+        
+        switch indexPath.row {
+        case 0:
+            var recommendedEvent: [Event] = []
+            var recommendedEventSet: Set<Event> = []
+            var setCount: Int
+            
+            while recommendedEventSet.count < numberOfCells {
+                if let randomEvent = eventList.randomElement() {
+                    setCount = recommendedEventSet.count
+                    recommendedEventSet.insert(randomEvent)
+                    if recommendedEventSet.count > setCount {
+                        recommendedEvent.append(randomEvent)
+                    }
+                }
+            }
+            cell.eventList = recommendedEvent
+            
+        case 1:
+            cell.eventList = eventList
+        case 2:
+            cell.eventList = eventList
+        case 3:
+            cell.eventList = eventList
+        default:
+            return UITableViewCell()
+        }
         return cell
     }
     
