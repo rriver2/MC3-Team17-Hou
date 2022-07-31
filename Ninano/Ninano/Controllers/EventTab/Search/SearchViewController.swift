@@ -6,11 +6,9 @@
 //
 
 import UIKit
+import CloudKit
 
 class SearchViewController: UIViewController {
-    private var categoryConfig = UIButton.Configuration.plain()
-    private var categoryFont = UIFont.boldSystemFont(ofSize: 15)
-
     private enum Category: String, CaseIterable {
         case recommended = "니나노의 추천 공연"
         case thisMonth = "이번 달 예정 공연"
@@ -23,24 +21,54 @@ class SearchViewController: UIViewController {
     private var articles: APIResponse?
     private var eventList = [Event]()
     
+    private let numberOfCells: Int = 8
+    
     @IBOutlet private var categoryTableView: UITableView!
     
     @IBAction func didTouchSearchButton(_ sender: UIButton) {
         guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
         searchResultView.eventList = eventList
-        // TODO: 내가 좋아할 만한 공연 화면으로 넘어가면 detailCatagory, 검색 화면으로 넘어가면 .searchResult(navigationTitle: String)
         searchResultView.viewCatagory = .searchResult
         self.navigationController?.pushViewController(searchResultView, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        configNavigationTitle()
+        configNavigationArea()
         fetchTopStories()
         // Do any additional setup after loading the view.
     }
+
+    private func configNavigationTitle() {
+        let viewWidth = self.view.bounds.width - 115
+        print(viewWidth)
+        let searchViewTitle = UILabel(frame: CGRect(x: 25, y: 0, width: viewWidth, height: 20))
+        searchViewTitle.textAlignment = .left
+        searchViewTitle.font = UIFont.preferredFont(forTextStyle: .title2, weight: .bold)
+        searchViewTitle.text = "공연 추천"
+        self.navigationItem.titleView = searchViewTitle
+    }
+    
+    private func configNavigationArea() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+protocol SearchCategoryViewShowable {
+    func didTouchCategoryButton(categoryTitle: String, eventList: [Event])
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource, SearchCategoryViewShowable {
+    func didTouchCategoryButton(categoryTitle: String, eventList: [Event]) {
+        guard let searchResultView = UIStoryboard(name: "SearchResult", bundle: .main).instantiateViewController(withIdentifier: "SearchResultViewController") as? SearchResultViewController else { return }
+        searchResultView.eventList = eventList
+        searchResultView.viewCatagory = .searchCatagory(navigationTitle: categoryTitle)
+        self.navigationController?.pushViewController(searchResultView, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Category.allCases.count
     }
@@ -49,11 +77,57 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as? CategoryCell else {
             return UITableViewCell()
         }
-        categoryConfig.title = Category.allValues[indexPath.row].rawValue
-        cell.categoryName.configuration = categoryConfig
-        cell.categoryName.titleLabel?.font = categoryFont
-        cell.categoryChevron.titleLabel?.font = categoryFont
-        cell.eventList = eventList
+        let categoryTitle = Category.allValues[indexPath.row].rawValue
+        let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .subheadline, weight: .semibold)]
+        let attributedTitle = NSAttributedString(string: categoryTitle, attributes: attribute)
+        
+        cell.categoryTitle = categoryTitle
+        cell.categoryName.setAttributedTitle(attributedTitle, for: .normal)
+        cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
+        
+        switch indexPath.row {
+        case 0: // 니나노의 추천 공연
+            var recommendedEvent: [Event] = []
+            var recommendedEventSet: Set<Event> = []
+            var setCount: Int
+            
+            while recommendedEventSet.count < numberOfCells {
+                if let randomEvent = eventList.randomElement() {
+                    setCount = recommendedEventSet.count
+                    recommendedEventSet.insert(randomEvent)
+                    if recommendedEventSet.count > setCount {
+                        recommendedEvent.append(randomEvent)
+                    }
+                }
+            }
+            cell.eventList = recommendedEvent
+            
+        case 1: // 이번 달 예정 공연
+            cell.eventList = eventList
+
+        case 2: // 무료 공연
+            var freeEvent: [Event] = []
+            freeEvent = eventList.filter {
+                if let price = $0.price {
+                    if price.count == 0 {
+                        return true
+                    } else if price.contains("무료") {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+                return false
+            }
+            cell.eventList = freeEvent
+            
+        case 3: // 내가 구독한 공연
+            cell.eventList = eventList
+
+        default:
+            return UITableViewCell()
+        }
+        cell.searchCategoryViewDelegate = self
         return cell
     }
     

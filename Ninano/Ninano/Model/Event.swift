@@ -8,6 +8,7 @@
 import Foundation
 
 class Event {
+    
     let title: String
     let posterURL: URL?
     var posterData: Data?
@@ -29,14 +30,12 @@ class Event {
         self.actor = actor
         self.info = info
         self.price = price
-//        fetchImage(url: posterURL, completion: <#(Bool) -> Void#>)
     }
     
     func fetchImage(url: URL?, completion: @escaping (Bool) -> Void) {
         if let url = url {
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
-//                    return
                     completion(false)
                     return
                 }
@@ -44,8 +43,25 @@ class Event {
                 completion(true)
             }.resume()
         } else {
-            print("posterURL 없음")
             completion(false)
         }
+    }
+}
+
+extension Event: Hashable {
+    static func == (lhs: Event, rhs: Event) -> Bool {
+        return lhs.title == rhs.title && lhs.posterURL == rhs.posterURL && lhs.place == rhs.place && lhs.area == rhs.area && lhs.period == rhs.period && lhs.URL == rhs.URL && lhs.actor == rhs.actor && lhs.info == rhs.info && lhs.price == rhs.price
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+        hasher.combine(posterURL)
+        hasher.combine(place)
+        hasher.combine(area)
+        hasher.combine(period)
+        hasher.combine(URL)
+        hasher.combine(actor)
+        hasher.combine(info)
+        hasher.combine(price)
     }
 }

@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController {
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
     var components = DateComponents()
+    
     var weeks: [String] = ["Sun", "Mon", "Tus", "Wed", "Thu", "Fri", "Sat"]
     var days: [String] = []
     // 해달 월에 몇일까지 있는지 카운트
@@ -127,6 +128,14 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             dates.append(String((Int(days[indexPath.row]) ?? 0)+index))
         }
         nextVC.dates = dates
+        
+        guard let text = yearMonthLabel.text else {
+            return
+        }
+        let year = text[text.startIndex ..< text.index(text.startIndex, offsetBy: 4)]
+        let month = text[text.index(text.startIndex, offsetBy: 5)]
+        nextVC.yearString = String(year)
+        nextVC.monthString = String(month)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

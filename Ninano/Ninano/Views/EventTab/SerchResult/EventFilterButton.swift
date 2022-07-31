@@ -14,6 +14,8 @@ class EventFilterButton: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
+        localFilterButton.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
+        dateFilterButton.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
     }
     
     override init(frame: CGRect) {
@@ -32,33 +34,32 @@ class EventFilterButton: UIView {
         return nib.instantiate(withOwner: self, options: nil).first as? UIView
     }
     
-    weak var datedeliveryDelegate: FilterButtonClickable?
-
+    weak var datedeliveryDelegate: EventButtonFilterable?
+    
     private enum Filter {
         case local
         case category
         case date
     }
-
-    private enum LocationType: String {
-        case gangnam = "강남"
-        case gangbook = "강북"
-        case gurogu = "구로구"
-        case gwanakgu = "관악구"
-        case gwangjingu = "광진구"
-        case dobonggu = "도봉구"
-        case nowongu = "노원구"
-    }
-
+    
+    var local: [String] = []
+    
     @IBAction private func localFilterButton(_ sender: UIButton) {
         let actionSheet = UIAlertController(title: "지역 선택", message: "공연 정보를 나타낼 지역을 설정해주세요.", preferredStyle: .actionSheet)
-        let locals: [LocationType] = [.gangnam, .gangbook, .gurogu, .gwanakgu, .gwangjingu, .dobonggu, .nowongu]
-        for local in locals {
-            let location = local.rawValue
+        let locals: [String] = local
+        for location in locals {
             actionSheet.addAction(UIAlertAction(title: location, style: .default, handler: { _ in
-                sender.configuration?.baseBackgroundColor = UIColor(hex: "D5DCF8")
-                sender.configuration?.cornerStyle = .capsule
-                sender.setTitle(location, for: .normal)
+                let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .regular)]
+                self.datedeliveryDelegate?.filterCollctionCell(criteria: .local(location))
+                if location == "전체" {
+                    sender.configuration?.baseBackgroundColor = CustomColor.buttonLightGray
+                    let attributedTitle = NSAttributedString(string: "지역 선택", attributes: attribute)
+                    sender.setAttributedTitle(attributedTitle, for: .normal)
+                } else {
+                    sender.configuration?.baseBackgroundColor = CustomColor.buttonLightRed
+                    let attributedTitle = NSAttributedString(string: location, attributes: attribute)
+                    sender.setAttributedTitle(attributedTitle, for: .normal)
+                }
             }))
         }
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
