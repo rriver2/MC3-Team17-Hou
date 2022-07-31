@@ -12,6 +12,7 @@
 		3262DC252882DA8C007C6103 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3262DC242882DA8C007C6103 /* SearchViewController.swift */; };
 		3278706928819A7F00519A2A /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3278706828819A7F00519A2A /* Search.storyboard */; };
 		3286D8762887F40200E9154A /* WeeklyCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */; };
+		32BB012C2896C3010097B849 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BB012B2896C3010097B849 /* Calendar.swift */; };
 		32CF35DA28830E9A00665186 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF35D928830E9A00665186 /* CategoryCell.swift */; };
 		32CF35DC28830EAB00665186 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CF35DB28830EAB00665186 /* EventCell.swift */; };
 		4D51F2322885B72100CB8FD0 /* ModalCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */; };
@@ -75,6 +76,7 @@
 		3262DC242882DA8C007C6103 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		3278706828819A7F00519A2A /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		3286D8752887F40200E9154A /* WeeklyCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyCalendarCell.swift; sourceTree = "<group>"; };
+		32BB012B2896C3010097B849 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		32CF35D928830E9A00665186 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		32CF35DB28830EAB00665186 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		4D51F2312885B72100CB8FD0 /* ModalCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalCalendarViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */,
 				CC997B462890EBCB0079E3EF /* UIImage.swift */,
 				F640CB7C2893C21000DC1446 /* StringFormatter.swift */,
+				32BB012B2896C3010097B849 /* Calendar.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				CC21943C28844F9500E93AC7 /* UIColor.swift in Sources */,
 				CC8B50C8287C1063004EE6DB /* AppDelegate.swift in Sources */,
 				CC4F8F742880E59800A18346 /* SearchResultViewController.swift in Sources */,
+				32BB012C2896C3010097B849 /* Calendar.swift in Sources */,
 				58A1AA3C287FF445001BCFA9 /* InterestListViewController.swift in Sources */,
 				58D6ECDB288E6DCC00AB402F /* TestTableViewController.swift in Sources */,
 				58D6ECCE288E547400AB402F /* LikeManager.swift in Sources */,

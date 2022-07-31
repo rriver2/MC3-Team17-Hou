@@ -103,7 +103,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
             cell.eventList = recommendedEvent
             
         case 1: // 이번 달 예정 공연
-            cell.eventList = eventList
+            var thisMonthEvent: [Event] = []
+            thisMonthEvent = eventList.filter {
+                if let period = $0.period {
+                    let dateList = period.periodToDateList()
+                    for date in dateList {
+                        if Calendar.current.isDateInThisMonth(date) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                }
+                return false
+            }
+            cell.eventList = thisMonthEvent
 
         case 2: // 무료 공연
             var freeEvent: [Event] = []
