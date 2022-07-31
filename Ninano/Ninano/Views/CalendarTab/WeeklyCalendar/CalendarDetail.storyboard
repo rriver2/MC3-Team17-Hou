@@ -159,7 +159,6 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="addDate:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sPx-mn-ovu"/>
-                                                        <segue destination="4Cm-ZO-TbC" kind="presentation" id="9WN-T6-aZK"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwp-xr-Gg2">
@@ -229,16 +228,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-149.27536231884059" y="63.616071428571423"/>
-        </scene>
-        <!--CalenderModal-->
-        <scene sceneID="vVx-Df-gWj">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CalenderModal" id="4Cm-ZO-TbC" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Ed8-Jh-CPE"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qMx-xH-cr2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="500" y="78"/>
         </scene>
         <!--EventDetail-->
         <scene sceneID="56f-um-Qd0">

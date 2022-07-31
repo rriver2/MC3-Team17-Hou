@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController {
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
     var components = DateComponents()
+    
     var weeks: [String] = ["Sun", "Mon", "Tus", "Wed", "Thu", "Fri", "Sat"]
     var days: [String] = []
     // 해달 월에 몇일까지 있는지 카운트

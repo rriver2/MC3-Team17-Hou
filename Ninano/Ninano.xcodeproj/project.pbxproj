@@ -192,7 +192,6 @@
 				CC8CFAE6288E52AB003BA65C /* DateFormatter.swift */,
 				CC997B462890EBCB0079E3EF /* UIImage.swift */,
 				F640CB7C2893C21000DC1446 /* StringFormatter.swift */,
-				CC4FA480288E97F200B52EDA /* customDesign */,
 			);
 			path = extension;
 			sourceTree = "<group>";
