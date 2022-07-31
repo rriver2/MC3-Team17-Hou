@@ -14,8 +14,6 @@ class CalendarDetailViewController: UIViewController {
     var dates: [String] = []
     var yearString: String = ""
     var monthString: String = ""
-    lazy var dateString: String = yearString + "-" + monthString + "-" + dates[1]
-    lazy var date: Date? = dateString.toDate()
     
     let now = Date()
     var cal = Calendar.current
@@ -40,7 +38,41 @@ class CalendarDetailViewController: UIViewController {
     
     private var articles: APIResponse?
     private var eventList = [Event]()
-    var dateEventList: [Event] = []
+    var selectedEventList: [Event] = []
+    var selectedDate: Date? {
+        didSet {
+            filterDate()
+        }
+    }
+    
+    func filterDate() {
+        // date 정제
+        if let compareDate = self.selectedDate {
+            selectedEventList = eventList.filter {
+                if let period = $0.period {
+                    let dateList = period.periodToDateList()
+                    
+                    if dateList.count == 1 {
+                        if dateList[0].isDateToday(fromDate: compareDate) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    } else {
+                        let range = dateList[0]...dateList[1]
+                        if range.contains(compareDate) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                }
+                return false
+            }
+        }
+        weeklyCalendarView.reloadData()
+        dayEventDetailView.reloadData()
+    }
     
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
@@ -49,7 +81,7 @@ class CalendarDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configNavigationTitle()
         didTapCustomBackButton()
         let flowLayout = UICollectionViewFlowLayout()
@@ -62,11 +94,19 @@ class CalendarDetailViewController: UIViewController {
         self.dayEventDetailView.backgroundColor = .clear
         setBlurEffect()
         fetchTopStories()
-//        reloadCollection()
+        selectedCell = 0
+        selectedDate = dayToDate(day: dates[0])
     }
-      
+    
+    private func dayToDate(day: String) -> Date {
+        let dateString = yearString + "-" + monthString + "-" + day
+        print("monthString", monthString)
+        print("dateString", dateString)
+        return dateString.toDate() ?? Date()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        print(date)
+        //        print(date)
     }
     
     private func configNavigationTitle() {
@@ -75,9 +115,9 @@ class CalendarDetailViewController: UIViewController {
         calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
         calendarTitle.text = monthString + "月"
         self.navigationItem.titleView = calendarTitle
-            
-    }
         
+    }
+    
     private func didTapCustomBackButton() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
         backImage = backImage?.resizeImage(newWidth: 40)
@@ -85,7 +125,7 @@ class CalendarDetailViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
     }
-
+    
     @objc private func didTapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -98,35 +138,35 @@ class CalendarDetailViewController: UIViewController {
     }
     
     @IBAction func addDate(_ sender: Any) {
-            guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
-            // TODO: event 교체하기
-            eventDetailView.event = eventList[0]
-            self.navigationController?.pushViewController(eventDetailView, animated: true)
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        // TODO: event 교체하기
+        eventDetailView.event = selectedEventList[0]
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
     
     private func reloadCollection() {
-        var filterDateEvent: [Event] = eventList
+        var filterDateEvent: [Event] = selectedEventList
         // date 정제
-        if let compareDate = self.date {
+        if let compareDate = self.selectedDate {
             filterDateEvent = filterDateEvent.filter {
-                 if let period = $0.period {
-                     let dateList = period.periodToDateList()
-                     for date in dateList {
-                         if date.isDateToday(fromDate: compareDate) {
-                             return true
-                         } else {
-                             return false
-                         }
-                     }
-                 }
-                 return false
-             }
+                if let period = $0.period {
+                    let dateList = period.periodToDateList()
+                    for date in dateList {
+                        if date.isDateToday(fromDate: compareDate) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                }
+                return false
+            }
         }
         // collectionView update
-        dateEventList = filterDateEvent
+        selectedEventList = filterDateEvent
         dayEventDetailView.reloadData()
         
-        if dateEventList.isEmpty {
+        if selectedEventList.isEmpty {
             alertEmptyEventLabel?.isHidden = false
         } else {
             alertEmptyEventLabel?.isHidden = true
@@ -150,7 +190,7 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
         
         let firstDayOfMonth = cal.date(from: components)
         daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
-        self.monthString = dateFormatter.string(from: firstDayOfMonth!)
+        //        self.monthString = dateFormatter.string(from: firstDayOfMonth!)
         
         cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
@@ -158,6 +198,7 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
         if Int(dates[indexPath.row]) ?? 0 <= daysCountInMonth {
             cell.dateNumberLabel.text = dates[indexPath.row]
         }
+        
         if indexPath.row == selectedCell {
             cell.dayHighlight.alpha = 1.0
             cell.dayNameLabel.textColor = .white
@@ -173,8 +214,9 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCell = indexPath.row
-        weeklyCalendarView.reloadData()
-        dayEventDetailView.reloadData()
+        print("dates[indexPath.row]", dates[indexPath.row])
+        selectedDate = dayToDate(day: dates[indexPath.row])
+        print("selectedDate", dayToDate(day: dates[indexPath.row]))
     }
 }
 
@@ -193,7 +235,7 @@ extension CalendarDetailViewController: UICollectionViewDelegateFlowLayout {
 extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventList.count
+        return selectedEventList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -203,18 +245,17 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.backgroundColor = .clear
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
-        if let posterDate = eventList[indexPath.row].posterData {
+        if let posterDate = selectedEventList[indexPath.row].posterData {
             cell.posterImage.image = UIImage(data: posterDate)
         } else {
             // TODO: 스켈레톤 이미지 tempPoster로 변경하기
             cell.posterImage.image = UIImage(named: "tempPoster")
         }
         cell.posterImage.layer.cornerRadius = 10
-
-        cell.eventNameLabel.text = eventList[indexPath.row].title
-        cell.eventPlaceLabel.text = eventList[indexPath.row].place
-        cell.eventPeriodLabel.text = eventList[indexPath.row].period
-        print(eventList[indexPath.row].period)
+        
+        cell.eventNameLabel.text = selectedEventList[indexPath.row].title
+        cell.eventPlaceLabel.text = selectedEventList[indexPath.row].place
+        cell.eventPeriodLabel.text = selectedEventList[indexPath.row].period
         return cell
     }
     
@@ -222,26 +263,26 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
-            case .success(let articles):
-                self?.articles = articles
-                self?.eventList = articles.culturalEventInfo.row.compactMap({
-                    Event(
-                        title: String($0.title),
-                        posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
-                        place: String($0.place),
-                        area: String($0.guname),
-                        period: String($0.date),
-                        URL: String($0.orgLink ?? ""),
-                        actor: String($0.player),
-                        info: String($0.program),
-                        price: String($0.useFee)
-                    )
-                })
-                DispatchQueue.main.async {
-                    self?.dayEventDetailView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
+                case .success(let articles):
+                    self?.articles = articles
+                    self?.selectedEventList = articles.culturalEventInfo.row.compactMap({
+                        Event(
+                            title: String($0.title),
+                            posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
+                            place: String($0.place),
+                            area: String($0.guname),
+                            period: String($0.date),
+                            URL: String($0.orgLink ?? ""),
+                            actor: String($0.player),
+                            info: String($0.program),
+                            price: String($0.useFee)
+                        )
+                    })
+                    DispatchQueue.main.async {
+                        self?.dayEventDetailView.reloadData()
+                    }
+                case .failure(let error):
+                    print(error)
             }
         }
     }
