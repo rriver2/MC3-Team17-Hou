@@ -207,7 +207,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
             cell.posterImage.image = UIImage(data: posterDate)
         } else {
             // TODO: 스켈레톤 이미지 tempPoster로 변경하기
-            cell.posterImage.image = UIImage(named: "calendarBackground")
+            cell.posterImage.image = UIImage(named: "tempPoster")
         }
         cell.posterImage.layer.cornerRadius = 10
 
