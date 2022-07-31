@@ -87,8 +87,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
                              return false
                          }
                      } else {
-                         print("0", dateList[1])
-                         print("1", dateList[0])
                          let range = dateList[0]...dateList[1]
                          if range.contains(compareDate) {
                              return true
@@ -109,7 +107,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // searchWord 정제
         if let searchKeyword = self.searchKeyword, searchKeyword != "" {
             filterEvent = filterEvent.filter {
-                print(searchKeyword)
                 if $0.title.contains(searchKeyword) {
                     return true
                 } else if let place = $0.place, place.contains(searchKeyword) {
