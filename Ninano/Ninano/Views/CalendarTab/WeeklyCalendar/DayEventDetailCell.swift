@@ -18,10 +18,12 @@ final class DayEventDetailCell: UITableViewCell {
     func configure(with viewModel: Event) {
         eventNameLabel.text = viewModel.title
         eventPlaceLabel.text = viewModel.place
-        eventPeriodLabel.text = viewModel.period
+        eventPeriodLabel.text = viewModel.period?.dateFormatForUI()
         if let data = viewModel.posterData {
             posterImage.image = UIImage(data: data)
         } else if let url = viewModel.posterURL {
+            posterImage.image = UIImage(named: "tempPoster")
+            posterImage.alpha = 0.2
             // fetch
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data, error == nil else {
@@ -29,9 +31,11 @@ final class DayEventDetailCell: UITableViewCell {
                 }
                 viewModel.posterData = data
                 DispatchQueue.main.async {
+                    self?.posterImage.alpha = 1
                     self?.posterImage.image = UIImage(data: data)
                 }
             }.resume()
         }
+        posterImage.layer.cornerRadius = 10
     }
 }

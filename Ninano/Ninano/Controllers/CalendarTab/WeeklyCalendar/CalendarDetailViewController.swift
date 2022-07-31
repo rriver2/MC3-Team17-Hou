@@ -214,19 +214,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "dayEventDetailCell", for: indexPath) as? DayEventDetailCell else {
             return UITableViewCell()
         }
-        cell.backgroundColor = .clear
-        cell.backgroundView = UIView()
-        cell.selectedBackgroundView = UIView()
-        if let posterDate = selectedEventList[indexPath.row].posterData {
-            cell.posterImage.image = UIImage(data: posterDate)
-        } else {
-            cell.posterImage.image = UIImage(named: "tempPoster")
-        }
-        cell.posterImage.layer.cornerRadius = 10
-        
-        cell.eventNameLabel.text = selectedEventList[indexPath.row].title
-        cell.eventPlaceLabel.text = selectedEventList[indexPath.row].place
-        cell.eventPeriodLabel.text = selectedEventList[indexPath.row].period
+        cell.configure(with: selectedEventList[indexPath.row])
         return cell
     }
     
