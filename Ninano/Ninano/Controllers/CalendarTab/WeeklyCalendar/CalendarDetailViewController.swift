@@ -96,6 +96,7 @@ class CalendarDetailViewController: UIViewController {
         fetchTopStories()
         selectedCell = 0
         selectedDate = dayToDate(day: dates[0])
+        alertEmptyEventLabel?.isHidden = false
     }
     
     private func dayToDate(day: String) -> Date {
