@@ -67,7 +67,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // data
         copyEventList = eventList
             // eventList에서 지역구만 빼내기
-        var eventListArea: Array = Array(Set(eventList.compactMap { $0.area }))
+        var eventListArea: Array = Array(Set(eventList.compactMap { $0.area })).sorted()
         eventListArea.append("전체")
         eventFilterButton.local = eventListArea
     }
@@ -79,8 +79,16 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
             filterEvent = filterEvent.filter {
                  if let period = $0.period {
                      let dateList = period.periodToDateList()
-                     for date in dateList {
-                         if date.isDateToday(fromDate: compareDate) {
+                     
+                     if dateList.count == 1 {
+                         if dateList[0].isDateToday(fromDate: compareDate) {
+                             return true
+                         } else {
+                             return false
+                         }
+                     } else {
+                         let range = dateList[0]...dateList[1]
+                         if range.contains(compareDate) {
                              return true
                          } else {
                              return false
@@ -99,7 +107,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // searchWord 정제
         if let searchKeyword = self.searchKeyword, searchKeyword != "" {
             filterEvent = filterEvent.filter {
-                print(searchKeyword)
                 if $0.title.contains(searchKeyword) {
                     return true
                 } else if let place = $0.place, place.contains(searchKeyword) {
