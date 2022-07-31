@@ -7,21 +7,26 @@
 import UIKit
 
 class CalendarDetailViewController: UIViewController {
-    private var tempEventList = TempEventData().list
-    private var tempEvent: TempEvent?
     
     private var monthImage: UIImage?
-    private var eventPoster: UIImage?
     
     private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
     var dates: [String] = []
     var yearString: String = ""
     var monthString: String = ""
     lazy var dateString: String = yearString + "-" + monthString + "-" + dates[1]
-    lazy var strDate: Date? = dateString.toDate()
+    lazy var date: Date? = dateString.toDate()
+    
+    let now = Date()
+    var cal = Calendar.current
+    // 해달 월에 몇일까지 있는지 카운트
+    var daysCountInMonth = 0
+    var components = DateComponents()
+    let dateFormatter = DateFormatter()
+    
+    @IBOutlet weak var alertEmptyEventLabel: UILabel!
     private var selectedCell: Int?
     
-    private var month: String = "7월"
     private var backButton = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium)
     private let backSymbol = UIImage(systemName: "chevron.left")
     
@@ -35,6 +40,7 @@ class CalendarDetailViewController: UIViewController {
     
     private var articles: APIResponse?
     private var eventList = [Event]()
+    var dateEventList: [Event] = []
     
     @IBOutlet weak var monthImageView: UIImageView!
     @IBOutlet weak var topBackground: UIView!
@@ -56,17 +62,18 @@ class CalendarDetailViewController: UIViewController {
         self.dayEventDetailView.backgroundColor = .clear
         setBlurEffect()
         fetchTopStories()
+//        reloadCollection()
     }
-    
+      
     override func viewDidAppear(_ animated: Bool) {
-        print(strDate)
+        print(date)
     }
     
     private func configNavigationTitle() {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
         calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
-        calendarTitle.text = "7월"
+        calendarTitle.text = monthString + "月"
         self.navigationItem.titleView = calendarTitle
             
     }
@@ -91,7 +98,40 @@ class CalendarDetailViewController: UIViewController {
     }
     
     @IBAction func addDate(_ sender: Any) {
-    }  
+            guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+            // TODO: event 교체하기
+            eventDetailView.event = eventList[0]
+            self.navigationController?.pushViewController(eventDetailView, animated: true)
+    }
+    
+    private func reloadCollection() {
+        var filterDateEvent: [Event] = eventList
+        // date 정제
+        if let compareDate = self.date {
+            filterDateEvent = filterDateEvent.filter {
+                 if let period = $0.period {
+                     let dateList = period.periodToDateList()
+                     for date in dateList {
+                         if date.isDateToday(fromDate: compareDate) {
+                             return true
+                         } else {
+                             return false
+                         }
+                     }
+                 }
+                 return false
+             }
+        }
+        // collectionView update
+        dateEventList = filterDateEvent
+        dayEventDetailView.reloadData()
+        
+        if dateEventList.isEmpty {
+            alertEmptyEventLabel?.isHidden = false
+        } else {
+            alertEmptyEventLabel?.isHidden = true
+        }
+    }
 }
 
 extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -104,10 +144,20 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
             return UICollectionViewCell()
         }
         
+        components.year = cal.component(.year, from: now)
+        components.month = cal.component(.month, from: now)
+        components.day = 1
+        
+        let firstDayOfMonth = cal.date(from: components)
+        daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
+        self.monthString = dateFormatter.string(from: firstDayOfMonth!)
+        
         cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
-        cell.dateNumberLabel.text = dates[indexPath.row]
         
+        if Int(dates[indexPath.row]) ?? 0 <= daysCountInMonth {
+            cell.dateNumberLabel.text = dates[indexPath.row]
+        }
         if indexPath.row == selectedCell {
             cell.dayHighlight.alpha = 1.0
             cell.dayNameLabel.textColor = .white
@@ -153,7 +203,12 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.backgroundColor = .clear
         cell.backgroundView = UIView()
         cell.selectedBackgroundView = UIView()
-        cell.posterImage.image = UIImage(data: eventList[indexPath.row].posterData ?? Data())
+        if let posterDate = eventList[indexPath.row].posterData {
+            cell.posterImage.image = UIImage(data: posterDate)
+        } else {
+            // TODO: 스켈레톤 이미지 tempPoster로 변경하기
+            cell.posterImage.image = UIImage(named: "calendarBackground")
+        }
         cell.posterImage.layer.cornerRadius = 10
 
         cell.eventNameLabel.text = eventList[indexPath.row].title

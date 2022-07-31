@@ -26,4 +26,3 @@ struct TempEventData {
               eventPeriod: "2022.7.18~2022.7.25", eventDate: "", eventTime: "수목금 19:30, 토일 15:00", isLiked: false, isReserved: true)
     ]
 }
-
