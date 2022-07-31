@@ -15,7 +15,17 @@ import UIKit
 class EventDetailViewController: UIViewController {
     
     var event: Event?
-    
+    private var likeManager =  LikeManager.shared
+    private var reserveManager = ReserveManager.shared
+    // MARK: 현재 이벤트가 저장되어있는지 확인
+    private var isLiked: Bool {
+        likeManager.getLike().filter { $0.url == event?.URL }.isEmpty
+    }
+    // MARK: 현재 이벤트가 예약되어있는지 확인
+    private var isReserved: Bool {
+        !reserveManager.getReserve().filter { $0.url == event?.URL }.isEmpty
+    }
+
     // MARK: 포스터 이미지
     @IBOutlet weak var eventPosterImageView: UIImageView!
     // MARK: 네비게이션 아이템
@@ -28,6 +38,8 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var addDate: UIButton!
     // MARK: segmentedControl
     @IBOutlet weak var eventDetailSegmentedControl: UISegmentedControl!
+    // MARK: 일정 추가 및 삭제 버튼
+    @IBOutlet weak var reserveBtn: UIButton!
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventPlaceLabel: UILabel!
@@ -37,9 +49,35 @@ class EventDetailViewController: UIViewController {
     @IBOutlet private weak var eventActorLabel: UILabel!
     
     @IBAction func linkButtonPressed(_ sender: UIButton) {
-        guard let urlString = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex="),
-              UIApplication.shared.canOpenURL(urlString) else { return }
-              UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
+        if let eventURL = event?.URL {
+            guard let urlString = URL(string: eventURL),
+                  UIApplication.shared.canOpenURL(urlString) else { return }
+            UIApplication.shared.open(urlString, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @IBAction func likeButtonPressed(_ sender: UIButton) {
+        if isLiked {
+            let newLikeModel = LikeModel(nameLike: event!.title, isLiked: false, url: (event?.URL!)!)
+            likeManager.insertLike(newLikeModel)
+        } else {
+            likeManager.deleteLike(with: (event?.URL!)!)
+        }
+        chooseLikeBtnColor()
+    }
+    
+    @IBAction func reserveButtonPressed(_ sender: UIButton) {
+        if isReserved {
+            if let event = event {
+                reserveManager.deleteReserve(with: event.URL!)
+            }
+            drawReserveButton()
+        } else {
+            guard let modalCalendarVC = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "modalCalendarVC") as? ModalCalendarViewController else { return }
+            modalCalendarVC.event = self.event
+            modalCalendarVC.parentVC = self
+            self.present(modalCalendarVC, animated: true, completion: nil)
+        }
     }
     
     // MARK: 포스터 공유 시트 버튼
@@ -50,13 +88,13 @@ class EventDetailViewController: UIViewController {
     // MARK: segmentedControl
     @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
         eventDetailSegmentedControl.underlinePosition()
-
+        
         switch sender.selectedSegmentIndex {
         case 0:
             eventPriceLabel.alpha = 1
             eventInfoLabel.alpha = 0
             eventActorLabel.alpha = 0
-
+            
         case 1:
             eventPriceLabel.alpha = 0
             eventInfoLabel.alpha = 1
@@ -66,30 +104,34 @@ class EventDetailViewController: UIViewController {
             eventPriceLabel.alpha = 0
             eventInfoLabel.alpha = 0
             eventActorLabel.alpha = 1
-
+            
         default:
             break
         }
     }
     
     // MARK: 토스트 팝업 버튼 (추후 사용예정)
-//    @IBAction func toastPopUp(_ sender: Any) {
-//        let toast = ToastView(
-//            title: "토요국악",
-//            titleFont: .systemFont(ofSize: 13, weight: .regular),
-//            subtitle: "일정추가 완료 되었습니다.",
-//            subtitleFont: .systemFont(ofSize: 11, weight: .light),
-//            icon: UIImage(systemName: "calendar.badge.plus"),
-//            iconSpacing: 16,
-//            position: .top
-//        )
-//        toast.show()
-//    }
+    //    @IBAction func toastPopUp(_ sender: Any) {
+    //        let toast = ToastView(
+    //            title: "토요국악",
+    //            titleFont: .systemFont(ofSize: 13, weight: .regular),
+    //            subtitle: "일정추가 완료 되었습니다.",
+    //            subtitleFont: .systemFont(ofSize: 11, weight: .light),
+    //            icon: UIImage(systemName: "calendar.badge.plus"),
+    //            iconSpacing: 16,
+    //            position: .top
+    //        )
+    //        toast.show()
+    //    }
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        reserveManager.deleteAll()
+        
+        drawReserveButton()
+        chooseLikeBtnColor()
         didTapCustomBackButton()
         selectedEventInfo()
         layout()
@@ -127,11 +169,13 @@ class EventDetailViewController: UIViewController {
     
     // MARK: 공유하기 시트
     private func presentShareSheet() {
-        guard let image = UIImage(systemName: "bell"), let url = URL(string: "https://www.daejeon.go.kr/kmusic/kmsPublicPerformanceView.do?pblprfrInfoId=1096&menuSeq=6400&searchAllPblprfrAt=&searchPastPblprfrAt=&searchPblprfrFormClCode=&pageIndex=") else {
-            return
+        if let eventURL = event?.URL {
+            guard let image = UIImage(systemName: "bell"), let url = URL(string: eventURL) else {
+                return
+            }
+            let shareSheetVC = UIActivityViewController(activityItems: [image, url], applicationActivities: nil)
+            present(shareSheetVC, animated: true)
         }
-        let shareSheetVC = UIActivityViewController(activityItems: [image, url], applicationActivities: nil)
-        present(shareSheetVC, animated: true)
     }
     
     // MARK: 백버튼
@@ -142,21 +186,21 @@ class EventDetailViewController: UIViewController {
         self.navigationItem.leftBarButtonItem = undo
         self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
     }
-
+    
     @objc private func didTapBackButton() {
         self.navigationController?.popViewController(animated: true)
     }
     
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage? {
-
+        
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-
+        
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         return newImage
     }
     
@@ -172,12 +216,35 @@ class EventDetailViewController: UIViewController {
         eventPriceLabel.text = event.price
         eventInfoLabel.text = event.info
         eventActorLabel.text = event.actor
-        //            event.URL 추가예정
+
         do {
             let data = try Data(contentsOf: event.posterURL!)
             eventPosterImageView.image = UIImage(data: data)
         } catch {
             print("Error URL to Data : \(error)")
+        }
+    }
+
+    private func chooseLikeBtnColor() {
+        if isLiked {
+            likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeBtn.tintColor = .gray
+        } else {
+            likeBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeBtn.tintColor = .red
+        }
+    }
+    
+    func drawReserveButton() {
+        if isReserved {
+            reserveBtn.setImage(UIImage(systemName: "calendar.badge.minus"), for: .normal)
+            reserveBtn.backgroundColor = CustomColor.sexyKim
+            reserveBtn.setTitle("일정 제거", for: .normal)
+            
+        } else {
+            reserveBtn.setImage(UIImage(systemName: "calendar.badge.plus"), for: .normal)
+            reserveBtn.backgroundColor = .white
+            reserveBtn.setTitle("일정 추가", for: .normal)
         }
     }
 }
@@ -211,5 +278,5 @@ extension EventDetailViewController {
         eventActorLabel.alpha = 0
         self.eventDetailSegmentedControl.frame = CGRect(x: self.eventDetailSegmentedControl.frame.minX, y: self.eventDetailSegmentedControl.frame.minY, width: eventDetailSegmentedControl.frame.width, height: 25)
         eventDetailSegmentedControl.highlightSelectedSegment()
-        }
+    }
 }
