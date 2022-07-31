@@ -48,7 +48,6 @@ class CalendarDetailViewController: UIViewController {
     func filterDate() {
         // date 정제
         if let compareDate = self.selectedDate { // compareDate는 이번에 선택한 애
-            print("$0.perioddd", eventList.count)
             selectedEventList = eventList.filter {
                 if let period = $0.period {
                     let dateList = period.periodToDateList()
@@ -72,6 +71,12 @@ class CalendarDetailViewController: UIViewController {
         }
         weeklyCalendarView.reloadData()
         dayEventDetailView.reloadData()
+        
+        if selectedEventList.isEmpty {
+            alertEmptyEventLabel?.isHidden = false
+        } else {
+            alertEmptyEventLabel?.isHidden = true
+        }
     }
     
     @IBOutlet weak var monthImageView: UIImageView!
@@ -96,7 +101,7 @@ class CalendarDetailViewController: UIViewController {
         fetchTopStories()
         selectedCell = 0
         selectedDate = dayToDate(day: dates[0])
-        alertEmptyEventLabel?.isHidden = false
+        alertEmptyEventLabel?.isHidden = true
     }
     
     private func dayToDate(day: String) -> Date {
@@ -140,35 +145,6 @@ class CalendarDetailViewController: UIViewController {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
         eventDetailView.event = selectedEventList[0]
         self.navigationController?.pushViewController(eventDetailView, animated: true)
-    }
-    
-    private func reloadCollection() {
-        var filterDateEvent: [Event] = selectedEventList
-        // date 정제
-        if let compareDate = self.selectedDate {
-            filterDateEvent = filterDateEvent.filter {
-                if let period = $0.period {
-                    let dateList = period.periodToDateList()
-                    for date in dateList {
-                        if date.isDateToday(fromDate: compareDate) {
-                            return true
-                        } else {
-                            return false
-                        }
-                    }
-                }
-                return false
-            }
-        }
-        // collectionView update
-        selectedEventList = filterDateEvent
-        dayEventDetailView.reloadData()
-        
-        if selectedEventList.isEmpty {
-            alertEmptyEventLabel?.isHidden = false
-        } else {
-            alertEmptyEventLabel?.isHidden = true
-        }
     }
 }
 
