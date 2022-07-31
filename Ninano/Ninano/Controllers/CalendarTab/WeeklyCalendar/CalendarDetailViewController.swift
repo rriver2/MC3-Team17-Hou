@@ -227,7 +227,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
                 self?.eventList = articles.culturalEventInfo.row.compactMap({
                     Event(
                         title: String($0.title),
-                        posterURL: URL(string: $0.mainImg ?? ""),
+                        posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
                         place: String($0.place),
                         area: String($0.guname),
                         period: String($0.date),
