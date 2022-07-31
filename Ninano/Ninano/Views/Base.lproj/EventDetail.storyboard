@@ -162,7 +162,7 @@
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=""/>
                                                                         <connections>
-                                                                            <action selector="LIKEBUTTON:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wEl-zW-VQy"/>
+                                                                            <action selector="likeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t50-FQ-ukf"/>
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="저장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3K-3H-qT0">
@@ -338,7 +338,7 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Z94-t3-RiP" kind="presentation" id="eMs-Dv-Bvo"/>
+                                    <action selector="reserveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uug-dk-o8k"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -369,6 +369,7 @@
                         <outlet property="eventTitleLabel" destination="EPL-s0-1Q8" id="NpM-Zc-2Qh"/>
                         <outlet property="likeBtn" destination="LPt-ML-t3I" id="beZ-W8-2RO"/>
                         <outlet property="naviItem" destination="oJu-yb-bKY" id="ZRt-Ga-GJp"/>
+                        <outlet property="reserveBtn" destination="XRx-mi-bmq" id="Clw-PB-2yh"/>
                         <outlet property="scrollView" destination="E8e-13-wgK" id="z0t-sx-now"/>
                     </connections>
                 </viewController>
@@ -381,7 +382,7 @@
             <objects>
                 <viewController storyboardIdentifier="modalCalendarVC" id="Z94-t3-RiP" customClass="ModalCalendarViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LnN-ai-0bz">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Ph-fd-mWs">
@@ -397,6 +398,9 @@
                                                     <constraint firstAttribute="width" constant="350" id="DeZ-Xk-kbd"/>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="350" id="wA7-2V-GrY"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="datePicked:" destination="Z94-t3-RiP" eventType="valueChanged" id="N7r-d6-pNV"/>
+                                                </connections>
                                             </datePicker>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -440,6 +444,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="일정 추가">
                                             <fontDescription key="titleFontDescription" type="boldSystem" pointSize="15"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="confirmBtnPressed:" destination="Z94-t3-RiP" eventType="touchUpInside" id="TsB-do-GId"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
