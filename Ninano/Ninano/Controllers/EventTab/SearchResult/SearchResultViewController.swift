@@ -233,6 +233,7 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
         
         return PerformancesViewCell()
     }
+    /// 셀을 선택했을 때 액션 추가 가능
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
         eventDetailView.event = self.copyEventList[indexPath.item]
