@@ -195,6 +195,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
+    // collection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
@@ -203,6 +204,7 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let spacing = (14 / 390) * screen
         
         let width = (screen - (inset * 2) - spacing) / 2
+        
         let height = (4 / 3) * width + 65
         
         flow.minimumLineSpacing = spacing
@@ -233,6 +235,7 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
         
         return PerformancesViewCell()
     }
+    /// 셀을 선택했을 때 액션 추가 가능
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
         eventDetailView.event = self.copyEventList[indexPath.item]
