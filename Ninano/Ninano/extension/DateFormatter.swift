@@ -30,7 +30,7 @@ extension String {
     func periodToDateList() -> [Date] {
         // TODO: 2022-08-10~2022-09-03 -> 8월 10일 ~ 9월 3일 날짜 다 넣기 ...
         var returnDateList: [Date] = []
-        let dateStringList = Array(Set(self.components(separatedBy: "~")))
+        let dateStringList = Array(Set(self.components(separatedBy: "~"))).sorted()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         for dateString in dateStringList {
@@ -38,11 +38,12 @@ extension String {
                 returnDateList.append(date)
             }
         }
-        return returnDateList
+
+        return returnDateList.sorted()
     }
     /// 2022-08-10~2022-09-03 -> 2022.09.03~08.10
     func dateFormatForUI() -> String {
-        let dateStringList = Array(Set(self.components(separatedBy: "~")))
+        let dateStringList = Array(Set(self.components(separatedBy: "~"))).sorted()
         var returnString = dateStringList[0].components(separatedBy: "-").joined(separator: ".")
         if dateStringList.count == 2 {
             let exceptYear = dateStringList[1].components(separatedBy: "-")
