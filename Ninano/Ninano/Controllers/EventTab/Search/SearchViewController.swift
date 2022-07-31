@@ -86,7 +86,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
         cell.categoryName.titleLabel?.adjustsFontForContentSizeCategory = true
         
         switch indexPath.row {
-        case 0:
+        case 0: // 니나노의 추천 공연
             var recommendedEvent: [Event] = []
             var recommendedEventSet: Set<Event> = []
             var setCount: Int
@@ -102,12 +102,28 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
             }
             cell.eventList = recommendedEvent
             
-        case 1:
+        case 1: // 이번 달 예정 공연
             cell.eventList = eventList
-        case 2:
+
+        case 2: // 무료 공연
+            var freeEvent: [Event] = []
+            freeEvent = eventList.filter {
+                if let price = $0.price {
+                    if price.count == 0 {
+                        return true
+                    } else if price.contains("무료") {
+                        return true
+                    } else {
+                        return false
+                    }
+                }
+                return false
+            }
+            cell.eventList = freeEvent
+            
+        case 3: // 내가 구독한 공연
             cell.eventList = eventList
-        case 3:
-            cell.eventList = eventList
+
         default:
             return UITableViewCell()
         }
