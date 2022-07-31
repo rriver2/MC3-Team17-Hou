@@ -204,6 +204,7 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let spacing = (14 / 390) * screen
         
         let width = (screen - (inset * 2) - spacing) / 2
+        
         // TODO: gaeun 변경
         let height = (4 / 3) * width + 65
         
