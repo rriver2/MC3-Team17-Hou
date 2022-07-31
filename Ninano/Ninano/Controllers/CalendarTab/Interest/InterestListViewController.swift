@@ -14,27 +14,27 @@ final class InterestListViewController: UIViewController {
     @IBOutlet weak var interestCollectionView: UICollectionView!
     private var articles: APIResponse?
     private var eventList = [Event]()
-    var likeViewModel = LikeDataModel()
+    private var interestViewModel = LikeDataModel()
+    var tempLike: [Event] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterData()
         fetchTopStories()
-        
-//        self.interestCollectionView.delegate = self
-//        self.interestCollectionView.dataSource = self
     }
+    
 }
 
 extension InterestListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventList.count
+        return tempLike.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as? NoticeGridCollectionViewCell else { return UICollectionViewCell.init() }
         
-        cell.gridImages.image = UIImage(data: eventList[indexPath.row].posterData ?? Data())
+        cell.gridImages.image = UIImage(data: tempLike[indexPath.row].posterData ?? Data())
         cell.gridImages.layer.cornerRadius = 10
         
         return cell
@@ -67,7 +67,7 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                 self?.eventList = articles.culturalEventInfo.row.compactMap({
                     Event(
                         title: String($0.title),
-                        posterURL: URL(string: ($0.mainImg ?? "") + "p" ),
+                        posterURL: URL(string: ($0.mainImg ?? "") + "p"),
                         place: String($0.place),
                         area: String($0.guname),
                         period: String($0.date),
@@ -78,30 +78,24 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                     )
                 })
                 
-                guard (self?.eventList) != nil else { return }
-                
-//                var tempLikeFiltered: [Event] = []
-                
-                for like in self!.likeViewModel.likeItems {
-                    let tempLikeFiltered = self?.eventList.filter({ (event: Event) -> Bool in
-                        return event.URL == like.url
-                    })
-                    
-                    tempLikeFiltered?.forEach({ event in
-                        event.fetchImage(url: event.posterURL) { success in
-                            if success {
-                                DispatchQueue.main.async {
-                                    self?.interestCollectionView.reloadData()
-                                }
-                            }
+                self?.eventList.forEach({ event in
+                    event.fetchImage(url: event.posterURL) { success in
+                        DispatchQueue.main.async {
+                            self?.interestCollectionView.reloadData()
                         }
-                    })
-                }
-  
+                    }
+                })
+                
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    func filterData() {
+        for like in interestViewModel.likeItems {
+            let tempData = eventList.filter { $0.URL == like.url }
+            tempLike += tempData
+        }
+    }
 }
