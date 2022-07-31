@@ -19,7 +19,6 @@ final class InterestListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterData()
         fetchTopStories()
     }
     
@@ -78,10 +77,14 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                     )
                 })
                 
-                self?.eventList.forEach({ event in
+                self?.filterData()
+                
+                self?.tempLike.forEach({ event in
                     event.fetchImage(url: event.posterURL) { success in
-                        DispatchQueue.main.async {
-                            self?.interestCollectionView.reloadData()
+                        if success {
+                            DispatchQueue.main.async {
+                                self?.interestCollectionView.reloadData()
+                            }
                         }
                     }
                 })

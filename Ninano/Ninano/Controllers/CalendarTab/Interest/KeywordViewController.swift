@@ -12,6 +12,7 @@ class KeywordViewController: UIViewController {
     private var articles: APIResponse?
     private var eventList = [Event]()
     var keywordViewModel = KeywordDataModel()
+    var tempKeyword: [Event] = []
 
     @IBOutlet weak var keywordTableView: UITableView!
 
@@ -47,36 +48,13 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "noticeKeyword", for: indexPath) as? KeywordTableViewCell else { return UITableViewCell.init() }
-        
-        if keywordViewModel.keywordItems.isEmpty {
-            
-            
-        }
-            
-        
-        
-        
-        guard !keywordViewModel.keywordItems.isEmpty else {
-            return UITableViewCell.init() }
-        
-//        if keywordViewModel.keywordItems.isEmpty {
-//            replaceLabel.text = "없음"
-//        } else {
-//            for keyword in  keywordViewModel.keywordItems {
-//
-//            }
-//        }
-//        for keyword in keywordViewModel.keywordItems {
-//            cell.keywordImage.image = UIImage(data: eventList.filter({ event in
-//                event.info
-//            })[indexPath.row].posterData ?? Data())
-//            
-//        }
-        cell.keywordTitle.text = eventList[indexPath.row].title
-        cell.keywordDate.text = eventList[indexPath.row].period
+
+        cell.keywordImage.image = UIImage(data: tempKeyword[indexPath.row].posterData ?? Data())
+        cell.keywordTitle.text = tempKeyword[indexPath.row].title
+        cell.keywordDate.text = tempKeyword[indexPath.row].period
         cell.keywordImage.layer.cornerRadius = 15
         cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.keywordAlarmTitle.text = alarmTitle
+        cell.keywordAlarmTitle.text = tempKeyword[indexPath.row].info
         cell.keywordBackgroundCell.layer.cornerRadius = 15
         
         return cell
@@ -102,7 +80,9 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                     )
                 })
                 
-                self?.eventList.forEach({ event in
+                self?.filterData()
+                
+                self?.tempKeyword.forEach({ event in
                     event.fetchImage(url: event.posterURL) { success in
                         if success {
                             DispatchQueue.main.async {
@@ -114,6 +94,17 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                 
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func filterData() {
+        for keyword in keywordViewModel.keywordItems {
+            for tempData in eventList {
+                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
+                if tempDataBool {
+                    tempKeyword.append(tempData)
+                }
             }
         }
     }

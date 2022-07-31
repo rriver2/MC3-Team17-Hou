@@ -59,9 +59,7 @@ class NoticeViewController: UIViewController {
             alert.addAction(alertNo)
 
             present(alert, animated: true, completion: nil)
-//            present(alert, animated: true) {
-//                <#code#>
-//            }
+            
         default:
             break
         }
