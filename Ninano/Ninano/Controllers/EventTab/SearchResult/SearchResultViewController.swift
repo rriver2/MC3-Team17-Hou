@@ -67,7 +67,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // data
         copyEventList = eventList
             // eventList에서 지역구만 빼내기
-        var eventListArea: Array = Array(Set(eventList.compactMap { $0.area }))
+        var eventListArea: Array = Array(Set(eventList.compactMap { $0.area })).sorted()
         eventListArea.append("전체")
         eventFilterButton.local = eventListArea
     }
@@ -79,8 +79,16 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
             filterEvent = filterEvent.filter {
                  if let period = $0.period {
                      let dateList = period.periodToDateList()
-                     for date in dateList {
-                         if date.isDateToday(fromDate: compareDate) {
+                     
+                     if dateList.count == 1 {
+                         if dateList[0].isDateToday(fromDate: compareDate) {
+                             return true
+                         } else {
+                             return false
+                         }
+                     } else {
+                         let range = dateList[0]...dateList[1]
+                         if range.contains(compareDate) {
                              return true
                          } else {
                              return false
@@ -99,7 +107,6 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
         // searchWord 정제
         if let searchKeyword = self.searchKeyword, searchKeyword != "" {
             filterEvent = filterEvent.filter {
-                print(searchKeyword)
                 if $0.title.contains(searchKeyword) {
                     return true
                 } else if let place = $0.place, place.contains(searchKeyword) {
@@ -195,6 +202,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
+    // collection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
@@ -203,6 +211,7 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let spacing = (14 / 390) * screen
         
         let width = (screen - (inset * 2) - spacing) / 2
+        
         let height = (4 / 3) * width + 65
         
         flow.minimumLineSpacing = spacing
@@ -233,6 +242,7 @@ extension SearchResultViewController: UICollectionViewDataSource, UICollectionVi
         
         return PerformancesViewCell()
     }
+    /// 셀을 선택했을 때 액션 추가 가능
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
         eventDetailView.event = self.copyEventList[indexPath.item]

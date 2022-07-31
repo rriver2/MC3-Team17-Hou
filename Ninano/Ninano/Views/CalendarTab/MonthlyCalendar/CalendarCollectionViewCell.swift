@@ -11,8 +11,25 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var dot: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        hideDot()
+    }
+    
     func update(date: String) {
             dateLabel.text = date
-        }
+    }
+    
+    func showDot() {
+        dot.backgroundColor = UIColor(hex: "F00000")
+        dot.layer.cornerRadius = dot.frame.size.width / 2
+        dot.clipsToBounds = true
+    }
+    
+    private func hideDot() {
+        dot.backgroundColor = nil
+    }
     
 }

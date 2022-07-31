@@ -103,7 +103,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
             cell.eventList = recommendedEvent
             
         case 1: // 이번 달 예정 공연
-            cell.eventList = eventList
+            var thisMonthEvent: [Event] = []
+            thisMonthEvent = eventList.filter {
+                if let period = $0.period {
+                    let dateList = period.periodToDateList()
+                    for date in dateList {
+                        if Calendar.current.isDateInThisMonth(date) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                }
+                return false
+            }
+            cell.eventList = thisMonthEvent
 
         case 2: // 무료 공연
             var freeEvent: [Event] = []
@@ -138,9 +152,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, Sear
                 self?.articles = articles
                 // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
                 self?.eventList = articles.culturalEventInfo.row.compactMap({
+                    
                     Event(
                         title: String($0.title),
-                        posterURL: URL(string: $0.mainImg ?? ""),
+                        posterURL: URL(string: ($0.mainImg ?? "") + "DD"),
                         place: String($0.place),
                         area: String($0.guname),
                         period: String($0.date),
