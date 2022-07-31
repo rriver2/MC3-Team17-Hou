@@ -47,11 +47,11 @@ class CalendarDetailViewController: UIViewController {
     
     func filterDate() {
         // date 정제
-        if let compareDate = self.selectedDate {
+        if let compareDate = self.selectedDate { // compareDate는 이번에 선택한 애
+            print("$0.perioddd", eventList.count)
             selectedEventList = eventList.filter {
                 if let period = $0.period {
                     let dateList = period.periodToDateList()
-                    
                     if dateList.count == 1 {
                         if dateList[0].isDateToday(fromDate: compareDate) {
                             return true
@@ -100,8 +100,6 @@ class CalendarDetailViewController: UIViewController {
     
     private func dayToDate(day: String) -> Date {
         let dateString = yearString + "-" + monthString + "-" + day
-        print("monthString", monthString)
-        print("dateString", dateString)
         return dateString.toDate() ?? Date()
     }
     
@@ -139,7 +137,6 @@ class CalendarDetailViewController: UIViewController {
     
     @IBAction func addDate(_ sender: Any) {
         guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
-        // TODO: event 교체하기
         eventDetailView.event = selectedEventList[0]
         self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
@@ -214,9 +211,7 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedCell = indexPath.row
-        print("dates[indexPath.row]", dates[indexPath.row])
         selectedDate = dayToDate(day: dates[indexPath.row])
-        print("selectedDate", dayToDate(day: dates[indexPath.row]))
     }
 }
 
@@ -248,7 +243,6 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         if let posterDate = selectedEventList[indexPath.row].posterData {
             cell.posterImage.image = UIImage(data: posterDate)
         } else {
-            // TODO: 스켈레톤 이미지 tempPoster로 변경하기
             cell.posterImage.image = UIImage(named: "tempPoster")
         }
         cell.posterImage.layer.cornerRadius = 10
@@ -265,7 +259,7 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
             switch result {
                 case .success(let articles):
                     self?.articles = articles
-                    self?.selectedEventList = articles.culturalEventInfo.row.compactMap({
+                    self?.eventList = articles.culturalEventInfo.row.compactMap({
                         Event(
                             title: String($0.title),
                             posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
@@ -279,7 +273,9 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
                         )
                     })
                     DispatchQueue.main.async {
+                        self?.selectedEventList = self?.eventList ?? []
                         self?.dayEventDetailView.reloadData()
+                        self?.filterDate()
                     }
                 case .failure(let error):
                     print(error)
