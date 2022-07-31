@@ -21,7 +21,6 @@ final class PerformancesViewCell: UICollectionViewCell {
         if let data = event.posterData {
             let image = (UIImage(data: data) ?? UIImage(named: "calendarBackground"))!
             self.eventImageView.image = resizeImage(image: image)
-            eventImageView.layer.cornerRadius = 10
         }
         configuration()
     }
@@ -37,8 +36,9 @@ final class PerformancesViewCell: UICollectionViewCell {
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        var newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        newImage = newImage?.withRoundedCorners(radius: 10)
         
         return newImage
     }
