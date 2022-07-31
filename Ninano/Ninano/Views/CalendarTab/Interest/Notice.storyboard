@@ -289,28 +289,34 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XFK-XO-BV3">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xk9-su-4Co">
-                                    <size key="itemSize" width="180" height="180"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="13" minimumInteritemSpacing="0.0" id="Xk9-su-4Co">
+                                    <size key="itemSize" width="129" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                    <inset key="sectionInset" minX="24" minY="17" maxX="24" maxY="70"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="NoticeGridCollectionViewCell" id="0Tw-2Y-OkS" userLabel="Notice Grid Collection View Cell" customClass="NoticeGridCollectionViewCell" customModule="Ninano" customModuleProvider="target">
-                                        <rect key="frame" x="10" y="10" width="180" height="180"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoticeGridCollectionViewCell" id="0Tw-2Y-OkS" userLabel="Notice Grid Collection View Cell" customClass="NoticeGridCollectionViewCell" customModule="Ninano" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="17" width="126" height="140"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="NUK-oL-tsV">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="NUK-oL-tsV">
+                                            <rect key="frame" x="0.0" y="0.0" width="126" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O9q-3d-XoU">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O9q-3d-XoU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="126" height="140"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="O9q-3d-XoU" firstAttribute="leading" secondItem="NUK-oL-tsV" secondAttribute="leading" id="FBI-pJ-Rgq"/>
+                                                <constraint firstAttribute="trailing" secondItem="O9q-3d-XoU" secondAttribute="trailing" id="UVR-io-cvh"/>
+                                                <constraint firstAttribute="bottom" secondItem="O9q-3d-XoU" secondAttribute="bottom" id="WQP-kd-0U9"/>
+                                                <constraint firstItem="O9q-3d-XoU" firstAttribute="top" secondItem="NUK-oL-tsV" secondAttribute="top" id="jkb-u1-eVT"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="customSize" width="126" height="140"/>
                                         <connections>
                                             <outlet property="gridImages" destination="O9q-3d-XoU" id="yP0-P9-Zas"/>
                                         </connections>
@@ -329,6 +335,7 @@
                             <constraint firstAttribute="bottom" secondItem="XFK-XO-BV3" secondAttribute="bottom" id="aAv-wv-0Oa"/>
                             <constraint firstItem="XFK-XO-BV3" firstAttribute="top" secondItem="2b8-en-cBj" secondAttribute="top" id="kxl-yG-54l"/>
                             <constraint firstAttribute="trailing" secondItem="XFK-XO-BV3" secondAttribute="trailing" id="nkn-5i-Dda"/>
+                            <constraint firstItem="XFK-XO-BV3" firstAttribute="leading" secondItem="2b8-en-cBj" secondAttribute="leading" id="qdt-46-Q68"/>
                         </constraints>
                     </view>
                     <connections>

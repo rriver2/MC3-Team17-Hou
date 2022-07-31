@@ -14,6 +14,7 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
+    var LIKEVIEWMODEL = LikeDataModel()
     var event: Event?
     
     // MARK: 포스터 이미지
@@ -158,6 +159,11 @@ class EventDetailViewController: UIViewController {
         UIGraphicsEndImageContext()
 
         return newImage
+    }
+    
+    @IBAction func LIKEBUTTON(_ sender: UIButton) {
+        LIKEVIEWMODEL.addLikeItems(url: event?.URL ?? "", isLiked: true, name: event?.title ?? "")
+        print("오호이")
     }
     
     // MARK: event model

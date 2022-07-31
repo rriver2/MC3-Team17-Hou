@@ -14,6 +14,7 @@ final class InterestListViewController: UIViewController {
     @IBOutlet weak var interestCollectionView: UICollectionView!
     private var articles: APIResponse?
     private var eventList = [Event]()
+    var likeViewModel = LikeDataModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,37 +35,28 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoticeGridCollectionViewCell", for: indexPath) as? NoticeGridCollectionViewCell else { return UICollectionViewCell.init() }
         
         cell.gridImages.image = UIImage(data: eventList[indexPath.row].posterData ?? Data())
+        cell.gridImages.layer.cornerRadius = 10
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width
-        let height = collectionView.frame.height
-        let itemsPerRow: CGFloat = 2
-        let widthPadding = sectionInsets.left * (itemsPerRow + 1)
-        let itemsPerColumn: CGFloat = 4
-        let heightPadding = sectionInsets.top * (itemsPerColumn + 1)
-        let cellWidth = (width - widthPadding) / itemsPerRow
-        let cellHeight = (height - heightPadding) / itemsPerColumn
         
-        return CGSize(width: cellWidth, height: cellHeight)
+        guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
+        let screen = UIScreen.main.bounds.width
+        let inset = (25 / 390) * screen
+        let spacing = (14 / 390) * screen
+        
+        let width = (screen - (inset * 2) - spacing) / 2
+        
+        let height = (10 / 7) * width
+        // 65
+        
+        flow.minimumLineSpacing = spacing
+        flow.sectionInset.left = inset
+        
+        return CGSize(width: width, height: height)
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let width: CGFloat = collectionView.frame.width / 2 - 2
-//        let height: CGFloat = collectionView.frame.height - 2
-//
-//        return CGSize(width: width, height: height)
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2.0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2.0
-//    }
     
     func fetchTopStories() {
         APICaller.shared.getTopStories { [weak self] result in
@@ -75,7 +67,7 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                 self?.eventList = articles.culturalEventInfo.row.compactMap({
                     Event(
                         title: String($0.title),
-                        posterURL: URL(string: $0.mainImg ?? ""),
+                        posterURL: URL(string: ($0.mainImg ?? "") + "p" ),
                         place: String($0.place),
                         area: String($0.guname),
                         period: String($0.date),
@@ -86,16 +78,26 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                     )
                 })
                 
-                self?.eventList.forEach({ event in
-                    event.fetchImage(url: event.posterURL) { success in
-                        if success {
-                            DispatchQueue.main.async {
-                                self?.interestCollectionView.reloadData()
+                guard (self?.eventList) != nil else { return }
+                
+//                var tempLikeFiltered: [Event] = []
+                
+                for like in self!.likeViewModel.likeItems {
+                    let tempLikeFiltered = self?.eventList.filter({ (event: Event) -> Bool in
+                        return event.URL == like.url
+                    })
+                    
+                    tempLikeFiltered?.forEach({ event in
+                        event.fetchImage(url: event.posterURL) { success in
+                            if success {
+                                DispatchQueue.main.async {
+                                    self?.interestCollectionView.reloadData()
+                                }
                             }
                         }
-                    }
-                })
-                
+                    })
+                }
+  
             case .failure(let error):
                 print(error)
             }

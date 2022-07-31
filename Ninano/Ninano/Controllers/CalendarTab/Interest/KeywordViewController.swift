@@ -11,8 +11,8 @@ class KeywordViewController: UIViewController {
     
     private var articles: APIResponse?
     private var eventList = [Event]()
-//    var imageList: [Data?]
-    
+    var keywordViewModel = KeywordDataModel()
+
     @IBOutlet weak var keywordTableView: UITableView!
 
     let alarmTitle = "레버 관심설정의 새로운 공연일정이 추가되었습니다."
@@ -48,12 +48,35 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "noticeKeyword", for: indexPath) as? KeywordTableViewCell else { return UITableViewCell.init() }
         
-        cell.keywordImage.image = UIImage(data: eventList[indexPath.row].posterData ?? Data())
-        cell.keywordImage.layer.cornerRadius = 15
+        if keywordViewModel.keywordItems.isEmpty {
+            
+            
+        }
+            
+        
+        
+        
+        guard !keywordViewModel.keywordItems.isEmpty else {
+            return UITableViewCell.init() }
+        
+//        if keywordViewModel.keywordItems.isEmpty {
+//            replaceLabel.text = "없음"
+//        } else {
+//            for keyword in  keywordViewModel.keywordItems {
+//
+//            }
+//        }
+//        for keyword in keywordViewModel.keywordItems {
+//            cell.keywordImage.image = UIImage(data: eventList.filter({ event in
+//                event.info
+//            })[indexPath.row].posterData ?? Data())
+//            
+//        }
         cell.keywordTitle.text = eventList[indexPath.row].title
+        cell.keywordDate.text = eventList[indexPath.row].period
+        cell.keywordImage.layer.cornerRadius = 15
         cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
         cell.keywordAlarmTitle.text = alarmTitle
-        cell.keywordDate.text = eventList[indexPath.row].period
         cell.keywordBackgroundCell.layer.cornerRadius = 15
         
         return cell
