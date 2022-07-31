@@ -195,6 +195,7 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
     
+    // collection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         guard let flow = collectionViewLayout as? UICollectionViewFlowLayout else { return CGSize() }
@@ -203,6 +204,7 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
         let spacing = (14 / 390) * screen
         
         let width = (screen - (inset * 2) - spacing) / 2
+        // TODO: gaeun 변경
         let height = (4 / 3) * width + 65
         
         flow.minimumLineSpacing = spacing

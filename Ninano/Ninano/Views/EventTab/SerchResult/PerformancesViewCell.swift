@@ -19,6 +19,8 @@ final class PerformancesViewCell: UICollectionViewCell {
         self.eventDateLabel.text = event.period?.dateFormatForUI()
         self.eventPlaceLabel.text = event.place
         if let data = event.posterData {
+            // TODO: gaeun 변경
+//            self.eventImageView.image = UIImage(data: data) ?? UIImage(named: "calendarBackground")!
             addImage(UIImage: (UIImage(data: data) ?? UIImage(named: "calendarBackground"))!)
         }
         configuration()
@@ -34,9 +36,13 @@ final class PerformancesViewCell: UICollectionViewCell {
         eventImageView.layer.cornerRadius = 10
         eventImageView.contentMode = .scaleAspectFill
         
+        self.eventImageView.image = UIImage
+
         let cropRect = cropImageSetting(UIImage: UIImage)
-        
         self.eventImageView.image = UIImage.cropImage(rect: cropRect)
+        
+        // 삭제
+//        self.eventImageView.image = UIImage
     }
     
     private func cropImageSetting(UIImage: UIImage) -> CGRect {
