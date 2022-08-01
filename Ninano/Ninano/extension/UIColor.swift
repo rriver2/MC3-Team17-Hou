@@ -44,5 +44,5 @@ class CustomColor {
     static let textBlack = UIColor(hex: "000000")
     static let textGray = UIColor(hex: "818181")
     static let xMark = UIColor(hex: "798191")
-    static let sexyKim = UIColor(hex: "C5C5C5")
+    static let c5 = UIColor(hex: "C5C5C5")
 }

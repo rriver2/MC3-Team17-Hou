@@ -34,8 +34,6 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: 포스터 일정 추가 버튼
     @IBOutlet weak var likeBtn: UIButton!
-    // MARK: 일정 확정 버튼
-    @IBOutlet weak var addDate: UIButton!
     // MARK: segmentedControl
     @IBOutlet weak var eventDetailSegmentedControl: UISegmentedControl!
     // MARK: 일정 추가 및 삭제 버튼
@@ -128,8 +126,7 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        reserveManager.deleteAll()
-        
+//        setBlurEffect()
         drawReserveButton()
         chooseLikeBtnColor()
         didTapCustomBackButton()
@@ -141,8 +138,7 @@ class EventDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
-        addDate.layer.cornerRadius = 15
-        setBlurEffect()
+        reserveBtn.layer.cornerRadius = 15
     }
     
     // MARK: 네비게이션바 원래대로
@@ -163,8 +159,8 @@ class EventDetailViewController: UIViewController {
     func setBlurEffect() {
         let blurEffect = UIBlurEffect(style: .regular)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.frame = addDate.frame
-        addDate.addSubview(visualEffectView)
+        visualEffectView.frame = reserveBtn.frame
+        reserveBtn.addSubview(visualEffectView)
     }
     
     // MARK: 공유하기 시트
@@ -225,6 +221,7 @@ class EventDetailViewController: UIViewController {
         }
     }
 
+    // MARK: 저장버튼 토글 시 변환
     private func chooseLikeBtnColor() {
         if isLiked {
             likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -235,16 +232,21 @@ class EventDetailViewController: UIViewController {
         }
     }
     
+    // MARK: 일정추가 버튼 토글 시 변환
     func drawReserveButton() {
         if isReserved {
             reserveBtn.setImage(UIImage(systemName: "calendar.badge.minus"), for: .normal)
-            reserveBtn.backgroundColor = CustomColor.sexyKim
+            reserveBtn.tintColor = .white
+            reserveBtn.backgroundColor = CustomColor.c5?.withAlphaComponent(0.5)
             reserveBtn.setTitle("일정 제거", for: .normal)
+            reserveBtn.setTitleColor(.white, for: .normal)
             
         } else {
             reserveBtn.setImage(UIImage(systemName: "calendar.badge.plus"), for: .normal)
-            reserveBtn.backgroundColor = .white
+            reserveBtn.tintColor = .red
+            reserveBtn.backgroundColor = .black.withAlphaComponent(0.5)
             reserveBtn.setTitle("일정 추가", for: .normal)
+            reserveBtn.setTitleColor(.white, for: .normal)
         }
     }
 }
