@@ -15,13 +15,21 @@ class KeywordViewController: UIViewController {
     var tempKeyword: [Event] = []
 
     @IBOutlet weak var keywordTableView: UITableView!
-
+    @IBOutlet weak var isEmptyLabel: UILabel!
     let alarmTitle = "레버 관심설정의 새로운 공연일정이 추가되었습니다."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTopStories()
         layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if tempKeyword.isEmpty {
+            isEmptyLabel.isHidden = false
+        } else {
+            isEmptyLabel.isHidden = true
+        }
     }
 }
 
@@ -33,6 +41,7 @@ extension KeywordViewController {
         keywordTableView.rowHeight = 90
         keywordTableView.separatorStyle = .none
         keywordTableView.showsVerticalScrollIndicator = false
+        isEmptyLabel.isHidden = true
     }
 }
 

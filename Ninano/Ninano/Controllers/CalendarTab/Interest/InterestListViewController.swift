@@ -11,6 +11,7 @@ final class InterestListViewController: UIViewController {
 
     let sectionInsets = UIEdgeInsets(top: 15, left: 25, bottom: 15, right: 15)
     
+    @IBOutlet weak var isEmptyLabel: UILabel!
     @IBOutlet weak var interestCollectionView: UICollectionView!
     private var articles: APIResponse?
     private var eventList = [Event]()
@@ -20,11 +21,23 @@ final class InterestListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTopStories()
+        layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if tempLike.isEmpty {
+            isEmptyLabel.isHidden = false
+        } else {
+            isEmptyLabel.isHidden = true
+        }
+    }
 }
 
 extension InterestListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func layout() {
+        isEmptyLabel.isHidden = true
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tempLike.count

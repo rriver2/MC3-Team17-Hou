@@ -206,7 +206,7 @@
                                                             </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="토요국악" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-gn-hJz">
-                                                            <rect key="frame" x="85" y="20.000000000000057" width="203" height="14.333333333333336"/>
+                                                            <rect key="frame" x="85" y="20" width="203" height="14.333333333333336"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -247,17 +247,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드와 일치하는 공연이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFH-af-x8o">
+                                <rect key="frame" x="76.000000000000014" y="319" width="238.33333333333337" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PIq-FF-q4K"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="TdK-Sw-foW" firstAttribute="leading" secondItem="mLf-w6-GGq" secondAttribute="leading" id="2ue-04-P3j"/>
+                            <constraint firstItem="uFH-af-x8o" firstAttribute="centerY" secondItem="PIq-FF-q4K" secondAttribute="centerY" id="4ha-Op-h4a"/>
                             <constraint firstAttribute="trailing" secondItem="TdK-Sw-foW" secondAttribute="trailing" id="Tzv-zS-8TR"/>
+                            <constraint firstItem="uFH-af-x8o" firstAttribute="centerX" secondItem="PIq-FF-q4K" secondAttribute="centerX" id="coW-Iy-zKo"/>
                             <constraint firstAttribute="bottom" secondItem="TdK-Sw-foW" secondAttribute="bottom" id="e3c-SG-Lkk"/>
                             <constraint firstItem="TdK-Sw-foW" firstAttribute="top" secondItem="mLf-w6-GGq" secondAttribute="top" id="l8x-oA-EHt"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="isEmptyLabel" destination="uFH-af-x8o" id="GRX-mk-Ddr"/>
                         <outlet property="keywordTableView" destination="TdK-Sw-foW" id="cRr-QI-SOu"/>
                     </connections>
                 </viewController>
@@ -314,12 +323,20 @@
                                     <outlet property="delegate" destination="Qeb-o1-V09" id="OEn-bR-Dzk"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관심 목록에 추가된 공연이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfj-9d-yAR">
+                                <rect key="frame" x="73.666666666666686" y="318.66666666666669" width="243" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" systemColor="systemGray2Color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bFQ-j0-4gd"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XFK-XO-BV3" firstAttribute="leading" secondItem="2b8-en-cBj" secondAttribute="leading" id="P9J-y8-a5I"/>
+                            <constraint firstItem="Bfj-9d-yAR" firstAttribute="centerY" secondItem="bFQ-j0-4gd" secondAttribute="centerY" id="Uny-nm-pwr"/>
                             <constraint firstAttribute="bottom" secondItem="XFK-XO-BV3" secondAttribute="bottom" id="aAv-wv-0Oa"/>
+                            <constraint firstItem="Bfj-9d-yAR" firstAttribute="centerX" secondItem="bFQ-j0-4gd" secondAttribute="centerX" id="bOe-O7-uRG"/>
                             <constraint firstItem="XFK-XO-BV3" firstAttribute="top" secondItem="2b8-en-cBj" secondAttribute="top" id="kxl-yG-54l"/>
                             <constraint firstAttribute="trailing" secondItem="XFK-XO-BV3" secondAttribute="trailing" id="nkn-5i-Dda"/>
                             <constraint firstItem="XFK-XO-BV3" firstAttribute="leading" secondItem="2b8-en-cBj" secondAttribute="leading" id="qdt-46-Q68"/>
@@ -327,6 +344,7 @@
                     </view>
                     <connections>
                         <outlet property="interestCollectionView" destination="XFK-XO-BV3" id="i7Z-5a-Uax"/>
+                        <outlet property="isEmptyLabel" destination="Bfj-9d-yAR" id="TNA-Ig-105"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLX-28-AcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -360,6 +378,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
