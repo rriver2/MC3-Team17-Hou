@@ -9,15 +9,18 @@ import UIKit
 
 class KeywordViewController: UIViewController {
     
+    private var articles: APIResponse?
+    private var eventList = [Event]()
+    var keywordViewModel = KeywordDataModel()
+    var tempKeyword: [Event] = []
+
     @IBOutlet weak var keywordTableView: UITableView!
-    
-    let img = ["22008595_p", "22007929_p", "22005098_p"]
-    let keywordDate = ["3시간 전", "5일 전", "7월 31일 (일요일)"]
-    let keywordTitle = ["깃발과 백설", "흑깃", "별이 흐르는 시간"]
+
     let alarmTitle = "레버 관심설정의 새로운 공연일정이 추가되었습니다."
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTopStories()
         layout()
     }
 }
@@ -40,20 +43,76 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return keywordTitle.count
+        return tempKeyword.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "noticeKeyword", for: indexPath) as? KeywordTableViewCell else { return UITableViewCell.init() }
-        
-        cell.keywordImage.image = UIImage(named: img[indexPath.row])
+
+        cell.keywordImage.image = UIImage(data: tempKeyword[indexPath.row].posterData ?? Data())
+        cell.keywordTitle.text = tempKeyword[indexPath.row].title
+        cell.keywordDate.text = tempKeyword[indexPath.row].period
         cell.keywordImage.layer.cornerRadius = 15
-        cell.keywordTitle.text = keywordTitle[indexPath.row]
         cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.keywordAlarmTitle.text = alarmTitle
-        cell.keywordDate.text = keywordDate[indexPath.row]
         cell.keywordBackgroundCell.layer.cornerRadius = 15
         
         return cell
+    }
+    
+    func fetchTopStories() {
+        APICaller.shared.getTopStories { [weak self] result in
+            switch result {
+            case .success(let articles):
+                self?.articles = articles
+                // MARK: viewModels를 가져오는데 시간이 걸리므로 가져온 후 CategoryCell에서 eventCollectionView를 reload 함.
+                self?.eventList = articles.culturalEventInfo.row.compactMap({
+                    Event(
+                        title: String($0.title),
+                        posterURL: URL(string: $0.mainImg ?? ""),
+                        place: String($0.place),
+                        area: String($0.guname),
+                        period: String($0.date),
+                        URL: String($0.orgLink ?? ""),
+                        actor: String($0.player),
+                        info: String($0.program),
+                        price: String($0.useFee)
+                    )
+                })
+                
+                self?.filterDataKeyword()
+                
+                self?.tempKeyword.forEach({ event in
+                    event.fetchImage(url: event.posterURL) { success in
+                        if success {
+                            DispatchQueue.main.async {
+                                self?.keywordTableView.reloadData()
+                            }
+                        }
+                    }
+                })
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func filterDataKeyword() {
+        for keyword in keywordViewModel.keywordItems {
+            print(keyword.keywordSubs ?? "What?")
+            //
+            // keyword : "페스"
+            // tempData.title : "페스티벌"
+            
+            for tempData in eventList {
+//                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
+                guard let tempString = keyword.keywordSubs else {return}
+                if tempData.title.contains(tempString) {
+                    tempKeyword.append(tempData)
+                }
+                print(tempData.title)
+                print(tempData.title.contains("\(String(describing: keyword.keywordSubs))"))
+            }
+        }
     }
 }
