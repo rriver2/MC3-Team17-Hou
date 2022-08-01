@@ -9,7 +9,6 @@ import UIKit
 
 final class InterestListViewController: UIViewController {
 
-    
     @IBOutlet weak var isEmptyLabel: UILabel!
     @IBOutlet weak var interestCollectionView: UICollectionView!
     let sectionInsets = UIEdgeInsets(top: 15, left: 25, bottom: 15, right: 15)
@@ -107,7 +106,6 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                         }
                     }
                 })
-                
             case .failure(let error):
                 print(error)
             }

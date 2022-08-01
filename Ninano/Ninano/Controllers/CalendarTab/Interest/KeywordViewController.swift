@@ -106,7 +106,6 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                         }
                     }
                 })
-                
             case .failure(let error):
                 print(error)
             }
@@ -115,19 +114,11 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func filterDataKeyword() {
         for keyword in keywordViewModel.keywordItems {
-            print(keyword.keywordSubs ?? "What?")
-            //
-            // keyword : "페스"
-            // tempData.title : "페스티벌"
-            
             for tempData in eventList {
-//                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
                 guard let tempString = keyword.keywordSubs else {return}
                 if tempData.title.contains(tempString) {
                     tempKeyword.append(tempData)
                 }
-                print(tempData.title)
-                print(tempData.title.contains("\(String(describing: keyword.keywordSubs))"))
             }
         }
     }
