@@ -15,13 +15,21 @@ class KeywordViewController: UIViewController {
     var tempKeyword: [Event] = []
 
     @IBOutlet weak var keywordTableView: UITableView!
-
+    @IBOutlet weak var isEmptyLabel: UILabel!
     let alarmTitle = "레버 관심설정의 새로운 공연일정이 추가되었습니다."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTopStories()
         layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if tempKeyword.isEmpty {
+            isEmptyLabel.isHidden = false
+        } else {
+            isEmptyLabel.isHidden = true
+        }
     }
 }
 
@@ -33,6 +41,7 @@ extension KeywordViewController {
         keywordTableView.rowHeight = 90
         keywordTableView.separatorStyle = .none
         keywordTableView.showsVerticalScrollIndicator = false
+        isEmptyLabel.isHidden = true
     }
 }
 
@@ -53,10 +62,17 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
         cell.keywordTitle.text = tempKeyword[indexPath.row].title
         cell.keywordDate.text = tempKeyword[indexPath.row].period
         cell.keywordImage.layer.cornerRadius = 15
-        cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
+        cell.keywordTitle.font = UIFont.preferredFont(forTextStyle: .subheadline, weight: .bold)
         cell.keywordBackgroundCell.layer.cornerRadius = 15
+        cell.connectionArrow.image = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        eventDetailView.event = self.tempKeyword[indexPath.item]
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
     
     func fetchTopStories() {
@@ -90,7 +106,6 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                         }
                     }
                 })
-                
             case .failure(let error):
                 print(error)
             }
@@ -99,19 +114,11 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     
     func filterDataKeyword() {
         for keyword in keywordViewModel.keywordItems {
-            print(keyword.keywordSubs ?? "What?")
-            //
-            // keyword : "페스"
-            // tempData.title : "페스티벌"
-            
             for tempData in eventList {
-//                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
                 guard let tempString = keyword.keywordSubs else {return}
                 if tempData.title.contains(tempString) {
                     tempKeyword.append(tempData)
                 }
-                print(tempData.title)
-                print(tempData.title.contains("\(String(describing: keyword.keywordSubs))"))
             }
         }
     }
