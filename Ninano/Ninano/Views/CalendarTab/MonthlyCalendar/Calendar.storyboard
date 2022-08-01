@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="HcE-kq-H8b">
-                                <rect key="frame" x="0.0" y="-239" width="414" height="1052"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fom-mW-LyE">
                                 <rect key="frame" x="0.0" y="443" width="414" height="370"/>
@@ -95,6 +95,7 @@
                             <constraint firstItem="HcE-kq-H8b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="aKc-Gg-Hhl"/>
                             <constraint firstItem="Fom-mW-LyE" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="hMG-RF-nyJ"/>
                             <constraint firstItem="HcE-kq-H8b" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="jZm-MR-2Ba"/>
+                            <constraint firstItem="HcE-kq-H8b" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ulT-Ye-s0S"/>
                             <constraint firstItem="Fom-mW-LyE" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zRL-la-M9s"/>
                         </constraints>
                     </view>
@@ -174,7 +175,7 @@
         <image name="bell" width="46" height="46"/>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="calendarBackground" width="780" height="1052"/>
+        <image name="calendarBackground" width="1300" height="2800"/>
         <image name="nextButton" width="15" height="23"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
