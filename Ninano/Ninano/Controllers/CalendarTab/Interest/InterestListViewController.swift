@@ -9,9 +9,9 @@ import UIKit
 
 final class InterestListViewController: UIViewController {
 
-    let sectionInsets = UIEdgeInsets(top: 15, left: 25, bottom: 15, right: 15)
-    
+    @IBOutlet weak var isEmptyLabel: UILabel!
     @IBOutlet weak var interestCollectionView: UICollectionView!
+    let sectionInsets = UIEdgeInsets(top: 15, left: 25, bottom: 15, right: 15)
     private var articles: APIResponse?
     private var eventList = [Event]()
     private var interestViewModel = LikeDataModel()
@@ -20,11 +20,23 @@ final class InterestListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTopStories()
+        layout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if tempLike.isEmpty {
+            isEmptyLabel.isHidden = false
+        } else {
+            isEmptyLabel.isHidden = true
+        }
+    }
 }
 
 extension InterestListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
+    func layout() {
+        isEmptyLabel.isHidden = true
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tempLike.count
@@ -37,6 +49,12 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
         cell.gridImages.layer.cornerRadius = 10
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        eventDetailView.event = self.tempLike[indexPath.item]
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -88,7 +106,6 @@ extension InterestListViewController: UICollectionViewDataSource, UICollectionVi
                         }
                     }
                 })
-                
             case .failure(let error):
                 print(error)
             }
