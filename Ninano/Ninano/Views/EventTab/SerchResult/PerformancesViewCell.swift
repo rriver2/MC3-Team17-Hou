@@ -24,6 +24,7 @@ final class PerformancesViewCell: UICollectionViewCell {
         } else {
             self.eventImageView.image = resizeImage(image: UIImage(named: "tempPoster")!)
         }
+        eventImageView.alpha = 0.4
         configuration()
     }
     
