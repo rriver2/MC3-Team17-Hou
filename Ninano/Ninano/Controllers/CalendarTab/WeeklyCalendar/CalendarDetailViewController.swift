@@ -116,8 +116,8 @@ class CalendarDetailViewController: UIViewController {
     private func configNavigationTitle() {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
-        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
         calendarTitle.text = monthString + "월"
+        calendarTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
         self.navigationItem.titleView = calendarTitle
         
     }
@@ -168,9 +168,11 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
         
         cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
+        cell.dayNameLabel.font = UIFont.preferredFont(forTextStyle: .caption2, weight: .bold)
         
         if Int(dates[indexPath.row]) ?? 0 <= daysCountInMonth {
             cell.dateNumberLabel.text = dates[indexPath.row]
+            cell.dateNumberLabel.font = UIFont.preferredFont(forTextStyle: .caption2, weight: .bold)
         }
         
         if indexPath.row == selectedCell {
