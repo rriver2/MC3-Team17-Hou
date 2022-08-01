@@ -9,7 +9,7 @@ import UIKit
 
 class NoticeViewController: UIViewController {
     
-    private var likeViewModel = LikeDataModel()
+    var likeViewModel = LikeDataModel()
     
     @IBOutlet weak var keywordContainerView: UIView!
     @IBOutlet weak var interestContainerView: UIView!
@@ -57,12 +57,9 @@ class NoticeViewController: UIViewController {
 
             alert.addAction(alertYes)
             alert.addAction(alertNo)
-            
-// TODO: completion 에 DATA.reloadData() 안 들어가도 될까?? -> Test 해봐야 할듯
+
             present(alert, animated: true, completion: nil)
-//            present(alert, animated: true) {
-//                <#code#>
-//            }
+            
         default:
             break
         }
