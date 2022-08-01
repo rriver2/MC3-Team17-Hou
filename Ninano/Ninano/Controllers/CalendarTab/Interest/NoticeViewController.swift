@@ -83,6 +83,5 @@ extension NoticeViewController {
             result.font = UIFont.preferredFont(forTextStyle: .body, weight: .bold)
             return result
         }
-        
     }
 }

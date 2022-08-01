@@ -64,8 +64,15 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
         cell.keywordImage.layer.cornerRadius = 15
         cell.keywordTitle.font = UIFont.preferredFont(forTextStyle: .subheadline, weight: .bold)
         cell.keywordBackgroundCell.layer.cornerRadius = 15
+        cell.connectionArrow.image = UIImage(systemName: "chevron.right", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
+        eventDetailView.event = self.tempKeyword[indexPath.item]
+        self.navigationController?.pushViewController(eventDetailView, animated: true)
     }
     
     func fetchTopStories() {
