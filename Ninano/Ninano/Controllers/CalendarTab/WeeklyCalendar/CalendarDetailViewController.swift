@@ -10,7 +10,7 @@ class CalendarDetailViewController: UIViewController {
     
     private var monthImage: UIImage?
     
-    private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    private var weekdays: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var dates: [String] = []
     var yearString: String = ""
     var monthString: String = ""
@@ -117,7 +117,7 @@ class CalendarDetailViewController: UIViewController {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
         calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
-        calendarTitle.text = monthString + "月"
+        calendarTitle.text = monthString + "월"
         self.navigationItem.titleView = calendarTitle
         
     }
