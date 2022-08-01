@@ -10,7 +10,6 @@ import UIKit
 final class KeywordTableViewCell: UITableViewCell {
 
     @IBOutlet weak var keywordDate: UILabel!
-    @IBOutlet weak var keywordAlarmTitle: UILabel!
     @IBOutlet weak var keywordTitle: UILabel!
     @IBOutlet weak var keywordImage: UIImageView!
     @IBOutlet weak var keywordBackgroundCell: UIView!

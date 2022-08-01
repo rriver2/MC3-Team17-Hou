@@ -43,7 +43,7 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventList.count
+        return tempKeyword.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,7 +54,6 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
         cell.keywordDate.text = tempKeyword[indexPath.row].period
         cell.keywordImage.layer.cornerRadius = 15
         cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
-        cell.keywordAlarmTitle.text = tempKeyword[indexPath.row].info
         cell.keywordBackgroundCell.layer.cornerRadius = 15
         
         return cell
@@ -80,7 +79,7 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
                     )
                 })
                 
-                self?.filterData()
+                self?.filterDataKeyword()
                 
                 self?.tempKeyword.forEach({ event in
                     event.fetchImage(url: event.posterURL) { success in
@@ -98,13 +97,21 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func filterData() {
+    func filterDataKeyword() {
         for keyword in keywordViewModel.keywordItems {
+            print(keyword.keywordSubs ?? "What?")
+            //
+            // keyword : "페스"
+            // tempData.title : "페스티벌"
+            
             for tempData in eventList {
-                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
-                if tempDataBool {
+//                guard let tempDataBool = tempData.info?.contains("\(keyword)") else { return }
+                guard let tempString = keyword.keywordSubs else {return}
+                if tempData.title.contains(tempString) {
                     tempKeyword.append(tempData)
                 }
+                print(tempData.title)
+                print(tempData.title.contains("\(String(describing: keyword.keywordSubs))"))
             }
         }
     }
