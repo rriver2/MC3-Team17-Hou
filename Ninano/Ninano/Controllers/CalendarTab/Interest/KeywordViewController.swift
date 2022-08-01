@@ -53,7 +53,7 @@ extension KeywordViewController: UITableViewDataSource, UITableViewDelegate {
         cell.keywordTitle.text = tempKeyword[indexPath.row].title
         cell.keywordDate.text = tempKeyword[indexPath.row].period
         cell.keywordImage.layer.cornerRadius = 15
-        cell.keywordTitle.font = UIFont.boldSystemFont(ofSize: 17)
+        cell.keywordTitle.font = UIFont.preferredFont(forTextStyle: .subheadline, weight: .bold)
         cell.keywordBackgroundCell.layer.cornerRadius = 15
         
         return cell

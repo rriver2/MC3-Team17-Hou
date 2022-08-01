@@ -24,7 +24,6 @@ class NoticeViewController: UIViewController {
     
     @IBAction func didChangeIndex(_ sender: UISegmentedControl) {
         segmentedControl.underlinePosition()
-        buttonState.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         switch sender.selectedSegmentIndex {
         case 0:
@@ -76,13 +75,13 @@ extension NoticeViewController {
         keywordContainerView.alpha = 1.0
         interestContainerView.alpha = 0.0
         buttonState.tintColor = #colorLiteral(red: 0.7622407675, green: 0.1809852719, blue: 0.1365764439, alpha: 1)
-        mainTitle.font = UIFont.boldSystemFont(ofSize: 30)
+        mainTitle.font = UIFont.preferredFont(forTextStyle: .title2, weight: .bold)
         self.segmentedControl.frame = CGRect(x: self.segmentedControl.frame.minX, y: self.segmentedControl.frame.minY, width: segmentedControl.frame.width, height: 25)
         segmentedControl.highlightSelectedSegment()
         // Button font Weight change
         buttonState.configuration?.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { textBold in
             var result = textBold
-            result.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            result.font = UIFont.preferredFont(forTextStyle: .body, weight: .bold)
             return result
         }
     }
