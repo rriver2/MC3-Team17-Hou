@@ -180,11 +180,15 @@ class EventDetailViewController: UIViewController {
     
     // MARK: 백버튼
     private func didTapCustomBackButton() {
-        var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = resizeImage(image: backImage!, newWidth: 40)
-        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
-        self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        var backImage = UIImage(named: "backIcon")
+        backImage = backImage?.resizeImage(newWidth: 35)
+        
+        let backButton = UIButton()
+        backButton.setImage(backImage, for: .normal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        
+        let backBtn = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBtn
     }
     
     @objc private func didTapBackButton() {

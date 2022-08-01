@@ -19,8 +19,10 @@ final class PerformancesViewCell: UICollectionViewCell {
         self.eventDateLabel.text = event.period?.dateFormatForUI()
         self.eventPlaceLabel.text = event.place
         if let data = event.posterData {
-            let image = (UIImage(data: data) ?? UIImage(named: "calendarBackground"))!
+            let image = (UIImage(data: data) ?? UIImage(named: "tempPoster"))!
             self.eventImageView.image = resizeImage(image: image)
+        } else {
+            self.eventImageView.image = resizeImage(image: UIImage(named: "tempPoster")!)
         }
         configuration()
     }

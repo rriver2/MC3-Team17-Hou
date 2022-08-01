@@ -17,7 +17,7 @@ final class DayEventDetailCell: UITableViewCell {
     
     func configure(with viewModel: Event) {
         eventNameLabel.text = viewModel.title
-        eventNameLabel.font = UIFont.preferredFont(forTextStyle: .headline, weight: .bold)
+        eventNameLabel.font = UIFont.preferredFont(forTextStyle: .subheadline, weight: .bold)
         eventPlaceLabel.text = viewModel.place
         eventPeriodLabel.text = viewModel.period?.dateFormatForUI()
         if let data = viewModel.posterData {

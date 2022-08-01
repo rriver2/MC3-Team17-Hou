@@ -137,12 +137,15 @@ final class SearchResultViewController: UIViewController, UISearchBarDelegate {
     }
     
     private func navigationConfig() {
-        // TODO: Image 변경 gaeun
         var backImage = UIImage(named: "backIcon")
         backImage = backImage?.resizeImage(newWidth: 35)
-        let undo = UIBarButtonItem(image: backImage, style: .done, target: self, action: #selector(didTapBackButton))
-        self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = CustomColor.mainMidRed
+        
+        let backButton = UIButton()
+        backButton.setImage(backImage, for: .normal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        
+        let backBtn = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBtn
     }
     
     private func determineViewCatagory() {
