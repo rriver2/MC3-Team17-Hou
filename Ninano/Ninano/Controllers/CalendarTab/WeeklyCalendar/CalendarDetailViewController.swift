@@ -119,11 +119,15 @@ class CalendarDetailViewController: UIViewController {
     
     @IBOutlet weak var addSchedule: UIButton!
     private func didTapCustomBackButton() {
-        var backImage = UIImage(systemName: "chevron.backward.square.fill")
-        backImage = backImage?.resizeImage(newWidth: 40)
-        let undo = UIBarButtonItem(image: backImage, style: .plain, target: self, action: #selector(didTapBackButton))
-        self.navigationItem.leftBarButtonItem = undo
-        self.navigationController?.navigationBar.tintColor = UIColor(hex: "D15353")
+        var backImage = UIImage(named: "backIcon")
+        backImage = backImage?.resizeImage(newWidth: 35)
+        
+        let backButton = UIButton()
+        backButton.setImage(backImage, for: .normal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        
+        let backBtn = UIBarButtonItem(customView: backButton)
+        self.navigationItem.leftBarButtonItem = backBtn
     }
     
     @objc private func didTapBackButton() {
@@ -141,18 +145,34 @@ class CalendarDetailViewController: UIViewController {
             guard let calenderModal = UIStoryboard(name: "CalenderModal", bundle: .main).instantiateViewController(withIdentifier: "CalenderModalViewController") as? CalenderModalViewController else { return }
             self.present(calenderModal, animated: true, completion: nil)
             let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .bold)]
-                    let attributedTitle = NSAttributedString(string: "일정 제거", attributes: attribute)
+            let attributedTitle = NSAttributedString(string: "일정 제거", attributes: attribute)
             sender.setAttributedTitle(attributedTitle, for: .normal)
-            sender.backgroundColor = UIColor(hex: "C5C5C5")!
-            sender.configuration?.baseForegroundColor = CustomColor.mainRed
+            sender.backgroundColor = CustomColor.buttonLightGray
+            sender.configuration?.baseForegroundColor = CustomColor.mainMidRed
+            sender.setImage(
+                UIImage(
+                    systemName: "calendar.badge.minus",
+                    withConfiguration: UIImage.SymbolConfiguration(
+                        paletteColors: [CustomColor.mainMidRed!])
+                ),
+                for: .normal
+            )
             
         } else if sender.titleLabel?.text == "일정 제거" {
             sender.setImage(UIImage(systemName: "calendar.bedge.plus"), for: .normal)
             let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .bold)]
-                    let attributedTitle = NSAttributedString(string: "일정 추가", attributes: attribute)
+            let attributedTitle = NSAttributedString(string: "일정 추가", attributes: attribute)
             sender.setAttributedTitle(attributedTitle, for: .normal)
-            sender.backgroundColor = UIColor(hex: "ffffff")!
-            sender.configuration?.baseForegroundColor = CustomColor.textBlack
+            sender.backgroundColor = CustomColor.mainMidRed
+            sender.configuration?.baseForegroundColor = UIColor.white
+            sender.setImage(
+                UIImage(
+                    systemName: "calendar.badge.minus",
+                    withConfiguration: UIImage.SymbolConfiguration(
+                        paletteColors: [UIColor.white])
+                ),
+                for: .normal
+            )
         }
     }
 }
@@ -232,28 +252,28 @@ extension CalendarDetailViewController: UITableViewDelegate, UITableViewDataSour
         
         APICaller.shared.getTopStories { [weak self] result in
             switch result {
-                case .success(let articles):
-                    self?.articles = articles
-                    self?.eventList = articles.culturalEventInfo.row.compactMap({
-                        Event(
-                            title: String($0.title),
-                            posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
-                            place: String($0.place),
-                            area: String($0.guname),
-                            period: String($0.date),
-                            URL: String($0.orgLink ?? ""),
-                            actor: String($0.player),
-                            info: String($0.program),
-                            price: String($0.useFee)
-                        )
-                    })
-                    DispatchQueue.main.async {
-                        self?.selectedEventList = self?.eventList ?? []
-                        self?.dayEventDetailView.reloadData()
-                        self?.filterDate()
-                    }
-                case .failure(let error):
-                    print(error)
+            case .success(let articles):
+                self?.articles = articles
+                self?.eventList = articles.culturalEventInfo.row.compactMap({
+                    Event(
+                        title: String($0.title),
+                        posterURL: URL(string: ($0.mainImg ?? "") + "djks"),
+                        place: String($0.place),
+                        area: String($0.guname),
+                        period: String($0.date),
+                        URL: String($0.orgLink ?? ""),
+                        actor: String($0.player),
+                        info: String($0.program),
+                        price: String($0.useFee)
+                    )
+                })
+                DispatchQueue.main.async {
+                    self?.selectedEventList = self?.eventList ?? []
+                    self?.dayEventDetailView.reloadData()
+                    self?.filterDate()
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }

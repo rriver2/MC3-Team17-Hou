@@ -14,7 +14,6 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
-    var LIKEVIEWMODEL = LikeDataModel()
     var event: Event?
     private var likeManager =  LikeManager.shared
     private var reserveManager = ReserveManager.shared
@@ -208,11 +207,6 @@ class EventDetailViewController: UIViewController {
         return newImage
     }
     
-    @IBAction func LIKEBUTTON(_ sender: UIButton) {
-        LIKEVIEWMODEL.addLikeItems(url: event?.URL ?? "", isLiked: true, name: event?.title ?? "")
-        print("오호이")
-    }
-    
     // MARK: event model
     private func selectedEventInfo() {
         guard let event = event else {
@@ -247,38 +241,38 @@ class EventDetailViewController: UIViewController {
     
     // MARK: 일정추가 버튼 토글 시 변환
     func drawReserveButton() {
+        
+        let midRed = CustomColor.mainMidRed!
         if isReserved {
             reserveBtn.titleLabel?.font = .boldSystemFont(ofSize: 13)
             reserveBtn.setTitle("일정 제거", for: .normal)
-            reserveBtn.setTitleColor(.red, for: .normal)
+            reserveBtn.setTitleColor(midRed, for: .normal)
             reserveBtn.setImage(
                 UIImage(
                     systemName: "calendar.badge.minus",
                     withConfiguration: UIImage.SymbolConfiguration(
-                        paletteColors: [.red])
+                        paletteColors: [midRed])
                 ),
                 for: .normal
             )
-            reserveBtn.backgroundColor = CustomColor.c5?.withAlphaComponent(0.9)
+            reserveBtn.backgroundColor = CustomColor.buttonLightGray!
         } else {
             reserveBtn.titleLabel?.font = .boldSystemFont(ofSize: 13)
             reserveBtn.setTitle("일정 추가", for: .normal)
-            reserveBtn.setTitleColor(.black, for: .normal)
+            reserveBtn.setTitleColor(.white, for: .normal)
 
             reserveBtn.setImage(
                 UIImage(
                     systemName: "calendar.badge.plus",
                     withConfiguration: UIImage.SymbolConfiguration(
-                        paletteColors: [.red])
+                        paletteColors: [.white])
                 ),
                 for: .normal
             )
-            reserveBtn.backgroundColor =
-                CustomColor.buttonLightGray?.withAlphaComponent(0.9)
+            reserveBtn.backgroundColor = midRed
         }
     }
 }
-
 
 // MARK: - Scroll View Delegate
 extension EventDetailViewController: UIScrollViewDelegate {
