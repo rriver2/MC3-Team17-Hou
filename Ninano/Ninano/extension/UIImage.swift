@@ -20,7 +20,6 @@ extension UIImage {
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         return newImage
     }
     func withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
