@@ -14,7 +14,6 @@
         <!--Search Result View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SearchResultViewController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="SearchResultViewController" customModule="Ninano" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -108,29 +107,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClT-jf-Z8m">
-                                <rect key="frame" x="138" y="808" width="138" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="JEa-rj-FfX"/>
-                                </constraints>
-                                <color key="tintColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="  키워드 알림" image="bell.circle.fill" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="keywordNotificationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VSv-mh-EWE"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-el-Pla">
-                                <rect key="frame" x="25" y="808" width="364" height="40"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Wdi-el-Pla">
+                                <rect key="frame" x="25" y="821" width="364" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="키워드 알림이 등록되었습니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJz-w0-JyG">
-                                        <rect key="frame" x="0.0" y="0.0" width="237.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="237.5" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="0.81960784313725488" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
@@ -139,7 +122,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3m-x4-4Qp">
-                                        <rect key="frame" x="245.5" y="0.0" width="118.5" height="40"/>
+                                        <rect key="frame" x="245.5" y="0.0" width="118.5" height="35"/>
                                         <color key="tintColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
@@ -148,10 +131,10 @@
                                         </buttonConfiguration>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="mJz-w0-JyG" firstAttribute="leading" secondItem="Wdi-el-Pla" secondAttribute="leading" id="62s-WI-Lyx"/>
-                                    <constraint firstAttribute="height" constant="40" id="PfV-hb-vVa"/>
+                                    <constraint firstAttribute="height" constant="35" id="PfV-hb-vVa"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9aE-Rg-zDe" customClass="EventFilterButton" customModule="Ninano" customModuleProvider="target">
@@ -161,6 +144,22 @@
                                     <constraint firstAttribute="height" constant="30" id="DM1-Jk-g8d"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ClT-jf-Z8m">
+                                <rect key="frame" x="138" y="821" width="138" height="35"/>
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="JEa-rj-FfX"/>
+                                </constraints>
+                                <color key="tintColor" red="0.81960784313725488" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="  키워드 알림" image="bell.circle.fill" catalog="system">
+                                    <color key="titleColor" red="0.81960784313725488" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="keywordNotificationButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VSv-mh-EWE"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공연이 없습니다 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4i-8p-49O">
                                 <rect key="frame" x="144.5" y="436.5" width="125" height="23"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
@@ -176,7 +175,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="udG-aU-qED" secondAttribute="bottom" id="89X-fM-gLv"/>
                             <constraint firstItem="Wdi-el-Pla" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="AeU-No-Uga"/>
                             <constraint firstItem="9aE-Rg-zDe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="C3y-s2-9mY"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Wdi-el-Pla" secondAttribute="bottom" constant="14" id="FTW-8Z-mzB"/>
+                            <constraint firstAttribute="bottom" secondItem="Wdi-el-Pla" secondAttribute="bottom" constant="40" id="FTW-8Z-mzB"/>
                             <constraint firstItem="WdU-wj-TDT" firstAttribute="top" secondItem="9aE-Rg-zDe" secondAttribute="bottom" constant="10" id="OD1-v1-7Ze"/>
                             <constraint firstItem="ClT-jf-Z8m" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="PdA-oV-d2P"/>
                             <constraint firstItem="W4i-8p-49O" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="PrB-eR-3NY"/>
@@ -184,7 +183,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9aE-Rg-zDe" secondAttribute="trailing" constant="195" id="UlI-94-hsX"/>
                             <constraint firstItem="udG-aU-qED" firstAttribute="top" secondItem="WdU-wj-TDT" secondAttribute="bottom" id="Wd4-5E-jhn"/>
                             <constraint firstItem="9aE-Rg-zDe" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="tFs-aK-tOL"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ClT-jf-Z8m" secondAttribute="bottom" constant="14" id="tOU-2d-59q"/>
+                            <constraint firstAttribute="bottom" secondItem="ClT-jf-Z8m" secondAttribute="bottom" constant="40" id="tOU-2d-59q"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="udG-aU-qED" secondAttribute="trailing" id="uUx-sS-Yn9"/>
                             <constraint firstItem="WdU-wj-TDT" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="v2G-KP-knf"/>
                             <constraint firstItem="W4i-8p-49O" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="yba-jb-lfK"/>
@@ -202,6 +201,7 @@
                         <outlet property="performanceCollectionView" destination="udG-aU-qED" id="aT0-Vv-n4Y"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="60.869565217391312" y="95.758928571428569"/>
         </scene>
