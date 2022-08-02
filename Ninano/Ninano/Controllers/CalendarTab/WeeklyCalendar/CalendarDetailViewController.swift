@@ -114,7 +114,7 @@ class CalendarDetailViewController: UIViewController {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
         calendarTitle.text = monthString + "월"
-        calendarTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
+        calendarTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .semibold)
         self.navigationItem.titleView = calendarTitle
     }
     
