@@ -68,6 +68,8 @@
 		F6AC89E9288D115F006B3275 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89E8288D115F006B3275 /* TestViewController.swift */; };
 		F6AC89EB288D143B006B3275 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AC89EA288D143B006B3275 /* TestTableViewCell.swift */; };
 		F6B158FB2887A790000B4F51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B158FA2887A790000B4F51 /* Main.storyboard */; };
+		F6EEAABA2897DB8000E3ED92 /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6EEAAB82897DB8000E3ED92 /* GmarketSansTTFLight.ttf */; };
+		F6EEAABB2897DB8000E3ED92 /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6EEAAB92897DB8000E3ED92 /* GmarketSansTTFMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -135,6 +137,8 @@
 		F6AC89E8288D115F006B3275 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F6AC89EA288D143B006B3275 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
 		F6B158FA2887A790000B4F51 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F6EEAAB82897DB8000E3ED92 /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		F6EEAAB92897DB8000E3ED92 /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,6 +326,7 @@
 				F6B158FD2887AECE000B4F51 /* Controllers */,
 				F6B158FC2887A7D6000B4F51 /* Views */,
 				CC21943A28844F8500E93AC7 /* extension */,
+				F6EEAABC2897DBC200E3ED92 /* Fonts */,
 				F63AEBDE288686CE00D57A4F /* Config.xcconfig */,
 				CC8B50C7287C1063004EE6DB /* AppDelegate.swift */,
 				CC8B50C9287C1063004EE6DB /* SceneDelegate.swift */,
@@ -427,6 +432,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		F6EEAABC2897DBC200E3ED92 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F6EEAAB82897DB8000E3ED92 /* GmarketSansTTFLight.ttf */,
+				F6EEAAB92897DB8000E3ED92 /* GmarketSansTTFMedium.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -493,6 +507,7 @@
 				58D6ECD5288E6CFA00AB402F /* CoredataMain.storyboard in Resources */,
 				CCCA9E59288FCF250070F231 /* CalenderModal.storyboard in Resources */,
 				7EBFC89928855AF900EF5537 /* CalendarDetail.storyboard in Resources */,
+				F6EEAABA2897DB8000E3ED92 /* GmarketSansTTFLight.ttf in Resources */,
 				CC4F8F722880DC3300A18346 /* SearchResult.storyboard in Resources */,
 				F6B158FB2887A790000B4F51 /* Main.storyboard in Resources */,
 				F63AEBAE288428B800D57A4F /* Calendar.storyboard in Resources */,
@@ -504,6 +519,7 @@
 				F63AEBAC2884288700D57A4F /* CalendarCollectionViewCell.xib in Resources */,
 				CC8CFAC0288D318E003BA65C /* .swiftLint.yml in Resources */,
 				CC8B50CF287C1063004EE6DB /* EventDetail.storyboard in Resources */,
+				F6EEAABB2897DB8000E3ED92 /* GmarketSansTTFMedium.ttf in Resources */,
 				F6AC89BB288859AE006B3275 /* Keyword.storyboard in Resources */,
 				CCCA9E4D288EB6DB0070F231 /* EventFilterButton.xib in Resources */,
 				3278706928819A7F00519A2A /* Search.storyboard in Resources */,
@@ -732,7 +748,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A8RC8B498C;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -764,7 +780,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A8RC8B498C;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -14,7 +14,10 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tbh-3Z-zFT">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.83921568627450982" green="0.83529411764705885" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.83921568627450982" green="0.83529411764705885" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.83921568627450982" green="0.83529411764705885" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.70196078431372544" green="0.10588235294117647" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="bNh-2M-5iN" kind="relationship" relationship="viewControllers" id="ztC-y7-8Im"/>

@@ -186,11 +186,11 @@
             </objects>
             <point key="canvasLocation" x="3586.9565217391305" y="-281.25"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--추천 공연-->
         <scene sceneID="yos-Z4-gWv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H7d-Or-5tN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="eye.fill" catalog="system" selectedImage="eye.fill" id="B8Q-gO-20f"/>
+                    <tabBarItem key="tabBarItem" title="추천 공연" image="eye.fill" catalog="system" selectedImage="eye.fill" id="B8Q-gO-20f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="iF5-3w-uni">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

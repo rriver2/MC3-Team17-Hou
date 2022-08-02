@@ -15,7 +15,7 @@ class CalendarViewController: UIViewController {
     let dateFormatter = DateFormatter()
     var components = DateComponents()
     
-    var weeks: [String] = ["Sun", "Mon", "Tus", "Wed", "Thu", "Fri", "Sat"]
+    var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
     // 해달 월에 몇일까지 있는지 카운트
     var daysCountInMonth = 0
@@ -24,7 +24,8 @@ class CalendarViewController: UIViewController {
     
     //  캘린더 이미지화면 연결
     @IBOutlet weak var image: UIImageView!
-    
+    // 년,월,앞뒤 버튼이 있는 뷰 연결
+    @IBOutlet weak var yearMonthView: UIView!
     // 달력을 표시할 콜렉션 뷰 연결
     @IBOutlet weak var calendarView: UICollectionView!
     // 달력에서 글씨를 포시할 라벨 연결
@@ -33,6 +34,9 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initView()
+        yearMonthLabel.font = UIFont(name: "GmarketSansTTFMedium", size: 20)
+        setBlurEffect()
+        round()
     }
     
     //  알림 아이콘 연결
@@ -56,7 +60,7 @@ class CalendarViewController: UIViewController {
     // 뷰 초기 설정
     private func initView() {
         self.initCollection()
-        dateFormatter.dateFormat = "yyyy年M月"
+        dateFormatter.dateFormat = "yyyy년 M월"
         components.year = cal.component(.year, from: now)
         components.month = cal.component(.month, from: now)
         components.day = 1
@@ -85,6 +89,20 @@ class CalendarViewController: UIViewController {
         }
     }
     
+    func setBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        calendarView.addSubview(visualEffectView)
+        yearMonthView.addSubview(visualEffectView)
+        visualEffectView.frame = calendarView.frame
+        visualEffectView.frame = yearMonthView.frame
+    }
+    
+    func round() {
+        yearMonthView.clipsToBounds = true
+        yearMonthView.layer.cornerRadius = 20
+        yearMonthView.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMinXMinYCorner, .layerMaxXMinYCorner)
+    }
 }
 
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -105,14 +123,17 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         switch indexPath.section {
         case 0:
             cell?.dateLabel.text = weeks[indexPath.row]
+            cell?.dateLabel.font = UIFont(name: "GmarketSansTTFMedium", size: 15)
+            
         default:
             cell?.dateLabel.text = days[indexPath.row]
+            cell?.dateLabel.font = UIFont(name: "GmarketSansTTFlight", size: 15)
         }
-
+        
         if indexPath.row % 7 == 0 {
-            cell?.dateLabel.textColor = UIColor.black
+            cell?.dateLabel.textColor = UIColor.init(hex: "B31B1B")
         } else if indexPath.row % 7 == 6 {
-            cell?.dateLabel.textColor = UIColor.black
+            cell?.dateLabel.textColor = UIColor.init(hex: "0051FF")
         } else {
             cell?.dateLabel.textColor = UIColor.black
         }
@@ -133,9 +154,10 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             return
         }
         let year = text[text.startIndex ..< text.index(text.startIndex, offsetBy: 4)]
-        let month = text[text.index(text.startIndex, offsetBy: 5)]
+        let month = text[text.index(text.startIndex, offsetBy: 6) ..< text.index(text.startIndex, offsetBy: 8)]
+        let trimMonth = month.trimmingCharacters(in: ["월"])
         nextVC.yearString = String(year)
-        nextVC.monthString = String(month)
+        nextVC.monthString = String(trimMonth)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

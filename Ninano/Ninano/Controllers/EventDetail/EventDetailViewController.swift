@@ -14,6 +14,7 @@ import UIKit
 
 class EventDetailViewController: UIViewController {
     
+    var LIKEVIEWMODEL = LikeDataModel()
     var event: Event?
     private var likeManager =  LikeManager.shared
     private var reserveManager = ReserveManager.shared
@@ -201,6 +202,11 @@ class EventDetailViewController: UIViewController {
         UIGraphicsEndImageContext()
         
         return newImage
+    }
+    
+    @IBAction func LIKEBUTTON(_ sender: UIButton) {
+        LIKEVIEWMODEL.addLikeItems(url: event?.URL ?? "", isLiked: true, name: event?.title ?? "")
+        print("오호이")
     }
     
     // MARK: event model

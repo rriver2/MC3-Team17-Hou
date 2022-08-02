@@ -22,13 +22,11 @@ class TestTableViewController: UITableViewController {
     }
     
     @IBAction func asdfasdfadsf(_ sender: Any) {
-        print("NOPE!")
         likeViewModel.removeAllLikeItems()
         tableView.reloadData()
     }
 
     @IBAction func alertPLUS(_ sender: UIButton) {
-        print("TlqkfRJ")
         let alertController = UIAlertController(title: "Add List Item", message: "Add an item that you need to do.", preferredStyle: .alert)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

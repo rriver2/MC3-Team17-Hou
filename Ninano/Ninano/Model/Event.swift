@@ -30,11 +30,6 @@ class Event {
         self.actor = actor
         self.info = info
         self.price = price
-        fetchImage(url: posterURL) { result in
-            if result == false {
-                print("posterURL 없음")
-            }
-        }
     }
     
     func fetchImage(url: URL?, completion: @escaping (Bool) -> Void) {

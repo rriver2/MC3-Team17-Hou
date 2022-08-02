@@ -13,6 +13,8 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var dot: UIImageView!
     
+    @IBOutlet weak var cellView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         hideDot()
@@ -31,5 +33,4 @@ final class CalendarCollectionViewCell: UICollectionViewCell {
     private func hideDot() {
         dot.backgroundColor = nil
     }
-    
 }

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarCell" id="gTV-IL-0wX" customClass="CalendarCollectionViewCell" customModule="Ninano" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.80000000000000004" contentMode="center" reuseIdentifier="calendarCell" id="gTV-IL-0wX" customClass="CalendarCollectionViewCell" customModule="Ninano" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -33,12 +33,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.84313725490196079" green="0.82745098039215681" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <connections>
+                <outlet property="cellView" destination="aqs-U0-bAO" id="GoZ-JE-2Oi"/>
                 <outlet property="dateLabel" destination="4ED-xM-Pei" id="NTN-WV-Iqg"/>
                 <outlet property="dot" destination="rKe-R2-bKd" id="mFq-jn-xUi"/>
             </connections>
