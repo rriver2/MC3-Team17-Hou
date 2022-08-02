@@ -10,11 +10,10 @@ class CalendarDetailViewController: UIViewController {
     
     private var monthImage: UIImage?
     
-    private var weekdays: [String] = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    private var weekdays: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var dates: [String] = []
     var yearString: String = ""
     var monthString: String = ""
-    
     let now = Date()
     var cal = Calendar.current
     // 해달 월에 몇일까지 있는지 카운트
@@ -24,9 +23,6 @@ class CalendarDetailViewController: UIViewController {
     
     @IBOutlet weak var alertEmptyEventLabel: UILabel!
     private var selectedCell: Int?
-    
-    private var backButton = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium)
-    private let backSymbol = UIImage(systemName: "chevron.left")
     
     private var heartConfig = UIImage.SymbolConfiguration(paletteColors: [.systemRed])
     private let heartSymbol = UIImage(systemName: "heart.fill")
@@ -116,12 +112,12 @@ class CalendarDetailViewController: UIViewController {
     private func configNavigationTitle() {
         let calendarTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         calendarTitle.textAlignment = .center
-        calendarTitle.font = UIFont.boldSystemFont(ofSize: 25)
-        calendarTitle.text = monthString + "月"
+        calendarTitle.text = monthString + "월"
+        calendarTitle.font = UIFont.preferredFont(forTextStyle: .title3, weight: .bold)
         self.navigationItem.titleView = calendarTitle
-        
     }
     
+    @IBOutlet weak var addSchedule: UIButton!
     private func didTapCustomBackButton() {
         var backImage = UIImage(systemName: "chevron.backward.square.fill")
         backImage = backImage?.resizeImage(newWidth: 40)
@@ -140,11 +136,24 @@ class CalendarDetailViewController: UIViewController {
         monthImageView.addSubview(visualEffectView)
         visualEffectView.frame = monthImageView.frame
     }
-    
-    @IBAction func addDate(_ sender: Any) {
-        guard let eventDetailView = UIStoryboard(name: "EventDetail", bundle: .main).instantiateViewController(withIdentifier: "EventDetailViewController") as? EventDetailViewController else { return }
-        eventDetailView.event = selectedEventList[0]
-        self.navigationController?.pushViewController(eventDetailView, animated: true)
+    @IBAction func addSchedule(_ sender: UIButton) {
+        if sender.titleLabel?.text == "일정 추가" {
+            guard let calenderModal = UIStoryboard(name: "CalenderModal", bundle: .main).instantiateViewController(withIdentifier: "CalenderModalViewController") as? CalenderModalViewController else { return }
+            self.present(calenderModal, animated: true, completion: nil)
+            let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .bold)]
+                    let attributedTitle = NSAttributedString(string: "일정 제거", attributes: attribute)
+            sender.setAttributedTitle(attributedTitle, for: .normal)
+            sender.backgroundColor = UIColor(hex: "C5C5C5")!
+            sender.configuration?.baseForegroundColor = CustomColor.mainRed
+            
+        } else if sender.titleLabel?.text == "일정 제거" {
+            sender.setImage(UIImage(systemName: "calendar.bedge.plus"), for: .normal)
+            let attribute = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .footnote, weight: .bold)]
+                    let attributedTitle = NSAttributedString(string: "일정 추가", attributes: attribute)
+            sender.setAttributedTitle(attributedTitle, for: .normal)
+            sender.backgroundColor = UIColor(hex: "ffffff")!
+            sender.configuration?.baseForegroundColor = CustomColor.textBlack
+        }
     }
 }
 
@@ -164,13 +173,14 @@ extension CalendarDetailViewController: UICollectionViewDelegate, UICollectionVi
         
         let firstDayOfMonth = cal.date(from: components)
         daysCountInMonth = cal.range(of: .day, in: .month, for: firstDayOfMonth ?? Date())!.count
-        //        self.monthString = dateFormatter.string(from: firstDayOfMonth!)
         
         cell.dayHighlight.layer.cornerRadius = 14.5
         cell.dayNameLabel.text = weekdays[indexPath.row]
+        cell.dayNameLabel.font = UIFont.preferredFont(forTextStyle: .caption2, weight: .bold)
         
         if Int(dates[indexPath.row]) ?? 0 <= daysCountInMonth {
             cell.dateNumberLabel.text = dates[indexPath.row]
+            cell.dateNumberLabel.font = UIFont.preferredFont(forTextStyle: .caption2, weight: .bold)
         }
         
         if indexPath.row == selectedCell {
