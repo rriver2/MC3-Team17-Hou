@@ -16,25 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendarBackground" translatesAutoresizingMaskIntoConstraints="NO" id="5QP-5R-Adh">
-                                <rect key="frame" x="87" y="363" width="240" height="170"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="5QP-5R-Adh">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="8v6-3t-vSG"/>
+                                    <constraint firstAttribute="width" constant="150" id="A7f-0W-rlz"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ninano" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeP-Pf-mMH">
-                                <rect key="frame" x="180" y="547" width="54" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qL-5z-v8G">
+                                <rect key="frame" x="192.5" y="829.5" width="29" height="22.5"/>
+                                <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGray3Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="MeP-Pf-mMH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="0pl-Le-Crn"/>
-                            <constraint firstItem="5QP-5R-Adh" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Aod-Sn-kxH"/>
-                            <constraint firstItem="5QP-5R-Adh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="319" id="VOM-jg-vBO"/>
-                            <constraint firstItem="5QP-5R-Adh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="X7B-Lb-f7C"/>
-                            <constraint firstItem="MeP-Pf-mMH" firstAttribute="top" secondItem="5QP-5R-Adh" secondAttribute="bottom" constant="14" id="ora-Ts-Joo"/>
-                            <constraint firstItem="5QP-5R-Adh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vdt-ha-8LV"/>
+                            <constraint firstItem="3qL-5z-v8G" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4wk-lG-SfD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3qL-5z-v8G" secondAttribute="bottom" constant="10" id="PcF-MZ-wN5"/>
+                            <constraint firstItem="5QP-5R-Adh" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ipU-Gx-6RI"/>
+                            <constraint firstItem="5QP-5R-Adh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lsM-gB-at5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -44,9 +46,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="calendarBackground" width="780" height="1052"/>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="launchImage" width="500" height="448"/>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
