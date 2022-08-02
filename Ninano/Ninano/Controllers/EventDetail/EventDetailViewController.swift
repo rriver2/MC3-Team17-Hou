@@ -35,8 +35,6 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     // MARK: 포스터 일정 추가 버튼
     @IBOutlet weak var likeBtn: UIButton!
-    // MARK: 일정 확정 버튼
-    @IBOutlet weak var addDate: UIButton!
     // MARK: segmentedControl
     @IBOutlet weak var eventDetailSegmentedControl: UISegmentedControl!
     // MARK: 일정 추가 및 삭제 버튼
@@ -107,7 +105,7 @@ class EventDetailViewController: UIViewController {
             eventActorLabel.alpha = 1
             
         default:
-            break
+                break
         }
     }
     
@@ -129,9 +127,9 @@ class EventDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        reserveManager.deleteAll()
-        
         drawReserveButton()
+        // MARK: 일정추가 버튼 백그라운드 블러 효과 안녕...추후 다시 도전해볼게요..
+//        setBlurEffect()
         chooseLikeBtnColor()
         didTapCustomBackButton()
         selectedEventInfo()
@@ -142,8 +140,7 @@ class EventDetailViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.clear]
-        addDate.layer.cornerRadius = 15
-        setBlurEffect()
+        reserveBtn.layer.cornerRadius = 17.5
     }
     
     // MARK: 네비게이션바 원래대로
@@ -160,21 +157,23 @@ class EventDetailViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
     }
     
-    // MARK: 일정추가 버튼 백그라운드 블러 효과
-    func setBlurEffect() {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.frame = addDate.frame
-        addDate.addSubview(visualEffectView)
-    }
+    // MARK: 일정추가 버튼 백그라운드 블러 효과 안녕...추후 다시 도전해볼게요..
+//    func setBlurEffect() {
+//        reserveBtn.layer.cornerRadius = 17.5
+//        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+//        blurEffectView.alpha = 0.5
+//        blurEffectView.frame = self.reserveBtn.bounds
+//        self.reserveBtn.addSubview(blurEffectView)
+//    }
     
     // MARK: 공유하기 시트
     private func presentShareSheet() {
         if let eventURL = event?.URL {
-            guard let image = UIImage(systemName: "bell"), let url = URL(string: eventURL) else {
+            guard let url = URL(string: eventURL) else {
                 return
             }
-            let shareSheetVC = UIActivityViewController(activityItems: [image, url], applicationActivities: nil)
+            let shareSheetVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
             present(shareSheetVC, animated: true)
         }
     }
@@ -219,9 +218,9 @@ class EventDetailViewController: UIViewController {
         eventTitleLabel.text = event.title
         eventPlaceLabel.text = event.place
         eventDateLabel.text = event.period
-        eventPriceLabel.text = event.price
-        eventInfoLabel.text = event.info
-        eventActorLabel.text = event.actor
+        eventPriceLabel.text = event.price == "" ? "해당 정보 없음" : event.price
+        eventInfoLabel.text = event.info == "" ? "해당 정보 없음" : event.info
+        eventActorLabel.text = event.actor == "" ? "해당 정보 없음" : event.actor
 
         do {
             let data = try Data(contentsOf: event.posterURL!)
@@ -231,6 +230,7 @@ class EventDetailViewController: UIViewController {
         }
     }
 
+    // MARK: 저장버튼 토글 시 변환
     private func chooseLikeBtnColor() {
         if isLiked {
             likeBtn.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -241,19 +241,40 @@ class EventDetailViewController: UIViewController {
         }
     }
     
+    // MARK: 일정추가 버튼 토글 시 변환
     func drawReserveButton() {
         if isReserved {
-            reserveBtn.setImage(UIImage(systemName: "calendar.badge.minus"), for: .normal)
-            reserveBtn.backgroundColor = CustomColor.sexyKim
+            reserveBtn.titleLabel?.font = .boldSystemFont(ofSize: 13)
             reserveBtn.setTitle("일정 제거", for: .normal)
-            
+            reserveBtn.setTitleColor(.red, for: .normal)
+            reserveBtn.setImage(
+                UIImage(
+                    systemName: "calendar.badge.minus",
+                    withConfiguration: UIImage.SymbolConfiguration(
+                        paletteColors: [.red])
+                ),
+                for: .normal
+            )
+            reserveBtn.backgroundColor = CustomColor.c5?.withAlphaComponent(0.9)
         } else {
-            reserveBtn.setImage(UIImage(systemName: "calendar.badge.plus"), for: .normal)
-            reserveBtn.backgroundColor = .white
+            reserveBtn.titleLabel?.font = .boldSystemFont(ofSize: 13)
             reserveBtn.setTitle("일정 추가", for: .normal)
+            reserveBtn.setTitleColor(.black, for: .normal)
+
+            reserveBtn.setImage(
+                UIImage(
+                    systemName: "calendar.badge.plus",
+                    withConfiguration: UIImage.SymbolConfiguration(
+                        paletteColors: [.red])
+                ),
+                for: .normal
+            )
+            reserveBtn.backgroundColor =
+                CustomColor.buttonLightGray?.withAlphaComponent(0.9)
         }
     }
 }
+
 
 // MARK: - Scroll View Delegate
 extension EventDetailViewController: UIScrollViewDelegate {
