@@ -154,10 +154,10 @@
                     <navigationItem key="navigationItem" id="SfL-8Z-UhK">
                         <barButtonItem key="rightBarButtonItem" id="XZ2-ky-TWF">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="8Qy-ea-gxW">
-                                <rect key="frame" x="324.5" y="0.0" width="69.5" height="44"/>
+                                <rect key="frame" x="324.5" y="0.0" width="59" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="magnifyingglass.circle.fill" catalog="system" title="">
+                                <buttonConfiguration key="configuration" style="plain" image="Image" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                                     <color key="baseForegroundColor" red="0.81901115179999995" green="0.3260309696" blue="0.32545870539999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
@@ -210,9 +210,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="43" height="43"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
-        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

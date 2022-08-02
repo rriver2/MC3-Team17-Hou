@@ -14,7 +14,7 @@ class CalendarViewController: UIViewController {
     var cal = Calendar.current
     let dateFormatter = DateFormatter()
     var components = DateComponents()
-    
+    private var reserveViewModel = ReserveDataModel()
     var weeks: [String] = ["일", "월", "화", "수", "목", "금", "토"]
     var days: [String] = []
     // 해달 월에 몇일까지 있는지 카운트
@@ -128,8 +128,19 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         default:
             cell?.dateLabel.text = days[indexPath.row]
             cell?.dateLabel.font = UIFont(name: "GmarketSansTTFlight", size: 15)
+            
+//            let date = days[indexPath.row]
+//            let text = yearMonthLabel.text!
+                
+//            let month = text[text.index(text.startIndex, offsetBy: 6) ..< text.index(text.startIndex, offsetBy: 8)]
+//            let trimMonth = month.trimmingCharacters(in: ["월"])
+//
+//            for event in reserveViewModel.reserveItems {
+//                if event.reserveDate?.getDateComponent() == Int(date) && event.reserveDate?.getMonthComponent() == Int(trimMonth) {
+//                    cell?.self.showDot()
+//                }
+//            }
         }
-        
         if indexPath.row % 7 == 0 {
             cell?.dateLabel.textColor = UIColor.init(hex: "B31B1B")
         } else if indexPath.row % 7 == 6 {
