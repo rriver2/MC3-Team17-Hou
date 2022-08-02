@@ -98,6 +98,7 @@ class CalendarDetailViewController: UIViewController {
         selectedCell = 0
         selectedDate = dayToDate(day: dates[0])
         alertEmptyEventLabel?.isHidden = true
+        dayEventDetailView.contentInset.top = 15
     }
     
     private func dayToDate(day: String) -> Date {
