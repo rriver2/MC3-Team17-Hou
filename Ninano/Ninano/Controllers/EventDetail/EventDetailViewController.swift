@@ -279,7 +279,6 @@ class EventDetailViewController: UIViewController {
     }
 }
 
-
 // MARK: - Scroll View Delegate
 extension EventDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
