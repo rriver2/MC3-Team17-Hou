@@ -23,6 +23,16 @@ extension Date {
     public func isDateToday(fromDate: Date) -> Bool {
         self.convertDateToOtherType(.onlyDate) == fromDate.convertDateToOtherType(.onlyDate)
     }
+    
+    func getDateComponent() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.day, from: self)
+    }
+
+    func getMonthComponent() -> Int {
+        let calendar = Calendar.current
+        return calendar.component(.month, from: self)
+    }
 }
 
 extension String {

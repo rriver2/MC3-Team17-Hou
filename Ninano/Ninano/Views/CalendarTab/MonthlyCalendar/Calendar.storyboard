@@ -172,7 +172,7 @@
     </scenes>
     <resources>
         <image name="backButton" width="14" height="23"/>
-        <image name="bell" width="46" height="46"/>
+        <image name="bell" width="43" height="43"/>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="calendarBackground" width="1300" height="2800"/>
